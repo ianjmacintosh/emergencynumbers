@@ -1,3 +1,35 @@
+# Emergency Numbers
+
+## Overview
+
+This application provides phone numbers to call emergency services like:
+
+* Ambulance
+* Police
+* Firefighters
+
+## Development
+
+### Start a dev server
+
+```bash
+npm run dev
+```
+
+### Build the app
+
+```bash
+npm run build
+```
+
+### Deploy
+
+> ⚠️ Warning: I've never seen the deploy command work when executed from within a dev container
+
+```bash
+npx wrangler deploy
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
