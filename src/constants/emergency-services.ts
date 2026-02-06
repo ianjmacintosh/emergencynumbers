@@ -17,6 +17,7 @@ export const SERVICES: { [key: string]: Service[] } = {
     {
       type: "Police",
       name: "Policia",
+      description: "Police",
       phoneNumber: "190",
     },
     {
@@ -28,11 +29,13 @@ export const SERVICES: { [key: string]: Service[] } = {
     {
       type: "Ambulance",
       name: "Ambulancia",
+      description: "Ambulance",
       phoneNumber: "192",
     },
     {
       type: "FireDepartment",
       name: "Bombeiros",
+      description: "Firefighters",
       phoneNumber: "193",
     },
   ],
