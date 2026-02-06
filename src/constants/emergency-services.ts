@@ -1,22 +1,16 @@
 export type Service = {
-  // What kind of service do they provide? See `ServiceType`
-  type: ServiceType;
+  // What kind of service do they provide?
+  type: "Dispatch" | "Ambulance" | "FireDepartment" | "Police";
 
   // What do they call themselves?
   name: string;
 
-  // What do they do?
+  // What do they do (in the user's language)?
   description?: string;
 
   // What is their phone number?
   phoneNumber: string;
 };
-
-export type ServiceType =
-  | "Dispatch"
-  | "Ambulance"
-  | "FireDepartment"
-  | "Police";
 
 export const SERVICES: { [key: string]: Service[] } = {
   BR: [
