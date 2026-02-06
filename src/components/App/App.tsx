@@ -1,7 +1,5 @@
-import {
-  SUPPORTED_COUNTRIES,
-  SERVICES,
-} from "../../constants/emergency-services";
+import { SERVICES } from "../../constants/emergency-services";
+import { SUPPORTED_COUNTRIES } from "../../constants/supported-countries";
 
 import CountryCard from "../CountryCard";
 

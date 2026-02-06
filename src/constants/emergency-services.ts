@@ -1,9 +1,3 @@
-export type CountryInfo = { id: string; name: string };
-
-export type ServiceDirectory = {
-  [key: string]: Service[];
-};
-
 export type Service = {
   // What kind of service do they provide? See `ServiceType`
   type: ServiceType;
@@ -24,18 +18,7 @@ export type ServiceType =
   | "FireDepartment"
   | "Police";
 
-export const SUPPORTED_COUNTRIES: CountryInfo[] = [
-  {
-    id: "BR",
-    name: "Brazil",
-  },
-  {
-    id: "US",
-    name: "United States",
-  },
-];
-
-export const SERVICES: ServiceDirectory = {
+export const SERVICES: { [key: string]: Service[] } = {
   BR: [
     {
       type: "Police",
