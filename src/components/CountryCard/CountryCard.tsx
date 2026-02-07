@@ -1,4 +1,3 @@
-import type React from "react";
 import type { Service } from "../../constants/emergency-services";
 
 import styles from "./CountryCard.module.css";
