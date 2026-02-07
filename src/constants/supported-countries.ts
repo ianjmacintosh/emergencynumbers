@@ -6,6 +6,10 @@ export const SUPPORTED_COUNTRIES: CountryInfo[] = [
     name: "Brazil",
   },
   {
+    id: "MX",
+    name: "Mexico",
+  },
+  {
     id: "US",
     name: "United States",
   },
