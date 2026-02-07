@@ -16,19 +16,19 @@ export const SERVICES: { [key: string]: Service[] } = {
   BR: [
     {
       type: "Police",
-      name: "Policia",
+      name: "Polícia",
       description: "Police",
       phoneNumber: "190",
     },
     {
       type: "Police",
-      name: "Policia Rodoviaria",
+      name: "Polícia Rodoviaria",
       description: "Highway patrol",
       phoneNumber: "191",
     },
     {
       type: "Ambulance",
-      name: "Ambulancia",
+      name: "Ambuláncia",
       description: "Ambulance",
       phoneNumber: "192",
     },
