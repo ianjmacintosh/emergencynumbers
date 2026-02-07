@@ -17,7 +17,7 @@ function App() {
         Calling a local emergency service is usually best, but calling anyone is
         better than calling no one.
       </p>
-      <p>You will look back on what you did. Don't panic, be a hero.</p>
+      <p>Don't panic, be a hero.</p>
 
       {SUPPORTED_COUNTRIES.map(({ id, name }) => {
         const services = SERVICES[id];
