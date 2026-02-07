@@ -15,6 +15,14 @@ export type Service = {
 };
 
 export const SERVICES = {
+  // TODO: Missing countries/territories from PDF (not in COUNTRY_NAMES):
+  //   - Bali (Indonesia): 112, 118 (may be ID or use IC/BL country code?)
+  //   - Canary Islands (Spain): 112 (likely ES)
+  //   - Easter Island (Chile): 100-215, 100-264, 100-244 (likely CL)
+  //   - Ascension Island (UK): 6000, 911, 6666 (likely SH - Saint Helena, Ascension and Tristan da Cunha)
+  //   - South Africa (Cape Town): 107 (already covered under ZA)
+  //   - Tahiti (French Polynesia): Already added as PF
+  //   - England/Scotland/Northern Ireland: All covered under GB
   AL: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "17" },
     { type: "Fire Department", name: "Fire", phoneNumber: "18" },
@@ -55,6 +63,7 @@ export const SERVICES = {
       phoneNumber: "000",
     },
   ],
+  // TODO: Austria - PDF shows "112, 122" for Ambulance - verify if 122 is Ambulance-specific or general dispatch
   AT: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Ambulance", name: "Ambulance", phoneNumber: "122" },
@@ -66,21 +75,27 @@ export const SERVICES = {
   ],
   BS: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   BH: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Bangladesh - PDF shows "9 555 555" and "866 551-3" - verify formatting (spaces preserved for readability)
   BD: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "199" },
-    { type: "Fire Department", name: "Fire", phoneNumber: "9555555" },
-    { type: "Police", name: "Police", phoneNumber: "8665513" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "9 555 555" },
+    { type: "Police", name: "Police", phoneNumber: "866 551-3" },
   ],
+  // TODO: Barbados - PDF shows "115, 119" for Ambulance, "113, 119" for Fire, "112, 119" for Police - verify if 119 is unified dispatch
   BB: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "115" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "119" },
     { type: "Fire Department", name: "Fire", phoneNumber: "113" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "119" },
     { type: "Police", name: "Police", phoneNumber: "112" },
+    { type: "Police", name: "Police", phoneNumber: "119" },
   ],
   BY: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "03" },
     { type: "Fire Department", name: "Fire", phoneNumber: "01" },
     { type: "Police", name: "Police", phoneNumber: "02" },
   ],
+  // TODO: Belgium - PDF shows "112 (cell)/101" - verify if description is accurate
   BE: [
     {
       type: "Dispatch",
@@ -104,7 +119,11 @@ export const SERVICES = {
     { type: "Fire Department", name: "Fire", phoneNumber: "123" },
     { type: "Police", name: "Police", phoneNumber: "122" },
   ],
-  BW: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "997" }],
+  // TODO: Botswana - PDF shows "997, 911" - should create two dispatch entries
+  BW: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "997" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "911" },
+  ],
   BR: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   VG: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
   BN: [
@@ -130,6 +149,7 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "132" },
   ],
   KY: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
+  // TODO: Chad - PDF shows no Ambulance number - verify if ambulance service exists
   TD: [
     { type: "Fire Department", name: "Fire", phoneNumber: "18" },
     { type: "Police", name: "Police", phoneNumber: "17" },
@@ -152,8 +172,11 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "999" },
   ],
   CR: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
+  // TODO: Côte d'Ivoire - PDF shows "110, 111, 170" for Fire and no Ambulance - verify all numbers
   CI: [
     { type: "Fire Department", name: "Fire", phoneNumber: "110" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "111" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "170" },
     { type: "Police", name: "Police", phoneNumber: "180" },
   ],
   HR: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
@@ -164,8 +187,10 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "444444" },
   ],
   CY: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Czech Republic - PDF shows "112, 155" for Ambulance - verify if 155 is ambulance-specific
   CZ: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "112" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "155" },
     { type: "Fire Department", name: "Fire", phoneNumber: "150" },
     { type: "Police", name: "Police", phoneNumber: "158" },
   ],
@@ -178,6 +203,7 @@ export const SERVICES = {
   DM: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
   DO: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   TL: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Ecuador - PDF shows no Fire number - verify if fire service exists
   EC: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "131" },
     { type: "Police", name: "Police", phoneNumber: "101" },
@@ -218,8 +244,9 @@ export const SERVICES = {
     { type: "Fire Department", name: "Fire", phoneNumber: "18" },
     { type: "Police", name: "Police", phoneNumber: "17" },
   ],
+  // TODO: Gabon - PDF shows "1300-1399" for Ambulance - verify if hyphen is formatting or range of numbers
   GA: [
-    { type: "Ambulance", name: "Ambulance", phoneNumber: "1300" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "1300-1399" },
     { type: "Fire Department", name: "Fire", phoneNumber: "18" },
     { type: "Police", name: "Police", phoneNumber: "1730" },
   ],
@@ -233,12 +260,15 @@ export const SERVICES = {
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Police", name: "Police", phoneNumber: "110" },
   ],
+  // TODO: Ghana - PDF shows "776111-5" for Ambulance and "999, 171" for Police - verify all numbers
   GH: [
-    { type: "Ambulance", name: "Ambulance", phoneNumber: "776111" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "776111-5" },
     { type: "Fire Department", name: "Fire", phoneNumber: "192" },
     { type: "Police", name: "Police", phoneNumber: "999" },
+    { type: "Police", name: "Police", phoneNumber: "171" },
   ],
   GI: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Greece - PDF shows "112, 166" for Ambulance, "112, 199" for Fire, "112, 100" for Police - verify service-specific numbers
   GR: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Ambulance", name: "Ambulance", phoneNumber: "166" },
@@ -266,8 +296,10 @@ export const SERVICES = {
     { type: "Ambulance", name: "Ambulance", phoneNumber: "118" },
     { type: "Police", name: "Police", phoneNumber: "114" },
   ],
+  // TODO: Honduras - PDF shows "195, 37 8654" for Ambulance - verify if "37 8654" is area code or alternate number
   HN: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "195" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "37 8654" },
     { type: "Fire Department", name: "Fire", phoneNumber: "198" },
     { type: "Police", name: "Police", phoneNumber: "119" },
   ],
@@ -294,7 +326,11 @@ export const SERVICES = {
     { type: "Fire Department", name: "Fire", phoneNumber: "123" },
     { type: "Police", name: "Police", phoneNumber: "110" },
   ],
-  IE: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Ireland - PDF shows "112. 999" (period separator) - verify if both numbers are valid
+  IE: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+  ],
   IM: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
   IL: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "101" },
@@ -333,6 +369,7 @@ export const SERVICES = {
   ],
   KW: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "777" }],
   KG: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "103" }],
+  // TODO: Latvia - PDF shows "112, 03" for Ambulance, "112, 01" for Fire, "112, 02" for Police - verify service-specific numbers
   LV: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Ambulance", name: "Ambulance", phoneNumber: "03" },
@@ -356,7 +393,11 @@ export const SERVICES = {
   LY: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "193" }],
   LI: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   LT: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
-  LU: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Luxembourg - PDF shows "112/113" - verify if both are dispatch or if 113 is service-specific
+  LU: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "113" },
+  ],
   MO: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
   MK: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "94" },
@@ -385,15 +426,17 @@ export const SERVICES = {
   ],
   MT: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   MP: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
+  // TODO: Marshall Islands - PDF shows "625 4111" and "625 8666" with spaces, no Fire number - verify formatting and fire service
   MH: [
-    { type: "Ambulance", name: "Ambulance", phoneNumber: "6254111" },
-    { type: "Police", name: "Police", phoneNumber: "6258666" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "625 4111" },
+    { type: "Police", name: "Police", phoneNumber: "625 8666" },
   ],
   MQ: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "15" },
     { type: "Fire Department", name: "Fire", phoneNumber: "18" },
     { type: "Police", name: "Police", phoneNumber: "17" },
   ],
+  // TODO: Mauritania - PDF shows no Ambulance number - verify if ambulance service exists
   MR: [
     { type: "Fire Department", name: "Fire", phoneNumber: "118" },
     { type: "Police", name: "Police", phoneNumber: "117" },
@@ -442,13 +485,19 @@ export const SERVICES = {
   NL: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   AN: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   NZ: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "111" }],
+  // TODO: Nicaragua - PDF shows "115, 911" for Fire - verify if 911 is unified dispatch
   NI: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "128" },
     { type: "Fire Department", name: "Fire", phoneNumber: "115" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "911" },
     { type: "Police", name: "Police", phoneNumber: "118" },
   ],
   NG: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "199" }],
-  NO: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Norway - PDF shows "112, 110" - verify if both are dispatch or if 110 is police-specific
+  NO: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
+    { type: "Police", name: "Police", phoneNumber: "110" },
+  ],
   OM: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
   PK: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "15" }],
   PW: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
@@ -467,12 +516,25 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "000" },
   ],
   PY: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "00" }],
-  PE: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "011" }],
-  PH: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "166" }],
-  PL: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Peru - PDF shows "011, 5114" - verify if both are valid dispatch numbers or if one is outdated
+  PE: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "011" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "5114" },
+  ],
+  // TODO: Philippines - PDF shows "166, 117" - verify if both are dispatch or service-specific
+  PH: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "166" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "117" },
+  ],
+  // TODO: Poland - PDF shows "112, 999" - verify if both are valid dispatch numbers
+  PL: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+  ],
   PT: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   PR: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   QA: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Réunion - PDF shows "112, 15" for Ambulance - verify service-specific numbers
   RE: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Ambulance", name: "Ambulance", phoneNumber: "15" },
@@ -517,22 +579,40 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "10111" },
   ],
   ES: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Sri Lanka - PDF shows "1 691095, 699935" with spaces - verify if both are valid and formatting
   LK: [
     {
       type: "Dispatch",
       name: "Emergency Services",
-      phoneNumber: "1691095",
+      phoneNumber: "1 691095",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency Services",
+      phoneNumber: "699935",
     },
   ],
   SH: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   KN: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
-  LC: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Saint Lucia - PDF shows "999, 911" - verify if both are valid dispatch numbers
+  LC: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "911" },
+  ],
+  // TODO: Sint Maarten - PDF shows "911, 542-2111" for Ambulance, "911, 120" for Fire, "911, 542-2111" for Police - verify alternate numbers
   SX: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "911" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "542-2111" },
     { type: "Fire Department", name: "Fire", phoneNumber: "911" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "120" },
     { type: "Police", name: "Police", phoneNumber: "911" },
+    { type: "Police", name: "Police", phoneNumber: "542-2111" },
   ],
-  VC: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Saint Vincent and the Grenadines - PDF shows "999, 911" - verify if both are valid dispatch numbers
+  VC: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "911" },
+  ],
   SE: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
   CH: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "144" },
@@ -550,7 +630,11 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "110" },
   ],
   TJ: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "03" }],
-  TZ: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
+  // TODO: Tanzania - PDF shows "112, 999" - verify if both are valid dispatch numbers
+  TZ: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+  ],
   TH: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "191" },
     { type: "Fire Department", name: "Fire", phoneNumber: "199" },
@@ -568,6 +652,7 @@ export const SERVICES = {
     { type: "Fire Department", name: "Fire", phoneNumber: "198" },
     { type: "Police", name: "Police", phoneNumber: "197" },
   ],
+  // TODO: Turkey - PDF shows "101, 112" for Ambulance - verify if 112 is also ambulance-specific or just dispatch
   TR: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Ambulance", name: "Ambulance", phoneNumber: "101" },
@@ -575,7 +660,11 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "100" },
   ],
   TM: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "03" }],
-  TC: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Turks and Caicos - PDF shows "999, 911" - verify if both are valid dispatch numbers
+  TC: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "911" },
+  ],
   TV: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   UG: [
     {
@@ -585,18 +674,29 @@ export const SERVICES = {
       phoneNumber: "112",
     },
   ],
+  // TODO: Ukraine - PDF shows "03, 118" for Ambulance - verify if 118 is also ambulance-specific
   UA: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "03" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "118" },
     { type: "Fire Department", name: "Fire", phoneNumber: "01" },
     { type: "Police", name: "Police", phoneNumber: "02" },
   ],
-  AE: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "998" }],
+  // TODO: United Arab Emirates - PDF shows "998, 999" - verify if both are valid dispatch numbers
+  AE: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "998" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+  ],
+  // TODO: United Kingdom - PDF lists England, Scotland, Northern Ireland separately, all showing "112, 999" - verify consistency
   GB: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
   ],
   US: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
-  UY: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Uruguay - PDF shows "999, 911" - verify if both are valid dispatch numbers
+  UY: [
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "999" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "911" },
+  ],
   VI: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
   UZ: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "03" }],
   VU: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "112" }],
@@ -618,9 +718,13 @@ export const SERVICES = {
     { type: "Police", name: "Police", phoneNumber: "194" },
   ],
   ZM: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "999" }],
+  // TODO: Zimbabwe - PDF shows "994, 999" for Ambulance, "993, 999" for Fire, "995, 999" for Police - verify if 999 is unified dispatch
   ZW: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "994" },
+    { type: "Ambulance", name: "Ambulance", phoneNumber: "999" },
     { type: "Fire Department", name: "Fire", phoneNumber: "993" },
+    { type: "Fire Department", name: "Fire", phoneNumber: "999" },
     { type: "Police", name: "Police", phoneNumber: "995" },
+    { type: "Police", name: "Police", phoneNumber: "999" },
   ],
 } satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;
