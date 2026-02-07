@@ -18,40 +18,34 @@ export const SERVICES = {
   AD: [
     {
       type: "Ambulance",
-      name: "Ambulància",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "118",
     },
     {
       type: "Fire Department",
-      name: "Bombers",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "118",
     },
     {
       type: "Police",
-      name: "Policia",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
     },
   ],
   AE: [
     {
-      type: "Ambulance",
-      name: "Ambulance",
-      description: "Ambulance",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "998",
     },
     {
-      type: "Fire Department",
-      name: "Fire Department",
-      description: "Fire department",
-      phoneNumber: "997",
-    },
-    {
-      type: "Police",
-      name: "Police",
-      description: "Police",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "999",
     },
   ],
@@ -59,34 +53,34 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Alternative emergency number",
-      phoneNumber: "999",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   AL: [
     {
-      type: "Ambulance",
-      name: "Ambulancë",
-      description: "Ambulance",
-      phoneNumber: "127",
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "17",
     },
     {
-      type: "Fire Department",
-      name: "Zjarrfikësit",
-      description: "Fire department",
-      phoneNumber: "128",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "18",
     },
     {
       type: "Police",
-      name: "Policia",
+      name: "Police",
       description: "Police",
-      phoneNumber: "129",
+      phoneNumber: "19",
     },
   ],
   AM: [
@@ -96,35 +90,43 @@ export const SERVICES = {
       description: "Ambulance",
       phoneNumber: "103",
     },
+  ],
+  AO: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "118",
+    },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "101",
+      phoneNumber: "118",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "110",
     },
   ],
   AR: [
     {
       type: "Ambulance",
-      name: "Ambulancia",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "107",
+      phoneNumber: "101",
     },
     {
       type: "Fire Department",
-      name: "Bomberos",
+      name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "100",
+      phoneNumber: "107",
     },
     {
       type: "Police",
-      name: "Policía",
+      name: "Police",
       description: "Police",
       phoneNumber: "101",
     },
@@ -133,36 +135,44 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
   AT: [
     {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
       type: "Ambulance",
-      name: "Rettungsdienst",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "144",
-    },
-    {
-      type: "Fire Department",
-      name: "Feuerwehr",
-      description: "Fire department",
       phoneNumber: "122",
-    },
-    {
-      type: "Police",
-      name: "Polizei",
-      description: "Police",
-      phoneNumber: "133",
     },
   ],
   AU: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "000",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services (cell phone)",
+      phoneNumber: "112",
+    },
+  ],
+  AW: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   AZ: [
@@ -170,37 +180,37 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "103",
+      phoneNumber: "03",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "101",
+      phoneNumber: "01",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "02",
     },
   ],
   BA: [
     {
       type: "Ambulance",
-      name: "Hitna pomoć",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "124",
     },
     {
       type: "Fire Department",
-      name: "Vatrogasci",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "123",
     },
     {
       type: "Police",
-      name: "Policija",
+      name: "Police",
       description: "Police",
       phoneNumber: "122",
     },
@@ -213,10 +223,22 @@ export const SERVICES = {
       phoneNumber: "115",
     },
     {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "119",
+    },
+    {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
       phoneNumber: "113",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "119",
     },
     {
       type: "Police",
@@ -224,21 +246,45 @@ export const SERVICES = {
       description: "Police",
       phoneNumber: "112",
     },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "119",
+    },
   ],
   BD: [
     {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "National emergency number",
-      phoneNumber: "999",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "199",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "9 555 555",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "866 551-3",
     },
   ],
   BE: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services (cell)",
       phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "101",
     },
   ],
   BG: [
@@ -265,8 +311,16 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "999",
+    },
+  ],
+  BM: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   BN: [
@@ -292,57 +346,59 @@ export const SERVICES = {
   BO: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
   BR: [
     {
-      type: "Police",
-      name: "Polícia",
-      description: "Police",
-      phoneNumber: "190",
-    },
-    {
-      type: "Police",
-      name: "Polícia Rodoviaria",
-      description: "Highway patrol",
-      phoneNumber: "191",
-    },
-    {
-      type: "Ambulance",
-      name: "Ambuláncia",
-      description: "Ambulance",
-      phoneNumber: "192",
-    },
-    {
-      type: "Fire Department",
-      name: "Bombeiros",
-      description: "Firefighters",
-      phoneNumber: "193",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   BS: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "911",
+    },
+  ],
+  BT: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "110",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "112",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "113",
     },
   ],
   BW: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      description: "Switchboard for various services",
+      phoneNumber: "997",
     },
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Alternative emergency number",
-      phoneNumber: "997",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   BY: [
@@ -350,26 +406,26 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "103",
+      phoneNumber: "03",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "101",
+      phoneNumber: "01",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "02",
     },
   ],
   BZ: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
@@ -377,46 +433,92 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
   CH: [
     {
       type: "Ambulance",
-      name: "Ambulanz",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "144",
     },
     {
       type: "Fire Department",
-      name: "Feuerwehr",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "118",
     },
     {
       type: "Police",
-      name: "Polizei",
+      name: "Police",
       description: "Police",
       phoneNumber: "117",
+    },
+  ],
+  CI: [
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "110",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "111",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "170",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "180",
+    },
+  ],
+  CK: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "998",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "996",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "999",
     },
   ],
   CL: [
     {
       type: "Ambulance",
-      name: "Ambulancia",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "131",
     },
     {
       type: "Fire Department",
-      name: "Bomberos",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "132",
     },
     {
       type: "Police",
-      name: "Carabineros",
+      name: "Police",
       description: "Police",
       phoneNumber: "133",
     },
@@ -424,63 +526,123 @@ export const SERVICES = {
   CN: [
     {
       type: "Ambulance",
-      name: "急救中心",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "120",
     },
     {
       type: "Fire Department",
-      name: "消防",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "119",
     },
     {
       type: "Police",
-      name: "警察",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police (traffic accident)",
+      phoneNumber: "122",
     },
   ],
   CO: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "National emergency number",
-      phoneNumber: "123",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "119",
     },
   ],
   CR: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
+    },
+  ],
+  CU: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "26811",
+    },
+  ],
+  CV: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "130",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "131",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "132",
+    },
+  ],
+  CW: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "112",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "114",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "444444",
     },
   ],
   CY: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   CZ: [
     {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
       type: "Ambulance",
-      name: "Záchranná služba",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "155",
     },
     {
       type: "Fire Department",
-      name: "Hasiči",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "150",
     },
     {
       type: "Police",
-      name: "Policie",
+      name: "Police",
       description: "Police",
       phoneNumber: "158",
     },
@@ -488,36 +650,58 @@ export const SERVICES = {
   DE: [
     {
       type: "Ambulance",
-      name: "Rettungsdienst",
-      description: "Ambulance and fire",
-      phoneNumber: "112",
-    },
-    {
-      type: "Fire Department",
-      name: "Feuerwehr",
-      description: "Fire department",
+      name: "Ambulance",
+      description: "Ambulance",
       phoneNumber: "112",
     },
     {
       type: "Police",
-      name: "Polizei",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
+    },
+  ],
+  DJ: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "351351",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
     },
   ],
   DK: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+  ],
+  DM: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   DO: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
@@ -526,11 +710,11 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "14",
+      phoneNumber: "21606666",
     },
     {
       type: "Fire Department",
-      name: "Pompiers",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "14",
     },
@@ -543,18 +727,30 @@ export const SERVICES = {
   ],
   EC: [
     {
-      type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "131",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "101",
     },
   ],
   EE: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "110",
     },
   ],
   EG: [
@@ -580,30 +776,36 @@ export const SERVICES = {
   ES: [
     {
       type: "Dispatch",
-      name: "Emergencias",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   ET: [
     {
-      type: "Police",
-      name: "Police",
-      description: "Police",
-      phoneNumber: "911",
-    },
-    {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "907",
+      phoneNumber: "92",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "93",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "91",
     },
   ],
   FI: [
     {
       type: "Dispatch",
-      name: "Hätänumero",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
@@ -611,20 +813,34 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "911",
+    },
+  ],
+  FK: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   FR: [
     {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
       type: "Ambulance",
-      name: "SAMU",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "15",
     },
     {
       type: "Fire Department",
-      name: "Pompiers",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "18",
     },
@@ -635,12 +851,92 @@ export const SERVICES = {
       phoneNumber: "17",
     },
   ],
+  GA: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "1300-1399",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "1730",
+    },
+  ],
+  GB: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  GD: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "434",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "112",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "911",
+    },
+  ],
   GE: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
+      phoneNumber: "022",
+    },
+  ],
+  GF: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "15",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
     },
   ],
   GH: [
@@ -648,7 +944,7 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "193",
+      phoneNumber: "776111-5",
     },
     {
       type: "Fire Department",
@@ -660,25 +956,85 @@ export const SERVICES = {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "191",
+      phoneNumber: "999",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "171",
+    },
+  ],
+  GI: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  GM: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "16",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
+    },
+  ],
+  GP: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "18",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
     },
   ],
   GR: [
     {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
       type: "Ambulance",
-      name: "ΕΚΑΒ",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "166",
     },
     {
       type: "Fire Department",
-      name: "Πυροσβεστική",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "199",
     },
     {
       type: "Police",
-      name: "Αστυνομία",
+      name: "Police",
       description: "Police",
       phoneNumber: "100",
     },
@@ -686,91 +1042,119 @@ export const SERVICES = {
   GT: [
     {
       type: "Ambulance",
-      name: "Bomberos",
-      description: "Ambulance and fire",
-      phoneNumber: "123",
-    },
-    {
-      type: "Fire Department",
-      name: "Bomberos",
-      description: "Fire department",
-      phoneNumber: "123",
-    },
-    {
-      type: "Police",
-      name: "Policía",
-      description: "Police",
-      phoneNumber: "110",
-    },
-  ],
-  GY: [
-    {
-      type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "913",
+      phoneNumber: "123",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "912",
+      phoneNumber: "123",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
+      phoneNumber: "110",
+    },
+  ],
+  GU: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
+    },
+  ],
+  GY: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  HK: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   HN: [
     {
-      type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "195",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "37 8654",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "198",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "119",
     },
   ],
   HR: [
     {
       type: "Dispatch",
-      name: "Hitne službe",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   HT: [
     {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "118",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
       phoneNumber: "114",
     },
   ],
   HU: [
     {
       type: "Dispatch",
-      name: "Segélyhívó",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   ID: [
     {
       type: "Ambulance",
-      name: "Ambulans",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "118",
     },
     {
       type: "Fire Department",
-      name: "Pemadam Kebakaran",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "113",
     },
     {
       type: "Police",
-      name: "Polisi",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
     },
@@ -779,20 +1163,20 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Alternative emergency number",
+      description: "Switchboard for various services",
       phoneNumber: "999",
     },
   ],
   IL: [
     {
       type: "Ambulance",
-      name: "Magen David Adom",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "101",
     },
@@ -807,6 +1191,14 @@ export const SERVICES = {
       name: "Police",
       description: "Police",
       phoneNumber: "100",
+    },
+  ],
+  IM: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   IN: [
@@ -828,6 +1220,12 @@ export const SERVICES = {
       description: "Police",
       phoneNumber: "100",
     },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police (traffic accident)",
+      phoneNumber: "103",
+    },
   ],
   IR: [
     {
@@ -840,7 +1238,7 @@ export const SERVICES = {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "125",
+      phoneNumber: "123",
     },
     {
       type: "Police",
@@ -852,27 +1250,33 @@ export const SERVICES = {
   IS: [
     {
       type: "Dispatch",
-      name: "Neyðarþjónusta",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   IT: [
     {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
       type: "Ambulance",
-      name: "Ambulanza",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "118",
     },
     {
       type: "Fire Department",
-      name: "Vigili del Fuoco",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "115",
     },
     {
       type: "Police",
-      name: "Carabinieri",
+      name: "Police",
       description: "Police",
       phoneNumber: "113",
     },
@@ -899,28 +1303,40 @@ export const SERVICES = {
   ],
   JO: [
     {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "191",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "193",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "192",
     },
   ],
   JP: [
     {
       type: "Ambulance",
-      name: "救急",
-      description: "Ambulance and fire",
+      name: "Ambulance",
+      description: "Ambulance",
       phoneNumber: "119",
     },
     {
       type: "Fire Department",
-      name: "消防",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "119",
     },
     {
       type: "Police",
-      name: "警察",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
     },
@@ -929,8 +1345,16 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "999",
+    },
+  ],
+  KG: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "103",
     },
   ],
   KH: [
@@ -953,22 +1377,38 @@ export const SERVICES = {
       phoneNumber: "117",
     },
   ],
+  KI: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "994",
+    },
+  ],
+  KN: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
   KR: [
     {
       type: "Ambulance",
-      name: "구급대",
-      description: "Ambulance and fire",
+      name: "Ambulance",
+      description: "Ambulance",
       phoneNumber: "119",
     },
     {
       type: "Fire Department",
-      name: "소방서",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "119",
     },
     {
       type: "Police",
-      name: "경찰",
+      name: "Police",
       description: "Police",
       phoneNumber: "112",
     },
@@ -977,8 +1417,16 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "112",
+      description: "Switchboard for various services",
+      phoneNumber: "777",
+    },
+  ],
+  KY: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   KZ: [
@@ -986,59 +1434,37 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "103",
-    },
-    {
-      type: "Fire Department",
-      name: "Fire Department",
-      description: "Fire department",
-      phoneNumber: "101",
-    },
-    {
-      type: "Police",
-      name: "Police",
-      description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "03",
     },
   ],
   LB: [
     {
-      type: "Ambulance",
-      name: "Red Cross",
-      description: "Ambulance",
-      phoneNumber: "140",
-    },
-    {
-      type: "Fire Department",
-      name: "Fire Department",
-      description: "Fire department",
-      phoneNumber: "175",
-    },
-    {
-      type: "Police",
-      name: "Police",
-      description: "Police",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+  ],
+  LC: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   LI: [
     {
-      type: "Ambulance",
-      name: "Ambulanz",
-      description: "Ambulance",
-      phoneNumber: "144",
-    },
-    {
-      type: "Fire Department",
-      name: "Feuerwehr",
-      description: "Fire department",
-      phoneNumber: "118",
-    },
-    {
-      type: "Police",
-      name: "Polizei",
-      description: "Police",
-      phoneNumber: "117",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
     },
   ],
   LK: [
@@ -1046,43 +1472,103 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "1990",
+      phoneNumber: "1 691095",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "699935",
+    },
+  ],
+  LR: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services (cell phones only)",
+      phoneNumber: "911",
+    },
+  ],
+  LS: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "121",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "110",
+      phoneNumber: "122",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "119",
+      phoneNumber: "123",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "124",
     },
   ],
   LT: [
     {
       type: "Dispatch",
-      name: "Pagalbos telefonas",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   LU: [
     {
       type: "Dispatch",
-      name: "Numéro d'urgence",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "113",
     },
   ],
   LV: [
     {
       type: "Dispatch",
-      name: "Ārkārtas palīdzība",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "03",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "01",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "02",
+    },
+  ],
+  LY: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "193",
     },
   ],
   MA: [
@@ -1093,65 +1579,113 @@ export const SERVICES = {
       phoneNumber: "15",
     },
     {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "15",
+    },
+    {
       type: "Police",
       name: "Police",
       description: "Police",
       phoneNumber: "19",
     },
   ],
+  MC: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+  ],
   MD: [
     {
       type: "Ambulance",
-      name: "Ambulanță",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "903",
     },
     {
       type: "Fire Department",
-      name: "Pompieri",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "901",
     },
     {
       type: "Police",
-      name: "Poliția",
+      name: "Police",
       description: "Police",
       phoneNumber: "902",
     },
   ],
   ME: [
     {
-      type: "Dispatch",
-      name: "Hitne službe",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "112",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "94",
+    },
+  ],
+  MH: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "625 4111",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "625 8666",
     },
   ],
   MK: [
     {
       type: "Ambulance",
-      name: "Брза помош",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "194",
+      phoneNumber: "94",
     },
     {
       type: "Fire Department",
-      name: "Пожарна",
+      name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "193",
+      phoneNumber: "93",
     },
     {
       type: "Police",
-      name: "Полиција",
+      name: "Police",
       description: "Police",
-      phoneNumber: "192",
+      phoneNumber: "92",
+    },
+  ],
+  ML: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "15",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "17",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "18",
     },
   ],
   MM: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "999",
     },
   ],
@@ -1175,18 +1709,54 @@ export const SERVICES = {
       phoneNumber: "102",
     },
   ],
-  MU: [
+  MO: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  MQ: [
     {
       type: "Ambulance",
-      name: "SAMU",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "114",
+      phoneNumber: "15",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "115",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
+    },
+  ],
+  MR: [
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "118",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "117",
+    },
+  ],
+  MS: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "911",
     },
     {
       type: "Police",
@@ -1195,84 +1765,196 @@ export const SERVICES = {
       phoneNumber: "999",
     },
   ],
-  MX: [
+  MT: [
     {
       type: "Dispatch",
-      name: "Emergencia",
+      name: "Emergency services",
       description: "Switchboard for various services",
-      phoneNumber: "911",
+      phoneNumber: "112",
+    },
+  ],
+  MU: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  MV: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "102",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "999",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "119",
+    },
+  ],
+  MW: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "998",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "999",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "997",
+    },
+  ],
+  MX: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "065",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "068",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "060",
     },
   ],
   MY: [
     {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "999",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "994",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
       phoneNumber: "999",
     },
   ],
   MZ: [
     {
       type: "Ambulance",
-      name: "Ambulância",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "117",
     },
     {
       type: "Fire Department",
-      name: "Bombeiros",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "198",
     },
     {
       type: "Police",
-      name: "Polícia",
+      name: "Police",
       description: "Police",
       phoneNumber: "119",
     },
   ],
+  NA: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "2032276",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "2032270",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "1011",
+    },
+  ],
   NG: [
     {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "National emergency number",
-      phoneNumber: "112",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "199",
     },
   ],
   NI: [
     {
-      type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "128",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "115",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "911",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
       phoneNumber: "118",
     },
   ],
   NL: [
     {
       type: "Dispatch",
-      name: "Alarmnummer",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   NO: [
     {
-      type: "Ambulance",
-      name: "Ambulanse",
-      description: "Ambulance",
-      phoneNumber: "113",
-    },
-    {
-      type: "Fire Department",
-      name: "Brannvesen",
-      description: "Fire department",
-      phoneNumber: "110",
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
     },
     {
       type: "Police",
-      name: "Politi",
+      name: "Police",
       description: "Police",
-      phoneNumber: "112",
+      phoneNumber: "110",
     },
   ],
   NP: [
@@ -1280,7 +1962,149 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "102",
+      phoneNumber: "228094",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "100",
+    },
+  ],
+  NZ: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "111",
+    },
+  ],
+  OM: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  PA: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "269-9778",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "103",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "104",
+    },
+  ],
+  PE: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "011",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "5114",
+    },
+  ],
+  PF: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "15",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
+    },
+  ],
+  PG: [
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "110",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "000",
+    },
+  ],
+  PH: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "166",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "117",
+    },
+  ],
+  PK: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "15",
+    },
+  ],
+  PL: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  PR: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
+  PS: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "101",
     },
     {
       type: "Fire Department",
@@ -1295,175 +2119,85 @@ export const SERVICES = {
       phoneNumber: "100",
     },
   ],
-  NZ: [
-    {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "111",
-    },
-  ],
-  OM: [
-    {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "9999",
-    },
-  ],
-  PA: [
-    {
-      type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
-    },
-  ],
-  PE: [
-    {
-      type: "Ambulance",
-      name: "Bomberos",
-      description: "Ambulance and fire",
-      phoneNumber: "116",
-    },
-    {
-      type: "Fire Department",
-      name: "Bomberos",
-      description: "Fire department",
-      phoneNumber: "116",
-    },
-    {
-      type: "Police",
-      name: "Policía",
-      description: "Police",
-      phoneNumber: "105",
-    },
-  ],
-  PH: [
-    {
-      type: "Dispatch",
-      name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
-    },
-  ],
-  PK: [
-    {
-      type: "Dispatch",
-      name: "Rescue",
-      description: "Emergency rescue service",
-      phoneNumber: "1122",
-    },
-    {
-      type: "Ambulance",
-      name: "Edhi Ambulance",
-      description: "Ambulance",
-      phoneNumber: "115",
-    },
-    {
-      type: "Police",
-      name: "Police",
-      description: "Police",
-      phoneNumber: "15",
-    },
-  ],
-  PL: [
-    {
-      type: "Ambulance",
-      name: "Pogotowie Ratunkowe",
-      description: "Ambulance",
-      phoneNumber: "999",
-    },
-    {
-      type: "Fire Department",
-      name: "Straż Pożarna",
-      description: "Fire department",
-      phoneNumber: "998",
-    },
-    {
-      type: "Police",
-      name: "Policja",
-      description: "Police",
-      phoneNumber: "997",
-    },
-  ],
   PT: [
     {
       type: "Dispatch",
-      name: "Emergência",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
+    },
+  ],
+  PW: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   PY: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "911",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "00",
     },
   ],
   QA: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "999",
+    },
+  ],
+  RE: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "15",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
     },
   ],
   RO: [
     {
       type: "Dispatch",
-      name: "Urgențe",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   RS: [
     {
       type: "Ambulance",
-      name: "Hitna pomoć",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "194",
-    },
-    {
-      type: "Fire Department",
-      name: "Vatrogasci",
-      description: "Fire department",
-      phoneNumber: "193",
-    },
-    {
-      type: "Police",
-      name: "Policija",
-      description: "Police",
-      phoneNumber: "192",
+      phoneNumber: "94",
     },
   ],
   RU: [
     {
-      type: "Ambulance",
-      name: "Скорая помощь",
-      description: "Ambulance",
-      phoneNumber: "103",
-    },
-    {
-      type: "Fire Department",
-      name: "Пожарная",
-      description: "Fire department",
-      phoneNumber: "101",
-    },
-    {
-      type: "Police",
-      name: "Полиция",
-      description: "Police",
-      phoneNumber: "102",
-    },
-  ],
-  RW: [
-    {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
@@ -1487,11 +2221,27 @@ export const SERVICES = {
       phoneNumber: "999",
     },
   ],
+  SB: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
+  SC: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
   SE: [
     {
       type: "Dispatch",
-      name: "SOS Alarm",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
@@ -1499,7 +2249,7 @@ export const SERVICES = {
     {
       type: "Ambulance",
       name: "Ambulance",
-      description: "Ambulance and fire",
+      description: "Ambulance",
       phoneNumber: "995",
     },
     {
@@ -1515,40 +2265,182 @@ export const SERVICES = {
       phoneNumber: "999",
     },
   ],
+  SH: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
   SI: [
     {
       type: "Dispatch",
-      name: "Klic v sili",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "112",
     },
   ],
   SK: [
     {
       type: "Ambulance",
-      name: "Záchranná služba",
+      name: "Ambulance",
       description: "Ambulance",
       phoneNumber: "155",
     },
     {
       type: "Fire Department",
-      name: "Hasiči",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "150",
     },
     {
       type: "Police",
-      name: "Polícia",
+      name: "Police",
       description: "Police",
       phoneNumber: "158",
+    },
+  ],
+  SL: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "999",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "019",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "999",
+    },
+  ],
+  SM: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "113",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "116",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "112",
     },
   ],
   SV: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
+    },
+  ],
+  SX: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "911",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "542-2111",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "911",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "120",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "911",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "542-2111",
+    },
+  ],
+  SY: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "110",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "113",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "112",
+    },
+  ],
+  TC: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
+  TD: [
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "18",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "17",
+    },
+  ],
+  TG: [
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "101",
     },
   ],
   TH: [
@@ -1556,7 +2448,7 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "1669",
+      phoneNumber: "191",
     },
     {
       type: "Fire Department",
@@ -1571,6 +2463,30 @@ export const SERVICES = {
       phoneNumber: "191",
     },
   ],
+  TJ: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "03",
+    },
+  ],
+  TL: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+  ],
+  TM: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "03",
+    },
+  ],
   TN: [
     {
       type: "Ambulance",
@@ -1580,7 +2496,7 @@ export const SERVICES = {
     },
     {
       type: "Fire Department",
-      name: "Pompiers",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "198",
     },
@@ -1591,38 +2507,84 @@ export const SERVICES = {
       phoneNumber: "197",
     },
   ],
-  TR: [
+  TO: [
     {
       type: "Dispatch",
-      name: "Acil yardım",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
+    },
+  ],
+  TR: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "101",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
       phoneNumber: "112",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "102",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "100",
     },
   ],
   TT: [
     {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "990",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "990",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "999",
+    },
+  ],
+  TV: [
+    {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "999",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   TW: [
     {
       type: "Ambulance",
-      name: "救護車",
-      description: "Ambulance and fire",
+      name: "Ambulance",
+      description: "Ambulance",
       phoneNumber: "119",
     },
     {
       type: "Fire Department",
-      name: "消防局",
+      name: "Fire Department",
       description: "Fire department",
       phoneNumber: "119",
     },
     {
       type: "Police",
-      name: "警察",
+      name: "Police",
       description: "Police",
       phoneNumber: "110",
     },
@@ -1631,35 +2593,53 @@ export const SERVICES = {
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
-      phoneNumber: "114",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   UA: [
     {
       type: "Ambulance",
-      name: "Швидка допомога",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "103",
+      phoneNumber: "03",
+    },
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "118",
     },
     {
       type: "Fire Department",
-      name: "Пожежна",
+      name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "101",
+      phoneNumber: "01",
     },
     {
       type: "Police",
-      name: "Поліція",
+      name: "Police",
       description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "02",
     },
   ],
   UG: [
     {
       type: "Dispatch",
       name: "Emergency services",
-      description: "Police, fire, and ambulance",
+      description: "Switchboard for various services (cell phone)",
+      phoneNumber: "112",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services (fixed)",
       phoneNumber: "999",
     },
   ],
@@ -1674,8 +2654,14 @@ export const SERVICES = {
   UY: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "911",
     },
   ],
@@ -1684,47 +2670,129 @@ export const SERVICES = {
       type: "Ambulance",
       name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "103",
+      phoneNumber: "03",
+    },
+  ],
+  VA: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "113",
     },
     {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "101",
+      phoneNumber: "115",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "102",
+      phoneNumber: "112",
+    },
+  ],
+  VC: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   VE: [
     {
       type: "Dispatch",
-      name: "Emergencia",
-      description: "Police, fire, and ambulance",
+      name: "Emergency services",
+      description: "Switchboard for various services",
       phoneNumber: "171",
+    },
+  ],
+  VG: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  VI: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "911",
     },
   ],
   VN: [
     {
       type: "Ambulance",
-      name: "Cấp cứu",
+      name: "Ambulance",
       description: "Ambulance",
-      phoneNumber: "115",
+      phoneNumber: "05",
     },
     {
       type: "Fire Department",
-      name: "Cứu hỏa",
+      name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "114",
+      phoneNumber: "08",
     },
     {
       type: "Police",
-      name: "Công an",
+      name: "Police",
       description: "Police",
-      phoneNumber: "113",
+      phoneNumber: "03",
+    },
+  ],
+  VU: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "112",
+    },
+  ],
+  WS: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
+    },
+  ],
+  XK: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "94",
+    },
+  ],
+  YE: [
+    {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "191",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "191",
+    },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "194",
     },
   ],
   ZA: [
@@ -1735,30 +2803,24 @@ export const SERVICES = {
       phoneNumber: "10177",
     },
     {
-      type: "Police",
-      name: "Police",
-      description: "Police and fire",
-      phoneNumber: "10111",
-    },
-  ],
-  ZM: [
-    {
-      type: "Ambulance",
-      name: "Ambulance",
-      description: "Ambulance",
-      phoneNumber: "999",
-    },
-    {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
-      phoneNumber: "991",
+      phoneNumber: "10177",
     },
     {
       type: "Police",
       name: "Police",
       description: "Police",
-      phoneNumber: "993",
+      phoneNumber: "10111",
+    },
+  ],
+  ZM: [
+    {
+      type: "Dispatch",
+      name: "Emergency services",
+      description: "Switchboard for various services",
+      phoneNumber: "999",
     },
   ],
   ZW: [
@@ -1769,10 +2831,22 @@ export const SERVICES = {
       phoneNumber: "994",
     },
     {
+      type: "Ambulance",
+      name: "Ambulance",
+      description: "Ambulance",
+      phoneNumber: "999",
+    },
+    {
       type: "Fire Department",
       name: "Fire Department",
       description: "Fire department",
       phoneNumber: "993",
+    },
+    {
+      type: "Fire Department",
+      name: "Fire Department",
+      description: "Fire department",
+      phoneNumber: "999",
     },
     {
       type: "Police",
@@ -1780,5 +2854,12 @@ export const SERVICES = {
       description: "Police",
       phoneNumber: "995",
     },
+    {
+      type: "Police",
+      name: "Police",
+      description: "Police",
+      phoneNumber: "999",
+    },
   ],
 } satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;
+
