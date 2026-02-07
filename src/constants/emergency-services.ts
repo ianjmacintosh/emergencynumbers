@@ -48,24 +48,6 @@ export const SERVICES = {
       description: "Switchboard for various services",
       phoneNumber: "911",
     },
-    {
-      type: "Police",
-      name: "Policía",
-      description: "Police",
-      phoneNumber: "060",
-    },
-    {
-      type: "Ambulance",
-      name: "Ambulancia",
-      description: "Ambulance",
-      phoneNumber: "065",
-    },
-    {
-      type: "Fire Department",
-      name: "Bomberos",
-      description: "Firefighters",
-      phoneNumber: "068",
-    },
   ],
   US: [
     {
