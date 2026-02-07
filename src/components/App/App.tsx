@@ -1,3 +1,4 @@
+import React from "react";
 import { SERVICES } from "../../constants/emergency-services";
 import { SUPPORTED_COUNTRIES } from "../../constants/supported-countries";
 
@@ -5,7 +6,17 @@ import CountryCard from "../CountryCard";
 
 import "./App.css";
 
+const defaultCountry = "US";
+
 function App() {
+  const [countryId, setCountryId] = React.useState("US");
+
+  const name =
+    SUPPORTED_COUNTRIES.find((country) => country.id === countryId)?.name ||
+    defaultCountry;
+
+  const services = SERVICES[countryId] || [];
+
   return (
     <div>
       <h1>Emergency Numbers</h1>
@@ -19,11 +30,19 @@ function App() {
       </p>
       <p>Don't panic, be a hero.</p>
 
-      {SUPPORTED_COUNTRIES.map(({ id, name }) => {
-        const services = SERVICES[id];
+      <select
+        onChange={(event) => {
+          setCountryId(event.target.value);
+        }}
+      >
+        {SUPPORTED_COUNTRIES.map((country) => (
+          <option key={country.id} value={country.id}>
+            {country.name}
+          </option>
+        ))}
+      </select>
 
-        return <CountryCard key={id} name={name} services={services} />;
-      })}
+      <CountryCard key={countryId} name={name} services={services} />
     </div>
   );
 }
