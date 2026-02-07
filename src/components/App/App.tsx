@@ -1,19 +1,15 @@
 import React from "react";
 import { SERVICES } from "../../constants/emergency-services";
-import { SUPPORTED_COUNTRIES } from "../../constants/supported-countries";
+import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 
 import CountryCard from "../CountryCard";
 
 import "./App.css";
 
-const defaultCountry = "US";
-
 function App() {
-  const [countryId, setCountryId] = React.useState("US");
-
-  const name =
-    SUPPORTED_COUNTRIES.find((country) => country.id === countryId)?.name ||
-    defaultCountry;
+  const [countryId, setCountryId] =
+    React.useState<keyof typeof COUNTRY_NAMES>(DEFAULT_COUNTRY);
+  const name = COUNTRY_NAMES[countryId] || "Unknown";
 
   const services = SERVICES[countryId] || [];
 
@@ -28,16 +24,16 @@ function App() {
         Calling a local emergency service is usually best, but calling anyone is
         better than calling no one.
       </p>
-      <p>Don't panic, be a hero.</p>
 
       <select
+        value={countryId}
         onChange={(event) => {
-          setCountryId(event.target.value);
+          setCountryId(event.target.value as keyof typeof COUNTRY_NAMES);
         }}
       >
-        {SUPPORTED_COUNTRIES.map((country) => (
-          <option key={country.id} value={country.id}>
-            {country.name}
+        {getCountryIds().map((countryId) => (
+          <option key={countryId} value={countryId}>
+            {COUNTRY_NAMES[countryId] || "Unknown"}
           </option>
         ))}
       </select>
@@ -46,5 +42,8 @@ function App() {
     </div>
   );
 }
+
+const getCountryIds = () =>
+  Object.keys(COUNTRY_NAMES) as Array<keyof typeof COUNTRY_NAMES>;
 
 export default App;

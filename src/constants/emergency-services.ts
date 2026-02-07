@@ -1,3 +1,5 @@
+import type { COUNTRY_NAMES } from "./index";
+
 export type Service = {
   // What kind of service do they provide?
   type: "Dispatch" | "Ambulance" | "Fire Department" | "Police";
@@ -12,7 +14,7 @@ export type Service = {
   phoneNumber: string;
 };
 
-export const SERVICES: { [key: string]: Service[] } = {
+export const SERVICES = {
   BR: [
     {
       type: "Police",
@@ -73,4 +75,4 @@ export const SERVICES: { [key: string]: Service[] } = {
       phoneNumber: "911",
     },
   ],
-};
+} satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;
