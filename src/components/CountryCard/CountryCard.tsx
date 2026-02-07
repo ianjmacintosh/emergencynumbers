@@ -1,5 +1,7 @@
-import React from "react";
+import type React from "react";
 import type { Service } from "../../constants/emergency-services";
+
+import styles from "./CountryCard.module.css";
 
 function CountryCard({
   name,
@@ -9,21 +11,22 @@ function CountryCard({
   services: Service[];
 }) {
   return (
-    <div>
+    <div className={styles.countryCard}>
       <h2>{name}</h2>
       <dl>
         {services.map((service: Service) => {
-          const { name: serviceName, phoneNumber } = service;
+          const { name: serviceName, phoneNumber, description, type } = service;
 
           return (
-            <React.Fragment key={phoneNumber}>
-              <dt>
-                <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>{" "}
-              </dt>
-              <dd>
-                {serviceName} (<a href={`tel:${phoneNumber}`}>Call</a>)
-              </dd>
-            </React.Fragment>
+            <div className={styles.serviceCard} key={phoneNumber}>
+              <h3>
+                {type} (<em>{serviceName}</em>){" "}
+              </h3>
+              {description && <p>{description}</p>}
+              <p>
+                <a href={`tel:${phoneNumber}`}>Call {phoneNumber}</a>
+              </p>
+            </div>
           );
         })}
       </dl>
