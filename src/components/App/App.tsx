@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   const [countryId, setCountryId] =
-    React.useState<keyof typeof COUNTRY_NAMES>(DEFAULT_COUNTRY);
+    React.useState<keyof typeof SERVICES>(DEFAULT_COUNTRY);
   const name = COUNTRY_NAMES[countryId] || "Unknown";
 
   const services = SERVICES[countryId] || [];
@@ -28,14 +28,16 @@ function App() {
       <select
         value={countryId}
         onChange={(event) => {
-          setCountryId(event.target.value as keyof typeof COUNTRY_NAMES);
+          setCountryId(event.target.value as keyof typeof SERVICES);
         }}
       >
-        {getCountryIds().map((countryId) => (
-          <option key={countryId} value={countryId}>
-            {COUNTRY_NAMES[countryId] || "Unknown"}
-          </option>
-        ))}
+        {getCountryIds()
+          .filter((country) => country in SERVICES)
+          .map((countryId) => (
+            <option key={countryId} value={countryId}>
+              {COUNTRY_NAMES[countryId] || "Unknown"}
+            </option>
+          ))}
       </select>
 
       <CountryCard key={countryId} name={name} services={services} />
