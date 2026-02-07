@@ -55,6 +55,8 @@ export const SERVICES = {
   ],
   AM: [{ type: "Ambulance", name: "Ambulance", phoneNumber: "103" }],
   AW: [{ type: "Dispatch", name: "Emergency Services", phoneNumber: "911" }],
+
+  // TODO: Australia - PDF shows "000 (112 on cell phone)" but should have 2 entries
   AU: [
     {
       type: "Dispatch",
@@ -66,7 +68,7 @@ export const SERVICES = {
   // TODO: Austria - PDF shows "112, 122" for Ambulance - verify if 122 is Ambulance-specific or general dispatch
   AT: [
     { type: "Dispatch", name: "Emergency Services", phoneNumber: "112" },
-    { type: "Ambulance", name: "Ambulance", phoneNumber: "122" },
+    { type: "Dispatch", name: "Emergency Services", phoneNumber: "122" },
   ],
   AZ: [
     { type: "Ambulance", name: "Ambulance", phoneNumber: "03" },
