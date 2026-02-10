@@ -11,7 +11,19 @@ function App() {
   const [countryId, setCountryId] =
     React.useState<keyof typeof SERVICES>(DEFAULT_COUNTRY);
 
-  const services = SERVICES[countryId] || [];
+  const services =
+    SERVICES[countryId].sort((a, b) => {
+      // Sort services:
+      // Dispatch numbers come first
+      // Numbers are sorted numerically
+      const aIsDispatch = a.type === "Dispatch";
+      const bIsDispatch = b.type === "Dispatch";
+      if (aIsDispatch !== bIsDispatch) {
+        return aIsDispatch ? -1 : 1;
+      } else {
+        return parseInt(a.phoneNumber) - parseInt(b.phoneNumber);
+      }
+    }) || [];
 
   return (
     <div>

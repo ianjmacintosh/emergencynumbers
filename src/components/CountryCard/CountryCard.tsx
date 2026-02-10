@@ -7,18 +7,9 @@ function CountryCard({ services }: { services: Service[] }) {
   return (
     <div className={styles.countryCard}>
       <ul className={styles.services}>
-        {services
-          .sort((service1, service2) => {
-            if (service1.type === "Dispatch" || service2.type === "Dispatch") {
-              return -1;
-            }
-            return (
-              parseInt(service1.phoneNumber) - parseInt(service2.phoneNumber)
-            );
-          })
-          .map((service: Service) => (
-            <ServiceCard service={service} key={service.phoneNumber} />
-          ))}
+        {services.map((service: Service) => (
+          <ServiceCard service={service} key={service.phoneNumber} />
+        ))}
       </ul>
     </div>
   );
