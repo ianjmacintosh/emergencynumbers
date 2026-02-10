@@ -13,11 +13,11 @@ function CountryCard({
   return (
     <div className={styles.countryCard}>
       <h2>{name}</h2>
-      <dl>
+      <ul className={styles.services}>
         {services.map((service: Service) => (
           <ServiceCard service={service} />
         ))}
-      </dl>
+      </ul>
     </div>
   );
 }

@@ -1,4 +1,28 @@
-.card {
-    border-radius: 5px;
-    border: solid 1px black;
+.service {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    background-color: #fff;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 10px;
+    border: solid 1px #ccc;
+    box-shadow: 0 5px #6683;
+    font-size: 2rem;
+}
+
+.type {
+    justify-self: left;
+}
+
+.icon {
+    color: #3a3a3a;
+}
+
+p {
+    grid-row: 2;
+    grid-column: 1 / -1;
 }
