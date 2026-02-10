@@ -4,28 +4,33 @@ import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 
 import CountryCard from "../CountryCard";
 
+import styles from "./App.module.css";
 import "./App.css";
 
 function App() {
   const [countryId, setCountryId] =
     React.useState<keyof typeof SERVICES>(DEFAULT_COUNTRY);
-  const name = COUNTRY_NAMES[countryId] || "Unknown";
 
-  const services = SERVICES[countryId] || [];
+  const services =
+    SERVICES[countryId].sort((a, b) => {
+      // Sort services:
+      // Dispatch numbers come first
+      // Numbers are sorted numerically
+      const aIsDispatch = a.type === "Dispatch";
+      const bIsDispatch = b.type === "Dispatch";
+      if (aIsDispatch !== bIsDispatch) {
+        return aIsDispatch ? -1 : 1;
+      } else {
+        return parseInt(a.phoneNumber) - parseInt(b.phoneNumber);
+      }
+    }) || [];
 
   return (
     <div>
       <h1>Emergency Numbers</h1>
-      <p>
-        Here are the official published emergency phone numbers you can call if
-        you are in a foreign country and need help.
-      </p>
-      <p>
-        Calling a local emergency service is usually best, but calling anyone is
-        better than calling no one.
-      </p>
 
       <select
+        className={styles.select}
         value={countryId}
         onChange={(event) => {
           setCountryId(event.target.value as keyof typeof SERVICES);
@@ -40,7 +45,7 @@ function App() {
           ))}
       </select>
 
-      <CountryCard key={countryId} name={name} services={services} />
+      <CountryCard key={countryId} services={services} />
     </div>
   );
 }
