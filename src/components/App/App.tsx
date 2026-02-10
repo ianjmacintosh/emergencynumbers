@@ -4,12 +4,12 @@ import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 
 import CountryCard from "../CountryCard";
 
+import styles from "./App.module.css";
 import "./App.css";
 
 function App() {
   const [countryId, setCountryId] =
     React.useState<keyof typeof SERVICES>(DEFAULT_COUNTRY);
-  const name = COUNTRY_NAMES[countryId] || "Unknown";
 
   const services = SERVICES[countryId] || [];
 
@@ -18,6 +18,7 @@ function App() {
       <h1>Emergency Numbers</h1>
 
       <select
+        className={styles.select}
         value={countryId}
         onChange={(event) => {
           setCountryId(event.target.value as keyof typeof SERVICES);
@@ -32,7 +33,7 @@ function App() {
           ))}
       </select>
 
-      <CountryCard key={countryId} name={name} services={services} />
+      <CountryCard key={countryId} services={services} />
     </div>
   );
 }

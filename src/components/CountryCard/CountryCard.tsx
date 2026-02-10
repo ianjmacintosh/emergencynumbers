@@ -3,16 +3,9 @@ import ServiceCard from "../ServiceCard";
 
 import styles from "./CountryCard.module.css";
 
-function CountryCard({
-  name,
-  services,
-}: {
-  name: string;
-  services: Service[];
-}) {
+function CountryCard({ services }: { services: Service[] }) {
   return (
     <div className={styles.countryCard}>
-      <h2>{name}</h2>
       <ul className={styles.services}>
         {services
           .sort((service1, service2) => {
