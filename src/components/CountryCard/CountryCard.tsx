@@ -15,7 +15,7 @@ function CountryCard({
       <h2>{name}</h2>
       <ul className={styles.services}>
         {services.map((service: Service) => (
-          <ServiceCard service={service} />
+          <ServiceCard service={service} key={service.phoneNumber} />
         ))}
       </ul>
     </div>

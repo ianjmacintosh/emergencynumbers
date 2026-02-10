@@ -3,10 +3,13 @@ import {
   AmbulanceIcon,
   FireTruckIcon,
   HeadsetIcon,
+  PhoneOutgoingIcon,
+  CopyIcon,
 } from "@phosphor-icons/react";
 import type { Service } from "../../constants/emergency-services";
 
 import styles from "./ServiceCard.module.css";
+import VisuallyHidden from "../VisuallyHidden";
 
 function ServiceCard({ service }: { service: Service }) {
   const { phoneNumber, type } = service;
@@ -18,15 +21,45 @@ function ServiceCard({ service }: { service: Service }) {
   }[type];
 
   return (
-    <li className={styles.service} key={phoneNumber}>
-      <Icon size={32} weight="fill" className={styles.icon} />
-      <span className={styles.type}>{type}</span>
+    <li className={styles.service}>
+      <div className={styles.titleWrapper}>
+        <div className={styles.iconWrapper}>
+          <Icon size={32} weight="fill" className={styles.icon} />
+        </div>
+        <span className={styles.type}>{type}</span>
+      </div>
       {/* {description && <p>{description}</p>} */}
-      <a className={styles.phoneNumber} href={`tel:${phoneNumber}`}>
-        Call {phoneNumber}
+      <div className={styles.phoneNumberWrapper}>
+        <span>{phoneNumber}</span>
+
+        <button
+          className={styles.copyButton}
+          onClick={() => {
+            copyToClipboard(phoneNumber);
+          }}
+        >
+          <CopyIcon
+            size={24}
+            weight="fill"
+            className={`${styles.icon} ${styles.secondaryIcon}`}
+          >
+            <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
+          </CopyIcon>
+        </button>
+      </div>
+      <a
+        className={`${styles.callButton} ${styles.iconWrapper}`}
+        href={`tel:${phoneNumber}`}
+      >
+        <PhoneOutgoingIcon size={32} weight="fill" />
+        <VisuallyHidden>Call {phoneNumber}</VisuallyHidden>
       </a>
     </li>
   );
+}
+
+function copyToClipboard(text: string) {
+  navigator.clipboard.writeText(text);
 }
 
 export default ServiceCard;
