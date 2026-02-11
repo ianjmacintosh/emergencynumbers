@@ -38,21 +38,15 @@ function ComboboxSelect({
   });
 
   return (
-    <div className="wrapper">
+    <div>
       <Ariakit.ComboboxProvider resetValueOnHide setValue={setSearchValue}>
-        <Ariakit.SelectProvider defaultValue={currentLabel} setValue={onChange}>
-          <Ariakit.Select className="button" value={currentValue}>
+        <Ariakit.SelectProvider defaultValue={currentValue} setValue={onChange}>
+          <Ariakit.Select value={currentValue}>
             {currentLabel}
-            <Ariakit.SelectArrow className="chevron" />
+            <Ariakit.SelectArrow />
           </Ariakit.Select>
-          <Ariakit.SelectPopover gutter={4} sameWidth className="popover">
-            <div className="combobox-wrapper">
-              <Ariakit.Combobox
-                autoSelect
-                placeholder="Search..."
-                className="combobox"
-              />
-            </div>
+          <Ariakit.SelectPopover>
+            <Ariakit.Combobox autoSelect />
             <Ariakit.ComboboxList>
               {matches.map(({ value, label }) => (
                 <ComboboxSelectOption key={value} value={value}>
