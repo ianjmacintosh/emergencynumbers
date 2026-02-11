@@ -8,7 +8,10 @@ function CountryCard({ services }: { services: Service[] }) {
     <div className={styles.countryCard}>
       <ul className={styles.services}>
         {services.map((service: Service) => (
-          <ServiceCard service={service} key={service.phoneNumber} />
+          <ServiceCard
+            service={service}
+            key={`${service.type}-${service.phoneNumber}`}
+          />
         ))}
       </ul>
     </div>
