@@ -2,10 +2,11 @@ import React from "react";
 import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 
-import CountryCard from "../CountryCard";
+import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 
 import styles from "./App.module.css";
 import "./App.css";
+import CountryCard from "../CountryCard";
 
 function App() {
   const [countryId, setCountryId] =
@@ -29,21 +30,22 @@ function App() {
     <div>
       <h1>Emergency Numbers</h1>
 
-      <select
-        className={styles.select}
+      <ComboboxSelect
         value={countryId}
-        onChange={(event) => {
-          setCountryId(event.target.value as keyof typeof SERVICES);
+        onChange={(value) => {
+          setCountryId(value as keyof typeof SERVICES);
         }}
       >
         {getCountryIds()
           .filter((country) => country in SERVICES)
           .map((countryId) => (
-            <option key={countryId} value={countryId}>
-              {COUNTRY_NAMES[countryId] || "Unknown"}
-            </option>
+            <ComboboxSelectOption
+              key={countryId}
+              value={countryId}
+              label={COUNTRY_NAMES[countryId] || "Unknown"}
+            />
           ))}
-      </select>
+      </ComboboxSelect>
 
       <CountryCard key={countryId} services={services} />
     </div>
