@@ -4,7 +4,6 @@ import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 
 import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 
-import styles from "./App.module.css";
 import "./App.css";
 import CountryCard from "../CountryCard";
 
