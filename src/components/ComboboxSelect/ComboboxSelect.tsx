@@ -11,18 +11,17 @@ function ComboboxSelect({
   onChange: (value: string) => void;
   children: React.ReactNode;
 }) {
-  const optionsDataList: OptionsDataList = React.useMemo(
-    () =>
-      React.Children.toArray(children)
-        .filter(React.isValidElement<OptionElement>)
-        .map(({ props }) => {
-          return {
-            value: props.value,
-            label: props.label ?? String(props.children),
-          };
-        }),
-    [children],
-  );
+  const optionsDataList: OptionsDataList = React.useMemo(() => {
+    console.log(`Rebuilding the options data list`);
+    return React.Children.toArray(children)
+      .filter(React.isValidElement<OptionElement>)
+      .map(({ props }) => {
+        return {
+          value: props.value,
+          label: props.label ?? String(props.children),
+        };
+      });
+  }, [children]);
 
   const currentLabel = optionsDataList.find(
     ({ value }) => value === currentValue,
@@ -39,14 +38,30 @@ function ComboboxSelect({
 
   return (
     <div>
-      <Ariakit.ComboboxProvider resetValueOnHide setValue={setSearchValue}>
-        <Ariakit.SelectProvider defaultValue={currentValue} setValue={onChange}>
+      <Ariakit.ComboboxProvider
+        resetValueOnHide
+        setValue={(value) => {
+          React.startTransition(() => {
+            setSearchValue(value);
+          });
+        }}
+      >
+        <Ariakit.SelectProvider
+          defaultValue={currentValue}
+          setValue={(value) => {
+            React.startTransition(() => {
+              onChange(value);
+            });
+          }}
+        >
           <Ariakit.Select value={currentValue}>
             {currentLabel}
             <Ariakit.SelectArrow />
           </Ariakit.Select>
           <Ariakit.SelectPopover>
-            <Ariakit.Combobox autoSelect />
+            <div>
+              <Ariakit.Combobox />
+            </div>
             <Ariakit.ComboboxList>
               {matches.map(({ value, label }) => (
                 <ComboboxSelectOption key={value} value={value}>
