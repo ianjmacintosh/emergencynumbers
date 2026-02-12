@@ -2,6 +2,8 @@ import * as Ariakit from "@ariakit/react";
 import { matchSorter } from "match-sorter";
 import React from "react";
 
+import styles from "./ComboboxSelect.module.css";
+
 function ComboboxSelect({
   value: currentValue,
   onChange,
@@ -30,6 +32,60 @@ function ComboboxSelect({
   });
 
   return (
+    <ComboboxSelectProviders
+      onChange={onChange}
+      currentValue={currentValue}
+      setSearchValue={setSearchValue}
+    >
+      <Ariakit.Select value={currentValue} className={styles.selectButton}>
+        {currentLabel}
+        <Ariakit.SelectArrow />
+      </Ariakit.Select>
+      <Ariakit.SelectPopover
+        sameWidth={true}
+        className={styles.comboboxPopover}
+      >
+        <Ariakit.Combobox autoSelect className={styles.comboboxInput} />
+        <Ariakit.ComboboxList className={styles.comboboxList}>
+          {matches.map(({ label, value }) => (
+            <ComboboxSelectOption key={value} value={value}>
+              {label}
+            </ComboboxSelectOption>
+          ))}
+        </Ariakit.ComboboxList>
+      </Ariakit.SelectPopover>
+    </ComboboxSelectProviders>
+  );
+}
+
+export function ComboboxSelectOption({
+  value,
+  children,
+  ...props
+}: React.PropsWithChildren<OptionElement>) {
+  return (
+    <Ariakit.SelectItem
+      value={value}
+      {...props}
+      render={<Ariakit.ComboboxItem className={styles.comboboxItem} />}
+    >
+      {children}
+    </Ariakit.SelectItem>
+  );
+}
+
+export function ComboboxSelectProviders({
+  children,
+  onChange,
+  currentValue,
+  setSearchValue,
+}: {
+  children: React.ReactNode;
+  onChange: (value: string) => void;
+  currentValue: string;
+  setSearchValue: (value: string) => void;
+}) {
+  return (
     <Ariakit.ComboboxProvider
       resetValueOnHide
       setValue={(nextValue) => {
@@ -46,40 +102,9 @@ function ComboboxSelect({
           });
         }}
       >
-        <Ariakit.Select value={currentValue}>
-          {currentLabel}
-          <Ariakit.SelectArrow />
-        </Ariakit.Select>
-        <Ariakit.SelectPopover>
-          <div>
-            <Ariakit.Combobox autoSelect />
-          </div>
-          <Ariakit.ComboboxList>
-            {matches.map(({ label, value }) => (
-              <ComboboxSelectOption key={value} value={value}>
-                {label}
-              </ComboboxSelectOption>
-            ))}
-          </Ariakit.ComboboxList>
-        </Ariakit.SelectPopover>
+        {children}
       </Ariakit.SelectProvider>
     </Ariakit.ComboboxProvider>
-  );
-}
-
-export function ComboboxSelectOption({
-  value,
-  children,
-  ...props
-}: React.PropsWithChildren<OptionElement>) {
-  return (
-    <Ariakit.SelectItem
-      value={value}
-      {...props}
-      render={<Ariakit.ComboboxItem />}
-    >
-      {children}
-    </Ariakit.SelectItem>
   );
 }
 

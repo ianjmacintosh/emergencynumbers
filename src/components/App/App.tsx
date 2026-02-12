@@ -5,6 +5,7 @@ import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 
 import "./App.css";
+import styles from "./App.module.css";
 import CountryCard from "../CountryCard";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
     }) || [];
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h1>Emergency Numbers</h1>
 
       <ComboboxSelect
