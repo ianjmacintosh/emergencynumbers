@@ -10,7 +10,11 @@ function CountrySelect({
   onChange: (value: string) => void;
 }) {
   return (
-    <ComboboxSelect value={value} onChange={onChange}>
+    <ComboboxSelect
+      value={value}
+      onChange={onChange}
+      selectButtonContent={COUNTRY_NAMES[value as keyof typeof SERVICES]}
+    >
       {getCountryIds()
         .filter((country) => country in SERVICES)
         .map((countryId) => (

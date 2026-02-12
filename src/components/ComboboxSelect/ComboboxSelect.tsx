@@ -8,16 +8,18 @@ function ComboboxSelect({
   value: currentValue,
   onChange,
   children,
+  selectButtonContent,
 }: {
   value: string;
   onChange: (value: string) => void;
   children: React.ReactNode;
+  selectButtonContent: string | React.ReactNode;
 }) {
   const optionsDataList: OptionsDataList = React.Children.toArray(children)
     .filter(React.isValidElement<OptionElement>)
     .map(({ props }) => ({
       value: props.value,
-      label: props.label ?? String(props.children),
+      label: (props.label ?? String(props.children)) || props.value,
     }));
 
   const currentLabel = optionsDataList.find(
@@ -38,7 +40,7 @@ function ComboboxSelect({
       setSearchValue={setSearchValue}
     >
       <Ariakit.Select value={currentValue} className={styles.selectButton}>
-        {currentLabel}
+        {selectButtonContent || currentLabel}
         <Ariakit.SelectArrow />
       </Ariakit.Select>
       <Ariakit.SelectPopover
