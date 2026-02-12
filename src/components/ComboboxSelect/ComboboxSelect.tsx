@@ -13,7 +13,7 @@ function ComboboxSelect({
   value: string;
   onChange: (value: string) => void;
   children: React.ReactNode;
-  selectButtonContent: string | React.ReactNode;
+  selectButtonContent: React.ReactNode;
 }) {
   const optionsDataList: OptionsDataList = React.Children.toArray(children)
     .filter(React.isValidElement<OptionElement>)
