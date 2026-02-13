@@ -103,6 +103,7 @@ export function ComboboxSelectProviders({
             onChange(nextValue);
           });
         }}
+        placement="bottom-end"
       >
         {children}
       </Ariakit.SelectProvider>
