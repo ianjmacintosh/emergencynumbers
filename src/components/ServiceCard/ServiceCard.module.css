@@ -8,7 +8,7 @@
   background-color: #fff;
   border-radius: 10px;
   border: solid 1px #ccc;
-  font-size: 2rem;
+  font-size: 1.2rem;
   overflow: hidden;
   gap: 1rem;
 }
@@ -92,8 +92,6 @@ p {
     background-color: #fff;
     border-radius: 10px;
     border: solid 1px #ccc;
-    /* box-shadow: 0 5px #6683; */
-    font-size: 2rem;
     overflow: hidden;
   }
 

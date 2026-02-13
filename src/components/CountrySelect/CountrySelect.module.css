@@ -1,0 +1,11 @@
+.country-badge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flag {
+  width: 2.4rem;
+  height: 1.6rem;
+  flex-shrink: 0;
+}
