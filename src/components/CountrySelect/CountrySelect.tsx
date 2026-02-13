@@ -21,7 +21,7 @@ function CountrySelect({
         <>
           <span className={styles.countryBadge}>
             {Flag && <Flag className={styles.flag} />}
-            {COUNTRY_NAMES[value as keyof typeof SERVICES]}
+            <span>{COUNTRY_NAMES[value as keyof typeof SERVICES]}</span>
           </span>
         </>
       }

@@ -5,6 +5,7 @@
 }
 
 .flag {
-  height: 20px;
-  width: 30px;
+  width: 2.4rem;
+  height: 1.6rem;
+  flex-shrink: 0;
 }
