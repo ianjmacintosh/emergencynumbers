@@ -1,12 +1,12 @@
 .select-button {
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  width: 50%;
   border-radius: 10px;
   border: solid 1px #ccc;
+  width: 100%;
 }
 
 .combobox-input {
