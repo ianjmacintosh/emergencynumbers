@@ -242,24 +242,22 @@ function parseXls(filePath: string): RawRow[] {
 
   // Match each row by finding all span groups with incrementing indices
   for (let i = 0; i < 2000; i++) {
-    const countryMatch = content.match(
-      new RegExp(`lblCountry_${i}">([^<]*)`)
-    );
+    const countryMatch = content.match(new RegExp(`lblCountry_${i}">([^<]*)`));
     if (!countryMatch) break;
 
     const numberMatch = content.match(new RegExp(`lblNumber_${i}">([^<]*)`));
     const categoryMatch = content.match(
-      new RegExp(`lblcategory_service_name_${i}">([^<]*)`)
+      new RegExp(`lblcategory_service_name_${i}">([^<]*)`),
     );
     const infoMatch = content.match(
-      new RegExp(`lblservice_specific_text_${i}">([^<]*)`)
+      new RegExp(`lblservice_specific_text_${i}">([^<]*)`),
     );
     const assignedMatch = content.match(
-      new RegExp(`lblassigned_or_allocated_to_${i}">([^<]*)`)
+      new RegExp(`lblassigned_or_allocated_to_${i}">([^<]*)`),
     );
     const noteMatch = content.match(new RegExp(`lblnote_${i}">([^<]*)`));
     const updateMatch = content.match(
-      new RegExp(`lbllast_update_${i}">([^<]*)`)
+      new RegExp(`lbllast_update_${i}">([^<]*)`),
     );
 
     rows.push({
@@ -277,12 +275,15 @@ function parseXls(filePath: string): RawRow[] {
 }
 
 function splitPhoneNumbers(
-  raw: string
+  raw: string,
 ): Array<{ number: string; note?: string }> {
   if (!raw || raw === "-") return [];
 
   // Split on semicolons
-  const parts = raw.split(";").map((p) => p.trim()).filter(Boolean);
+  const parts = raw
+    .split(";")
+    .map((p) => p.trim())
+    .filter(Boolean);
 
   return parts.map((part) => {
     // Check for parenthetical note, e.g. "194 (Nawerewere Area)"
@@ -294,7 +295,7 @@ function splitPhoneNumbers(
 
     // Check for pattern like "(land line) 103 (mobile)"
     const prefixParenMatch = part.match(
-      /^\(([^)]+)\)\s*(\d[\d\s*]*?)(?:\s*\(([^)]+)\))?\s*$/
+      /^\(([^)]+)\)\s*(\d[\d\s*]*?)(?:\s*\(([^)]+)\))?\s*$/,
     );
     if (prefixParenMatch) {
       const notes = [prefixParenMatch[1], prefixParenMatch[3]]
@@ -335,7 +336,7 @@ function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
     const serviceType = CATEGORY_MAP[row.category];
     if (!serviceType) {
       console.error(
-        `WARNING: Unknown category "${row.category}" for ${row.country}, skipping`
+        `WARNING: Unknown category "${row.category}" for ${row.country}, skipping`,
       );
       warnings++;
       continue;
@@ -345,7 +346,7 @@ function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
     const phones = splitPhoneNumbers(row.number);
     if (phones.length === 0) {
       console.error(
-        `WARNING: No phone number for ${row.country} ${row.category}, skipping`
+        `WARNING: No phone number for ${row.country} ${row.category}, skipping`,
       );
       warnings++;
       continue;
@@ -414,9 +415,7 @@ function generateTypeScript(data: Record<string, ServiceEntry[]>): string {
   lines.push(`  phoneNumber: string;`);
   lines.push(`};`);
   lines.push(``);
-  lines.push(
-    `export const SERVICES = {`
-  );
+  lines.push(`export const SERVICES = {`);
 
   // Sort country codes alphabetically
   const sortedCodes = Object.keys(data).sort();
@@ -430,7 +429,7 @@ function generateTypeScript(data: Record<string, ServiceEntry[]>): string {
         ? `, description: ${JSON.stringify(svc.description)}`
         : "";
       lines.push(
-        `    { type: ${JSON.stringify(svc.type)}, name: ${JSON.stringify(svc.name)}${descPart}, phoneNumber: ${JSON.stringify(svc.phoneNumber)} },`
+        `    { type: ${JSON.stringify(svc.type)}, name: ${JSON.stringify(svc.name)}${descPart}, phoneNumber: ${JSON.stringify(svc.phoneNumber)} },`,
       );
     }
 
@@ -438,7 +437,7 @@ function generateTypeScript(data: Record<string, ServiceEntry[]>): string {
   }
 
   lines.push(
-    `} satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;`
+    `} satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;`,
   );
   lines.push(``);
 
@@ -448,10 +447,7 @@ function generateTypeScript(data: Record<string, ServiceEntry[]>): string {
 // --- Main ---
 const inputPath =
   process.argv[2] ||
-  path.join(
-    __dirname,
-    "../src/assets/ITU-T_Report_2026-02-13-2200.xls"
-  );
+  path.join(__dirname, "../src/assets/ITU-T_Report_2026-02-13-2200.xls");
 
 if (!fs.existsSync(inputPath)) {
   console.error(`File not found: ${inputPath}`);
@@ -464,9 +460,12 @@ console.error(`Parsed ${rows.length} rows.`);
 
 const data = convert(rows);
 const countryCount = Object.keys(data).length;
-const entryCount = Object.values(data).reduce((sum, arr) => sum + arr.length, 0);
+const entryCount = Object.values(data).reduce(
+  (sum, arr) => sum + arr.length,
+  0,
+);
 console.error(
-  `Generated ${entryCount} service entries across ${countryCount} countries.`
+  `Generated ${entryCount} service entries across ${countryCount} countries.`,
 );
 
 const output = generateTypeScript(data);
