@@ -4,18 +4,22 @@ import ServiceCard from "../ServiceCard";
 import styles from "./CountryCard.module.css";
 
 function CountryCard({ id }: { id: keyof typeof SERVICES }) {
+  const typePriority: Record<Service["type"], number> = {
+    Dispatch: 0,
+    Police: 1,
+    Ambulance: 2,
+    "Fire Department": 3,
+    Traffic: 4,
+    "Child Helpline": 5,
+    Hazards: 6,
+    Other: 7,
+  };
+
   const services =
     SERVICES[id].sort((a, b) => {
-      // Sort services:
-      // Dispatch numbers come first
-      // Numbers are sorted numerically
-      const aIsDispatch = a.type === "Dispatch";
-      const bIsDispatch = b.type === "Dispatch";
-      if (aIsDispatch !== bIsDispatch) {
-        return aIsDispatch ? -1 : 1;
-      } else {
-        return parseInt(a.phoneNumber) - parseInt(b.phoneNumber);
-      }
+      const priorityDiff = typePriority[a.type] - typePriority[b.type];
+      if (priorityDiff !== 0) return priorityDiff;
+      return parseInt(a.phoneNumber) - parseInt(b.phoneNumber);
     }) || [];
 
   return (

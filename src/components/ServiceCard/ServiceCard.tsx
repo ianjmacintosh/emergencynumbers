@@ -3,6 +3,10 @@ import {
   AmbulanceIcon,
   FireTruckIcon,
   HeadsetIcon,
+  TrafficSignIcon,
+  HandHeartIcon,
+  WarningIcon,
+  InfoIcon,
   PhoneOutgoingIcon,
   CopyIcon,
 } from "@phosphor-icons/react";
@@ -18,6 +22,10 @@ function ServiceCard({ service }: { service: Service }) {
     Ambulance: AmbulanceIcon,
     "Fire Department": FireTruckIcon,
     Police: PoliceCarIcon,
+    Traffic: TrafficSignIcon,
+    "Child Helpline": HandHeartIcon,
+    Hazards: WarningIcon,
+    Other: InfoIcon,
   }[type];
 
   return (

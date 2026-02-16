@@ -13,7 +13,8 @@
     "typecheck": "tsc",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest",
-    "test:e2e": "npx playwright test --reporter=list"
+    "test:e2e": "npx playwright test --reporter=list",
+    "convert:itu": "tsx scripts/convert-itu-xls.ts src/assets/ITU-T_Report_2026-02-13-2200.xls > src/constants/emergency-services.ts"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.21",
