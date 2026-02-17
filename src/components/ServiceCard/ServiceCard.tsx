@@ -16,7 +16,7 @@ import styles from "./ServiceCard.module.css";
 import VisuallyHidden from "../VisuallyHidden";
 
 function ServiceCard({ service }: { service: Service }) {
-  const { phoneNumber, type } = service;
+  const { phoneNumber, type, description } = service;
   const Icon = {
     Dispatch: HeadsetIcon,
     Ambulance: AmbulanceIcon,
@@ -30,30 +30,35 @@ function ServiceCard({ service }: { service: Service }) {
 
   return (
     <li className={styles.service}>
-      <div className={styles.titleWrapper}>
-        <div className={styles.iconWrapper}>
-          <Icon size={32} weight="fill" className={styles.icon} />
+      <div className={styles.serviceInfoWrapper}>
+        <div className={styles.titleWrapper}>
+          <div className={styles.iconWrapper}>
+            <Icon size={32} weight="fill" className={styles.icon} />
+          </div>
+          <span className={styles.type}>{type}</span>
         </div>
-        <span className={styles.type}>{type}</span>
-      </div>
-      {/* {description && <p>{description}</p>} */}
-      <div className={styles.phoneNumberWrapper}>
-        <span>{phoneNumber}</span>
 
-        <button
-          className={styles.copyButton}
-          onClick={() => {
-            copyToClipboard(phoneNumber);
-          }}
-        >
-          <CopyIcon
-            size={24}
-            weight="regular"
-            className={`${styles.icon} ${styles.secondaryIcon}`}
+        {description && (
+          <p className={styles.descriptionWrapper}>{description}</p>
+        )}
+        <div className={styles.phoneNumberWrapper}>
+          <span>{phoneNumber}</span>
+
+          <button
+            className={styles.copyButton}
+            onClick={() => {
+              copyToClipboard(phoneNumber);
+            }}
           >
-            <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
-          </CopyIcon>
-        </button>
+            <CopyIcon
+              size={24}
+              weight="regular"
+              className={`${styles.icon} ${styles.secondaryIcon}`}
+            >
+              <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
+            </CopyIcon>
+          </button>
+        </div>
       </div>
       <a
         className={`${styles.callButton} ${styles.iconWrapper}`}
