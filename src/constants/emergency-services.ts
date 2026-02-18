@@ -1,15 +1,17 @@
 import type { COUNTRY_NAMES } from "./index";
 
+export type ServiceType =
+  | "Dispatch"
+  | "Ambulance"
+  | "Fire Department"
+  | "Police"
+  | "Traffic"
+  | "Child Helpline"
+  | "Hazards"
+  | "Other";
+
 export type Service = {
-  type:
-    | "Dispatch"
-    | "Ambulance"
-    | "Fire Department"
-    | "Police"
-    | "Traffic"
-    | "Child Helpline"
-    | "Hazards"
-    | "Other";
+  type: ServiceType;
   name: string;
   description?: string;
   phoneNumber: string;

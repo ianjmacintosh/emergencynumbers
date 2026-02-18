@@ -1,34 +1,19 @@
-import { SERVICES, type Service } from "../../constants/emergency-services";
+import { SERVICES } from "../../constants/emergency-services";
 import ServiceCard from "../ServiceCard";
+import { getServiceCardData } from "./helpers";
 
 import styles from "./CountryCard.module.css";
 
 function CountryCard({ id }: { id: keyof typeof SERVICES }) {
-  const typePriority: Record<Service["type"], number> = {
-    Dispatch: 0,
-    Police: 1,
-    Ambulance: 2,
-    "Fire Department": 3,
-    Traffic: 4,
-    "Child Helpline": 5,
-    Hazards: 6,
-    Other: 7,
-  };
-
-  const services =
-    SERVICES[id].sort((a, b) => {
-      const priorityDiff = typePriority[a.type] - typePriority[b.type];
-      if (priorityDiff !== 0) return priorityDiff;
-      return parseInt(a.phoneNumber) - parseInt(b.phoneNumber);
-    }) || [];
+  const serviceCards = getServiceCardData(SERVICES[id]);
 
   return (
     <div className={styles.countryCard}>
       <ul className={styles.services}>
-        {services.map((service: Service) => (
+        {serviceCards.map((serviceCard) => (
           <ServiceCard
-            service={service}
-            key={`${service.type}-${service.phoneNumber}`}
+            service={serviceCard}
+            key={`${serviceCard.type}-${serviceCard.phoneNumber}`}
           />
         ))}
       </ul>

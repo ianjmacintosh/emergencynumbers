@@ -10,12 +10,21 @@ import {
   PhoneOutgoingIcon,
   CopyIcon,
 } from "@phosphor-icons/react";
-import type { Service } from "../../constants/emergency-services";
+
+import type { Service, ServiceType } from "../../constants/emergency-services";
+
+export type Card = {
+  phoneNumber: string;
+  name: string;
+  type: ServiceType;
+  services: Service[];
+  description?: string;
+};
 
 import styles from "./ServiceCard.module.css";
 import VisuallyHidden from "../VisuallyHidden";
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service }: { service: Card }) {
   const { phoneNumber, type, description } = service;
   const Icon = {
     Dispatch: HeadsetIcon,
