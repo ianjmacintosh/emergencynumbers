@@ -11,13 +11,12 @@ import {
   CopyIcon,
 } from "@phosphor-icons/react";
 
-import type { Service, ServiceType } from "../../constants/emergency-services";
+import type { ServiceType } from "../../constants/emergency-services";
 
 export type Card = {
   phoneNumber: string;
   name: string;
   type: ServiceType;
-  services: Service[];
   description?: string;
 };
 

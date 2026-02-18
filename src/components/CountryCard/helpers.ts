@@ -21,18 +21,14 @@ export function getServiceCardData(services: Service[]) {
 
   // First we build all the cards using service data
   for (const service of services) {
-    const { type, phoneNumber, name } = service;
+    const { type, phoneNumber, name, description } = service;
     // Find the card
-    const card = cards.find((card) => card.phoneNumber === phoneNumber);
-
-    if (card) card.services.push(service);
-    else
-      cards.push({
-        type,
-        name,
-        phoneNumber,
-        services: [service],
-      });
+    cards.push({
+      type,
+      phoneNumber,
+      name,
+      description,
+    });
   }
 
   // Then we sort all the cards
