@@ -20,7 +20,7 @@ export function getServiceCardData(services: Service[]) {
   // Then we sort all the cards
   cards.sort((a, b) => {
     const tier1 = ["Dispatch"];
-    const tier2 = ["Fire Department", "Ambulance", "Police"];
+    const tier2 = ["Fire", "Medical", "Police"];
 
     // Tier 1 always comes first
     if (tier1.includes(a.type) && !tier1.includes(b.type)) {

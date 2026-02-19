@@ -87,8 +87,8 @@ function ServiceCard({ service }: { service: Card }) {
 function Icon({ type, ...props }: { type: ServiceType } & IconProps) {
   const Element = {
     Dispatch: HeadsetIcon,
-    Ambulance: AmbulanceIcon,
-    "Fire Department": FireTruckIcon,
+    Medical: AmbulanceIcon,
+    Fire: FireTruckIcon,
     Police: PoliceCarIcon,
     Traffic: TrafficConeIcon,
     "Child Helpline": HandHeartIcon,
