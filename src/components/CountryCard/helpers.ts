@@ -1,15 +1,6 @@
 import type { Service } from "../../constants/emergency-services";
 import type { Card } from "../ServiceCard";
 
-/*
-Card:
-{
-    phoneNumber: "911",
-    type: "Dispatch"
-    services: []
-}
-*/
-
 export function getServiceCardData(services: Service[]) {
   const cards: Card[] = [];
 
@@ -17,42 +8,33 @@ export function getServiceCardData(services: Service[]) {
   for (const service of services) {
     const { type, phoneNumber, name, description } = service;
 
-    // Find the card
-    const currentCard = cards.find(
-      ({ phoneNumber: currentPhoneNumber }) =>
-        phoneNumber === currentPhoneNumber,
-    );
-    if (currentCard) {
-      currentCard.type = "General";
-      currentCard.services.push(service);
-    } else {
-      cards.push({
-        type,
-        phoneNumber,
-        name,
-        description,
-        services: [service],
-      });
-    }
+    cards.push({
+      type,
+      phoneNumber,
+      name,
+      description,
+      services: [service],
+    });
   }
 
   // Then we sort all the cards
   cards.sort((a, b) => {
-    const tier1 = ["General", "Dispatch"];
+    const tier1 = ["Dispatch"];
     const tier2 = ["Fire Department", "Ambulance", "Police"];
 
-    // A comes first if it's in a higher tier than B
-    if (
-      (tier1.includes(a.type) && !tier1.includes(b.type)) ||
-      (tier2.includes(a.type) && !tier2.includes(b.type))
-    ) {
+    // Tier 1 always comes first
+    if (tier1.includes(a.type) && !tier1.includes(b.type)) {
       return -1;
     }
-    // B comes first if it's in a higher tier than A
-    if (
-      (tier1.includes(b.type) && !tier1.includes(a.type)) ||
-      (tier2.includes(b.type) && !tier2.includes(a.type))
-    ) {
+    if (tier1.includes(b.type) && !tier1.includes(a.type)) {
+      return 1;
+    }
+
+    // Then tier 2 comes before anything else
+    if (tier2.includes(a.type) && !tier2.includes(b.type)) {
+      return -1;
+    }
+    if (tier2.includes(b.type) && !tier2.includes(a.type)) {
       return 1;
     }
 

@@ -11,14 +11,13 @@ import {
   CopyIcon,
 } from "@phosphor-icons/react";
 
+import type { IconProps } from "@phosphor-icons/react";
 import type { Service, ServiceType } from "../../constants/emergency-services";
-
-export type CardType = "General" | ServiceType;
 
 export type Card = {
   phoneNumber: string;
   name: string;
-  type: CardType;
+  type: ServiceType;
   description?: string;
   services: Service[];
 };
@@ -28,49 +27,15 @@ import VisuallyHidden from "../VisuallyHidden";
 
 function ServiceCard({ service }: { service: Card }) {
   const { phoneNumber, type, description, services } = service;
-  const Icon = {
-    General: HeadsetIcon,
-    Dispatch: HeadsetIcon,
-    Ambulance: AmbulanceIcon,
-    "Fire Department": FireTruckIcon,
-    Police: PoliceCarIcon,
-    Traffic: TrafficConeIcon,
-    "Child Helpline": HandHeartIcon,
-    Hazards: WarningIcon,
-    Other: InfoIcon,
-  }[type];
 
   return (
     <li className={styles.service}>
       <div className={styles.serviceInfoWrapper}>
         <div className={styles.titleWrapper}>
           <div className={styles.iconWrapper}>
-            <Icon size={32} weight="fill" className={styles.icon} />
+            <Icon type={type} size={32} weight="fill" className={styles.icon} />
           </div>
-          {type === "General" ? (
-            <>
-              <span className={styles.type}>{phoneNumber}</span>
-
-              <button
-                className={styles.copyButton}
-                onClick={() => {
-                  copyToClipboard(phoneNumber);
-                }}
-              >
-                <CopyIcon
-                  size={24}
-                  weight="regular"
-                  className={`${styles.icon} ${styles.secondaryIcon}`}
-                >
-                  <VisuallyHidden>
-                    Copy {phoneNumber} to Clipboard
-                  </VisuallyHidden>
-                </CopyIcon>
-              </button>
-            </>
-          ) : (
-            <span className={styles.type}>{type}</span>
-          )}
+          <span className={styles.type}>{type}</span>
         </div>
         {description && (
           <p className={styles.descriptionWrapper}>{description}</p>
@@ -80,31 +45,32 @@ function ServiceCard({ service }: { service: Card }) {
             Services offered:
             <ul>
               {services.map((currentService) => (
-                <li>{currentService.name}</li>
+                <li className={styles.serviceListItem}>
+                  <Icon type={currentService.type} weight="fill" size={32} />
+                  {currentService.name}
+                </li>
               ))}
             </ul>
           </>
         )}
-        {type === "General" ? undefined : (
-          <div className={styles.phoneNumberWrapper}>
-            <span>{phoneNumber}</span>
+        <div className={styles.phoneNumberWrapper}>
+          <span>{phoneNumber}</span>
 
-            <button
-              className={styles.copyButton}
-              onClick={() => {
-                copyToClipboard(phoneNumber);
-              }}
+          <button
+            className={styles.copyButton}
+            onClick={() => {
+              copyToClipboard(phoneNumber);
+            }}
+          >
+            <CopyIcon
+              size={24}
+              weight="regular"
+              className={`${styles.icon} ${styles.secondaryIcon}`}
             >
-              <CopyIcon
-                size={24}
-                weight="regular"
-                className={`${styles.icon} ${styles.secondaryIcon}`}
-              >
-                <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
-              </CopyIcon>
-            </button>
-          </div>
-        )}
+              <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
+            </CopyIcon>
+          </button>
+        </div>
       </div>
 
       <a
@@ -116,6 +82,21 @@ function ServiceCard({ service }: { service: Card }) {
       </a>
     </li>
   );
+}
+
+function Icon({ type, ...props }: { type: ServiceType } & IconProps) {
+  const Element = {
+    Dispatch: HeadsetIcon,
+    Ambulance: AmbulanceIcon,
+    "Fire Department": FireTruckIcon,
+    Police: PoliceCarIcon,
+    Traffic: TrafficConeIcon,
+    "Child Helpline": HandHeartIcon,
+    Hazards: WarningIcon,
+    Other: InfoIcon,
+  }[type];
+
+  return <Element {...props}></Element>;
 }
 
 function copyToClipboard(text: string) {
