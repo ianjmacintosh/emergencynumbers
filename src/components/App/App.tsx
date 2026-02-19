@@ -15,7 +15,7 @@ function App() {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.contentWrapper}>
-        <h1>Emergency Numbers</h1>
+        <h1>Emergency Services</h1>
 
         <CountrySelect
           value={countryId}
