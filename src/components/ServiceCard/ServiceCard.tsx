@@ -12,21 +12,14 @@ import {
 } from "@phosphor-icons/react";
 
 import type { IconProps } from "@phosphor-icons/react";
-import type { Service, ServiceType } from "../../constants/emergency-services";
-
-export type Card = {
-  phoneNumber: string;
-  name: string;
-  type: ServiceType;
-  description?: string;
-  services: Service[];
-};
+import type { ServiceType } from "../../constants/emergency-services";
 
 import styles from "./ServiceCard.module.css";
 import VisuallyHidden from "../VisuallyHidden";
+import type { ServiceData } from "../CountryCard";
 
-function ServiceCard({ service }: { service: Card }) {
-  const { phoneNumber, type, description, services } = service;
+function ServiceCard({ service }: { service: ServiceData }) {
+  const { phoneNumber, type, description } = service;
 
   return (
     <li className={styles.service}>
@@ -39,19 +32,6 @@ function ServiceCard({ service }: { service: Card }) {
         </div>
         {description && (
           <p className={styles.descriptionWrapper}>{description}</p>
-        )}
-        {services.length > 1 && (
-          <>
-            Services offered:
-            <ul>
-              {services.map((currentService) => (
-                <li className={styles.serviceListItem}>
-                  <Icon type={currentService.type} weight="fill" size={32} />
-                  {currentService.name}
-                </li>
-              ))}
-            </ul>
-          </>
         )}
         <div className={styles.phoneNumberWrapper}>
           <span>Call {phoneNumber}</span>
