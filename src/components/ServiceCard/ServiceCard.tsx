@@ -10,39 +10,31 @@ import {
   PhoneOutgoingIcon,
   CopyIcon,
 } from "@phosphor-icons/react";
-import type { Service } from "../../constants/emergency-services";
+
+import type { IconProps } from "@phosphor-icons/react";
+import type { ServiceType } from "../../constants/emergency-services";
 
 import styles from "./ServiceCard.module.css";
 import VisuallyHidden from "../VisuallyHidden";
+import type { ServiceData } from "../CountryCard";
 
-function ServiceCard({ service }: { service: Service }) {
+function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
-  const Icon = {
-    Dispatch: HeadsetIcon,
-    Ambulance: AmbulanceIcon,
-    "Fire Department": FireTruckIcon,
-    Police: PoliceCarIcon,
-    Traffic: TrafficConeIcon,
-    "Child Helpline": HandHeartIcon,
-    Hazards: WarningIcon,
-    Other: InfoIcon,
-  }[type];
 
   return (
     <li className={styles.service}>
       <div className={styles.serviceInfoWrapper}>
         <div className={styles.titleWrapper}>
           <div className={styles.iconWrapper}>
-            <Icon size={32} weight="fill" className={styles.icon} />
+            <Icon type={type} size={32} weight="fill" className={styles.icon} />
           </div>
           <span className={styles.type}>{type}</span>
         </div>
-
         {description && (
           <p className={styles.descriptionWrapper}>{description}</p>
         )}
         <div className={styles.phoneNumberWrapper}>
-          <span>{phoneNumber}</span>
+          <span>Call {phoneNumber}</span>
 
           <button
             className={styles.copyButton}
@@ -60,6 +52,7 @@ function ServiceCard({ service }: { service: Service }) {
           </button>
         </div>
       </div>
+
       <a
         className={`${styles.callButton} ${styles.iconWrapper}`}
         href={`tel:${phoneNumber}`}
@@ -69,6 +62,21 @@ function ServiceCard({ service }: { service: Service }) {
       </a>
     </li>
   );
+}
+
+function Icon({ type, ...props }: { type: ServiceType } & IconProps) {
+  const Element = {
+    Dispatch: HeadsetIcon,
+    Medical: AmbulanceIcon,
+    Fire: FireTruckIcon,
+    Police: PoliceCarIcon,
+    Traffic: TrafficConeIcon,
+    "Child Helpline": HandHeartIcon,
+    Hazards: WarningIcon,
+    Other: InfoIcon,
+  }[type];
+
+  return <Element {...props}></Element>;
 }
 
 function copyToClipboard(text: string) {

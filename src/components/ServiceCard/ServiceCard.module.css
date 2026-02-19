@@ -16,6 +16,11 @@
   font-weight: 600;
 }
 
+.service-list-item {
+  display: flex;
+  gap: 1rem;
+}
+
 .service-info-wrapper {
   display: grid;
   grid-template-rows: auto;
