@@ -9,9 +9,9 @@ function AboutPage() {
         <h1>About</h1>
         <p>
           At about 11:30pm on a random Sunday night, my wife got an emergency
-          call from a family member in distress outside the US; they were
-          immobile and needed urgent medical help. 911 isn't universal, so we
-          didn't know what phone number to call.
+          call from a family member who was hours away, immobile, and needed
+          urgent medical help. We were all in Brazil and 911 isn't universal, so
+          we didn't know what phone number to call.
         </p>
         <h3>
           I built this web site to help people get in touch with emergency
@@ -22,8 +22,8 @@ function AboutPage() {
           <em>really</em> need one, so I made this tool to help anyone in a
           similar situation. In a moment of crisis, the last thing I want to be
           doing is messing around on Google trying to find an up-to-date
-          emergency services phone number. Bookmark this site in case you need
-          it some day.
+          emergency services phone number. If you're planning on traveling
+          overseas, it might be worth bookmarking this site, just in case!
         </p>
         <h2>How many countries are supported?</h2>
         <p>
@@ -44,10 +44,11 @@ function AboutPage() {
           standards agency of the United Nations.
         </p>
         <p>
-          Although these numbers are accurate, there may be even better options
-          for help that aren't listed here. Calling for local help is almost
-          always better than going through a national call center, but calling
-          anyone is better than calling no one, especially when minutes count.
+          Although these phone numbers are accurate, there may be even better
+          options for help that aren't listed here. Calling a local direct line
+          for help is often better than going through a national call center,
+          but calling anyone is better than calling no one, especially when
+          minutes count.
         </p>
         <h2>Can I use or modify this tool's source code?</h2>
         <p>
@@ -76,7 +77,7 @@ function AboutPage() {
           doctor and volunteers for EMT shifts monthly. She arrived at our
           relative's home in 15 minutes and provided life-saving treatment for
           what turned out to be sepsis -- typically fatal if left to run its
-          course. Calling for help saved a life.
+          course! Calling for help saved a life.
         </p>
       </div>
       <Footer />
