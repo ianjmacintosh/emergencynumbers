@@ -54,7 +54,7 @@ function ServiceCard({ service }: { service: Card }) {
           </>
         )}
         <div className={styles.phoneNumberWrapper}>
-          <span>{phoneNumber}</span>
+          <span>Call {phoneNumber}</span>
 
           <button
             className={styles.copyButton}
