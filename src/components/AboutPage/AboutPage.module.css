@@ -1,0 +1,20 @@
+.page-wrapper {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+  min-height: 100dvh;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 80dvw;
+  max-width: 1024px;
+}
+
+h2 {
+  margin-top: 2rem;
+}
