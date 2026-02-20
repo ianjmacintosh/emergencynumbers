@@ -8,10 +8,10 @@ function AboutPage() {
       <div className={styles.contentWrapper}>
         <h1>About</h1>
         <p>
-          At about 11:30pm on a random Sunday night, my wife got an emergency
-          call from a family member who was hours away, immobile, and needed
-          urgent medical help. We were all in Brazil and 911 isn't universal, so
-          we didn't know what phone number to call.
+          At about 11:30pm on a random Sunday night, my wife got an unexpected
+          phone call from a family member who was hours away, immobile, and
+          needed urgent medical help. We were all in Brazil and 911 isn't
+          universal, so we didn't know what phone number to call.
         </p>
         <h3>
           I built this web site to help people get in touch with emergency
@@ -22,8 +22,8 @@ function AboutPage() {
           <em>really</em> need one, so I made this tool to help anyone in a
           similar situation. In a moment of crisis, the last thing I want to be
           doing is messing around on Google trying to find an up-to-date
-          emergency services phone number. If you're planning on traveling
-          overseas, it might be worth bookmarking this site, just in case!
+          emergency services phone number. I'll bookmark this site to help my
+          future self in case this happens again. Feel free to do the same!
         </p>
         <h2>How many countries are supported?</h2>
         <p>
@@ -40,15 +40,15 @@ function AboutPage() {
           >
             ITU-T E.129 Important numbers
           </a>{" "}
-          list, which is regularly updated by the specialized telecommunications
-          standards agency of the United Nations.
+          list, which is maintained by a specialized agency of the United
+          Nations responsible for telecommunications standards.
         </p>
         <p>
           Although these phone numbers are accurate, there may be even better
-          options for help that aren't listed here. Calling a local direct line
-          for help is often better than going through a national call center,
-          but calling anyone is better than calling no one, especially when
-          minutes count.
+          options for help that aren't listed here. Calling a local number
+          directly is often better than going through a national system, but
+          calling anyone is better than calling no one, especially when minutes
+          count.
         </p>
         <h2>Can I use or modify this tool's source code?</h2>
         <p>
