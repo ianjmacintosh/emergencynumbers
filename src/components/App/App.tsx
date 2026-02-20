@@ -12,6 +12,17 @@ function App() {
   const [countryId, setCountryId] =
     React.useState<keyof typeof SERVICES>(DEFAULT_COUNTRY);
 
+  React.useEffect(() => {
+    fetch("/api/geo")
+      .then((res) => res.json())
+      .then((data: { country: string | null }) => {
+        if (data.country && data.country in SERVICES) {
+          setCountryId(data.country as keyof typeof SERVICES);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.contentWrapper}>
