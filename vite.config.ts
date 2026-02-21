@@ -10,11 +10,15 @@ export default defineConfig({
     },
   },
   plugins: [react(), cloudflare()],
-  build: {
-    rollupOptions: {
-      input: {
-        main: "index.html",
-        about: "about/index.html",
+  environments: {
+    client: {
+      build: {
+        rollupOptions: {
+          input: {
+            main: "index.html",
+            about: "about/index.html",
+          },
+        },
       },
     },
   },
