@@ -1,5 +1,5 @@
 .select-button {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -7,10 +7,30 @@
   border-radius: 10px;
   border: solid 1px #ccc;
   width: 100%;
+  padding: 0.5rem;
+  line-height: 2rem;
+}
+
+.select-button:focus {
+  outline-offset: -2px;
+  outline: #00f dashed 2px;
 }
 
 .combobox-input {
   width: 100%;
+  font-size: 1.4rem;
+  padding: 0.5rem;
+  line-height: 2rem;
+  border: none;
+  border-bottom: solid 1px #ccc;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.combobox-input:focus {
+  outline-offset: -2px;
+  outline: #00f dashed 2px;
+  border-bottom: none;
 }
 
 .combobox-popover {
@@ -31,6 +51,8 @@
   background: white;
   cursor: default;
   padding: 0.5rem;
+  font-size: 1.4rem;
+  line-height: 2rem;
 }
 
 .combobox-item[data-active-item],

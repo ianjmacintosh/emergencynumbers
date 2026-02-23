@@ -2,7 +2,6 @@ import React from "react";
 import { SERVICES } from "../../constants/emergency-services";
 import { DEFAULT_COUNTRY } from "../../constants";
 
-import "./App.css";
 import styles from "./App.module.css";
 import CountrySelect from "../CountrySelect";
 import CountryCard from "../CountryCard";

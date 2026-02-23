@@ -12,3 +12,7 @@
 .footer a {
   color: #fafafa;
 }
+
+.footer a:focus {
+  outline: #fff dashed 2px;
+}

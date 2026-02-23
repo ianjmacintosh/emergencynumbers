@@ -4,7 +4,6 @@
   background-color: #fff;
   border-radius: 10px;
   border: solid 1px #ccc;
-  font-size: 1.2rem;
   overflow: hidden;
 }
 
@@ -33,7 +32,7 @@
   align-items: center;
   gap: 0.5rem;
   justify-content: flex-start;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .type {
@@ -58,6 +57,10 @@ p {
   transition-timing-function: ease;
 }
 
+.copy-button:focus {
+  outline: #00f dashed 2px;
+}
+
 .copy-button:hover {
   color: gray;
 }
@@ -71,6 +74,13 @@ p {
   justify-content: center;
   border-left: solid 1px #ccc;
   padding: 1rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.call-button:focus {
+  outline-offset: -2px;
+  outline: #00f dashed 2px;
 }
 
 .call-button svg path {
@@ -82,4 +92,14 @@ p {
   color: lime;
   stroke: gray;
   stroke-width: 5px;
+}
+
+@media (min-width: 600px) {
+  .title-wrapper {
+    font-size: 1.2rem;
+  }
+
+  .phone-number-wrapper {
+    font-size: 1rem;
+  }
 }
