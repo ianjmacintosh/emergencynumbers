@@ -47,7 +47,7 @@ function ComboboxSelect({
         sameWidth={true}
         className={styles.comboboxPopover}
       >
-        <Ariakit.Combobox autoSelect className={styles.comboboxInput} />
+        <Ariakit.Combobox autoSelect autoFocus className={styles.comboboxInput} />
         <Ariakit.ComboboxList className={styles.comboboxList}>
           {matches.map(({ label, value }) => (
             <ComboboxSelectOption key={value} value={value}>
