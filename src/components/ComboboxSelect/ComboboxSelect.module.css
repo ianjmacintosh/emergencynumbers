@@ -11,6 +11,11 @@
   line-height: 2rem;
 }
 
+.select-button:focus {
+  outline-offset: -2px;
+  outline: #00f dashed 2px;
+}
+
 .combobox-input {
   width: 100%;
   font-size: 1.4rem;
@@ -24,6 +29,7 @@
 
 .combobox-input:focus {
   outline-offset: -2px;
+  outline: #00f dashed 2px;
   border-bottom: none;
 }
 
