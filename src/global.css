@@ -9,7 +9,12 @@
 
 body {
   background: #f6f6f6;
+  color: #333;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+}
+
+button {
+  color: #333;
 }
