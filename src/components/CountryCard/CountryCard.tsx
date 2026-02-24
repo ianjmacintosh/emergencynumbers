@@ -19,7 +19,7 @@ function CountryCard({ id }: { id: keyof typeof SERVICES }) {
   const serviceCards = getServiceCardData(SERVICES[id]);
 
   return (
-    <div className={styles.countryCard}>
+    <main role="main" className={styles.countryCard}>
       <ul className={styles.services}>
         {serviceCards.map((serviceCard) => (
           <ServiceCard
@@ -28,7 +28,7 @@ function CountryCard({ id }: { id: keyof typeof SERVICES }) {
           />
         ))}
       </ul>
-    </div>
+    </main>
   );
 }
 
