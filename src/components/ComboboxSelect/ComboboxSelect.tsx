@@ -39,7 +39,11 @@ function ComboboxSelect({
       currentValue={currentValue}
       setSearchValue={setSearchValue}
     >
-      <Ariakit.Select value={currentValue} className={styles.selectButton}>
+      <Ariakit.Select
+        value={currentValue}
+        className={styles.selectButton}
+        aria-label="Country"
+      >
         {selectButtonContent || currentLabel}
         <Ariakit.SelectArrow />
       </Ariakit.Select>
