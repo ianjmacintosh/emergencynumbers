@@ -46,9 +46,8 @@ function ServiceCard({ service }: { service: ServiceData }) {
               size={24}
               weight="regular"
               className={`${styles.icon} ${styles.secondaryIcon}`}
-            >
-              <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
-            </CopyIcon>
+            ></CopyIcon>
+            <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
           </button>
         </div>
       </div>
