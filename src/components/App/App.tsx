@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className={styles.pageWrapper}>
-      <div className={styles.contentWrapper}>
+      <main className={styles.contentWrapper} role="main">
         <h1>Emergency Service Phone Numbers</h1>
 
         <CountrySelect
@@ -33,7 +33,7 @@ function App() {
         />
 
         <CountryCard id={countryId} />
-      </div>
+      </main>
       <Footer />
     </div>
   );
