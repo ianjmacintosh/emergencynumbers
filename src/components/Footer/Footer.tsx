@@ -4,10 +4,10 @@ import TextLink from "../TextLink";
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <p>
+      <nav>
         <TextLink href="/">Home</TextLink> |{" "}
-        <TextLink href="/about">About this project</TextLink>
-      </p>
+        <TextLink href="/about/">About this project</TextLink>
+      </nav>
       <p>
         &copy; 2026{" "}
         <TextLink href="https://www.ianjmacintosh.com/" target="_blank">
