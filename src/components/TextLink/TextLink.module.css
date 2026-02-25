@@ -1,5 +1,20 @@
+.text-link,
+.text-link span {
+  transition: all 110ms;
+}
+
+a.text-link:hover {
+  color: black;
+  background-color: yellow;
+}
+
 .text-link svg {
   display: inline-block;
   height: 0.8rem;
   transform: translateY(0.1em);
+}
+
+.text-link.current {
+  font-weight: bold;
+  text-decoration: none;
 }
