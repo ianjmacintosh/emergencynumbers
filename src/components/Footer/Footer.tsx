@@ -1,16 +1,18 @@
 import styles from "./Footer.module.css";
+import TextLink from "../TextLink";
 
 function Footer() {
   return (
     <footer className={styles.footer}>
       <p>
-        <a href="/">Home</a> | <a href="/about">About this project</a>
+        <TextLink href="/">Home</TextLink> |{" "}
+        <TextLink href="/about">About this project</TextLink>
       </p>
       <p>
         &copy; 2026{" "}
-        <a href="https://www.ianjmacintosh.com/" target="_blank">
+        <TextLink href="https://www.ianjmacintosh.com/" target="_blank">
           Ian J. MacIntosh
-        </a>
+        </TextLink>
       </p>
     </footer>
   );

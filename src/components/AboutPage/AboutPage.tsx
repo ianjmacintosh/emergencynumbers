@@ -1,6 +1,7 @@
 import { SERVICES } from "../../constants/emergency-services";
 import styles from "./AboutPage.module.css";
 import Footer from "../Footer";
+import TextLink from "../TextLink";
 
 function AboutPage() {
   return (
@@ -34,12 +35,12 @@ function AboutPage() {
         <h2>Is this data trustworthy?</h2>
         <p>
           Yes. I pulled these numbers from the{" "}
-          <a
+          <TextLink
             href="https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
             target="_blank"
           >
             ITU-T E.129 Important numbers
-          </a>{" "}
+          </TextLink>{" "}
           list, which is maintained by a specialized agency of the United
           Nations responsible for telecommunications standards.
         </p>
@@ -53,20 +54,20 @@ function AboutPage() {
         <h2>Can I use or modify this tool's source code?</h2>
         <p>
           Yes. The GitHub repo is{" "}
-          <a
+          <TextLink
             href="https://github.com/ianjmacintosh/emergencynumbers"
             target="_blank"
           >
             ianjmacintosh/emergencynumbers
-          </a>
+          </TextLink>
           , but the phone number data is intellectual property of ITU-T, and
           commercial use would require their explicit permission. Their{" "}
-          <a
+          <TextLink
             href="https://www.itu.int/en/about/Pages/terms-of-use.aspx"
             target="_blank"
           >
             terms of use
-          </a>{" "}
+          </TextLink>{" "}
           grant permission to download, copy, and use content for personal,
           educational, and non-commercial use so long as you acknowledge the
           source and maintain all copyright and other proprietary notices.
