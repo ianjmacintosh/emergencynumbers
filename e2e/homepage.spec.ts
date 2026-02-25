@@ -53,3 +53,28 @@ test("can change countries", async ({ page }) => {
     ).toBeVisible();
   }
 });
+
+test("can copy phone numbers using the copy button", async ({
+  page,
+  context,
+}) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/");
+
+  const serviceCard = page.getByLabel("Emergency Service").first();
+
+  const copyButton = serviceCard.getByRole("button", {
+    name: /^Copy .+ to Clipboard$/,
+  });
+  const buttonLabel = await copyButton.textContent();
+  const phoneNumber = buttonLabel!.match(/^Copy (.+) to Clipboard$/)![1];
+
+  await copyButton.click();
+
+  const clipboardText = await page.evaluate(() =>
+    navigator.clipboard.readText(),
+  );
+  expect(clipboardText).toBe(phoneNumber);
+
+  await expect(serviceCard.getByRole("status")).toHaveText("Copied");
+});
