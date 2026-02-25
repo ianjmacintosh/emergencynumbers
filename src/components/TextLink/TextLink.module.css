@@ -1,0 +1,5 @@
+.text-link svg {
+  display: inline-block;
+  height: 0.8rem;
+  transform: translateY(0.1em);
+}
