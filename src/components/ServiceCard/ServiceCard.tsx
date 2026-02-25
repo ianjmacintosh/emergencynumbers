@@ -22,7 +22,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
 
   return (
-    <li className={styles.service}>
+    <li className={styles.service} aria-label="Emergency Service">
       <div className={styles.serviceInfoWrapper}>
         <div className={styles.titleWrapper}>
           <div className={styles.iconWrapper}>

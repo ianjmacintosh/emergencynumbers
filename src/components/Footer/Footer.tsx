@@ -2,7 +2,7 @@ import styles from "./Footer.module.css";
 
 function Footer() {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <p>
         <a href="/">Home</a> | <a href="/about">About this project</a>
       </p>
@@ -12,7 +12,7 @@ function Footer() {
           Ian J. MacIntosh
         </a>
       </p>
-    </div>
+    </footer>
   );
 }
 
