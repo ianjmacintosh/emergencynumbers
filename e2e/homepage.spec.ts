@@ -85,7 +85,10 @@ test("The country selector dropdown covers the copy icons and the 'Copied!' noti
   await page.goto("/");
 
   // Trigger a "Copied!" notification before opening the dropdown
-  await page.getByRole("button", { name: /^Copy .+ to Clipboard$/ }).first().click();
+  await page
+    .getByRole("button", { name: /^Copy .+ to Clipboard$/ })
+    .first()
+    .click();
 
   await page.getByRole("combobox", { name: "Country" }).click();
 
@@ -94,7 +97,9 @@ test("The country selector dropdown covers the copy icons and the 'Copied!' noti
 
   // Compute the full bounds of the open dropdown (search input + options list)
   const listboxBox = await listbox.boundingBox();
-  const searchInputBox = await page.locator('input[role="combobox"]').boundingBox();
+  const searchInputBox = await page
+    .locator('input[role="combobox"]')
+    .boundingBox();
   expect(listboxBox).not.toBeNull();
   expect(searchInputBox).not.toBeNull();
 
@@ -136,10 +141,13 @@ test("The country selector dropdown covers the copy icons and the 'Copied!' noti
 
       checkedCount++;
 
-      const isCovered = await el.evaluate((node, [x, y]) => {
-        const topEl = document.elementFromPoint(x, y);
-        return topEl !== null && topEl !== node && !node.contains(topEl);
-      }, [centerX, centerY] as [number, number]);
+      const isCovered = await el.evaluate(
+        (node, [x, y]) => {
+          const topEl = document.elementFromPoint(x, y);
+          return topEl !== null && topEl !== node && !node.contains(topEl);
+        },
+        [centerX, centerY] as [number, number],
+      );
 
       expect(isCovered).toBe(true);
     }
