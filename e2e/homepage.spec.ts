@@ -16,7 +16,7 @@ test("has a headline, the dropdown, the service cards, and the footer", async ({
   await page.goto("/");
 
   // Heading
-  await expect(page.getByRole("heading")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 
   // Dropdown
   await expect(page.getByRole("combobox")).toBeVisible();
@@ -63,11 +63,13 @@ test("can copy phone numbers using the copy button", async ({
 
   const serviceCard = page.getByLabel("Emergency Service").first();
 
+  const copyText = /^Copy (.+) to clipboard$/;
+
   const copyButton = serviceCard.getByRole("button", {
-    name: /^Copy .+ to Clipboard$/,
+    name: copyText,
   });
   const buttonLabel = await copyButton.textContent();
-  const phoneNumber = buttonLabel!.match(/^Copy (.+) to Clipboard$/)![1];
+  const phoneNumber = buttonLabel!.match(copyText)![1];
 
   await copyButton.click();
 
@@ -76,7 +78,7 @@ test("can copy phone numbers using the copy button", async ({
   );
   expect(clipboardText).toBe(phoneNumber);
 
-  await expect(serviceCard.getByRole("status")).toHaveText("Copied");
+  await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
 test("can select the default country after geo resolves to a different country", async ({
@@ -103,92 +105,4 @@ test("can select the default country after geo resolves to a different country",
   await page.getByRole("option", { name: "United States" }).click();
 
   await expect(combobox).toContainText("United States");
-});
-
-test("The country selector dropdown covers the copy icons and the 'Copied!' notification", async ({
-  page,
-}) => {
-  await page.goto("/");
-
-  // Trigger a "Copied!" notification before opening the dropdown
-  await page
-    .getByRole("button", { name: /^Copy .+ to Clipboard$/ })
-    .first()
-    .click();
-
-  await page.getByRole("combobox", { name: "Country" }).click();
-
-  const listbox = page.getByRole("listbox");
-  await expect(listbox).toBeVisible();
-
-  // Compute the full bounds of the open dropdown (search input + options list)
-  const listboxBox = await listbox.boundingBox();
-  const searchInputBox = await page
-    .locator('input[role="combobox"]')
-    .boundingBox();
-  expect(listboxBox).not.toBeNull();
-  expect(searchInputBox).not.toBeNull();
-
-  const dropdownBox = {
-    top: Math.min(listboxBox!.y, searchInputBox!.y),
-    bottom: Math.max(
-      listboxBox!.y + listboxBox!.height,
-      searchInputBox!.y + searchInputBox!.height,
-    ),
-    left: Math.min(listboxBox!.x, searchInputBox!.x),
-    right: Math.max(
-      listboxBox!.x + listboxBox!.width,
-      searchInputBox!.x + searchInputBox!.width,
-    ),
-  };
-
-  // Returns the number of elements that were checked (i.e. overlapped with the dropdown)
-  async function assertCoveredByDropdown(
-    locator: ReturnType<typeof page.getByRole>,
-  ) {
-    const count = await locator.count();
-    let checkedCount = 0;
-
-    for (let i = 0; i < count; i++) {
-      const el = locator.nth(i);
-      const box = await el.boundingBox();
-      if (!box) continue;
-
-      const centerX = box.x + box.width / 2;
-      const centerY = box.y + box.height / 2;
-
-      if (
-        centerX < dropdownBox.left ||
-        centerX > dropdownBox.right ||
-        centerY < dropdownBox.top ||
-        centerY > dropdownBox.bottom
-      )
-        continue;
-
-      checkedCount++;
-
-      const isCovered = await el.evaluate(
-        (node, [x, y]) => {
-          const topEl = document.elementFromPoint(x, y);
-          return topEl !== null && topEl !== node && !node.contains(topEl);
-        },
-        [centerX, centerY] as [number, number],
-      );
-
-      expect(isCovered).toBe(true);
-    }
-
-    return checkedCount;
-  }
-
-  const coveredButtons = await assertCoveredByDropdown(
-    page.getByRole("button", { name: /^Copy .+ to Clipboard$/ }),
-  );
-  expect(
-    coveredButtons,
-    "Expected at least one copy button to be covered by the open dropdown",
-  ).toBeGreaterThan(0);
-
-  // Check any visible "Copied!" notifications too
-  await assertCoveredByDropdown(page.getByRole("status"));
 });

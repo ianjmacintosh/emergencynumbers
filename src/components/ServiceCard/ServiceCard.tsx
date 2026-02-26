@@ -75,6 +75,8 @@ function CopyButton({
         }, 3000);
         copyToClipboard(content);
       }}
+      role={showNotification ? "status" : undefined}
+      disabled={showNotification}
     >
       {showNotification ? (
         <>
