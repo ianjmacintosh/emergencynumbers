@@ -41,21 +41,11 @@ dd:last-child {
   gap: 1rem;
 }
 
-.actions button {
+.actions .iconButton {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
   border-radius: 10px;
-  border: solid 1px #ccc;
-  padding: 1rem;
-}
-
-.actions button {
-  outline-color: transparent;
-}
-
-.actions button:focus {
-  outline: 2px dashed blue;
 }

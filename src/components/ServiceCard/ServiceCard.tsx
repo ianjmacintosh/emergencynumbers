@@ -14,11 +14,11 @@ import {
 
 import type { IconProps } from "@phosphor-icons/react";
 import type { ServiceType } from "../../constants/emergency-services";
+import type { ServiceData } from "../CountryCard";
 
 import styles from "./ServiceCard.module.css";
-import VisuallyHidden from "../VisuallyHidden";
-import type { ServiceData } from "../CountryCard";
 import React from "react";
+import LinkButton from "../LinkButton";
 
 function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
@@ -40,9 +40,9 @@ function ServiceCard({ service }: { service: ServiceData }) {
       </dl>
       <ul className={styles.actions}>
         <li>
-          <button>
+          <LinkButton className={styles.iconButton} href={`tel:${phoneNumber}`}>
             <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}
-          </button>
+          </LinkButton>
         </li>
         <li>
           <CopyButton content={phoneNumber}>
@@ -61,12 +61,12 @@ function CopyButton({
   children,
 }: {
   content: string;
-  children: React.ReactElement;
+  children: React.ReactNode;
 }) {
   const [showNotification, setShowNotification] = React.useState(false);
   return (
-    <button
-      className={styles.copyButton}
+    <LinkButton
+      className={styles.iconButton}
       onClick={() => {
         setShowNotification(true);
 
@@ -87,7 +87,7 @@ function CopyButton({
           {children}
         </>
       )}
-    </button>
+    </LinkButton>
   );
 }
 
