@@ -79,6 +79,32 @@ test("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText("Copied");
 });
 
+test("can select the default country after geo resolves to a different country", async ({
+  page,
+}) => {
+  // Simulate geo detecting a country different from the default (US)
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "AL" }),
+    }),
+  );
+
+  await page.goto("/");
+
+  const combobox = page.getByRole("combobox", { name: "Country" });
+
+  // Wait for the geo response to take effect
+  await expect(combobox).toContainText("Albania");
+
+  // Now try to select the original default country (United States)
+  await combobox.click();
+  await page.keyboard.type("United States");
+  await page.getByRole("option", { name: "United States" }).click();
+
+  await expect(combobox).toContainText("United States");
+});
+
 test("The country selector dropdown covers the copy icons and the 'Copied!' notification", async ({
   page,
 }) => {
