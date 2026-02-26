@@ -105,7 +105,7 @@ export function ComboboxSelectProviders({
       }}
     >
       <Ariakit.SelectProvider
-        defaultValue={currentValue}
+        value={currentValue}
         setValue={(nextValue) => {
           React.startTransition(() => {
             onChange(nextValue);
