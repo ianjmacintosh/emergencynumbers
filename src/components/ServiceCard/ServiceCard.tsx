@@ -17,6 +17,7 @@ import type { ServiceType } from "../../constants/emergency-services";
 import styles from "./ServiceCard.module.css";
 import VisuallyHidden from "../VisuallyHidden";
 import type { ServiceData } from "../CountryCard";
+import React from "react";
 
 function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
@@ -36,19 +37,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
         <div className={styles.phoneNumberWrapper}>
           <span>Call {phoneNumber}</span>
 
-          <button
-            className={styles.copyButton}
-            onClick={() => {
-              copyToClipboard(phoneNumber);
-            }}
-          >
-            <CopyIcon
-              size={24}
-              weight="regular"
-              className={`${styles.icon} ${styles.secondaryIcon}`}
-            ></CopyIcon>
-            <VisuallyHidden>Copy {phoneNumber} to Clipboard</VisuallyHidden>
-          </button>
+          <CopyButton content={phoneNumber}></CopyButton>
         </div>
       </div>
 
@@ -60,6 +49,39 @@ function ServiceCard({ service }: { service: ServiceData }) {
         <VisuallyHidden>Call {phoneNumber}</VisuallyHidden>
       </a>
     </li>
+  );
+}
+
+function CopyButton({ content }: { content: string }) {
+  const [showNotification, setShowNotification] = React.useState(false);
+  return (
+    <div className={styles.copyButtonWrapper}>
+      <button
+        className={styles.copyButton}
+        onClick={() => {
+          setShowNotification(true);
+
+          setTimeout(() => {
+            setShowNotification(false);
+          }, 3000);
+          copyToClipboard(content);
+        }}
+      >
+        <CopyIcon
+          weight="regular"
+          className={styles.icon}
+          height={24}
+        ></CopyIcon>
+        <VisuallyHidden>Copy {content} to Clipboard</VisuallyHidden>
+      </button>
+      <span
+        role="status"
+        aria-hidden={!showNotification}
+        className={`${styles.notification} ${showNotification ? styles.visible : undefined}`.trim()}
+      >
+        Copied
+      </span>
+    </div>
   );
 }
 
