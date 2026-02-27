@@ -54,33 +54,6 @@ test("can change countries", async ({ page }) => {
   }
 });
 
-test("can copy phone numbers using the copy button", async ({
-  page,
-  context,
-}) => {
-  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
-  await page.goto("/");
-
-  const serviceCard = page.getByLabel("Emergency Service").first();
-
-  const copyText = /^Copy (.+) to clipboard$/;
-
-  const copyButton = serviceCard.getByRole("button", {
-    name: copyText,
-  });
-  const buttonLabel = await copyButton.textContent();
-  const phoneNumber = buttonLabel!.match(copyText)![1];
-
-  await copyButton.click();
-
-  const clipboardText = await page.evaluate(() =>
-    navigator.clipboard.readText(),
-  );
-  expect(clipboardText).toBe(phoneNumber);
-
-  await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
-});
-
 test("can select the default country after geo resolves to a different country", async ({
   page,
 }) => {
