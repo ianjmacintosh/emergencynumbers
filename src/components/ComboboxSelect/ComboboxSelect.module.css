@@ -16,15 +16,34 @@
   outline: #00f dashed 2px;
 }
 
+.combobox-input-wrapper {
+  display: grid;
+  grid-template-areas: "stack";
+}
+
 .combobox-input {
   width: 100%;
   font-size: 1.4rem;
   padding: 0.5rem;
+  padding-left: 3rem;
   line-height: 2rem;
   border: none;
   border-bottom: solid 1px #ccc;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+.combobox-input,
+.combobox-label {
+  grid-area: stack;
+}
+
+.combobox-label {
+  justify-self: start;
+  align-content: center;
+  justify-items: center;
+  height: 3rem;
+  width: 3rem;
 }
 
 .combobox-input:focus {

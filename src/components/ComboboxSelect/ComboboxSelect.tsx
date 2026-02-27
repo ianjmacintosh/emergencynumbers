@@ -1,4 +1,5 @@
 import * as Ariakit from "@ariakit/react";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { matchSorter } from "match-sorter";
 import React from "react";
 
@@ -9,11 +10,13 @@ function ComboboxSelect({
   onChange,
   children,
   selectButtonContent,
+  comboboxLabel = "Search",
 }: {
   value: string;
   onChange: (value: string) => void;
   children: React.ReactNode;
   selectButtonContent: React.ReactNode;
+  comboboxLabel: string;
 }) {
   const optionsDataList: OptionsDataList = React.Children.toArray(children)
     .filter(React.isValidElement<OptionElement>)
@@ -51,11 +54,20 @@ function ComboboxSelect({
         sameWidth={true}
         className={styles.comboboxPopover}
       >
-        <Ariakit.Combobox
-          autoSelect
-          autoFocus
-          className={styles.comboboxInput}
-        />
+        <div className={styles.comboboxInputWrapper}>
+          <Ariakit.Combobox
+            autoSelect
+            autoFocus
+            className={styles.comboboxInput}
+          />
+          <Ariakit.ComboboxLabel className={styles.comboboxLabel}>
+            <MagnifyingGlassIcon
+              weight="regular"
+              size={32}
+              alt={comboboxLabel}
+            />
+          </Ariakit.ComboboxLabel>
+        </div>
         <Ariakit.ComboboxList className={styles.comboboxList}>
           {matches.map(({ label, value }) => (
             <ComboboxSelectOption key={value} value={value}>

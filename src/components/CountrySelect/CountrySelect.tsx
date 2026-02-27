@@ -17,6 +17,7 @@ function CountrySelect({
     <ComboboxSelect
       value={value}
       onChange={onChange}
+      comboboxLabel="Search for Country"
       selectButtonContent={
         <>
           <span className={styles.countryBadge}>
