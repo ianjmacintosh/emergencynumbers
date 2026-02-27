@@ -25,13 +25,14 @@ function App() {
   return (
     <div className={styles.pageWrapper}>
       <main className={styles.contentWrapper} role="main">
-        <h1>Emergency Service Phone Numbers</h1>
+        <header>
+          <h1>Emergency Service Phone Numbers</h1>
 
-        <CountrySelect
-          value={countryId}
-          onChange={(value) => setCountryId(value as keyof typeof SERVICES)}
-        />
-
+          <CountrySelect
+            value={countryId}
+            onChange={(value) => setCountryId(value as keyof typeof SERVICES)}
+          />
+        </header>
         <CountryCard id={countryId} />
       </main>
       <Footer />

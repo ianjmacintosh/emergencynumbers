@@ -27,27 +27,32 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <h2>
         <Icon type={type} size={32} weight="fill" className={styles.icon} />
         {type}
+        <span className={styles.phoneNumber} aria-label="Phone Number">
+          {phoneNumber}
+        </span>
       </h2>
-      <dl>
-        <dt>Phone Number</dt>
-        <dd>{phoneNumber}</dd>
-        {description && (
-          <>
-            <dt>Additional Information</dt>
-            <dd>{description}</dd>
-          </>
-        )}
-      </dl>
+      {description && (
+        <dl>
+          <dt>Additional Information</dt>
+          <dd>{description}</dd>
+        </dl>
+      )}
       <ul className={styles.actions}>
-        <li>
-          <LinkButton className={styles.iconButton} href={`tel:${phoneNumber}`}>
-            <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}
-          </LinkButton>
-        </li>
-        <li>
-          <CopyButton content={phoneNumber}>
+        {/* <li hidden={true}>
+          <CopyButton
+            className={`${styles.iconButton}`.trim()}
+            content={phoneNumber}
+          >
             Copy {phoneNumber} to clipboard
           </CopyButton>
+        </li> */}
+        <li>
+          <LinkButton
+            className={`${styles.iconButton} ${styles.callButton}`.trim()}
+            href={`tel:${phoneNumber}`}
+          >
+            <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}
+          </LinkButton>
         </li>
       </ul>
     </article>
@@ -59,10 +64,11 @@ function ServiceCard({ service }: { service: ServiceData }) {
 function CopyButton({
   content,
   children,
+  ...delegated
 }: {
   content: string;
   children: React.ReactNode;
-}) {
+} & React.ComponentPropsWithoutRef<"button">) {
   const [showNotification, setShowNotification] = React.useState(false);
   return (
     <LinkButton
@@ -77,6 +83,7 @@ function CopyButton({
       }}
       role={showNotification ? "status" : undefined}
       disabled={showNotification}
+      {...delegated}
     >
       {showNotification ? (
         <>

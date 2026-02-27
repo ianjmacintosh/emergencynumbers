@@ -1,15 +1,17 @@
-.button {
-  cursor: default;
-  display: block;
-  border-radius: 10px;
-  color: #333;
-  text-decoration: none;
-  background: #efefef;
-  border: solid 1px #ccc;
-  padding: 1rem;
-}
+@layer base {
+  .button {
+    cursor: default;
+    display: block;
+    border-radius: 10px;
+    color: #333;
+    text-decoration: none;
+    background: #efefef;
+    border: solid 1px #ccc;
+    padding: 1rem;
+  }
 
-.button:focus {
-  outline-offset: 0;
-  outline: 2px dashed blue;
+  .button:focus {
+    outline-offset: 0;
+    outline: 2px dashed blue;
+  }
 }
