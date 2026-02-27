@@ -76,9 +76,9 @@ function ComboboxSelect({
               </ComboboxSelectOption>
             ))
           ) : (
-            <ComboboxSelectOption disabled={true}>
-              No matches found
-            </ComboboxSelectOption>
+            <p className={styles.optionsInfo}>
+              No countries match "{searchValue}"
+            </p>
           )}
         </Ariakit.ComboboxList>
       </Ariakit.SelectPopover>
@@ -140,7 +140,7 @@ export function ComboboxSelectProviders({
 export default ComboboxSelect;
 
 type OptionElement = {
-  value?: string;
+  value: string;
   label?: string;
   disabled?: boolean;
   [key: string]: unknown;

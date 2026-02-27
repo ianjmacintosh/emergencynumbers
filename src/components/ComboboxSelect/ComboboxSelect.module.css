@@ -67,7 +67,8 @@
   overscroll-behavior: contain;
 }
 
-.combobox-item {
+.combobox-item,
+.options-info {
   background: white;
   cursor: default;
   padding: 0.5rem;
