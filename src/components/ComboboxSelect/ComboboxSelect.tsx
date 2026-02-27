@@ -63,17 +63,23 @@ function ComboboxSelect({
           <Ariakit.ComboboxLabel className={styles.comboboxLabel}>
             <MagnifyingGlassIcon
               weight="regular"
-              size={32}
+              size={24}
               alt={comboboxLabel}
             />
           </Ariakit.ComboboxLabel>
         </div>
         <Ariakit.ComboboxList className={styles.comboboxList}>
-          {matches.map(({ label, value }) => (
-            <ComboboxSelectOption key={value} value={value}>
-              {label}
+          {matches.length > 0 ? (
+            matches.map(({ label, value }) => (
+              <ComboboxSelectOption key={value} value={value}>
+                {label}
+              </ComboboxSelectOption>
+            ))
+          ) : (
+            <ComboboxSelectOption disabled={true}>
+              No matches found
             </ComboboxSelectOption>
-          ))}
+          )}
         </Ariakit.ComboboxList>
       </Ariakit.SelectPopover>
     </ComboboxSelectProviders>
@@ -134,8 +140,9 @@ export function ComboboxSelectProviders({
 export default ComboboxSelect;
 
 type OptionElement = {
-  value: string;
+  value?: string;
   label?: string;
+  disabled?: boolean;
   [key: string]: unknown;
 };
 
