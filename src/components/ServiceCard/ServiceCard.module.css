@@ -17,6 +17,15 @@ h2 {
   font-weight: 600;
 }
 
+h2 img,
+h2 svg {
+  flex-shrink: 0;
+}
+
+h2 .phone-number {
+  margin-left: auto;
+}
+
 dt {
   font-weight: bold;
   font-size: 1rem;
@@ -41,11 +50,26 @@ dd:last-child {
   gap: 1rem;
 }
 
-.actions .iconButton {
+.actions button {
+  width: 100%;
+}
+
+.icon-button {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  width: 100%;
   border-radius: 10px;
+}
+
+.actions .call-button {
+  background-color: hsl(130deg 100% 27%);
+  color: white;
+  border-color: seagreen;
+  justify-content: center;
+}
+
+h2 .icon-button {
+  font-size: 1rem;
+  font-weight: normal;
 }
