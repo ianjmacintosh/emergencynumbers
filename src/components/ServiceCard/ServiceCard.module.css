@@ -50,12 +50,15 @@ dd:last-child {
   gap: 1rem;
 }
 
+.actions button {
+  width: 100%;
+}
+
 .icon-button {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  width: 100%;
   border-radius: 10px;
 }
 

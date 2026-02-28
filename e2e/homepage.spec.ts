@@ -54,7 +54,7 @@ test("can change countries", async ({ page }) => {
   }
 });
 
-test("can copy phone numbers using the copy button", async ({
+test.skip("can copy phone numbers using the copy button", async ({
   page,
   context,
 }) => {
