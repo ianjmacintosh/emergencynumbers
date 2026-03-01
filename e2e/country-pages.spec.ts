@@ -5,7 +5,12 @@ import { COUNTRY_NAMES } from "../src/constants";
 // Run serially so tests share a single page — avoids repeated full page loads.
 test.describe.configure({ mode: "serial" });
 
-type Service = { type: string; name: string; phoneNumber: string; description?: string };
+type Service = {
+  type: string;
+  name: string;
+  phoneNumber: string;
+  description?: string;
+};
 
 let page: Page;
 
