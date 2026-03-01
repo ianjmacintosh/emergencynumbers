@@ -3,6 +3,7 @@ import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 
 import styles from "./TextLink.module.css";
 import VisuallyHidden from "../VisuallyHidden";
+import { usePathname } from "../../utils/url";
 
 function TextLink({
   children,
@@ -12,8 +13,9 @@ function TextLink({
   children: React.ReactNode;
   href: string;
 } & React.ComponentProps<"a">) {
+  const pathname = usePathname();
   const opensNewWindow = delegated.target;
-  const alreadyOnLinkedPage = window.location.pathname === href;
+  const alreadyOnLinkedPage = pathname === href;
   const Tag = alreadyOnLinkedPage ? "span" : "a";
   return (
     <Tag

@@ -1,4 +1,26 @@
+import React from "react";
 import { SERVICES } from "../constants/emergency-services";
+
+/**
+ * Reactively tracks window.location.pathname, updating on popstate (browser
+ * back/forward) and the custom "locationchange" event dispatched after
+ * history.pushState calls.
+ */
+export function usePathname() {
+  const [pathname, setPathname] = React.useState(window.location.pathname);
+
+  React.useEffect(() => {
+    const update = () => setPathname(window.location.pathname);
+    window.addEventListener("popstate", update);
+    window.addEventListener("locationchange", update);
+    return () => {
+      window.removeEventListener("popstate", update);
+      window.removeEventListener("locationchange", update);
+    };
+  }, []);
+
+  return pathname;
+}
 
 /**
  * Parses a URL pathname and returns a valid country code, or null.

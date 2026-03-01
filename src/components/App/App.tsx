@@ -18,6 +18,7 @@ function App() {
     const countryPage = `/${currentCountryId.toLowerCase()}/`;
     if (window.location.pathname !== countryPage) {
       history.pushState({}, "", countryPage);
+      window.dispatchEvent(new Event("locationchange"));
     }
   }, [currentCountryId]);
 
