@@ -18,3 +18,25 @@
 h1 {
   margin-bottom: 1rem;
 }
+
+.banner {
+  border: none;
+  border-bottom: solid 1px #ccc;
+  background: #fff;
+}
+
+.location-swap-menu {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.confirm {
+  flex: 1;
+}
+
+.confirm .confirm-button {
+  justify-content: center;
+  width: 100%;
+}

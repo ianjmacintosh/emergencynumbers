@@ -81,7 +81,7 @@ test.skip("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
-test.skip("can select the default country after geo resolves to a different country", async ({
+test("can select the default country after loading a different country", async ({
   page,
 }) => {
   // Simulate geo detecting a country different from the default (US)
@@ -92,7 +92,7 @@ test.skip("can select the default country after geo resolves to a different coun
     }),
   );
 
-  await page.goto("/");
+  await page.goto("/al/");
 
   const combobox = page.getByRole("combobox", { name: "Country" });
 

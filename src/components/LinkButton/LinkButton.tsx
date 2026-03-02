@@ -8,12 +8,19 @@ type DelegatedProps = React.ComponentPropsWithoutRef<"a"> &
 
 // Dynamically change accepted props depending on whether consumer is getting a link or button
 type LinkButtonProps =
-  | ({ href: string } & Omit<React.ComponentPropsWithoutRef<"a">, "href">)
-  | ({ href?: never } & React.ComponentPropsWithoutRef<"button">);
+  | ({ href: string; hasIcon?: boolean } & Omit<
+      React.ComponentPropsWithoutRef<"a">,
+      "href"
+    >)
+  | ({
+      href?: never;
+      hasIcon?: boolean;
+    } & React.ComponentPropsWithoutRef<"button">);
 
 function LinkButton({
   href,
   children,
+  hasIcon,
   className = "",
   ...delegated
 }: LinkButtonProps) {
@@ -22,7 +29,7 @@ function LinkButton({
   return (
     <Tag
       href={href}
-      className={`${styles.button} ${className}`}
+      className={`${styles.button} ${hasIcon ? styles.iconButton : null} ${className}`}
       {...(delegated as DelegatedProps)}
     >
       {children}
