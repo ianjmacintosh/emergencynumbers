@@ -99,9 +99,10 @@ function App() {
 
           <CountrySelect
             value={currentCountryId}
-            onChange={(value) =>
-              setCurrentCountryId(value as keyof typeof SERVICES)
-            }
+            onChange={(value) => {
+              setSuppressBanner(true);
+              setCurrentCountryId(value as keyof typeof SERVICES);
+            }}
           />
         </header>
         <CountryCard id={currentCountryId} />
