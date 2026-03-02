@@ -79,6 +79,7 @@ function App() {
               <li className={styles.dismiss}>
                 <LinkButton
                   hasIcon={true}
+                  aria-label="Dismiss"
                   onClick={() => {
                     setUserLocation(currentCountryId);
                   }}
