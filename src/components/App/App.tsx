@@ -17,6 +17,7 @@ function App() {
     keyof typeof SERVICES
   >(() => getCountryFromPath(window.location.pathname) ?? DEFAULT_COUNTRY);
 
+  const [suppressBanner, setSuppressBanner] = React.useState(false);
   const [userLocation, setUserLocation] = React.useState<
     keyof typeof SERVICES | null
   >(null);
@@ -60,12 +61,14 @@ function App() {
     <div className={styles.pageWrapper}>
       {userLocation &&
         userLocation in SERVICES &&
-        userLocation !== currentCountryId && (
+        userLocation !== currentCountryId &&
+        suppressBanner === false && (
           <Banner>
             <ul className={styles.locationSwapMenu}>
               <li className={styles.confirm}>
                 <LinkButton
                   onClick={() => {
+                    setSuppressBanner(true);
                     setCurrentCountryId(userLocation);
                   }}
                   hasIcon={true}
@@ -81,7 +84,7 @@ function App() {
                   hasIcon={true}
                   aria-label="Dismiss"
                   onClick={() => {
-                    setUserLocation(currentCountryId);
+                    setSuppressBanner(true);
                   }}
                 >
                   <XIcon size={24} type="fill" />

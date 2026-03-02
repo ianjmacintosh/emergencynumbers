@@ -171,6 +171,37 @@ test("shows a banner and can switch to the geolocated country", async ({
   }
 });
 
+test("does not show a banner after the user manually selects a country", async ({
+  page,
+}) => {
+  // Geolocated to Ecuador, viewing the default (US) — banner appears
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "EC" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/");
+  await geoResponse;
+
+  const banner = page.getByRole("complementary");
+  await expect(banner).toBeVisible();
+  await expect(banner).toContainText("Ecuador");
+
+  await banner.getByRole("button", { name: /dismiss/i }).click();
+
+  // User deliberately picks Brazil — this should clear the banner
+  const combobox = page.getByRole("combobox", { name: "Country" });
+  await combobox.click();
+  await page.keyboard.type(COUNTRY_NAMES["BR"]);
+  await page.getByRole("option", { name: COUNTRY_NAMES["BR"] }).click();
+  await page.waitForURL(/\/br\//);
+
+  await expect(page.getByRole("complementary")).not.toBeVisible();
+});
+
 test("can select the default country after loading a different country", async ({
   page,
 }) => {
