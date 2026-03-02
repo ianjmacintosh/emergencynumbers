@@ -100,9 +100,9 @@ test("does not show a banner when geolocated to an unsupported country", async (
   await expect(page.getByRole("complementary")).not.toBeVisible();
 
   // The default country should still be shown
-  await expect(
-    page.getByRole("combobox", { name: "Country" }),
-  ).toContainText("United States");
+  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+    "United States",
+  );
 });
 
 test("shows a banner and can dismiss it when geolocated to a different supported country", async ({
