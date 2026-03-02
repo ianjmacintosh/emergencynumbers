@@ -35,7 +35,7 @@ function CountrySelect({
               key={countryId}
               value={countryId}
               label={COUNTRY_NAMES[countryId] || "Unknown"}
-              keywords={[countryId, ...(COUNTRY_ALT_NAMES[countryId] ?? [])]}
+              keywords={COUNTRY_ALT_NAMES[countryId]}
             />
           );
         })}

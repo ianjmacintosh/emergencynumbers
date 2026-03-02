@@ -34,7 +34,7 @@ function ComboboxSelect({
 
   const matches = matchSorter(optionsDataList, searchValue, {
     baseSort: (a, b) => (a.index < b.index ? -1 : 1),
-    keys: ["label", "keywords"],
+    keys: ["value", "label", "keywords"],
   });
 
   return (
