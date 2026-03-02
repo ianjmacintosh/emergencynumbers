@@ -1,6 +1,6 @@
 import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 import { SERVICES } from "../../constants/emergency-services";
-import { COUNTRY_NAMES } from "../../constants";
+import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import styles from "./CountrySelect.module.css";
@@ -34,6 +34,7 @@ function CountrySelect({
             key={countryId}
             value={countryId}
             label={COUNTRY_NAMES[countryId] || "Unknown"}
+            keywords={COUNTRY_ALT_NAMES[countryId]}
           />
         ))}
     </ComboboxSelect>

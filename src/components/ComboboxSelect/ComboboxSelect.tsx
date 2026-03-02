@@ -23,6 +23,7 @@ function ComboboxSelect({
     .map(({ props }) => ({
       value: props.value,
       label: (props.label ?? String(props.children)) || props.value,
+      keywords: props.keywords,
     }));
 
   const currentLabel = optionsDataList.find(
@@ -33,7 +34,7 @@ function ComboboxSelect({
 
   const matches = matchSorter(optionsDataList, searchValue, {
     baseSort: (a, b) => (a.index < b.index ? -1 : 1),
-    keys: ["label"],
+    keys: ["label", "keywords"],
   });
 
   return (

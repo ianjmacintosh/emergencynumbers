@@ -253,3 +253,17 @@ export const COUNTRY_NAMES = {
   ZM: "Zambia",
   ZW: "Zimbabwe",
 };
+
+export const COUNTRY_ALT_NAMES: Partial<
+  Record<keyof typeof COUNTRY_NAMES, string[]>
+> = {
+  GB: [
+    "United Kingdom",
+    "UK",
+    "England",
+    "Great Britain",
+    "Scotland",
+    "Northern Ireland",
+    "Wales",
+  ],
+};
