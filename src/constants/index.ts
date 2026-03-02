@@ -257,6 +257,18 @@ export const COUNTRY_NAMES = {
 export const COUNTRY_ALT_NAMES: Partial<
   Record<keyof typeof COUNTRY_NAMES, string[]>
 > = {
+  AE: ["UAE", "Emirates"],
+  BY: ["Byelorussia", "Belorussia", "White Russia"],
+  CD: ["DRC", "Congo-Kinshasa", "Zaire", "Democratic Republic of the Congo"],
+  CF: ["CAR", "Central Africa"],
+  CG: ["Republic of Congo", "Congo-Brazzaville"],
+  CI: ["Ivory Coast", "Cote d'Ivoire", "Cote dIvoire"],
+  CN: ["PRC", "People's Republic of China"],
+  CV: ["Cabo Verde"],
+  CZ: ["Czech Republic"],
+  DE: ["Deutschland", "Federal Republic of Germany"],
+  ES: ["España", "Espana"],
+  FM: ["Federated States of Micronesia", "FSM"],
   GB: [
     "United Kingdom",
     "UK",
@@ -266,4 +278,17 @@ export const COUNTRY_ALT_NAMES: Partial<
     "Northern Ireland",
     "Wales",
   ],
+  IR: ["Persia"],
+  KH: ["Kampuchea"],
+  LK: ["Ceylon"],
+  MK: ["Macedonia", "FYROM", "Former Yugoslav Republic of Macedonia"],
+  NL: ["Holland"],
+  NZ: ["Aotearoa"],
+  PG: ["PNG"],
+  RU: ["Russian Federation"],
+  SZ: ["Swaziland"],
+  TR: ["Türkiye", "Turkiye"],
+  US: ["USA", "America", "United States of America"],
+  VA: ["Holy See"],
+  WS: ["Western Samoa"],
 };

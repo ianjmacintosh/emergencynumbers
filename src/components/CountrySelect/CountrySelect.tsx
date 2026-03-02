@@ -29,14 +29,16 @@ function CountrySelect({
     >
       {getCountryIds()
         .filter((country) => country in SERVICES)
-        .map((countryId) => (
-          <ComboboxSelectOption
-            key={countryId}
-            value={countryId}
-            label={COUNTRY_NAMES[countryId] || "Unknown"}
-            keywords={COUNTRY_ALT_NAMES[countryId]}
-          />
-        ))}
+        .map((countryId) => {
+          return (
+            <ComboboxSelectOption
+              key={countryId}
+              value={countryId}
+              label={COUNTRY_NAMES[countryId] || "Unknown"}
+              keywords={[countryId, ...(COUNTRY_ALT_NAMES[countryId] ?? [])]}
+            />
+          );
+        })}
     </ComboboxSelect>
   );
 }
