@@ -81,7 +81,155 @@ test.skip("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
-test("can select the default country after geo resolves to a different country", async ({
+test("does not show a banner when geolocated to an unsupported country", async ({
+  page,
+}) => {
+  // AQ (Antarctica) is in COUNTRY_NAMES but has no entries in SERVICES
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "AQ" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/");
+  await geoResponse;
+
+  // The banner should never appear
+  await expect(page.getByRole("complementary")).not.toBeVisible();
+
+  // The default country should still be shown
+  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+    "United States",
+  );
+});
+
+test("shows a banner and can dismiss it when geolocated to a different supported country", async ({
+  page,
+}) => {
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "EC" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/br/");
+  await geoResponse;
+
+  const banner = page.getByRole("complementary");
+  await expect(banner).toBeVisible();
+  await expect(banner).toContainText("Ecuador");
+
+  await banner.getByRole("button", { name: /dismiss/i }).click();
+
+  await expect(banner).not.toBeVisible();
+
+  const serviceCard = page.getByLabel("Emergency Service");
+  for (const service of SERVICES["BR"]) {
+    await expect(
+      serviceCard
+        .filter({ hasText: service.description ?? service.type })
+        .filter({ hasText: service.phoneNumber }),
+    ).toBeVisible();
+  }
+});
+
+test("shows a banner and can switch to the geolocated country", async ({
+  page,
+}) => {
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "ES" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/");
+  await geoResponse;
+
+  const banner = page.getByRole("complementary");
+  await expect(banner).toBeVisible();
+
+  await banner.getByRole("button", { name: /Spain/i }).click();
+
+  await page.waitForURL(/\/es\//);
+  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+    "Spain",
+  );
+
+  const serviceCard = page.getByLabel("Emergency Service");
+  for (const service of SERVICES["ES"]) {
+    await expect(
+      serviceCard
+        .filter({ hasText: service.description ?? service.type })
+        .filter({ hasText: service.phoneNumber }),
+    ).toBeVisible();
+  }
+});
+
+test("does not show a banner after the user manually selects a country", async ({
+  page,
+}) => {
+  // Geolocated to Ecuador, viewing the default (US) — banner appears
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "EC" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/");
+  await geoResponse;
+
+  const banner = page.getByRole("complementary");
+  await expect(banner).toBeVisible();
+  await expect(banner).toContainText("Ecuador");
+
+  await banner.getByRole("button", { name: /dismiss/i }).click();
+
+  // User deliberately picks Brazil — this should clear the banner
+  const combobox = page.getByRole("combobox", { name: "Country" });
+  await combobox.click();
+  await page.keyboard.type(COUNTRY_NAMES["BR"]);
+  await page.getByRole("option", { name: COUNTRY_NAMES["BR"] }).click();
+  await page.waitForURL(/\/br\//);
+
+  await expect(page.getByRole("complementary")).not.toBeVisible();
+});
+
+test("does not show a banner after the user navigates away from their geolocated page", async ({
+  page,
+}) => {
+  // Geolocated to Ecuador, viewing Ecuador — no banner
+  await page.route("/api/geo", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ country: "EC" }),
+    }),
+  );
+
+  const geoResponse = page.waitForResponse("/api/geo");
+  await page.goto("/ec/");
+  await geoResponse;
+
+  await expect(page.getByRole("complementary")).not.toBeVisible();
+
+  // User deliberately navigates away to Brazil — banner should stay gone
+  const combobox = page.getByRole("combobox", { name: "Country" });
+  await combobox.click();
+  await page.keyboard.type(COUNTRY_NAMES["BR"]);
+  await page.getByRole("option", { name: COUNTRY_NAMES["BR"] }).click();
+  await page.waitForURL(/\/br\//);
+
+  await expect(page.getByRole("complementary")).not.toBeVisible();
+});
+
+test("can select the default country after loading a different country", async ({
   page,
 }) => {
   // Simulate geo detecting a country different from the default (US)
@@ -92,7 +240,7 @@ test("can select the default country after geo resolves to a different country",
     }),
   );
 
-  await page.goto("/");
+  await page.goto("/al/");
 
   const combobox = page.getByRole("combobox", { name: "Country" });
 
@@ -103,6 +251,8 @@ test("can select the default country after geo resolves to a different country",
   await combobox.click();
   await page.keyboard.type("United States");
   await page.getByRole("option", { name: "United States" }).click();
+  await page.waitForURL(/\/us\//);
+  await page.waitForLoadState("domcontentloaded");
 
   await expect(combobox).toContainText("United States");
 });
