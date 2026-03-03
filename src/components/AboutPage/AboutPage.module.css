@@ -8,7 +8,6 @@
 .content-wrapper {
   justify-self: center;
   padding: 1rem;
-  width: 80dvw;
   max-width: 1024px;
   display: flex;
   flex-direction: column;

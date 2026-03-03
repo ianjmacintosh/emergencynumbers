@@ -32,9 +32,9 @@ function AboutPage() {
           phone numbers for {Object.keys(SERVICES).length} different countries
           and territories.
         </p>
-        <h2>Is this data trustworthy?</h2>
+        <h2>Are these phone numbers trustworthy?</h2>
         <p>
-          Yes. I pulled these numbers from the{" "}
+          Yes. Most of this information is from the{" "}
           <TextLink
             href="https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
             target="_blank"
@@ -42,7 +42,35 @@ function AboutPage() {
             ITU-T E.129 Important numbers
           </TextLink>{" "}
           list, which is maintained by a specialized agency of the United
-          Nations responsible for telecommunications standards.
+          Nations responsible for telecommunications standards. I also used{" "}
+          <TextLink
+            href="https://www.gov.uk/foreign-travel-advice"
+            target="_blank"
+          >
+            GOV.UK's Foreign travel advice
+          </TextLink>
+          to provide information for countries absent from the ITU-T E.129's
+          list.
+        </p>
+        <p>
+          I intentionally did not use phone number data from Wikipedia's{" "}
+          <TextLink
+            href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers"
+            target="_blank"
+          >
+            List of emergency telephone numbers
+          </TextLink>{" "}
+          article because unlike the ITU-T or the UK's FCDO office, no
+          accountable body stands behind that data. For example, the article
+          shows two numbers for North Korea: one from a US State Dept document
+          that was apparently last modified in July 2008, and another phone
+          number that's been inferred from an internet photo of a fire engine.
+          Literally, the cited source is a{" "}
+          <a href="https://www.fire-engine-photos.com/picture/number39632.asp?c=ok">
+            photo of a supposed North Korean fire truck
+          </a>{" "}
+          with "8119" painted on the side of it. For life and death matters, I'd
+          rather not spend time on that kind of thing.
         </p>
         <p>
           Although these phone numbers are accurate, there may be even better
