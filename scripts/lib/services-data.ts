@@ -2,16 +2,13 @@
  * Shared types and utilities for the emergency services data pipeline.
  *
  * Data flow:
- *   convert-itu-xls.ts  ─┐
- *   convert-wikipedia.ts ─┼─► src/data/emergency-services.json ─► build-services.ts ─► emergency-services.ts
- *   (future sources)    ─┘
+ *   convert-itu-xls.ts ─► src/data/emergency-services.json
  */
 
 import * as fs from "fs";
 import * as path from "path";
 
 export const DEFAULT_DATA_FILE = "src/data/emergency-services.json";
-export const DEFAULT_TS_OUT = "src/constants/emergency-services.ts";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -19,6 +16,7 @@ export const DEFAULT_TS_OUT = "src/constants/emergency-services.ts";
 
 export type Source = {
   name: string;
+  url?: string;
   fetchedAt: string;
   lastModified: string;
 };
@@ -66,7 +64,7 @@ export function writeData(filePath: string, data: ServicesData): void {
 /**
  * Merge `incoming` into `existing`.
  *
- * Match key: (isoCode, type, phoneNumber)
+ * Match key: (countryCode, type, phoneNumber)
  * - If entry exists: add any new sources (dedup by source name).
  * - If entry is new: append it.
  * - If country is new: add it.

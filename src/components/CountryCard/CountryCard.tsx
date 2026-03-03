@@ -16,7 +16,7 @@ export type ServiceData = {
 import styles from "./CountryCard.module.css";
 
 function CountryCard({ id }: { id: keyof typeof SERVICES }) {
-  const serviceCards = getServiceCardData(SERVICES[id]);
+  const serviceCards = getServiceCardData(SERVICES[id] ?? []);
 
   return (
     <ul className={styles.services} role="directory">
