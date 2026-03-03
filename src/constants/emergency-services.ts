@@ -1,5 +1,5 @@
 import type { COUNTRY_NAMES } from "./index";
-import rawData from "../data/emergency-services.json";
+import rawData from "../data/emergency-services.json" with { type: "json" };
 
 export type Source = {
   name: string;
