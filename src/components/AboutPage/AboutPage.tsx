@@ -61,23 +61,25 @@ function AboutPage() {
             List of emergency telephone numbers
           </TextLink>{" "}
           article because unlike the ITU-T or the UK's FCDO office, no
-          accountable body stands behind that data. For example, the article
-          shows two numbers for North Korea: one from a US State Dept document
-          that was apparently last modified in July 2008, and another phone
-          number that's been inferred from an internet photo of a fire engine.
-          Literally, the cited source is a{" "}
-          <a href="https://www.fire-engine-photos.com/picture/number39632.asp?c=ok">
+          accountable body stands behind that data. For example, that Wikipedia
+          article shows two numbers for North Korea: one from a US State Dept
+          document that was apparently last modified in July 2008, and another
+          phone number that's been inferred from a{" "}
+          <TextLink
+            href="https://www.fire-engine-photos.com/picture/number39632.asp?c=ok"
+            target="_blank"
+          >
             photo of a supposed North Korean fire truck
-          </a>{" "}
+          </TextLink>{" "}
           with "8119" painted on the side of it. For life and death matters, I'd
           rather not spend time on that kind of thing.
         </p>
         <p>
-          Although these phone numbers are accurate, there may be even better
-          options for help that aren't listed here. Calling a local number
-          directly is often better than going through a national system, but
-          calling anyone is better than calling no one, especially when minutes
-          count.
+          Anyway, although these phone numbers are accurate, there may be even
+          better options for help that aren't listed here. Calling a local
+          number directly is often better than going through a national system,
+          but calling anyone is better than calling no one, especially when
+          minutes count.
         </p>
         <h2>Can I use or modify this tool's source code?</h2>
         <p>
