@@ -1530,6 +1530,47 @@
       ]
     }
   ],
+  "BD": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bangladesh/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bangladesh/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bangladesh/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "BE": [
     {
       "type": "Medical",
@@ -2291,6 +2332,47 @@
         }
       ],
       "description": "Ministère de l'Intérieur et de la Sécurité Publique"
+    }
+  ],
+  "BN": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "991",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/brunei/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "993",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/brunei/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "995",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/brunei/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
     }
   ],
   "BO": [
@@ -7585,6 +7667,47 @@
       "description": "Emotional support hotlines"
     }
   ],
+  "ID": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "118",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/indonesia/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "110",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/indonesia/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/indonesia/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "IE": [
     {
       "type": "Medical",
@@ -9368,6 +9491,47 @@
       ]
     }
   ],
+  "KW": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/kuwait/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/kuwait/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/kuwait/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "KZ": [
     {
       "type": "Fire",
@@ -9460,6 +9624,47 @@
         }
       ],
       "description": "Gas Leaks"
+    }
+  ],
+  "LA": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "1195",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/laos/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "1191",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/laos/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "1190",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/laos/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
     }
   ],
   "LB": [
@@ -10877,6 +11082,47 @@
       "description": "Fire brigade emergency service"
     }
   ],
+  "MM": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "192",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/myanmar/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "199",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/myanmar/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "191",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/myanmar/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "MN": [
     {
       "type": "Other",
@@ -11457,6 +11703,47 @@
           "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
+        }
+      ]
+    }
+  ],
+  "MX": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/mexico/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/mexico/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/mexico/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
         }
       ]
     }
@@ -12647,6 +12934,47 @@
       ]
     }
   ],
+  "PH": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/philippines/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/philippines/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/philippines/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "PK": [
     {
       "type": "Child Helpline",
@@ -13088,6 +13416,47 @@
         }
       ],
       "description": "Social Emergency attendance"
+    }
+  ],
+  "PY": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "141",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/paraguay/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/paraguay/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "132",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/paraguay/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
     }
   ],
   "QA": [
@@ -15714,6 +16083,135 @@
       ]
     }
   ],
+  "TJ": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "103",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/tajikistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "102",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/tajikistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "101",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/tajikistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "TL": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "110",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/timor-leste/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/timor-leste/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "115",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/timor-leste/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "TM": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "003",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turkmenistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "002",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turkmenistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "001",
+      "description": "Mobile phone only",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turkmenistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "TN": [
     {
       "type": "Medical",
@@ -16583,6 +17081,47 @@
       ]
     }
   ],
+  "UZ": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "103",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/uzbekistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "102",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/uzbekistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "101",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/uzbekistan/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "VA": [
     {
       "type": "Medical",
@@ -16755,6 +17294,47 @@
           "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
+        }
+      ]
+    }
+  ],
+  "VN": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "115",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/vietnam/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "113",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/vietnam/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "114",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/vietnam/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
         }
       ]
     }
@@ -16957,6 +17537,47 @@
           "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
           "fetchedAt": "2026-02-13",
           "lastModified": "2017-03-15"
+        }
+      ]
+    }
+  ],
+  "YE": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "191",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/yemen/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "199",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/yemen/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "191",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/yemen/getting-help",
+          "fetchedAt": "2026-03-03",
+          "lastModified": null
         }
       ]
     }

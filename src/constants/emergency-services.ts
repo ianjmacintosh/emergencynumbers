@@ -5,7 +5,7 @@ export type Source = {
   name: string;
   url?: string;
   fetchedAt: string;
-  lastModified: string;
+  lastModified: string | null;
 };
 
 export type ServiceType =
