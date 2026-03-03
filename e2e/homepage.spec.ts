@@ -54,6 +54,25 @@ test("can change countries", async ({ page }) => {
   }
 });
 
+test("can find United Kingdom by searching for an alternate name", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.keyboard.type("England");
+
+  await expect(
+    page.getByRole("option", { name: "United Kingdom" }),
+  ).toBeVisible();
+
+  await page.getByRole("option", { name: "United Kingdom" }).click();
+
+  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+    "United Kingdom",
+  );
+});
+
 test.skip("can copy phone numbers using the copy button", async ({
   page,
   context,
