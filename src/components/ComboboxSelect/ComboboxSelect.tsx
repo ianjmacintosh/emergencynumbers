@@ -20,21 +20,17 @@ function ComboboxSelect({
 }) {
   const optionsDataList: OptionsDataList = React.Children.toArray(children)
     .filter(React.isValidElement<OptionElement>)
-    .map(({ props }) => ({
-      value: props.value,
-      label: (props.label ?? String(props.children)) || props.value,
-      keywords: props.keywords,
-    }));
+    .map(({ props }) => ({ ...props }));
 
   const currentLabel = optionsDataList.find(
     ({ value }) => value === currentValue,
-  )?.label;
+  )?.children;
 
   const [searchValue, setSearchValue] = React.useState("");
 
   const matches = matchSorter(optionsDataList, searchValue, {
     baseSort: (a, b) => (a.index < b.index ? -1 : 1),
-    keys: ["value", "label", "keywords"],
+    keys: ["value", "keywords"],
   });
 
   return (
@@ -71,11 +67,20 @@ function ComboboxSelect({
         </div>
         <Ariakit.ComboboxList className={styles.comboboxList}>
           {matches.length > 0 ? (
-            matches.map(({ label, value }) => (
-              <ComboboxSelectOption key={value} value={value}>
-                {label}
-              </ComboboxSelectOption>
-            ))
+            matches
+              .map(({ value, children, ...delegated }) => (
+                <ComboboxSelectOption
+                  key={String(value)}
+                  value={value}
+                  {...delegated}
+                >
+                  {children}
+                </ComboboxSelectOption>
+              ))
+              .sort((a, b) => {
+                if (a.props.disabled === b.props.disabled) return 0;
+                return a.props.disabled ? 1 : -1;
+              })
           ) : (
             <p className={styles.optionsInfo}>
               No countries match "{searchValue}"
@@ -94,7 +99,7 @@ export function ComboboxSelectOption({
 }: React.PropsWithChildren<OptionElement>) {
   return (
     <Ariakit.SelectItem
-      value={value}
+      value={value !== undefined ? String(value) : undefined}
       {...props}
       render={<Ariakit.ComboboxItem className={styles.comboboxItem} />}
     >
@@ -141,15 +146,11 @@ export function ComboboxSelectProviders({
 export default ComboboxSelect;
 
 type OptionElement = {
-  value: string;
-  label?: string;
+  value?: string | number | readonly string[];
   disabled?: boolean;
+  keywords?: string[];
+  children?: React.ReactNode;
   [key: string]: unknown;
 };
 
-type OptionData = {
-  value: string;
-  label: string;
-};
-
-type OptionsDataList = OptionData[];
+type OptionsDataList = OptionElement[];
