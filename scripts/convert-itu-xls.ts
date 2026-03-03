@@ -391,7 +391,7 @@ function convert(rows: RawRow[]): ServicesData {
         name: TYPE_DISPLAY_NAMES[serviceType] || serviceType,
         phoneNumber: phone.number,
         sources: [
-          { name: "ITU-T E.129", fetchedAt, lastModified: row.lastUpdate },
+          { name: "ITU-T E.129", url: "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx", fetchedAt, lastModified: row.lastUpdate },
         ],
       };
 
