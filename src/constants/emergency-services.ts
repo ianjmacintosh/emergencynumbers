@@ -26,6 +26,6 @@ export type Service = {
   sources: Source[];
 };
 
-type RawServices = Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;
-
-export const SERVICES = rawData as unknown as RawServices;
+export const SERVICES = rawData as Partial<
+  Record<keyof typeof COUNTRY_NAMES, Service[]>
+>;
