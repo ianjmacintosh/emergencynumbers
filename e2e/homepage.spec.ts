@@ -248,6 +248,45 @@ test("does not show a banner after the user navigates away from their geolocated
   await expect(page.getByRole("complementary")).not.toBeVisible();
 });
 
+test("Antarctica appears in the dropdown and indicates no information is available", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  await page.getByRole("combobox", { name: "Country" }).click();
+
+  await expect(
+    page.getByRole("option", { name: /Antarctica.*no information available/i }),
+  ).toBeVisible();
+});
+
+test("selecting Antarctica shows the no information message", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.keyboard.type("Antarctica");
+  await page.getByRole("option", { name: /Antarctica/i }).click();
+
+  await expect(
+    page.getByRole("heading", {
+      name: /no emergency services information available/i,
+    }),
+  ).toBeVisible();
+});
+
+test("searching 'no information available' does not surface countries without data", async ({
+  page,
+}) => {
+  await page.goto("/");
+
+  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.keyboard.type("no information available");
+
+  await expect(page.getByText(/no countries match/i)).toBeVisible();
+});
+
 test("can select the default country after loading a different country", async ({
   page,
 }) => {
@@ -269,7 +308,9 @@ test("can select the default country after loading a different country", async (
   // Now try to select the original default country (United States)
   await combobox.click();
   await page.keyboard.type("United States");
-  await page.getByRole("option", { name: "United States" }).click();
+  await page
+    .getByRole("option", { name: "United States", exact: true })
+    .click();
   await page.waitForURL(/\/us\//);
   await page.waitForLoadState("domcontentloaded");
 
