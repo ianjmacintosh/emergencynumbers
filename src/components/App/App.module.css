@@ -1,7 +1,10 @@
 .page-wrapper {
   display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 1rem;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "banner"
+    "main"
+    "footer";
   min-height: 100dvh;
 }
 
@@ -19,10 +22,17 @@ h1 {
   margin-bottom: 1rem;
 }
 
+main {
+  grid-area: main;
+  margin-bottom: 1rem;
+}
+
 .banner {
   border: none;
   border-bottom: solid 1px #ccc;
   background: #fff;
+  grid-area: banner;
+  margin-bottom: 1rem;
 }
 
 .location-swap-menu {
