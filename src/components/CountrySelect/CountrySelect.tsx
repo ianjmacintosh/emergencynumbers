@@ -4,6 +4,7 @@ import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import styles from "./CountrySelect.module.css";
+import { WarningIcon } from "@phosphor-icons/react";
 
 function CountrySelect({
   value,
@@ -42,9 +43,21 @@ function CountrySelect({
             key={countryId}
             value={countryId}
             keywords={countryKeywords}
-            disabled={!hasServices}
           >
-            {countryName} {hasServices ? null : "(no data)"}
+            <span
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              {countryName} {hasServices ? null : "(no information available)"}
+              {hasServices ? null : (
+                <WarningIcon
+                  size={24}
+                  style={{ marginLeft: "auto" }}
+                ></WarningIcon>
+              )}
+            </span>
           </ComboboxSelectOption>
         );
       })}

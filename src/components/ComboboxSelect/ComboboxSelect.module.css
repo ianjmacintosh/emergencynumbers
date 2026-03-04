@@ -81,7 +81,3 @@
   background: #333;
   color: #fefefe;
 }
-
-[aria-disabled] {
-  color: #ccc;
-}

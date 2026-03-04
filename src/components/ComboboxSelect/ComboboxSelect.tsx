@@ -67,20 +67,15 @@ function ComboboxSelect({
         </div>
         <Ariakit.ComboboxList className={styles.comboboxList}>
           {matches.length > 0 ? (
-            matches
-              .map(({ value, children, ...delegated }) => (
-                <ComboboxSelectOption
-                  key={String(value)}
-                  value={value}
-                  {...delegated}
-                >
-                  {children}
-                </ComboboxSelectOption>
-              ))
-              .sort((a, b) => {
-                if (a.props.disabled === b.props.disabled) return 0;
-                return a.props.disabled ? 1 : -1;
-              })
+            matches.map(({ value, children, ...delegated }) => (
+              <ComboboxSelectOption
+                key={String(value)}
+                value={value}
+                {...delegated}
+              >
+                {children}
+              </ComboboxSelectOption>
+            ))
           ) : (
             <p className={styles.optionsInfo}>
               No countries match "{searchValue}"
