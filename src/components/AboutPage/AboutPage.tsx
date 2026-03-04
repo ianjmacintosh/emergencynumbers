@@ -60,19 +60,15 @@ function AboutPage() {
           >
             List of emergency telephone numbers
           </TextLink>{" "}
-          article because unlike the ITU-T or the UK's FCDO office, no
-          accountable body stands behind that data. For example, that Wikipedia
-          article shows two numbers for North Korea: one from a US State Dept
-          document that was apparently last modified in July 2008, and another
-          phone number that's been inferred from a{" "}
+          article because I don't trust it. As an example, a contributor
+          inferred the North Korean fire service phone number from a{" "}
           <TextLink
             href="https://www.fire-engine-photos.com/picture/number39632.asp?c=ok"
             target="_blank"
           >
             photo of a supposed North Korean fire truck
           </TextLink>{" "}
-          with "8119" painted on the side of it. For life and death matters, I'd
-          rather not spend time on that kind of thing.
+          with "8119" painted on the side of it.
         </p>
         <p>
           Anyway, although these phone numbers are accurate, there may be even
@@ -90,17 +86,25 @@ function AboutPage() {
           >
             ianjmacintosh/emergencynumbers
           </TextLink>
-          , but the phone number data is intellectual property of ITU-T, and
-          commercial use would require their explicit permission. Their{" "}
+          , but some phone number data is intellectual property of ITU-T, and
+          commercial use would require their explicit permission. The ITU-T's{" "}
           <TextLink
             href="https://www.itu.int/en/about/Pages/terms-of-use.aspx"
             target="_blank"
           >
             terms of use
           </TextLink>{" "}
-          grant permission to download, copy, and use content for personal,
-          educational, and non-commercial use so long as you acknowledge the
-          source and maintain all copyright and other proprietary notices.
+          grant permission to use content for personal, educational, and
+          non-commercial use so long as you acknowledge the source and maintain
+          all copyright and other proprietary notices. Data sourced from GOV.UK
+          is licensed under the{" "}
+          <TextLink
+            href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+            target="_blank"
+          >
+            Open Government Licence
+          </TextLink>{" "}
+          which permits use with attribution.
         </p>
         <h2>So what happened with your relative?</h2>
         <p>
@@ -108,7 +112,7 @@ function AboutPage() {
           doctor and volunteers for EMT shifts monthly. She arrived at our
           relative's home in 15 minutes and provided life-saving treatment for
           what turned out to be sepsis -- typically fatal if left to run its
-          course! Calling for help saved a life.
+          course. Calling for help saved a life.
         </p>
       </main>
       <Footer />
