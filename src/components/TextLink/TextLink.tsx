@@ -25,14 +25,15 @@ function TextLink({
       aria-current={alreadyOnLinkedPage}
     >
       {alreadyOnLinkedPage && <VisuallyHidden>Current page: </VisuallyHidden>}
-      <span>{children}</span>
+      <span className={styles.linkText}>{children}</span>
       {opensNewWindow && (
-        <>
+        <span style={{ whiteSpace: "nowrap" }}>
+          &nbsp;
           <ArrowSquareOutIcon
             className={styles.popoutIcon}
             alt="(opens in a new window)"
           />
-        </>
+        </span>
       )}
     </Tag>
   );

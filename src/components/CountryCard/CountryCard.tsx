@@ -1,9 +1,11 @@
+import { COUNTRY_NAMES } from "../../constants";
 import {
   SERVICES,
   type Service,
   type ServiceType,
 } from "../../constants/emergency-services";
 import ServiceCard from "../ServiceCard";
+import TextLink from "../TextLink";
 
 export type ServiceData = {
   phoneNumber: string;
@@ -15,8 +17,44 @@ export type ServiceData = {
 
 import styles from "./CountryCard.module.css";
 
-function CountryCard({ id }: { id: keyof typeof SERVICES }) {
-  const serviceCards = getServiceCardData(SERVICES[id] ?? []);
+function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
+  const countryName = COUNTRY_NAMES[id];
+  const hasServices = id in SERVICES;
+
+  if (!hasServices) {
+    return (
+      <article className={styles.unknownServices}>
+        <h3>No Emergency Services Information Available</h3>
+        <p>This site does not have information about {countryName}.</p>
+        <p>
+          You may find phone numbers for emergency services in {countryName} at
+          GOV.UK's{" "}
+          <TextLink
+            href="https://www.gov.uk/foreign-travel-advice"
+            target="_blank"
+          >
+            Foreign travel advice
+          </TextLink>{" "}
+          site.
+        </p>
+        <p>
+          You could also check Wikipedia's{" "}
+          <TextLink
+            href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers"
+            target="_blank"
+          >
+            List of emergency telephone numbers
+          </TextLink>{" "}
+          article, but its contributors may have provided inaccurate
+          information.
+        </p>
+      </article>
+    );
+  }
+
+  const serviceCards = getServiceCardData(
+    SERVICES[id as keyof typeof SERVICES]!,
+  );
 
   return (
     <ul className={styles.services} role="directory">

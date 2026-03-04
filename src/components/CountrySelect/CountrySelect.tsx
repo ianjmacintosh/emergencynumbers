@@ -4,6 +4,7 @@ import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import styles from "./CountrySelect.module.css";
+import { WarningIcon } from "@phosphor-icons/react";
 
 function CountrySelect({
   value,
@@ -28,15 +29,40 @@ function CountrySelect({
       }
     >
       {getCountryIds()
-        .filter((country) => country in SERVICES)
+        .sort((firstCountryId, secondCountryId) => {
+          const firstCountryName = COUNTRY_NAMES[firstCountryId];
+          const secondCountryName = COUNTRY_NAMES[secondCountryId];
+          return firstCountryName > secondCountryName ? 1 : -1;
+        })
         .map((countryId) => {
+          const hasServices = countryId in SERVICES;
+          const countryName = COUNTRY_NAMES[countryId];
+          const countryKeywords = [countryName];
+
+          if (countryId in COUNTRY_ALT_NAMES)
+            countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
           return (
             <ComboboxSelectOption
               key={countryId}
               value={countryId}
-              label={COUNTRY_NAMES[countryId] || "Unknown"}
-              keywords={COUNTRY_ALT_NAMES[countryId]}
-            />
+              keywords={countryKeywords}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {countryName}{" "}
+                {hasServices ? null : "(no information available)"}
+                {hasServices ? null : (
+                  <WarningIcon
+                    size={24}
+                    style={{ marginLeft: "auto" }}
+                  ></WarningIcon>
+                )}
+              </span>
+            </ComboboxSelectOption>
           );
         })}
     </ComboboxSelect>
