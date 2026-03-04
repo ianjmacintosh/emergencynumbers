@@ -53,7 +53,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   }
 
   const serviceCards = getServiceCardData(
-    SERVICES[id as keyof typeof SERVICES],
+    SERVICES[id as keyof typeof SERVICES]!,
   );
 
   return (
