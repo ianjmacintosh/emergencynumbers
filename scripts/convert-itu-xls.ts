@@ -1,20 +1,56 @@
 /**
- * Converts an ITU-T XLS report (HTML table format) into a TypeScript file
- * exporting emergency service data keyed by ISO 3166-1 alpha-2 country codes.
+ * Converts an ITU-T XLS report (HTML table format) into the shared
+ * emergency services JSON data file.
  *
  * Usage:
- *   npx tsx scripts/convert-itu-xls.ts [path-to-xls]
+ *   npx tsx scripts/convert-itu-xls.ts <path-to-xls> [--data-file <path>]
  *
- * Output goes to stdout. Redirect to a file:
- *   npx tsx scripts/convert-itu-xls.ts src/assets/ITU-T_Report_2026-02-13-2200.xls \
- *     > src/constants/emergency-services.ts
+ * Merges into (default): src/data/emergency-services.json
+ * Then run: npx tsx scripts/build-services.ts
  */
 
 import * as fs from "fs";
 import * as path from "path";
+import {
+  DEFAULT_DATA_FILE,
+  mergeData,
+  readData,
+  writeData,
+  type ServiceEntry,
+  type ServiceType,
+  type ServicesData,
+} from "./lib/services-data.js";
 
-// --- Country name mapping ---
-// Maps ITU-T XLS country names to ISO 3166-1 alpha-2 codes.
+// ---------------------------------------------------------------------------
+// CLI args
+// ---------------------------------------------------------------------------
+
+const args = process.argv.slice(2);
+const dataFileFlagIdx = args.indexOf("--data-file");
+const dataFileFlagValue =
+  dataFileFlagIdx !== -1 ? args[dataFileFlagIdx + 1] : undefined;
+const dataFile = dataFileFlagValue ?? DEFAULT_DATA_FILE;
+const inputPath = args.find(
+  (a) => !a.startsWith("--") && a !== dataFileFlagValue,
+);
+
+if (!inputPath || !fs.existsSync(inputPath)) {
+  console.error(
+    `Usage: npx tsx scripts/convert-itu-xls.ts <path-to-xls> [--data-file <path>]`,
+  );
+  process.exit(1);
+}
+
+// Extract fetchedAt from filename, e.g. ITU-T_Report_2026-02-13-2200.xls → 2026-02-13
+const dateMatch = path.basename(inputPath).match(/(\d{4}-\d{2}-\d{2})/);
+const fetchedAt = dateMatch
+  ? dateMatch[1]
+  : new Date().toISOString().split("T")[0];
+
+// ---------------------------------------------------------------------------
+// Country name → ISO mapping
+// ---------------------------------------------------------------------------
+
 const COUNTRY_NAME_TO_ISO: Record<string, string> = {
   Afghanistan: "AF",
   Albania: "AL",
@@ -59,7 +95,7 @@ const COUNTRY_NAME_TO_ISO: Record<string, string> = {
   Cuba: "CU",
   Cyprus: "CY",
   "Czech Rep.": "CZ",
-  "C\u00f4te d'Ivoire": "CI",
+  "Côte d'Ivoire": "CI",
   "Dem. Rep. of the Congo": "CD",
   Denmark: "DK",
   Djibouti: "DJ",
@@ -181,7 +217,7 @@ const COUNTRY_NAME_TO_ISO: Record<string, string> = {
   Tonga: "TO",
   "Trinidad and Tobago": "TT",
   Tunisia: "TN",
-  "T\u00fcrkiye": "TR",
+  Türkiye: "TR",
   Uganda: "UG",
   Ukraine: "UA",
   "United Arab Emirates": "AE",
@@ -195,11 +231,14 @@ const COUNTRY_NAME_TO_ISO: Record<string, string> = {
   Zimbabwe: "ZW",
 };
 
-// --- Service category mapping ---
-const CATEGORY_MAP: Record<string, string> = {
+// ---------------------------------------------------------------------------
+// Service category mapping
+// ---------------------------------------------------------------------------
+
+const CATEGORY_MAP: Record<string, ServiceType> = {
   Emergency: "Dispatch",
-  Medical: "Ambulance",
-  Fire: "Fire Department",
+  Medical: "Medical",
+  Fire: "Fire",
   Police: "Police",
   Traffic: "Traffic",
   "Child help-line": "Child Helpline",
@@ -207,11 +246,10 @@ const CATEGORY_MAP: Record<string, string> = {
   Other: "Other",
 };
 
-// Friendly display names for each service type
 const TYPE_DISPLAY_NAMES: Record<string, string> = {
   Dispatch: "Emergency Services",
-  Ambulance: "Ambulance",
-  "Fire Department": "Fire Department",
+  Medical: "Medical",
+  Fire: "Fire",
   Police: "Police",
   Traffic: "Traffic",
   "Child Helpline": "Child Helpline",
@@ -219,28 +257,22 @@ const TYPE_DISPLAY_NAMES: Record<string, string> = {
   Other: "Other",
 };
 
+// ---------------------------------------------------------------------------
+// XLS parsing
+// ---------------------------------------------------------------------------
+
 type RawRow = {
   country: string;
   number: string;
   category: string;
   additionalInfo: string;
-  assignedOrAllocated: string;
-  note: string;
   lastUpdate: string;
-};
-
-type ServiceEntry = {
-  type: string;
-  name: string;
-  description?: string;
-  phoneNumber: string;
 };
 
 function parseXls(filePath: string): RawRow[] {
   const content = fs.readFileSync(filePath, "latin1");
   const rows: RawRow[] = [];
 
-  // Match each row by finding all span groups with incrementing indices
   for (let i = 0; i < 2000; i++) {
     const countryMatch = content.match(new RegExp(`lblCountry_${i}">([^<]*)`));
     if (!countryMatch) break;
@@ -252,10 +284,6 @@ function parseXls(filePath: string): RawRow[] {
     const infoMatch = content.match(
       new RegExp(`lblservice_specific_text_${i}">([^<]*)`),
     );
-    const assignedMatch = content.match(
-      new RegExp(`lblassigned_or_allocated_to_${i}">([^<]*)`),
-    );
-    const noteMatch = content.match(new RegExp(`lblnote_${i}">([^<]*)`));
     const updateMatch = content.match(
       new RegExp(`lbllast_update_${i}">([^<]*)`),
     );
@@ -265,8 +293,6 @@ function parseXls(filePath: string): RawRow[] {
       number: numberMatch?.[1]?.trim() ?? "",
       category: categoryMatch?.[1]?.trim() ?? "",
       additionalInfo: infoMatch?.[1]?.trim() ?? "-",
-      assignedOrAllocated: assignedMatch?.[1]?.trim() ?? "-",
-      note: noteMatch?.[1]?.trim() ?? "-",
       lastUpdate: updateMatch?.[1]?.trim() ?? "",
     });
   }
@@ -279,21 +305,17 @@ function splitPhoneNumbers(
 ): Array<{ number: string; note?: string }> {
   if (!raw || raw === "-") return [];
 
-  // Split on semicolons
   const parts = raw
     .split(";")
     .map((p) => p.trim())
     .filter(Boolean);
 
   return parts.map((part) => {
-    // Check for parenthetical note, e.g. "194 (Nawerewere Area)"
-    // or "103 (mobile)" or "(land line) 101 (mobile)"
     const parenMatch = part.match(/^(\d[\d\s*]*?)\s*\(([^)]+)\)\s*$/);
     if (parenMatch) {
       return { number: parenMatch[1].trim(), note: parenMatch[2].trim() };
     }
 
-    // Check for pattern like "(land line) 103 (mobile)"
     const prefixParenMatch = part.match(
       /^\(([^)]+)\)\s*(\d[\d\s*]*?)(?:\s*\(([^)]+)\))?\s*$/,
     );
@@ -304,27 +326,26 @@ function splitPhoneNumbers(
       return { number: prefixParenMatch[2].trim(), note: notes || undefined };
     }
 
-    // Check for trailing notes like "192 (as of May13 2012)"
     const trailingNote = part.match(/^(\d[\d\s*]*?)\s*\((.+)\)\s*$/);
     if (trailingNote) {
       return { number: trailingNote[1].trim(), note: trailingNote[2].trim() };
     }
 
-    // Check for non-numeric junk like "all in process of assignment"
-    // Keep entries that start with a digit or *
     if (!/^[\d*]/.test(part)) return { number: "", note: part };
-
     return { number: part.trim() };
   });
 }
 
-function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
-  const result: Record<string, ServiceEntry[]> = {};
+// ---------------------------------------------------------------------------
+// Convert rows → ServicesData
+// ---------------------------------------------------------------------------
+
+function convert(rows: RawRow[]): ServicesData {
+  const result: ServicesData = {};
   const seen = new Set<string>();
   let warnings = 0;
 
   for (const row of rows) {
-    // Map country name to ISO code
     const isoCode = COUNTRY_NAME_TO_ISO[row.country];
     if (!isoCode) {
       console.error(`WARNING: Unknown country "${row.country}", skipping`);
@@ -332,7 +353,6 @@ function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
       continue;
     }
 
-    // Map service category
     const serviceType = CATEGORY_MAP[row.category];
     if (!serviceType) {
       console.error(
@@ -342,7 +362,6 @@ function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
       continue;
     }
 
-    // Split phone numbers
     const phones = splitPhoneNumbers(row.number);
     if (phones.length === 0) {
       console.error(
@@ -352,121 +371,61 @@ function convert(rows: RawRow[]): Record<string, ServiceEntry[]> {
       continue;
     }
 
-    if (!result[isoCode]) {
-      result[isoCode] = [];
-    }
+    if (!result[isoCode]) result[isoCode] = [];
 
     for (const phone of phones) {
       if (!phone.number) continue;
 
-      // Deduplicate by (country, type, phoneNumber)
       const dedupeKey = `${isoCode}:${serviceType}:${phone.number}`;
       if (seen.has(dedupeKey)) continue;
       seen.add(dedupeKey);
 
-      // Build description from additional info and phone note
       const descParts: string[] = [];
       if (row.additionalInfo && row.additionalInfo !== "-") {
         descParts.push(row.additionalInfo);
       }
-      if (phone.note) {
-        descParts.push(phone.note);
-      }
-      const description = descParts.join(" - ") || undefined;
+      if (phone.note) descParts.push(phone.note);
 
       const entry: ServiceEntry = {
         type: serviceType,
         name: TYPE_DISPLAY_NAMES[serviceType] || serviceType,
         phoneNumber: phone.number,
+        sources: [
+          {
+            name: "ITU-T E.129",
+            url: "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+            fetchedAt,
+            lastModified: row.lastUpdate,
+          },
+        ],
       };
 
-      if (description) {
-        entry.description = description;
-      }
+      if (descParts.length > 0) entry.description = descParts.join(" - ");
 
       result[isoCode].push(entry);
     }
   }
 
-  if (warnings > 0) {
-    console.error(`\n${warnings} warning(s) total.`);
-  }
-
+  if (warnings > 0) console.error(`\n${warnings} warning(s) total.`);
   return result;
 }
 
-function generateTypeScript(data: Record<string, ServiceEntry[]>): string {
-  const lines: string[] = [];
-
-  lines.push(`import type { COUNTRY_NAMES } from "./index";`);
-  lines.push(``);
-  lines.push(`export type Service = {`);
-  lines.push(`  type:`);
-  lines.push(`    | "Dispatch"`);
-  lines.push(`    | "Ambulance"`);
-  lines.push(`    | "Fire Department"`);
-  lines.push(`    | "Police"`);
-  lines.push(`    | "Traffic"`);
-  lines.push(`    | "Child Helpline"`);
-  lines.push(`    | "Hazards"`);
-  lines.push(`    | "Other";`);
-  lines.push(`  name: string;`);
-  lines.push(`  description?: string;`);
-  lines.push(`  phoneNumber: string;`);
-  lines.push(`};`);
-  lines.push(``);
-  lines.push(`export const SERVICES = {`);
-
-  // Sort country codes alphabetically
-  const sortedCodes = Object.keys(data).sort();
-
-  for (const code of sortedCodes) {
-    const services = data[code];
-    lines.push(`  ${code}: [`);
-
-    for (const svc of services) {
-      const descPart = svc.description
-        ? `, description: ${JSON.stringify(svc.description)}`
-        : "";
-      lines.push(
-        `    { type: ${JSON.stringify(svc.type)}, name: ${JSON.stringify(svc.name)}${descPart}, phoneNumber: ${JSON.stringify(svc.phoneNumber)} },`,
-      );
-    }
-
-    lines.push(`  ],`);
-  }
-
-  lines.push(
-    `} satisfies Partial<Record<keyof typeof COUNTRY_NAMES, Service[]>>;`,
-  );
-  lines.push(``);
-
-  return lines.join("\n");
-}
-
-// --- Main ---
-const inputPath =
-  process.argv[2] ||
-  path.join(__dirname, "../src/assets/ITU-T_Report_2026-02-13-2200.xls");
-
-if (!fs.existsSync(inputPath)) {
-  console.error(`File not found: ${inputPath}`);
-  process.exit(1);
-}
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
 
 console.error(`Parsing ${inputPath}...`);
 const rows = parseXls(inputPath);
 console.error(`Parsed ${rows.length} rows.`);
 
-const data = convert(rows);
-const countryCount = Object.keys(data).length;
-const entryCount = Object.values(data).reduce(
-  (sum, arr) => sum + arr.length,
-  0,
-);
+const incoming = convert(rows);
+const existing = readData(dataFile);
+const merged = mergeData(existing, incoming);
+
+const countryCount = Object.keys(merged).length;
+const entryCount = Object.values(merged).reduce((s, a) => s + a.length, 0);
 console.error(
-  `Generated ${entryCount} service entries across ${countryCount} countries.`,
+  `Merged: ${entryCount} entries across ${countryCount} countries → ${dataFile}`,
 );
 
-const output = generateTypeScript(data);
-process.stdout.write(output);
+writeData(dataFile, merged);
