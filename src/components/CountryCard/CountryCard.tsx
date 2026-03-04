@@ -25,7 +25,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
     return (
       <article className={styles.unknownServices}>
         <h3>No Emergency Services Information Available</h3>
-        <p>This site does not have information about {countryName}.</p>
+        <p>This directory does not have information about {countryName}.</p>
         <p>
           You may find phone numbers for emergency services in {countryName} at
           GOV.UK's{" "}
