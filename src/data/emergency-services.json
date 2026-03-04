@@ -831,6 +831,47 @@
       ]
     }
   ],
+  "AS": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "AT": [
     {
       "type": "Dispatch",
@@ -7145,6 +7186,47 @@
       ]
     }
   ],
+  "GU": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "GW": [
     {
       "type": "Medical",
@@ -13308,6 +13390,47 @@
       "description": "Ambulance"
     }
   ],
+  "PR": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "PT": [
     {
       "type": "Medical",
@@ -17294,6 +17417,47 @@
           "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
+        }
+      ]
+    }
+  ],
+  "VI": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/usa/getting-help",
+          "fetchedAt": "2026-03-04",
+          "lastModified": null
         }
       ]
     }
