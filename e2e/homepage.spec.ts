@@ -276,6 +276,24 @@ test("selecting Antarctica shows the no information message", async ({
   ).toBeVisible();
 });
 
+test("country dropdown lists Afghanistan before United Arab Emirates", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page.getByRole("combobox", { name: "Country" }).click();
+
+  const allTexts = await page.getByRole("option").allTextContents();
+
+  const afghIndex = allTexts.findIndex((text) => text.includes("Afghanistan"));
+  const uaeIndex = allTexts.findIndex((text) =>
+    text.includes("United Arab Emirates"),
+  );
+
+  expect(afghIndex).toBeGreaterThanOrEqual(0);
+  expect(uaeIndex).toBeGreaterThanOrEqual(0);
+  expect(afghIndex).toBeLessThan(uaeIndex);
+});
+
 test("searching 'no information available' does not surface countries without data", async ({
   page,
 }) => {
