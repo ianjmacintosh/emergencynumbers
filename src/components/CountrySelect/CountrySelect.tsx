@@ -28,39 +28,43 @@ function CountrySelect({
         </>
       }
     >
-      {/* <ComboboxSelectOption key="1" value="foo" keywords="foo">
-        Foo (no data)
-      </ComboboxSelectOption> */}
-      {getCountryIds().map((countryId) => {
-        const hasServices = countryId in SERVICES;
-        const countryName = COUNTRY_NAMES[countryId];
-        const countryKeywords = [countryName];
+      {getCountryIds()
+        .sort((firstCountryId, secondCountryId) => {
+          const firstCountryName = COUNTRY_NAMES[firstCountryId];
+          const secondCountryName = COUNTRY_NAMES[secondCountryId];
+          return firstCountryName > secondCountryName ? 1 : -1;
+        })
+        .map((countryId) => {
+          const hasServices = countryId in SERVICES;
+          const countryName = COUNTRY_NAMES[countryId];
+          const countryKeywords = [countryName];
 
-        if (countryId in COUNTRY_ALT_NAMES)
-          countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
-        return (
-          <ComboboxSelectOption
-            key={countryId}
-            value={countryId}
-            keywords={countryKeywords}
-          >
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-              }}
+          if (countryId in COUNTRY_ALT_NAMES)
+            countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
+          return (
+            <ComboboxSelectOption
+              key={countryId}
+              value={countryId}
+              keywords={countryKeywords}
             >
-              {countryName} {hasServices ? null : "(no information available)"}
-              {hasServices ? null : (
-                <WarningIcon
-                  size={24}
-                  style={{ marginLeft: "auto" }}
-                ></WarningIcon>
-              )}
-            </span>
-          </ComboboxSelectOption>
-        );
-      })}
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                {countryName}{" "}
+                {hasServices ? null : "(no information available)"}
+                {hasServices ? null : (
+                  <WarningIcon
+                    size={24}
+                    style={{ marginLeft: "auto" }}
+                  ></WarningIcon>
+                )}
+              </span>
+            </ComboboxSelectOption>
+          );
+        })}
     </ComboboxSelect>
   );
 }
