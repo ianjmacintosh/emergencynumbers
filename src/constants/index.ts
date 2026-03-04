@@ -2,7 +2,7 @@ export const DEFAULT_COUNTRY = "US";
 
 export const COUNTRY_NAMES = {
   AF: "Afghanistan",
-  AX: "Åland Islands",
+  AX: "Aland Islands",
   AL: "Albania",
   DZ: "Algeria",
   AS: "American Samoa",
@@ -258,7 +258,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   Record<keyof typeof COUNTRY_NAMES, string[]>
 > = {
   AE: ["UAE", "Emirates"],
-  AX: ["Aland Islands"],
+  AX: ["Åland Islands"],
   BA: ["Bosnia"],
   BF: ["Upper Volta"],
   BL: ["St Barts", "St. Barts", "Saint Barthelemy"],
