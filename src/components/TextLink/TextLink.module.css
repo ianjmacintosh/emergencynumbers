@@ -1,11 +1,14 @@
-.text-link,
-.text-link span {
-  transition: all 110ms;
+a {
+  text-decoration: none;
 }
-
-a.text-link:hover {
+a .link-text {
+  text-decoration: underline;
+}
+a:hover .link-text {
   color: black;
   background-color: yellow;
+  text-decoration: underline;
+  transition: all 110ms;
 }
 
 .text-link svg {
