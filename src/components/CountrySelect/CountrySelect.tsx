@@ -58,7 +58,7 @@ function CountrySelect({
                 {hasServices ? null : (
                   <WarningIcon
                     size={24}
-                    style={{ marginLeft: "auto" }}
+                    style={{ marginLeft: "auto", flexShrink: 0 }}
                   ></WarningIcon>
                 )}
               </span>

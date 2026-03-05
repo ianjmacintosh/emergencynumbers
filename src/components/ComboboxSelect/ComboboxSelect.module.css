@@ -62,7 +62,7 @@
 }
 
 .combobox-list {
-  max-height: min(var(--popover-available-height, 300px), 300px);
+  max-height: clamp(3rem, var(--popover-available-height, 300px) - 3rem, 30rem);
   overflow: auto;
   overscroll-behavior: contain;
 }
