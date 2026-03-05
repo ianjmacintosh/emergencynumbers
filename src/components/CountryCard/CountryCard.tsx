@@ -45,8 +45,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
           >
             List of emergency telephone numbers
           </TextLink>{" "}
-          article, but its contributors may have provided inaccurate
-          information.
+          article but it may have inaccurate information.
         </p>
       </article>
     );
