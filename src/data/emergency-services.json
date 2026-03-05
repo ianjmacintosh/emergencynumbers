@@ -448,6 +448,47 @@
       ]
     }
   ],
+  "AI": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/anguilla/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/anguilla/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/anguilla/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
   "AL": [
     {
       "type": "Dispatch",
@@ -2439,6 +2480,47 @@
           "name": "GOV.UK",
           "url": "https://www.gov.uk/foreign-travel-advice/st-martin-and-st-barthelemy/getting-help",
           "fetchedAt": "2026-03-04",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "BM": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bermuda/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bermuda/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/bermuda/getting-help",
+          "fetchedAt": "2026-03-05",
           "lastModified": null
         }
       ]
@@ -18623,6 +18705,377 @@
         }
       ],
       "description": "General Emergency"
+    }
+  ],
+  "FK": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/falkland-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/falkland-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/falkland-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "GI": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/gibraltar/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/gibraltar/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/gibraltar/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "KY": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/cayman-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/cayman-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/cayman-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "MS": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "SH": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Emergency services on St Helena and Ascension"
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Emergency services on St Helena and Ascension"
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Emergency services on St Helena and Ascension"
+    },
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "5000",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Emergency services on Tristan da Cunha"
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "5111",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Emergency services on Tristan da Cunha"
+    }
+  ],
+  "TC": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "VG": [
+    {
+      "type": "Medical",
+      "name": "Medical",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "311",
+      "sources": [
+        {
+          "name": "GOV.UK",
+          "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help",
+          "fetchedAt": "2026-03-05",
+          "lastModified": null
+        }
+      ],
+      "description": "Non-emergency direct police contact"
     }
   ]
 }
