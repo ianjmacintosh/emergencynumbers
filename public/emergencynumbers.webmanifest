@@ -1,0 +1,31 @@
+{
+  "short_name": "Emergency Numbers",
+  "name": "Emergency Numbers",
+  "description": "Phone number directory for emergency medical, police, and fire service in 190+ different international countries and territories",
+  "icons": [
+    {
+      "src": "/lifesaver.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/lifesaver.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/lifesaver.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false,
+  "screenshots": []
+}
