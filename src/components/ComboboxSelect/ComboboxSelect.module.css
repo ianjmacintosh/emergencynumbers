@@ -39,6 +39,7 @@
 }
 
 .combobox-label {
+  display: grid;
   justify-self: start;
   align-content: center;
   justify-items: center;
@@ -71,9 +72,14 @@
 .options-info {
   background: white;
   cursor: default;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-size: 1.4rem;
   line-height: 2rem;
+}
+
+.combobox-item[aria-selected="true"] {
+  background: #333;
+  color: #fefefe;
 }
 
 .combobox-item[data-active-item],
