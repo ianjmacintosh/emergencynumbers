@@ -53,6 +53,11 @@ function CountrySelect({
                   alignItems: "center",
                 }}
               >
+                {value === countryId ? (
+                  <span aria-hidden={true} style={{ marginRight: "0.5rem" }}>
+                    ✓
+                  </span>
+                ) : null}{" "}
                 {countryName}{" "}
                 {hasServices ? null : "(no information available)"}
                 {hasServices ? null : (
