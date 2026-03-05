@@ -29,27 +29,25 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
           This directory does not have information about emergency services for{" "}
           {countryName}.
         </p>
-        <p>
-          Other places you might check:
-          <ul>
-            <li>
-              <TextLink
-                href="https://www.gov.uk/foreign-travel-advice"
-                target="_blank"
-              >
-                GOV.UK Foreign travel advice
-              </TextLink>
-            </li>
-            <li>
-              <TextLink
-                href="https://travel.state.gov/en/international-travel.html"
-                target="_blank"
-              >
-                US Department of State's Bureau of Consular Affairs
-              </TextLink>
-            </li>
-          </ul>
-        </p>
+        <p>Other places you might check:</p>
+        <ul>
+          <li>
+            <TextLink
+              href="https://www.gov.uk/foreign-travel-advice"
+              target="_blank"
+            >
+              GOV.UK Foreign travel advice
+            </TextLink>
+          </li>
+          <li>
+            <TextLink
+              href="https://travel.state.gov/en/international-travel.html"
+              target="_blank"
+            >
+              US Department of State's Bureau of Consular Affairs
+            </TextLink>
+          </li>
+        </ul>
         <p>
           Lastly, you could try Wikipedia's{" "}
           <TextLink
