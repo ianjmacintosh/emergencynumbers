@@ -24,28 +24,41 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   if (!hasServices) {
     return (
       <article className={styles.unknownServices}>
-        <h3>No Emergency Services Information Available</h3>
-        <p>This directory does not have information about {countryName}.</p>
+        <h3>No Information Available</h3>
         <p>
-          You may find phone numbers for emergency services in {countryName} at
-          GOV.UK's{" "}
-          <TextLink
-            href="https://www.gov.uk/foreign-travel-advice"
-            target="_blank"
-          >
-            Foreign travel advice
-          </TextLink>{" "}
-          site.
+          This directory does not have information about emergency services for{" "}
+          {countryName}.
         </p>
         <p>
-          You could also check Wikipedia's{" "}
+          Other places you might check:
+          <ul>
+            <li>
+              <TextLink
+                href="https://www.gov.uk/foreign-travel-advice"
+                target="_blank"
+              >
+                GOV.UK Foreign travel advice
+              </TextLink>
+            </li>
+            <li>
+              <TextLink
+                href="https://travel.state.gov/en/international-travel.html"
+                target="_blank"
+              >
+                US Department of State's Bureau of Consular Affairs
+              </TextLink>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Lastly, you could try Wikipedia's{" "}
           <TextLink
             href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers"
             target="_blank"
           >
             List of emergency telephone numbers
           </TextLink>{" "}
-          article but it may have inaccurate information.
+          article, but be aware it may include inaccurate information.
         </p>
       </article>
     );
