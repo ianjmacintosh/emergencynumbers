@@ -29,10 +29,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
           This directory does not have information about emergency services for{" "}
           {countryName}.
         </p>
-        <p>
-          Online resources that may have information about your specific
-          location:
-        </p>
+        <p>Online resources that may have information about {countryName}:</p>
         <ul>
           <li>
             <TextLink

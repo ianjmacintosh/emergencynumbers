@@ -271,7 +271,7 @@ test("selecting Antarctica shows the no information message", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: /no emergency services information available/i,
+      name: /no information available/i,
     }),
   ).toBeVisible();
 });
