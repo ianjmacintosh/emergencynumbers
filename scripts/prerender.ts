@@ -1,11 +1,20 @@
 // Window mock must precede app imports
-(globalThis as any).window = {
+type WindowMock = {
+  location: { pathname: string };
+  addEventListener: () => void;
+  removeEventListener: () => void;
+  dispatchEvent: () => void;
+};
+type HistoryMock = { pushState: () => void };
+(globalThis as unknown as { window: WindowMock }).window = {
   location: { pathname: "/" },
   addEventListener: () => {},
   removeEventListener: () => {},
   dispatchEvent: () => {},
 };
-(globalThis as any).history = { pushState: () => {} };
+(globalThis as unknown as { history: HistoryMock }).history = {
+  pushState: () => {},
+};
 
 const { renderToStaticMarkup } = await import("react-dom/server");
 const { createElement, StrictMode } = await import("react");
@@ -19,7 +28,8 @@ const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 for (const [code] of Object.entries(COUNTRY_NAMES)) {
   const lc = code.toLowerCase();
-  (globalThis as any).window.location.pathname = `/${lc}/`;
+  (globalThis as unknown as { window: WindowMock }).window.location.pathname =
+    `/${lc}/`;
   const html = renderToStaticMarkup(
     createElement(StrictMode, null, createElement(App)),
   );
