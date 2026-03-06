@@ -43,7 +43,7 @@ export const COUNTRY_NAMES = {
   CC: "Cocos (Keeling) Islands",
   CD: "Congo (DRC)",
   CF: "Central African Republic",
-  CG: "Congo (ROC)",
+  CG: "Congo (Republic)",
   CH: "Switzerland",
   CI: "Ivory Coast",
   CK: "Cook Islands",
@@ -277,6 +277,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   ],
   CF: ["CAR"],
   CG: [
+    "ROC",
     "The Republic of Congo",
     "Republic of Congo",
     "Congo-Brazzaville",
