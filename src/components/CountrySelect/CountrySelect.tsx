@@ -51,14 +51,25 @@ function CountrySelect({
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  gap: "1rem",
                 }}
               >
-                {countryName}{" "}
-                {hasServices ? null : "(no information available)"}
+                <span>
+                  {value === countryId ? (
+                    <span aria-hidden={true} style={{ marginRight: "0.5rem" }}>
+                      ✓
+                    </span>
+                  ) : null}{" "}
+                  {countryName}{" "}
+                  {hasServices ? null : "(no information available)"}
+                </span>
                 {hasServices ? null : (
                   <WarningIcon
                     size={24}
-                    style={{ marginLeft: "auto", flexShrink: 0 }}
+                    style={{
+                      marginLeft: "auto",
+                      flexShrink: 0,
+                    }}
                   ></WarningIcon>
                 )}
               </span>
