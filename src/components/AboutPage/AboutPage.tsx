@@ -6,7 +6,7 @@ import TextLink from "../TextLink";
 function AboutPage() {
   return (
     <div className={styles.pageWrapper}>
-      <main className={styles.contentWrapper} role="main">
+      <main className={styles.contentWrapper}>
         <TextLink href="/">← Back to directory</TextLink>
         <h1>About</h1>
         <p>

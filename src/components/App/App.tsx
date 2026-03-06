@@ -98,7 +98,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
             </ul>
           </Banner>
         )}
-      <main className={styles.contentWrapper} role="main">
+      <main className={styles.contentWrapper}>
         <header>
           <h1>Emergency Service Phone Numbers</h1>
 
