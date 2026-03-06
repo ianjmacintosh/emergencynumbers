@@ -257,7 +257,7 @@ export const COUNTRY_NAMES = {
 export const COUNTRY_ALT_NAMES: Partial<
   Record<keyof typeof COUNTRY_NAMES, string[]>
 > = {
-  AE: ["UAE", "Emirates"],
+  AE: ["UAE", "Dubai", "Emirates"],
   AX: ["Åland Islands"],
   BA: ["Bosnia"],
   BF: ["Upper Volta"],
