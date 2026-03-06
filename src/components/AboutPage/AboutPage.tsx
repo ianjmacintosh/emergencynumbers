@@ -23,9 +23,25 @@ function AboutPage() {
           <em>really</em> need one, so I made this tool to help anyone in a
           similar situation. In a moment of crisis, the last thing I want to be
           doing is messing around on Google trying to find an up-to-date
-          emergency services phone number. I'll bookmark this site to help my
-          future self in case this happens again. Feel free to do the same!
+          emergency services phone number.
         </p>
+        <h2>How do I save this directory for when I actually need it?</h2>
+        <p>
+          You can bookmark this site, or if you're on a mobile device you can
+          add this page to your home screen.
+        </p>
+        <h3>iOS Safari</h3>
+        <ol>
+          <li>Click the three dots on the bottom right</li>
+          <li>Share</li>
+          <li>More...</li>
+          <li>Add to Home Screen</li>
+        </ol>
+        <h3>Android Chrome</h3>
+        <ol>
+          <li>Click the three dots on the top right</li>
+          <li>Add to Home Screen</li>
+        </ol>
         <h2>How many countries are supported?</h2>
         <p>
           {Object.keys(SERVICES).length}. This site provides emergency service
