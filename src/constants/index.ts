@@ -266,6 +266,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   BR: ["Brasil"],
   BS: ["The Bahamas"],
   BY: ["Byelorussia", "Belorussia", "White Russia"],
+  BZ: ["British Honduras"],
   CC: ["Keeling Islands"],
   CD: [
     "DRC",
