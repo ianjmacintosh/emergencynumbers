@@ -12,10 +12,15 @@ import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
 
-function App() {
+function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
     keyof typeof SERVICES
-  >(() => getCountryFromPath(window.location.pathname) ?? DEFAULT_COUNTRY);
+  >(
+    () =>
+      (initialCountry as keyof typeof SERVICES) ??
+      getCountryFromPath(window.location.pathname) ??
+      DEFAULT_COUNTRY,
+  );
 
   const [suppressBanner, setSuppressBanner] = React.useState(false);
   const [userLocation, setUserLocation] = React.useState<
