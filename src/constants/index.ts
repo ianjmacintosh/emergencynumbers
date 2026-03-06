@@ -278,6 +278,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   CF: ["CAR"],
   CG: [
     "ROC",
+    "Congo (ROC)",
     "The Republic of Congo",
     "Republic of Congo",
     "Congo-Brazzaville",
