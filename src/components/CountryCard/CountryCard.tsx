@@ -67,7 +67,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   );
 
   return (
-    <ul className={styles.services} role="directory">
+    <ul className={styles.services}>
       {serviceCards.map((serviceCard) => (
         <ServiceCard
           service={serviceCard}
