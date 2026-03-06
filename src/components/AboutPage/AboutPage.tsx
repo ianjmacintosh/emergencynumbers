@@ -33,14 +33,14 @@ function AboutPage() {
         <h3>iOS Safari</h3>
         <ol>
           <li>Click the three dots on the bottom right</li>
-          <li>Share</li>
-          <li>More...</li>
-          <li>Add to Home Screen</li>
+          <li>Click "Share"</li>
+          <li>Click "View More" (it's on the bottom right)</li>
+          <li>Click "Add to Home Screen"</li>
         </ol>
         <h3>Android Chrome</h3>
         <ol>
           <li>Click the three dots on the top right</li>
-          <li>Add to Home Screen</li>
+          <li>Click "Add to Home Screen"</li>
         </ol>
         <h2>How many countries are supported?</h2>
         <p>
