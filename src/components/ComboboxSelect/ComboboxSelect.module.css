@@ -75,6 +75,7 @@
   padding: 0.5rem 1rem;
   font-size: 1.4rem;
   line-height: 2rem;
+  text-wrap-style: pretty;
 }
 
 .combobox-item[aria-selected="true"] {
