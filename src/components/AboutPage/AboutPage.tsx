@@ -27,8 +27,8 @@ function AboutPage() {
         </p>
         <h2>How do I save this directory for when I actually need it?</h2>
         <p>
-          You can bookmark this site, or if you're on a mobile device you can
-          add this page to your home screen.
+          You can bookmark this site. If you're on a mobile device you can add
+          this page to your home screen by following these instructions:
         </p>
         <h3>iOS Safari</h3>
         <ol>
@@ -64,7 +64,7 @@ function AboutPage() {
             target="_blank"
           >
             GOV.UK's Foreign travel advice
-          </TextLink>
+          </TextLink>{" "}
           to provide information for countries absent from the ITU-T E.129's
           list.
         </p>
@@ -76,22 +76,13 @@ function AboutPage() {
           >
             List of emergency telephone numbers
           </TextLink>{" "}
-          article because I don't trust it. As an example, a contributor
-          inferred the North Korean fire service phone number from a{" "}
-          <TextLink
-            href="https://www.fire-engine-photos.com/picture/number39632.asp?c=ok"
-            target="_blank"
-          >
-            photo of a supposed North Korean fire truck
-          </TextLink>{" "}
-          with "8119" painted on the side of it.
+          article because I don't trust it.
         </p>
         <p>
-          Anyway, although these phone numbers are accurate, there may be even
-          better options for help that aren't listed here. Calling a local
-          number directly is often better than going through a national system,
-          but calling anyone is better than calling no one, especially when
-          minutes count.
+          Keep in mind that there may be even better options for help that
+          aren't listed here. Calling a local number directly is often better
+          than going through a national system, but calling anyone is better
+          than calling no one, especially when minutes count.
         </p>
         <h2>Can I use or modify this tool's source code?</h2>
         <p>
