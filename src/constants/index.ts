@@ -299,7 +299,6 @@ export const COUNTRY_ALT_NAMES: Partial<
   FM: ["Federated States of Micronesia", "FSM"],
   FO: ["Faeroe Islands", "Faeroes"],
   GB: [
-    "United Kingdom",
     "UK",
     "England",
     "Great Britain",
