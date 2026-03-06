@@ -7,6 +7,7 @@ function AboutPage() {
   return (
     <div className={styles.pageWrapper}>
       <main className={styles.contentWrapper} role="main">
+        <TextLink href="/">← Back to directory</TextLink>
         <h1>About</h1>
         <p>
           At about 11:30pm on a random Sunday night, my wife got an unexpected
@@ -27,14 +28,14 @@ function AboutPage() {
         </p>
         <h2>How do I save this directory for when I actually need it?</h2>
         <p>
-          You can bookmark this site. If you're on a mobile device you can add
-          this page to your home screen by following these instructions:
+          Bookmark this site. If you're on a mobile device you can add this page
+          to your home screen by following these instructions:
         </p>
         <h3>iOS Safari</h3>
         <ol>
           <li>Click the three dots on the bottom right</li>
           <li>Click "Share"</li>
-          <li>Click "View More" (it's on the bottom right)</li>
+          <li>Click "View More" (it's the big button on the bottom right)</li>
           <li>Click "Add to Home Screen"</li>
         </ol>
         <h3>Android Chrome</h3>
@@ -121,6 +122,7 @@ function AboutPage() {
           what turned out to be sepsis -- typically fatal if left to run its
           course. Calling for help saved a life.
         </p>
+        <TextLink href="/">← Back to directory</TextLink>
       </main>
       <Footer />
     </div>
