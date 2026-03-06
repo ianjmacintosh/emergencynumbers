@@ -54,7 +54,7 @@ dd:last-child {
   width: 100%;
 }
 
-.icon-button {
+.action-button {
   display: flex;
 }
 
@@ -63,9 +63,4 @@ dd:last-child {
   color: white;
   border-color: seagreen;
   justify-content: center;
-}
-
-h2 .icon-button {
-  font-size: 1rem;
-  font-weight: normal;
 }

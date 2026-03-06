@@ -1,4 +1,4 @@
-.page-wrapper {
+.about-page-wrapper {
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
@@ -9,7 +9,7 @@
   min-height: 100dvh;
 }
 
-.content-wrapper {
+.about-content-wrapper {
   justify-self: center;
   padding: 1rem;
   max-width: 600px;

@@ -4,11 +4,6 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  css: {
-    modules: {
-      localsConvention: "camelCase",
-    },
-  },
   plugins: [react(), cloudflare()],
   environments: {
     client: {

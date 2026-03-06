@@ -3,7 +3,7 @@ import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 import { getCountryFromPath } from "../../utils/url";
 
-import styles from "./App.module.css";
+import "./App.css";
 import CountrySelect from "../CountrySelect";
 import CountryCard from "../CountryCard";
 import Footer from "../Footer";
@@ -63,28 +63,28 @@ function App({ initialCountry }: { initialCountry?: string }) {
       : null;
 
   return (
-    <div className={styles.pageWrapper}>
+    <div className="page-wrapper">
       {userLocation &&
         userLocation in SERVICES &&
         userLocation !== currentCountryId &&
         suppressBanner === false && (
           <Banner>
-            <ul className={styles.locationSwapMenu}>
-              <li className={styles.confirm}>
+            <ul className="location-swap-menu">
+              <li className="confirm">
                 <LinkButton
                   onClick={() => {
                     setSuppressBanner(true);
                     setCurrentCountryId(userLocation);
                   }}
                   hasIcon={true}
-                  className={styles.confirmButton}
+                  className="confirm-button"
                 >
                   {Flag && <Flag height={24} />}
                   {/* <SwapIcon size={24} /> */}
                   Switch to {COUNTRY_NAMES[userLocation]}
                 </LinkButton>
               </li>
-              <li className={styles.dismiss}>
+              <li className="dismiss">
                 <LinkButton
                   hasIcon={true}
                   aria-label="Dismiss"
@@ -98,7 +98,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
             </ul>
           </Banner>
         )}
-      <main className={styles.contentWrapper}>
+      <main className="content-wrapper">
         <header>
           <h1>Emergency Service Phone Numbers</h1>
 
@@ -119,8 +119,8 @@ function App({ initialCountry }: { initialCountry?: string }) {
 
 function Banner({ children }: { children: React.ReactNode }) {
   return (
-    <aside className={styles.banner}>
-      <div className={styles.contentWrapper}>{children}</div>
+    <aside className="banner">
+      <div className="content-wrapper">{children}</div>
     </aside>
   );
 }

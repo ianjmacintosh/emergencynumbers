@@ -1,7 +1,7 @@
-import styles from "./VisuallyHidden.module.css";
+import "./VisuallyHidden.css";
 
 function VisuallyHidden({ children }: { children: React.ReactNode }) {
-  return <span className={styles.visuallyHidden}>{children}</span>;
+  return <span className="visually-hidden">{children}</span>;
 }
 
 export default VisuallyHidden;

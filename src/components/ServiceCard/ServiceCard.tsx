@@ -14,17 +14,17 @@ import type { IconProps } from "@phosphor-icons/react";
 import type { ServiceType } from "../../constants/emergency-services";
 import type { ServiceData } from "../CountryCard";
 
-import styles from "./ServiceCard.module.css";
+import "./ServiceCard.css";
 import LinkButton from "../LinkButton";
 
 function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
   const newMarkup = (
-    <article className={styles.service} aria-label="Emergency Service">
+    <article className="service" aria-label="Emergency Service">
       <h2>
-        <Icon type={type} size={32} weight="fill" className={styles.icon} />
+        <Icon type={type} size={32} weight="fill" />
         {type}
-        <span className={styles.phoneNumber} aria-label="Phone Number">
+        <span className="phone-number" aria-label="Phone Number">
           {phoneNumber}
         </span>
       </h2>
@@ -34,10 +34,10 @@ function ServiceCard({ service }: { service: ServiceData }) {
           <dd>{description}</dd>
         </dl>
       )}
-      <ul className={styles.actions}>
+      <ul className="actions">
         <li>
           <LinkButton
-            className={`${styles.iconButton} ${styles.callButton}`.trim()}
+            className="action-button call-button"
             href={`tel:${phoneNumber}`}
           >
             <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}

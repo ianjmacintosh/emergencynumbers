@@ -1,9 +1,9 @@
-import styles from "./Footer.module.css";
+import "./Footer.css";
 import TextLink from "../TextLink";
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className="footer">
       <nav>
         <TextLink href="/">Home</TextLink> |{" "}
         <TextLink href="/about/">About this project</TextLink>
