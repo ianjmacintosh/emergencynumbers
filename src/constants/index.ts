@@ -288,6 +288,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   CH: ["Schweiz", "Suisse", "Svizzera", "Helvetia", "Swiss Confederation"],
   CI: ["Cote d'Ivoire", "Cote dIvoire", "Côte d'Ivoire"],
   CN: ["PRC", "People's Republic of China"],
+  CO: ["Columbia"],
   CV: ["Cabo Verde"],
   CW: ["Curacao"],
   CZ: ["Czechia"],
