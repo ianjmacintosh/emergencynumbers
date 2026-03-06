@@ -332,7 +332,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   SX: ["St Maarten", "St. Maarten"],
   SZ: ["Swaziland"],
   TH: ["Siam"],
-  TL: ["Timor-Leste"],
+  TL: ["Timor", "Timor-Leste"],
   TR: ["Türkiye", "Turkiye"],
   TW: ["Republic of China", "ROC", "Formosa"],
   US: ["USA", "America", "United States of America"],
