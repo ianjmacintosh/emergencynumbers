@@ -97,7 +97,7 @@ export const COUNTRY_NAMES = {
   GW: "Guinea-Bissau",
   GY: "Guyana",
   HK: "Hong Kong",
-  HM: "Heard Island and McDonald Mcdonald Islands",
+  HM: "Heard Island and McDonald Islands",
   HN: "Honduras",
   HR: "Croatia",
   HT: "Haiti",
