@@ -318,6 +318,7 @@ export const COUNTRY_ALT_NAMES: Partial<
   MO: ["Macau"],
   NA: ["South West Africa"],
   NL: ["Holland"],
+  NP: ["Kathmandu"],
   NZ: ["Aotearoa"],
   PF: ["Tahiti"],
   PG: ["PNG"],
