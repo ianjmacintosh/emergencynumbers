@@ -14,10 +14,10 @@ import { XIcon } from "@phosphor-icons/react";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
-    keyof typeof SERVICES
+    keyof typeof COUNTRY_NAMES
   >(
     () =>
-      (initialCountry as keyof typeof SERVICES) ??
+      (initialCountry as keyof typeof COUNTRY_NAMES) ??
       getCountryFromPath(window.location.pathname) ??
       DEFAULT_COUNTRY,
   );
