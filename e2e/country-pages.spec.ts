@@ -64,6 +64,17 @@ test("navigating to /br/ shows Brazil emergency numbers", async () => {
   }
 });
 
+test("navigating to /aq/ shows Antarctica with no information message", async () => {
+  await page.goto("/aq/");
+
+  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+    COUNTRY_NAMES["AQ"],
+  );
+  await expect(
+    page.getByRole("heading", { name: /no information available/i }),
+  ).toBeVisible();
+});
+
 test("navigating to an unknown country code falls back to default", async () => {
   await page.goto("/xx/");
 
