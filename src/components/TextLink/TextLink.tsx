@@ -21,9 +21,7 @@ function TextLink({
     <Tag
       href={href}
       {...delegated}
-      className={["text-link", alreadyOnLinkedPage && "current"]
-        .filter(Boolean)
-        .join(" ")}
+      className={`text-link ${alreadyOnLinkedPage ? "current" : null}`.trim()}
       aria-current={alreadyOnLinkedPage}
     >
       {alreadyOnLinkedPage && <VisuallyHidden>Current page: </VisuallyHidden>}
