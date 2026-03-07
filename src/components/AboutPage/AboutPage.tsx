@@ -1,12 +1,11 @@
 import { SERVICES } from "../../constants/emergency-services";
-import "./AboutPage.css";
 import Footer from "../Footer";
 import TextLink from "../TextLink";
 
 function AboutPage() {
   return (
-    <div className="about-page-wrapper">
-      <main className="about-content-wrapper">
+    <div className="page-wrapper">
+      <main className="content-wrapper">
         <TextLink href="/">← Back to directory</TextLink>
         <h1>About</h1>
         <p>
