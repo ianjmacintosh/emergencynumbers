@@ -37,7 +37,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <ul className="actions">
         <li>
           <LinkButton
-            className="action-button call-button"
+            className="icon-button call-button"
             href={`tel:${phoneNumber}`}
           >
             <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}

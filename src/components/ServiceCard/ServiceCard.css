@@ -50,12 +50,8 @@ dd:last-child {
   gap: 1rem;
 }
 
-.actions button {
+.actions .button {
   width: 100%;
-}
-
-.action-button {
-  display: flex;
 }
 
 .actions .call-button {

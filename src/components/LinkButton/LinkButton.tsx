@@ -29,9 +29,7 @@ function LinkButton({
   return (
     <Tag
       href={href}
-      className={["button", hasIcon && "icon-button", className]
-        .filter(Boolean)
-        .join(" ")}
+      className={`button ${hasIcon ? "icon-button" : ""} ${className}`.trim()}
       {...(delegated as DelegatedProps)}
     >
       {children}
