@@ -1,23 +1,3 @@
-.page-wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "banner"
-    "main"
-    "footer";
-  min-height: 100dvh;
-}
-
-.content-wrapper {
-  display: flex;
-  justify-self: center;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
-  width: 100%;
-  max-width: 600px;
-}
-
 h1 {
   margin-bottom: 1rem;
 }

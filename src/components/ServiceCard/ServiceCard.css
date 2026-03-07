@@ -50,12 +50,8 @@ dd:last-child {
   gap: 1rem;
 }
 
-.actions button {
+.actions .button {
   width: 100%;
-}
-
-.icon-button {
-  display: flex;
 }
 
 .actions .call-button {
@@ -63,9 +59,4 @@ dd:last-child {
   color: white;
   border-color: seagreen;
   justify-content: center;
-}
-
-h2 .icon-button {
-  font-size: 1rem;
-  font-weight: normal;
 }

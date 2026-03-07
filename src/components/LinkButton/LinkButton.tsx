@@ -1,6 +1,6 @@
 import type React from "react";
 
-import styles from "./LinkButton.module.css";
+import "./LinkButton.css";
 
 // Intersection of <a> and <button> props
 type DelegatedProps = React.ComponentPropsWithoutRef<"a"> &
@@ -29,7 +29,7 @@ function LinkButton({
   return (
     <Tag
       href={href}
-      className={`${styles.button} ${hasIcon ? styles.iconButton : null} ${className}`}
+      className={`button ${hasIcon ? "icon-button" : ""} ${className}`.trim()}
       {...(delegated as DelegatedProps)}
     >
       {children}

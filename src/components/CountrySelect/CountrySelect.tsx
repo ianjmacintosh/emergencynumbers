@@ -3,7 +3,7 @@ import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
-import styles from "./CountrySelect.module.css";
+import "./CountrySelect.css";
 import { WarningIcon } from "@phosphor-icons/react";
 
 function CountrySelect({
@@ -21,8 +21,8 @@ function CountrySelect({
       comboboxLabel="Search for Country"
       selectButtonContent={
         <>
-          <span className={styles.countryBadge}>
-            {Flag && <Flag className={styles.flag} />}
+          <span className="country-badge">
+            {Flag && <Flag className="flag" />}
             <span>{COUNTRY_NAMES[value as keyof typeof SERVICES]}</span>
           </span>
         </>

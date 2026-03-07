@@ -15,7 +15,7 @@ export type ServiceData = {
   services: Service[];
 };
 
-import styles from "./CountryCard.module.css";
+import "./CountryCard.css";
 
 function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   const countryName = COUNTRY_NAMES[id];
@@ -23,7 +23,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
 
   if (!hasServices) {
     return (
-      <article className={styles.unknownServices}>
+      <article className="unknown-services">
         <h3>No Information Available</h3>
         <p>
           This directory does not have information about emergency services for{" "}
@@ -67,7 +67,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   );
 
   return (
-    <ul className={styles.services} role="directory">
+    <ul className="services">
       {serviceCards.map((serviceCard) => (
         <ServiceCard
           service={serviceCard}

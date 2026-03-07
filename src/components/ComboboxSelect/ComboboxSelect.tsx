@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { matchSorter } from "match-sorter";
 import React from "react";
 
-import styles from "./ComboboxSelect.module.css";
+import "./ComboboxSelect.css";
 
 function ComboboxSelect({
   value: currentValue,
@@ -41,23 +41,16 @@ function ComboboxSelect({
     >
       <Ariakit.Select
         value={currentValue}
-        className={styles.selectButton}
+        className="select-button"
         aria-label="Country"
       >
         {selectButtonContent || currentLabel}
         <Ariakit.SelectArrow />
       </Ariakit.Select>
-      <Ariakit.SelectPopover
-        sameWidth={true}
-        className={styles.comboboxPopover}
-      >
-        <div className={styles.comboboxInputWrapper}>
-          <Ariakit.Combobox
-            autoSelect
-            autoFocus
-            className={styles.comboboxInput}
-          />
-          <Ariakit.ComboboxLabel className={styles.comboboxLabel}>
+      <Ariakit.SelectPopover sameWidth={true} className="combobox-popover">
+        <div className="combobox-input-wrapper">
+          <Ariakit.Combobox autoSelect autoFocus className="combobox-input" />
+          <Ariakit.ComboboxLabel className="combobox-label">
             <MagnifyingGlassIcon
               weight="regular"
               size={24}
@@ -65,7 +58,7 @@ function ComboboxSelect({
             />
           </Ariakit.ComboboxLabel>
         </div>
-        <Ariakit.ComboboxList className={styles.comboboxList}>
+        <Ariakit.ComboboxList className="combobox-list">
           {matches.length > 0 ? (
             matches.map(({ value, children, ...delegated }) => (
               <ComboboxSelectOption
@@ -77,9 +70,7 @@ function ComboboxSelect({
               </ComboboxSelectOption>
             ))
           ) : (
-            <p className={styles.optionsInfo}>
-              No countries match "{searchValue}"
-            </p>
+            <p className="options-info">No countries match "{searchValue}"</p>
           )}
         </Ariakit.ComboboxList>
       </Ariakit.SelectPopover>
@@ -96,7 +87,7 @@ export function ComboboxSelectOption({
     <Ariakit.SelectItem
       value={value !== undefined ? String(value) : undefined}
       {...props}
-      render={<Ariakit.ComboboxItem className={styles.comboboxItem} />}
+      render={<Ariakit.ComboboxItem className="combobox-item" />}
     >
       {children}
     </Ariakit.SelectItem>
