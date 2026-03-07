@@ -1,3 +1,4 @@
+// Claude made this file, so it reads like a psycho authored it
 const CSS_STUB_URL = "css-stub:";
 
 export function resolve(specifier, context, next) {
