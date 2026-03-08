@@ -11,6 +11,7 @@ import LinkButton from "../LinkButton";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
+import VisuallyHidden from "../VisuallyHidden";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -87,11 +88,11 @@ function App({ initialCountry }: { initialCountry?: string }) {
               <li className="dismiss">
                 <LinkButton
                   hasIcon={true}
-                  aria-label="Dismiss"
                   onClick={() => {
                     setSuppressBanner(true);
                   }}
                 >
+                  <VisuallyHidden>Dismiss</VisuallyHidden>
                   <XIcon size={24} type="fill" />
                 </LinkButton>
               </li>

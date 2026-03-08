@@ -11,8 +11,14 @@ main {
   border: none;
   border-bottom: solid 1px #ccc;
   background: #fff;
-  grid-area: banner;
   margin-bottom: 1rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.banner .content-wrapper {
+  gap: 1rem;
 }
 
 .location-swap-menu {
