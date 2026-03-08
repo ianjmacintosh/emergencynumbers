@@ -1,12 +1,14 @@
+import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { SERVICES } from "../../constants/emergency-services";
 import Footer from "../Footer";
+import LinkButton from "../LinkButton";
 import TextLink from "../TextLink";
 
 function AboutPage() {
   return (
     <div className="page-wrapper">
       <main className="content-wrapper">
-        <TextLink href="/">← Back to directory</TextLink>
+        <BackButton />
         <h1>About</h1>
         <p>
           At about 11:30pm on a random Sunday night, my wife got an unexpected
@@ -121,10 +123,22 @@ function AboutPage() {
           what turned out to be sepsis -- typically fatal if left to run its
           course. Calling for help saved a life.
         </p>
-        <TextLink href="/">← Back to directory</TextLink>
+        <BackButton />
       </main>
       <Footer />
     </div>
+  );
+}
+
+function BackButton() {
+  const goToPreviousPage = () => {
+    location.href = document.referrer || "/";
+  };
+
+  return (
+    <LinkButton className="icon-button" onClick={goToPreviousPage}>
+      <ArrowLeftIcon size={24} /> Back to directory
+    </LinkButton>
   );
 }
 

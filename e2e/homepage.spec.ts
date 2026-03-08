@@ -100,7 +100,7 @@ test.skip("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
-test("does not show a banner when geolocated to an unsupported country", async ({
+test("does not show a banner when visiting a supported country and geolocated to an unsupported country", async ({
   page,
 }) => {
   // AQ (Antarctica) is in COUNTRY_NAMES but has no entries in SERVICES
@@ -112,7 +112,7 @@ test("does not show a banner when geolocated to an unsupported country", async (
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/");
+  await page.goto("/us/");
   await geoResponse;
 
   // The banner should never appear
@@ -122,6 +122,10 @@ test("does not show a banner when geolocated to an unsupported country", async (
   await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
     "United States",
   );
+});
+
+test.skip("brings a user in an unsupported country to its 'No Info' page", async () => {
+  // Untestable; we'd need to mock a 302 response, which IS the behavior
 });
 
 test("shows a banner and can dismiss it when geolocated to a different supported country", async ({
