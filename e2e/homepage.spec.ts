@@ -100,6 +100,7 @@ test.skip("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
+// This is kind of a weird behavior but it is OK; we shouldn't invite a user to go to an effectively useless page
 test("does not show a banner when visiting a supported country and geolocated to an unsupported country", async ({
   page,
 }) => {
