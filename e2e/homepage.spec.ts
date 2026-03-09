@@ -265,6 +265,18 @@ test("Antarctica appears in the dropdown and indicates no information is availab
   ).toBeVisible();
 });
 
+test("Navigating directly to Antarctica page shows 'No info' message", async ({
+  page,
+}) => {
+  await page.goto("/aq/");
+
+  await expect(
+    page.getByRole("heading", {
+      name: /no information available/i,
+    }),
+  ).toBeVisible();
+});
+
 test("selecting Antarctica shows the no information message", async ({
   page,
 }) => {
