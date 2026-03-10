@@ -19970,5 +19970,190 @@
         }
       ]
     }
+  ],
+  "MP": [
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "911",
+      "sources": [
+        {
+          "name": "Government of Canada Travel Advice",
+          "url": "https://travel.gc.ca/destinations/northern-marianas",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "GG": [
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "States of Guernsey",
+          "url": "https://www.gov.gg/article/120203/Emergencies",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "States of Guernsey",
+          "url": "https://www.gov.gg/article/120203/Emergencies",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "JE": [
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Government of Jersey",
+          "url": "https://www.gov.je/health/hospitals/emergencyouthours/pages/999.aspx",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Medical",
+      "name": "Ambulance",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Government of Jersey",
+          "url": "https://www.gov.je/health/hospitals/emergencyouthours/pages/999.aspx",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Government of Jersey",
+          "url": "https://www.gov.je/health/hospitals/emergencyouthours/pages/999.aspx",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "IM": [
+    {
+      "type": "Medical",
+      "name": "Ambulance",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Isle of Man Ambulance Service",
+          "url": "https://www.gov.im/categories/health-and-wellbeing/isle-of-man-ambulance-service/",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Isle of Man Constabulary",
+          "url": "https://www.iompolice.im/",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Fire",
+      "name": "Fire",
+      "phoneNumber": "999",
+      "sources": [
+        {
+          "name": "Isle of Man Fire and Rescue Service",
+          "url": "https://www.gov.im/categories/home-and-neighbourhood/emergency-services/fire-and-rescue-service/",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    }
+  ],
+  "CC": [
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "000",
+      "sources": [
+        {
+          "name": "Australian Government - Emergency Calls",
+          "url": "https://www.infrastructure.gov.au/emergency-calls",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ]
+    },
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "Australian Government - Emergency Calls",
+          "url": "https://www.infrastructure.gov.au/emergency-calls",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ],
+      "description": "Mobile only; does not require a SIM card or PIN number"
+    }
+  ],
+  "CX": [
+    {
+      "type": "Dispatch",
+      "name": "Emergency Services",
+      "phoneNumber": "000",
+      "sources": [
+        {
+          "name": "Christmas Island Emergency Management Plan",
+          "url": "https://www.infrastructure.gov.au/sites/default/files/documents/christmas-island-emergency-management-plan-june-2024.pdf",
+          "fetchedAt": "2026-03-10",
+          "lastModified": "2024-04-19"
+        }
+      ]
+    }
+  ],
+  "GS": [
+    {
+      "type": "Other",
+      "name": "Other",
+      "phoneNumber": "n/a",
+      "sources": [
+        {
+          "name": "Government of South Georgia & South Sandwich Islands",
+          "url": "https://gov.gs/frequently-asked-questions/",
+          "fetchedAt": "2026-03-10",
+          "lastModified": null
+        }
+      ],
+      "description": "There is no search and rescue, or other emergency service on the Island and the very limited medical facilities at King Edward Point are primarily for use by the Government Officials and scientists who live there."
+    }
   ]
 }
