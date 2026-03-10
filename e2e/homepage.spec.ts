@@ -2,8 +2,13 @@ import { test, expect } from "@playwright/test";
 import { SERVICES } from "../src/constants/emergency-services";
 import { COUNTRY_NAMES } from "../src/constants";
 
+test("/foo/ returns a 404 response", async ({ page }) => {
+  const response = await page.goto("/foo/");
+  expect(response?.status()).toBe(404);
+});
+
 test("has title", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   await expect(page).toHaveTitle("Emergency Service Phone Numbers");
 });
@@ -13,7 +18,7 @@ test("has title", async ({ page }) => {
 test("has a headline, the dropdown, the service cards, and the footer", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   // Heading
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -34,7 +39,7 @@ test("can change countries", async ({ page }) => {
   const testCountryCode = "BR";
   const testCountry = COUNTRY_NAMES[testCountryCode];
 
-  await page.goto("/");
+  await page.goto("/us/");
 
   await page.getByRole("combobox", { name: "Country" }).click();
   await page.keyboard.type(testCountry);
@@ -45,7 +50,7 @@ test("can change countries", async ({ page }) => {
   );
 
   const serviceCard = page.getByLabel("Emergency Service");
-  for (const service of SERVICES[testCountryCode]) {
+  for (const service of SERVICES[testCountryCode]!) {
     await expect(
       serviceCard
         .filter({ hasText: service.description ?? service.type })
@@ -57,7 +62,7 @@ test("can change countries", async ({ page }) => {
 test("can find United Kingdom by searching for an alternate name", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   await page.getByRole("combobox", { name: "Country" }).click();
   await page.keyboard.type("England");
@@ -100,6 +105,7 @@ test.skip("can copy phone numbers using the copy button", async ({
   await expect(serviceCard.getByRole("status")).toHaveText(/Copied/);
 });
 
+// This is kind of a weird behavior but it is OK; we shouldn't invite a user to go to an effectively useless page
 test("does not show a banner when visiting a supported country and geolocated to an unsupported country", async ({
   page,
 }) => {
@@ -151,7 +157,7 @@ test("shows a banner and can dismiss it when geolocated to a different supported
   await expect(banner).not.toBeVisible();
 
   const serviceCard = page.getByLabel("Emergency Service");
-  for (const service of SERVICES["BR"]) {
+  for (const service of SERVICES["BR"]!) {
     await expect(
       serviceCard
         .filter({ hasText: service.description ?? service.type })
@@ -171,7 +177,7 @@ test("shows a banner and can switch to the geolocated country", async ({
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/");
+  await page.goto("/us/");
   await geoResponse;
 
   const banner = page.getByRole("complementary");
@@ -185,7 +191,7 @@ test("shows a banner and can switch to the geolocated country", async ({
   );
 
   const serviceCard = page.getByLabel("Emergency Service");
-  for (const service of SERVICES["ES"]) {
+  for (const service of SERVICES["ES"]!) {
     await expect(
       serviceCard
         .filter({ hasText: service.description ?? service.type })
@@ -206,7 +212,7 @@ test("does not show a banner after the user manually selects a country", async (
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/");
+  await page.goto("/us/");
   await geoResponse;
 
   const banner = page.getByRole("complementary");
@@ -255,7 +261,7 @@ test("does not show a banner after the user navigates away from their geolocated
 test("Antarctica appears in the dropdown and indicates no information is available", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   await page.getByRole("combobox", { name: "Country" }).click();
 
@@ -264,10 +270,22 @@ test("Antarctica appears in the dropdown and indicates no information is availab
   ).toBeVisible();
 });
 
+test("Navigating directly to Antarctica page shows 'No info' message", async ({
+  page,
+}) => {
+  await page.goto("/aq/");
+
+  await expect(
+    page.getByRole("heading", {
+      name: /no information available/i,
+    }),
+  ).toBeVisible();
+});
+
 test("selecting Antarctica shows the no information message", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   await page.getByRole("combobox", { name: "Country" }).click();
   await page.keyboard.type("Antarctica");
@@ -283,7 +301,7 @@ test("selecting Antarctica shows the no information message", async ({
 test("country dropdown lists Afghanistan before United Arab Emirates", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
   await page.getByRole("combobox", { name: "Country" }).click();
 
   const allTexts = await page.getByRole("option").allTextContents();
@@ -301,7 +319,7 @@ test("country dropdown lists Afghanistan before United Arab Emirates", async ({
 test("searching 'no information available' does not surface countries without data", async ({
   page,
 }) => {
-  await page.goto("/");
+  await page.goto("/us/");
 
   await page.getByRole("combobox", { name: "Country" }).click();
   await page.keyboard.type("no information available");
