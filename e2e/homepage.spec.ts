@@ -2,6 +2,11 @@ import { test, expect } from "@playwright/test";
 import { SERVICES } from "../src/constants/emergency-services";
 import { COUNTRY_NAMES } from "../src/constants";
 
+test("/foo/ returns a 404 response", async ({ page }) => {
+  const response = await page.goto("/foo/");
+  expect(response?.status()).toBe(404);
+});
+
 test("has title", async ({ page }) => {
   await page.goto("/us/");
 

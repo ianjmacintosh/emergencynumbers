@@ -74,10 +74,3 @@ test("navigating to /aq/ shows Antarctica with no information message", async ()
     page.getByRole("heading", { name: /no information available/i }),
   ).toBeVisible();
 });
-
-test("navigating to an unknown country code falls back to default", async () => {
-  await page.goto("/xx/");
-
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByRole("combobox", { name: "Country" })).toBeVisible();
-});
