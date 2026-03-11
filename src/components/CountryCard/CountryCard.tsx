@@ -67,14 +67,14 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   );
 
   return (
-    <ul className="services">
+    <>
       {serviceCards.map((serviceCard) => (
         <ServiceCard
           service={serviceCard}
           key={`${serviceCard.type}-${serviceCard.phoneNumber}`}
         />
       ))}
-    </ul>
+    </>
   );
 }
 

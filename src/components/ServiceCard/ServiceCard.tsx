@@ -19,15 +19,14 @@ import LinkButton from "../LinkButton";
 
 function ServiceCard({ service }: { service: ServiceData }) {
   const { phoneNumber, type, description } = service;
-  const newMarkup = (
-    <article className="service" aria-label="Emergency Service">
-      <h2>
-        <Icon type={type} size={32} weight="fill" />
-        {type}
-        <span className="phone-number" aria-label="Phone Number">
-          {phoneNumber}
-        </span>
-      </h2>
+
+  return (
+    <article className="service" aria-label={`${type} service: ${phoneNumber}`}>
+      <header>
+        <Icon type={type} size={32} weight="fill" aria-hidden={true} />
+        <h2>{type}</h2>
+        <p className="phone-number">{phoneNumber}</p>
+      </header>
       {description && (
         <dl>
           <dt>Additional Information</dt>
@@ -46,8 +45,6 @@ function ServiceCard({ service }: { service: ServiceData }) {
       </ul>
     </article>
   );
-
-  return newMarkup;
 }
 
 function Icon({ type, ...props }: { type: ServiceType } & IconProps) {

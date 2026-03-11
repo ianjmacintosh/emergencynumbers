@@ -33,7 +33,7 @@ button {
   display: flex;
   justify-self: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem;
   width: 100%;
   max-width: 600px;

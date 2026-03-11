@@ -11,12 +11,14 @@ function ComboboxSelect({
   children,
   selectButtonContent,
   comboboxLabel = "Search",
+  label,
 }: {
   value: string;
   onChange: (value: string) => void;
   children: React.ReactNode;
   selectButtonContent: React.ReactNode;
   comboboxLabel: string;
+  label?: React.ReactNode;
 }) {
   const optionsDataList: OptionsDataList = React.Children.toArray(children)
     .filter(React.isValidElement<OptionElement>)
@@ -39,11 +41,12 @@ function ComboboxSelect({
       currentValue={currentValue}
       setSearchValue={setSearchValue}
     >
-      <Ariakit.Select
-        value={currentValue}
-        className="select-button"
-        aria-label="Country"
-      >
+      {label && (
+        <Ariakit.SelectLabel className="select-label">
+          {label}
+        </Ariakit.SelectLabel>
+      )}
+      <Ariakit.Select value={currentValue} className="select-button">
         {selectButtonContent || currentLabel}
         <Ariakit.SelectArrow />
       </Ariakit.Select>
@@ -70,7 +73,9 @@ function ComboboxSelect({
               </ComboboxSelectOption>
             ))
           ) : (
-            <p className="options-info">No countries match "{searchValue}"</p>
+            <p className="options-info">
+              No countries or territories match "{searchValue}"
+            </p>
           )}
         </Ariakit.ComboboxList>
       </Ariakit.SelectPopover>
@@ -105,24 +110,24 @@ export function ComboboxSelectProviders({
   currentValue: string;
   setSearchValue: (value: string) => void;
 }) {
+  const combobox = Ariakit.useComboboxStore({
+    resetValueOnHide: true,
+    setValue: (nextValue) => {
+      React.startTransition(() => {
+        setSearchValue(nextValue);
+      });
+    },
+  });
+
+  const select = Ariakit.useSelectStore({
+    combobox,
+    value: currentValue,
+    setValue: onChange,
+  });
+
   return (
-    <Ariakit.ComboboxProvider
-      resetValueOnHide
-      setValue={(nextValue) => {
-        React.startTransition(() => {
-          setSearchValue(nextValue);
-        });
-      }}
-    >
-      <Ariakit.SelectProvider
-        value={currentValue}
-        setValue={(nextValue) => {
-          React.startTransition(() => {
-            onChange(nextValue);
-          });
-        }}
-        placement="bottom-end"
-      >
+    <Ariakit.ComboboxProvider store={combobox}>
+      <Ariakit.SelectProvider store={select} placement="bottom-end">
         {children}
       </Ariakit.SelectProvider>
     </Ariakit.ComboboxProvider>
