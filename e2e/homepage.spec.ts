@@ -2,13 +2,15 @@ import { test, expect } from "@playwright/test";
 import { SERVICES } from "../src/constants/emergency-services";
 import { COUNTRY_NAMES } from "../src/constants";
 
+const testPage = "/us/";
+
 test("/foo/ returns a 404 response", async ({ page }) => {
   const response = await page.goto("/foo/");
   expect(response?.status()).toBe(404);
 });
 
 test("has title", async ({ page }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
   await expect(page).toHaveTitle("Emergency Service Phone Numbers");
 });
@@ -18,7 +20,7 @@ test("has title", async ({ page }) => {
 test("has a headline, the dropdown, the service cards, and the footer", async ({
   page,
 }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
   // Heading
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -27,7 +29,7 @@ test("has a headline, the dropdown, the service cards, and the footer", async ({
   await expect(page.getByRole("combobox")).toBeVisible();
 
   // Expect at least one emergency service card to be visible
-  await expect(page.getByLabel("Emergency Service").first()).toBeVisible();
+  await expect(page.getByRole("article").first()).toBeVisible();
 
   // Footer
   await expect(page.getByRole("contentinfo")).toBeVisible();
@@ -39,17 +41,17 @@ test("can change countries", async ({ page }) => {
   const testCountryCode = "BR";
   const testCountry = COUNTRY_NAMES[testCountryCode];
 
-  await page.goto("/us/");
+  await page.goto(testPage);
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
   await page.keyboard.type(testCountry);
   await page.getByRole("option", { name: testCountry }).click();
 
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     testCountry,
   );
 
-  const serviceCard = page.getByLabel("Emergency Service");
+  const serviceCard = page.getByRole("article");
   for (const service of SERVICES[testCountryCode]!) {
     await expect(
       serviceCard
@@ -62,9 +64,9 @@ test("can change countries", async ({ page }) => {
 test("can find United Kingdom by searching for an alternate name", async ({
   page,
 }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
   await page.keyboard.type("England");
 
   await expect(
@@ -73,7 +75,7 @@ test("can find United Kingdom by searching for an alternate name", async ({
 
   await page.getByRole("option", { name: "United Kingdom" }).click();
 
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     "United Kingdom",
   );
 });
@@ -85,7 +87,7 @@ test.skip("can copy phone numbers using the copy button", async ({
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
 
-  const serviceCard = page.getByLabel("Emergency Service").first();
+  const serviceCard = page.getByRole("article").first();
 
   const copyText = /^Copy (.+) to clipboard$/;
 
@@ -118,14 +120,14 @@ test("does not show a banner when visiting a supported country and geolocated to
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/us/");
+  await page.goto(testPage);
   await geoResponse;
 
   // The banner should never appear
   await expect(page.getByRole("complementary")).not.toBeVisible();
 
   // The default country should still be shown
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     "United States",
   );
 });
@@ -156,7 +158,7 @@ test("shows a banner and can dismiss it when geolocated to a different supported
 
   await expect(banner).not.toBeVisible();
 
-  const serviceCard = page.getByLabel("Emergency Service");
+  const serviceCard = page.getByRole("article");
   for (const service of SERVICES["BR"]!) {
     await expect(
       serviceCard
@@ -177,7 +179,7 @@ test("shows a banner and can switch to the geolocated country", async ({
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/us/");
+  await page.goto(testPage);
   await geoResponse;
 
   const banner = page.getByRole("complementary");
@@ -186,11 +188,11 @@ test("shows a banner and can switch to the geolocated country", async ({
   await banner.getByRole("button", { name: /Spain/i }).click();
 
   await page.waitForURL(/\/es\//);
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     "Spain",
   );
 
-  const serviceCard = page.getByLabel("Emergency Service");
+  const serviceCard = page.getByRole("article");
   for (const service of SERVICES["ES"]!) {
     await expect(
       serviceCard
@@ -212,7 +214,7 @@ test("does not show a banner after the user manually selects a country", async (
   );
 
   const geoResponse = page.waitForResponse("/api/geo");
-  await page.goto("/us/");
+  await page.goto(testPage);
   await geoResponse;
 
   const banner = page.getByRole("complementary");
@@ -222,7 +224,7 @@ test("does not show a banner after the user manually selects a country", async (
   await banner.getByRole("button", { name: /dismiss/i }).click();
 
   // User deliberately picks Brazil — this should clear the banner
-  const combobox = page.getByRole("combobox", { name: "Country" });
+  const combobox = page.getByRole("combobox", { name: "Location" });
   await combobox.click();
   await page.keyboard.type(COUNTRY_NAMES["BR"]);
   await page.getByRole("option", { name: COUNTRY_NAMES["BR"] }).click();
@@ -249,7 +251,7 @@ test("does not show a banner after the user navigates away from their geolocated
   await expect(page.getByRole("complementary")).not.toBeVisible();
 
   // User deliberately navigates away to Brazil — banner should stay gone
-  const combobox = page.getByRole("combobox", { name: "Country" });
+  const combobox = page.getByRole("combobox", { name: "Location" });
   await combobox.click();
   await page.keyboard.type(COUNTRY_NAMES["BR"]);
   await page.getByRole("option", { name: COUNTRY_NAMES["BR"] }).click();
@@ -261,9 +263,9 @@ test("does not show a banner after the user navigates away from their geolocated
 test("Antarctica appears in the dropdown and indicates no information is available", async ({
   page,
 }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
 
   await expect(
     page.getByRole("option", { name: /Antarctica.*no information available/i }),
@@ -285,9 +287,9 @@ test("Navigating directly to Antarctica page shows 'No info' message", async ({
 test("selecting Antarctica shows the no information message", async ({
   page,
 }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
   await page.keyboard.type("Antarctica");
   await page.getByRole("option", { name: /Antarctica/i }).click();
 
@@ -301,8 +303,8 @@ test("selecting Antarctica shows the no information message", async ({
 test("country dropdown lists Afghanistan before United Arab Emirates", async ({
   page,
 }) => {
-  await page.goto("/us/");
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.goto(testPage);
+  await page.getByRole("combobox", { name: "Location" }).click();
 
   const allTexts = await page.getByRole("option").allTextContents();
 
@@ -319,12 +321,12 @@ test("country dropdown lists Afghanistan before United Arab Emirates", async ({
 test("searching 'no information available' does not surface countries without data", async ({
   page,
 }) => {
-  await page.goto("/us/");
+  await page.goto(testPage);
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
   await page.keyboard.type("no information available");
 
-  await expect(page.getByText(/no countries match/i)).toBeVisible();
+  await expect(page.getByText(/no(.*)match/i)).toBeVisible();
 });
 
 test("can select the default country after loading a different country", async ({
@@ -340,7 +342,7 @@ test("can select the default country after loading a different country", async (
 
   await page.goto("/al/");
 
-  const combobox = page.getByRole("combobox", { name: "Country" });
+  const combobox = page.getByRole("combobox", { name: "Location" });
 
   // Wait for the geo response to take effect
   await expect(combobox).toContainText("Albania");
