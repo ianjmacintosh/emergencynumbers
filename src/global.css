@@ -1,5 +1,12 @@
 @import "./reset.css";
 
+@font-face {
+  font-family: "Routed Gothic";
+  src: url("./assets/routed-gothic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family:
     Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
