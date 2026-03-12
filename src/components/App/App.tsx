@@ -58,9 +58,14 @@ function App({ initialCountry }: { initialCountry?: string }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  const Flag =
+  const UserGeoFlag =
     userLocation && hasFlag(userLocation)
       ? FlagIcon[userLocation as keyof typeof FlagIcon]
+      : null;
+
+  const CurrentFlag =
+    currentCountryId && hasFlag(currentCountryId)
+      ? FlagIcon[currentCountryId as keyof typeof FlagIcon]
       : null;
 
   return (
@@ -70,6 +75,15 @@ function App({ initialCountry }: { initialCountry?: string }) {
         userLocation !== currentCountryId &&
         suppressBanner === false && (
           <Banner>
+            <h2>Now showing services for {COUNTRY_NAMES[currentCountryId]}</h2>
+            <p>
+              This page lists emergency services for{" "}
+              {COUNTRY_NAMES[currentCountryId]}, but it looks like you're
+              visiting from {COUNTRY_NAMES[userLocation]}.
+            </p>
+            <p>
+              Do you want to see information for {COUNTRY_NAMES[userLocation]}?
+            </p>
             <ul className="location-swap-menu">
               <li className="confirm">
                 <LinkButton
@@ -80,11 +94,9 @@ function App({ initialCountry }: { initialCountry?: string }) {
                   hasIcon={true}
                   className="confirm-button"
                 >
-                  {Flag && <Flag height={24} />}
+                  {UserGeoFlag && <UserGeoFlag height={24} />}
                   {/* <SwapIcon size={24} /> */}
-                  <span className="updog">
-                    Switch to {COUNTRY_NAMES[userLocation]}
-                  </span>
+                  <span className="updog">Yes</span>
                 </LinkButton>
               </li>
               <li className="dismiss">
@@ -94,8 +106,8 @@ function App({ initialCountry }: { initialCountry?: string }) {
                     setSuppressBanner(true);
                   }}
                 >
-                  <VisuallyHidden>Dismiss</VisuallyHidden>
-                  <XIcon size={24} type="fill" />
+                  {CurrentFlag && <CurrentFlag height={24} />}
+                  <span className="updog">No</span>
                 </LinkButton>
               </li>
             </ul>
