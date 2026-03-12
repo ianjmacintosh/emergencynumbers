@@ -109,7 +109,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
           }}
         />
       </header>
-      <main className="content-wrapper" title="Emergency services">
+      <main className="content-wrapper">
         <CountryCard id={currentCountryId} />
       </main>
       <Footer />
