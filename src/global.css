@@ -20,6 +20,26 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  line-height: 1.8rem;
+}
+
+li,
+p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 button {
