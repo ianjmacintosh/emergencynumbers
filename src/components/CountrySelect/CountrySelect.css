@@ -11,13 +11,9 @@
 }
 
 .country-flag {
-  width: 36px;
-  height: 24px;
+  width: 54px;
+  height: 36px;
   flex-shrink: 0;
-}
-
-.country-name {
-  padding-bottom: 0.203125rem;
 }
 
 .country-select .select-label {

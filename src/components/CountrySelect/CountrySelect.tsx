@@ -25,7 +25,7 @@ function CountrySelect({
           <>
             <span className="country-badge">
               {Flag && <Flag className="country-flag" />}
-              <span className="country-name">
+              <span className="country-name updog">
                 {COUNTRY_NAMES[value as keyof typeof SERVICES]}
               </span>
             </span>

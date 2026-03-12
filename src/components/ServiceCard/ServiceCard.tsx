@@ -24,8 +24,8 @@ function ServiceCard({ service }: { service: ServiceData }) {
     <article className="service" aria-label={`${type} service: ${phoneNumber}`}>
       <header>
         <Icon type={type} size={32} weight="fill" aria-hidden={true} />
-        <h2>{type}</h2>
-        <h3 className="phone-number">{phoneNumber}</h3>
+        <h2 className="updog">{type}</h2>
+        <h3 className="phone-number updog">{phoneNumber}</h3>
       </header>
       {description && (
         <dl>
@@ -41,7 +41,8 @@ function ServiceCard({ service }: { service: ServiceData }) {
             className="icon-button call-button"
             href={`tel:${phoneNumber}`}
           >
-            <PhoneOutgoingIcon size={24} weight="fill" /> Call {phoneNumber}
+            <PhoneOutgoingIcon size={24} weight="fill" />{" "}
+            <span className="updog">Call {phoneNumber}</span>
           </LinkButton>
         </li>
       </ul>

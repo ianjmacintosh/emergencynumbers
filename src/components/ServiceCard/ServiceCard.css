@@ -14,6 +14,10 @@
   font-size: 1.6rem;
 }
 
+.service h4 {
+  font-weight: 600;
+}
+
 .service img,
 .service header svg {
   flex-shrink: 0;

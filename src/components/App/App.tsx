@@ -82,7 +82,9 @@ function App({ initialCountry }: { initialCountry?: string }) {
                 >
                   {Flag && <Flag height={24} />}
                   {/* <SwapIcon size={24} /> */}
-                  Switch to {COUNTRY_NAMES[userLocation]}
+                  <span className="updog">
+                    Switch to {COUNTRY_NAMES[userLocation]}
+                  </span>
                 </LinkButton>
               </li>
               <li className="dismiss">
