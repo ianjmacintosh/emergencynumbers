@@ -10,10 +10,14 @@
   text-transform: uppercase;
 }
 
-.flag {
-  width: 2.4rem;
-  height: 1.6rem;
+.country-flag {
+  width: 36px;
+  height: 24px;
   flex-shrink: 0;
+}
+
+.country-name {
+  padding-bottom: 0.203125rem;
 }
 
 .country-select .select-label {

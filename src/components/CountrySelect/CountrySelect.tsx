@@ -24,8 +24,10 @@ function CountrySelect({
         selectButtonContent={
           <>
             <span className="country-badge">
-              {Flag && <Flag className="flag" />}
-              <span>{COUNTRY_NAMES[value as keyof typeof SERVICES]}</span>
+              {Flag && <Flag className="country-flag" />}
+              <span className="country-name">
+                {COUNTRY_NAMES[value as keyof typeof SERVICES]}
+              </span>
             </span>
           </>
         }
