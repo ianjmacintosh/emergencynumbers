@@ -25,11 +25,13 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <header>
         <Icon type={type} size={32} weight="fill" aria-hidden={true} />
         <h2>{type}</h2>
-        <p className="phone-number">{phoneNumber}</p>
+        <h3 className="phone-number">{phoneNumber}</h3>
       </header>
       {description && (
         <dl>
-          <dt>Additional Information</dt>
+          <dt>
+            <h4>Additional Information</h4>
+          </dt>
           <dd>{description}</dd>
         </dl>
       )}

@@ -15,7 +15,7 @@ function CountrySelect({
 }) {
   const Flag = hasFlag(value) ? FlagIcon[value as keyof typeof FlagIcon] : null;
   return (
-    <div>
+    <div className="country-select">
       <ComboboxSelect
         value={value}
         onChange={onChange}

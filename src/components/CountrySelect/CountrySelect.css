@@ -4,10 +4,22 @@
   gap: 1rem;
   text-align: left;
   text-wrap-style: pretty;
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 .flag {
   width: 2.4rem;
   height: 1.6rem;
   flex-shrink: 0;
+}
+
+.country-select .select-label {
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  color: #333;
 }
