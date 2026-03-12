@@ -1,3 +1,8 @@
+.select-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
 .select-button {
   font-size: 1.4rem;
   display: flex;

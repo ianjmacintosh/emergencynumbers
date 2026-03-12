@@ -7,22 +7,29 @@
   display: grid;
   grid-auto-flow: row;
   gap: 1rem;
+  margin: 0 1rem;
 }
 
 h2 {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   font-size: 1.6rem;
   font-weight: 600;
 }
 
-h2 img,
-h2 svg {
+.service img,
+.service header svg {
   flex-shrink: 0;
 }
 
-h2 .phone-number {
+.service header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.service .phone-number {
+  font-size: 1.6rem;
+  font-weight: 600;
   margin-left: auto;
 }
 

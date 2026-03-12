@@ -1,0 +1,14 @@
+article {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+hr {
+  height: 1px;
+  width: 3rem;
+  text-align: center;
+  margin: 1rem auto;
+  border: none;
+  border-bottom: 5px dotted #ddd;
+}

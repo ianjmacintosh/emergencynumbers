@@ -99,18 +99,17 @@ function App({ initialCountry }: { initialCountry?: string }) {
             </ul>
           </Banner>
         )}
+      <header className="content-wrapper">
+        <h1>Emergency Service Phone Numbers</h1>
+        <CountrySelect
+          value={currentCountryId}
+          onChange={(value) => {
+            setSuppressBanner(true);
+            setCurrentCountryId(value as keyof typeof SERVICES);
+          }}
+        />
+      </header>
       <main className="content-wrapper">
-        <header>
-          <h1>Emergency Service Phone Numbers</h1>
-
-          <CountrySelect
-            value={currentCountryId}
-            onChange={(value) => {
-              setSuppressBanner(true);
-              setCurrentCountryId(value as keyof typeof SERVICES);
-            }}
-          />
-        </header>
         <CountryCard id={currentCountryId} />
       </main>
       <Footer />
