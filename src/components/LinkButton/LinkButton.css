@@ -33,5 +33,6 @@
 }
 
 .icon-button svg {
+  flex-shrink: 0;
   vertical-align: baseline;
 }

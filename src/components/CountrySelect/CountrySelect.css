@@ -11,8 +11,6 @@
 }
 
 .country-flag {
-  width: 54px;
-  height: 36px;
   flex-shrink: 0;
   vertical-align: baseline;
 }

@@ -70,15 +70,15 @@ function App({ initialCountry }: { initialCountry?: string }) {
           userLocation !== currentCountryId &&
           suppressBanner === false && (
             <Banner>
-              <h2>See info for {COUNTRY_NAMES[userLocation]}?</h2>
+              <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
               <p>
-                This page lists emergency services information for{" "}
-                {COUNTRY_NAMES[currentCountryId]}, but it looks like you're
-                located in {COUNTRY_NAMES[userLocation]}.
+                This page is about {COUNTRY_NAMES[currentCountryId]}, but it
+                looks like your internet connection is from{" "}
+                {COUNTRY_NAMES[userLocation]}.
               </p>
               <p>
-                Do you want to see information for {COUNTRY_NAMES[userLocation]}{" "}
-                instead?
+                Do you want to see emergency services information for{" "}
+                {COUNTRY_NAMES[userLocation]} instead?
               </p>
               <ul className="location-swap-menu">
                 <li className="confirm">
@@ -90,8 +90,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
                     hasIcon={true}
                     className="confirm-button"
                   >
-                    {UserGeoFlag && <UserGeoFlag height={24} />}
-                    {/* <SwapIcon size={24} /> */}
+                    {UserGeoFlag && <UserGeoFlag height={36} />}
                     <span className="updog">Go now</span>
                   </LinkButton>
                 </li>
@@ -102,7 +101,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
                       setSuppressBanner(true);
                     }}
                   >
-                    <XIcon size={24} />
+                    <XIcon size={36} />
                     <span className="updog">Close</span>
                   </LinkButton>
                 </li>
