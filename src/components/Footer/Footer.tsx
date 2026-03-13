@@ -6,7 +6,6 @@ function Footer() {
     <footer className="footer">
       <nav>
         <p>
-          <TextLink href="/">Home</TextLink> |{" "}
           <TextLink href="/about/">About this project</TextLink>
         </p>
       </nav>
