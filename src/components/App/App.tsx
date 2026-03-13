@@ -11,7 +11,6 @@ import LinkButton from "../LinkButton";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
-import VisuallyHidden from "../VisuallyHidden";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -61,11 +60,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
   const UserGeoFlag =
     userLocation && hasFlag(userLocation)
       ? FlagIcon[userLocation as keyof typeof FlagIcon]
-      : null;
-
-  const CurrentFlag =
-    currentCountryId && hasFlag(currentCountryId)
-      ? FlagIcon[currentCountryId as keyof typeof FlagIcon]
       : null;
 
   return (
