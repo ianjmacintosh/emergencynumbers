@@ -10,8 +10,11 @@
   margin: 0 1rem;
 }
 
-h2 {
+.service h2 {
   font-size: 1.6rem;
+}
+
+.service h4 {
   font-weight: 600;
 }
 
@@ -29,7 +32,6 @@ h2 {
 
 .service .phone-number {
   font-size: 1.6rem;
-  font-weight: 600;
   margin-left: auto;
 }
 
@@ -37,6 +39,7 @@ dt {
   font-weight: bold;
   font-size: 1rem;
   color: #666;
+  margin-bottom: 0.5rem;
 }
 
 dd {

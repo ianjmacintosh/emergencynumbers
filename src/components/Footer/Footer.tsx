@@ -5,8 +5,10 @@ function Footer() {
   return (
     <footer className="footer">
       <nav>
-        <TextLink href="/">Home</TextLink> |{" "}
-        <TextLink href="/about/">About this project</TextLink>
+        <p>
+          <TextLink href="/">Home</TextLink> |{" "}
+          <TextLink href="/about/">About this project</TextLink>
+        </p>
       </nav>
       <p>
         &copy; 2026{" "}

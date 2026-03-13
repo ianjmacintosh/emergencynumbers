@@ -18,10 +18,12 @@ function AboutPage() {
             needed urgent medical help. We were all in Brazil and 911 isn't
             universal, so we didn't know what phone number to call.
           </p>
-          <h3>
-            I built this web site to help people get in touch with emergency
-            services, anywhere in the world.
-          </h3>
+          <p>
+            <strong>
+              I built this web site to help people get in touch with emergency
+              services, anywhere in the world.
+            </strong>
+          </p>
           <p>
             It's awful not knowing how to call an ambulance when you{" "}
             <em>really</em> need one, so I made this tool to help anyone in a

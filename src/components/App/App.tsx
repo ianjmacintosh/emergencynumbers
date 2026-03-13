@@ -11,7 +11,6 @@ import LinkButton from "../LinkButton";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
-import VisuallyHidden from "../VisuallyHidden";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -58,56 +57,67 @@ function App({ initialCountry }: { initialCountry?: string }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  const Flag =
+  const UserGeoFlag =
     userLocation && hasFlag(userLocation)
       ? FlagIcon[userLocation as keyof typeof FlagIcon]
       : null;
 
   return (
     <div className="page-wrapper">
-      {userLocation &&
-        userLocation in SERVICES &&
-        userLocation !== currentCountryId &&
-        suppressBanner === false && (
-          <Banner>
-            <ul className="location-swap-menu">
-              <li className="confirm">
-                <LinkButton
-                  onClick={() => {
-                    setSuppressBanner(true);
-                    setCurrentCountryId(userLocation);
-                  }}
-                  hasIcon={true}
-                  className="confirm-button"
-                >
-                  {Flag && <Flag height={24} />}
-                  {/* <SwapIcon size={24} /> */}
-                  Switch to {COUNTRY_NAMES[userLocation]}
-                </LinkButton>
-              </li>
-              <li className="dismiss">
-                <LinkButton
-                  hasIcon={true}
-                  onClick={() => {
-                    setSuppressBanner(true);
-                  }}
-                >
-                  <VisuallyHidden>Dismiss</VisuallyHidden>
-                  <XIcon size={24} type="fill" />
-                </LinkButton>
-              </li>
-            </ul>
-          </Banner>
-        )}
-      <header className="content-wrapper">
-        <h1>Emergency Service Phone Numbers</h1>
-        <CountrySelect
-          value={currentCountryId}
-          onChange={(value) => {
-            setSuppressBanner(true);
-            setCurrentCountryId(value as keyof typeof SERVICES);
-          }}
-        />
+      <header>
+        {userLocation &&
+          userLocation in SERVICES &&
+          userLocation !== currentCountryId &&
+          suppressBanner === false && (
+            <Banner>
+              <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
+              <p>
+                This page is about {COUNTRY_NAMES[currentCountryId]}, but it
+                looks like your internet connection is from{" "}
+                {COUNTRY_NAMES[userLocation]}.
+              </p>
+              <p>
+                Do you want to see emergency services information for{" "}
+                {COUNTRY_NAMES[userLocation]} instead?
+              </p>
+              <ul className="location-swap-menu">
+                <li className="confirm">
+                  <LinkButton
+                    onClick={() => {
+                      setSuppressBanner(true);
+                      setCurrentCountryId(userLocation);
+                    }}
+                    hasIcon={true}
+                    className="confirm-button"
+                  >
+                    {UserGeoFlag && <UserGeoFlag height={36} />}
+                    <span className="updog">Go now</span>
+                  </LinkButton>
+                </li>
+                <li className="dismiss">
+                  <LinkButton
+                    hasIcon={true}
+                    onClick={() => {
+                      setSuppressBanner(true);
+                    }}
+                  >
+                    <XIcon size={36} />
+                    <span className="updog">Close</span>
+                  </LinkButton>
+                </li>
+              </ul>
+            </Banner>
+          )}
+        <div className="content-wrapper">
+          <h1>Emergency Service Phone Numbers</h1>
+          <CountrySelect
+            value={currentCountryId}
+            onChange={(value) => {
+              setSuppressBanner(true);
+              setCurrentCountryId(value as keyof typeof SERVICES);
+            }}
+          />
+        </div>
       </header>
       <main className="content-wrapper">
         <CountryCard id={currentCountryId} />

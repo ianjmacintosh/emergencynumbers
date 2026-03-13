@@ -15,7 +15,7 @@ function CountrySelect({
 }) {
   const Flag = hasFlag(value) ? FlagIcon[value as keyof typeof FlagIcon] : null;
   return (
-    <div>
+    <div className="country-select">
       <ComboboxSelect
         value={value}
         onChange={onChange}
@@ -24,8 +24,10 @@ function CountrySelect({
         selectButtonContent={
           <>
             <span className="country-badge">
-              {Flag && <Flag className="flag" />}
-              <span>{COUNTRY_NAMES[value as keyof typeof SERVICES]}</span>
+              {Flag && <Flag className="country-flag" height={36} />}
+              <span className="country-name updog">
+                {COUNTRY_NAMES[value as keyof typeof SERVICES]}
+              </span>
             </span>
           </>
         }

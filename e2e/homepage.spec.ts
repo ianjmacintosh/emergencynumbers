@@ -154,7 +154,7 @@ test("shows a banner and can dismiss it when geolocated to a different supported
   await expect(banner).toBeVisible();
   await expect(banner).toContainText("Ecuador");
 
-  await banner.getByRole("button", { name: /dismiss/i }).click();
+  await banner.getByRole("button", { name: /Close/i }).click();
 
   await expect(banner).not.toBeVisible();
 
@@ -185,7 +185,7 @@ test("shows a banner and can switch to the geolocated country", async ({
   const banner = page.getByRole("complementary");
   await expect(banner).toBeVisible();
 
-  await banner.getByRole("button", { name: /Spain/i }).click();
+  await banner.getByRole("button", { name: /Go/i }).click();
 
   await page.waitForURL(/\/es\//);
   await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
@@ -221,7 +221,7 @@ test("does not show a banner after the user manually selects a country", async (
   await expect(banner).toBeVisible();
   await expect(banner).toContainText("Ecuador");
 
-  await banner.getByRole("button", { name: /dismiss/i }).click();
+  await banner.getByRole("button", { name: /Go/i }).click();
 
   // User deliberately picks Brazil — this should clear the banner
   const combobox = page.getByRole("combobox", { name: "Location" });

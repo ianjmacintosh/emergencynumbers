@@ -17,3 +17,10 @@
 .footer a:focus {
   outline: #fff dashed 2px;
 }
+
+@media (min-width: 768px) {
+  footer p {
+    font-size: 1rem;
+    line-height: 125%;
+  }
+}

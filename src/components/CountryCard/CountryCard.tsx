@@ -24,7 +24,7 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
   if (!hasServices) {
     return (
       <article className="unknown-services">
-        <h3>No Information Available</h3>
+        <h2>No Information Available</h2>
         <p>
           This directory does not have information about emergency services for{" "}
           {countryName}.

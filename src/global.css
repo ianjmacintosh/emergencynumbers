@@ -1,18 +1,46 @@
 @import "./reset.css";
 
+@font-face {
+  font-family: "Routed Gothic";
+  src: url("./assets/routed-gothic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family:
-    Inter, Roboto, "Helvetica Neue", "Arial Nova", "Nimbus Sans", Arial,
-    sans-serif;
   font-size: 16px;
 }
 
 body {
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, serif;
+  font-weight: normal;
   background: #f6f6f6;
   color: #333;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  line-height: 1.8rem;
+}
+
+li,
+p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
 }
 
 button {
@@ -45,4 +73,9 @@ main {
   padding: 1rem;
   width: 100%;
   max-width: 600px;
+}
+
+.updog {
+  text-box: trim-both cap alphabetic;
+  /* padding-bottom: 0.203125rem; */
 }
