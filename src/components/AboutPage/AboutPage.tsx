@@ -152,7 +152,23 @@ function AboutPage() {
 
 function BackButton() {
   const goToPreviousPage = () => {
-    location.href = document.referrer || "/";
+    // By default, our next page will be "/"
+    let nextPage = "/";
+
+    const lastPage = document.referrer;
+    // Unless (!) the last page was both...
+    if (
+      // A) From this site
+      lastPage.includes(window.location.hostname) &&
+      // And B) Not also the page.
+      lastPage.includes("about") === false
+    ) {
+      // Then in that case, we'll go back to that page
+      nextPage = lastPage;
+    }
+
+    // Go!
+    location.href = nextPage;
   };
 
   return (
