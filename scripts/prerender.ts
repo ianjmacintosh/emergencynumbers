@@ -26,6 +26,8 @@ import path from "path";
 const distDir = path.resolve("dist/client");
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
+const BASE_URL = "https://emergencynumbers.info";
+
 for (const [code] of Object.entries(COUNTRY_NAMES)) {
   const lc = code.toLowerCase();
   (globalThis as unknown as { window: WindowMock }).window.location.pathname =
@@ -33,11 +35,26 @@ for (const [code] of Object.entries(COUNTRY_NAMES)) {
   const html = renderToStaticMarkup(
     createElement(StrictMode, null, createElement(App)),
   );
-  const page = template.replace(
-    '<div id="root"></div>',
-    `<div id="root">${html}</div>`,
-  );
+  const countryName = COUNTRY_NAMES[code as keyof typeof COUNTRY_NAMES];
+  const page = template
+    .replaceAll("%COUNTRY_NAME%", countryName)
+    .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
   fs.mkdirSync(path.join(distDir, lc), { recursive: true });
   fs.writeFileSync(path.join(distDir, lc, "index.html"), page);
 }
 console.log(`Prerendered ${Object.keys(COUNTRY_NAMES).length} pages.`);
+
+const staticUrls = [`${BASE_URL}/`, `${BASE_URL}/about/`];
+const countryUrls = Object.keys(COUNTRY_NAMES).map(
+  (code) => `${BASE_URL}/${code.toLowerCase()}/`,
+);
+const allUrls = [...staticUrls, ...countryUrls];
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allUrls.map((url) => `  <url>\n    <loc>${url}</loc>\n  </url>`).join("\n")}
+</urlset>
+`;
+
+fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemap);
+console.log(`Generated sitemap.xml with ${allUrls.length} URLs.`);
