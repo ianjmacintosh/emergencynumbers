@@ -23,6 +23,8 @@ const { COUNTRY_NAMES } = await import("../src/constants/index.ts");
 import fs from "fs";
 import path from "path";
 
+await import("./validate-phone-numbers.ts");
+
 const distDir = path.resolve("dist/client");
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
