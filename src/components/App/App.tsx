@@ -70,58 +70,61 @@ function App({ initialCountry }: { initialCountry?: string }) {
 
   return (
     <div className="page-wrapper">
-      {userLocation &&
-        userLocation in SERVICES &&
-        userLocation !== currentCountryId &&
-        suppressBanner === false && (
-          <Banner>
-            <h2>Now showing services for {COUNTRY_NAMES[currentCountryId]}</h2>
-            <p>
-              This page lists emergency services for{" "}
-              {COUNTRY_NAMES[currentCountryId]}, but it looks like you're
-              visiting from {COUNTRY_NAMES[userLocation]}.
-            </p>
-            <p>
-              Do you want to see information for {COUNTRY_NAMES[userLocation]}?
-            </p>
-            <ul className="location-swap-menu">
-              <li className="confirm">
-                <LinkButton
-                  onClick={() => {
-                    setSuppressBanner(true);
-                    setCurrentCountryId(userLocation);
-                  }}
-                  hasIcon={true}
-                  className="confirm-button"
-                >
-                  {UserGeoFlag && <UserGeoFlag height={24} />}
-                  {/* <SwapIcon size={24} /> */}
-                  <span className="updog">Yes</span>
-                </LinkButton>
-              </li>
-              <li className="dismiss">
-                <LinkButton
-                  hasIcon={true}
-                  onClick={() => {
-                    setSuppressBanner(true);
-                  }}
-                >
-                  {CurrentFlag && <CurrentFlag height={24} />}
-                  <span className="updog">No</span>
-                </LinkButton>
-              </li>
-            </ul>
-          </Banner>
-        )}
-      <header className="content-wrapper">
-        <h1>Emergency Service Phone Numbers</h1>
-        <CountrySelect
-          value={currentCountryId}
-          onChange={(value) => {
-            setSuppressBanner(true);
-            setCurrentCountryId(value as keyof typeof SERVICES);
-          }}
-        />
+      <header>
+        {userLocation &&
+          userLocation in SERVICES &&
+          userLocation !== currentCountryId &&
+          suppressBanner === false && (
+            <Banner>
+              <h2>See info for {COUNTRY_NAMES[userLocation]}?</h2>
+              <p>
+                This page lists emergency services information for{" "}
+                {COUNTRY_NAMES[currentCountryId]}, but it looks like you're
+                located in {COUNTRY_NAMES[userLocation]}.
+              </p>
+              <p>
+                Do you want to see information for {COUNTRY_NAMES[userLocation]}{" "}
+                instead?
+              </p>
+              <ul className="location-swap-menu">
+                <li className="confirm">
+                  <LinkButton
+                    onClick={() => {
+                      setSuppressBanner(true);
+                      setCurrentCountryId(userLocation);
+                    }}
+                    hasIcon={true}
+                    className="confirm-button"
+                  >
+                    {UserGeoFlag && <UserGeoFlag height={24} />}
+                    {/* <SwapIcon size={24} /> */}
+                    <span className="updog">Go now</span>
+                  </LinkButton>
+                </li>
+                <li className="dismiss">
+                  <LinkButton
+                    hasIcon={true}
+                    onClick={() => {
+                      setSuppressBanner(true);
+                    }}
+                  >
+                    <XIcon size={24} />
+                    <span className="updog">Close</span>
+                  </LinkButton>
+                </li>
+              </ul>
+            </Banner>
+          )}
+        <div className="content-wrapper">
+          <h1>Emergency Service Phone Numbers</h1>
+          <CountrySelect
+            value={currentCountryId}
+            onChange={(value) => {
+              setSuppressBanner(true);
+              setCurrentCountryId(value as keyof typeof SERVICES);
+            }}
+          />
+        </div>
       </header>
       <main className="content-wrapper">
         <CountryCard id={currentCountryId} />

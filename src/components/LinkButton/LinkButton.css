@@ -32,6 +32,6 @@
   justify-content: center;
 }
 
-.updog {
-  padding-bottom: 0.203125rem;
+.icon-button svg {
+  vertical-align: baseline;
 }
