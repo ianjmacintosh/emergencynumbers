@@ -76,5 +76,6 @@ main {
 }
 
 .updog {
-  padding-bottom: 0.203125rem;
+  text-box: trim-both cap alphabetic;
+  /* padding-bottom: 0.203125rem; */
 }
