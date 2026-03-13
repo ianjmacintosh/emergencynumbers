@@ -11,13 +11,12 @@ import {
 } from "@phosphor-icons/react";
 
 import type { IconProps } from "@phosphor-icons/react";
-import type { ServiceType } from "../../constants/emergency-services";
-import type { ServiceData } from "../CountryCard";
+import type { Service, ServiceType } from "../../constants/emergency-services";
 
 import "./ServiceCard.css";
 import LinkButton from "../LinkButton";
 
-function ServiceCard({ service }: { service: ServiceData }) {
+function ServiceCard({ service }: { service: Service }) {
   const { phoneNumber, type, description } = service;
 
   return (

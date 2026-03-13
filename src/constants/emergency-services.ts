@@ -22,7 +22,7 @@ export type Service = {
   type: ServiceType;
   name: string;
   description?: string;
-  phoneNumber: string;
+  phoneNumber: string | null;
   sources: Source[];
 };
 
