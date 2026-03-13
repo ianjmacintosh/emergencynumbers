@@ -19752,7 +19752,7 @@
     {
       "type": "Other",
       "name": "Radio",
-      "phoneNumber": "n/a",
+      "phoneNumber": null,
       "sources": [
         {
           "name": "GOV.UK",
@@ -19877,7 +19877,7 @@
     {
       "type": "Police",
       "name": "Police",
-      "phoneNumber": "n/a",
+      "phoneNumber": null,
       "sources": [
         {
           "name": "GOV.UK",
@@ -19891,7 +19891,7 @@
     {
       "type": "Fire",
       "name": "Fire",
-      "phoneNumber": "n/a",
+      "phoneNumber": null,
       "sources": [
         {
           "name": "GOV.UK",
@@ -20144,7 +20144,7 @@
     {
       "type": "Other",
       "name": "Other",
-      "phoneNumber": "n/a",
+      "phoneNumber": null,
       "sources": [
         {
           "name": "Government of South Georgia & South Sandwich Islands",

@@ -5,7 +5,7 @@ const violations: { country: string; name: string; phoneNumber: string }[] = [];
 
 for (const [country, services] of Object.entries(SERVICES)) {
   for (const { phoneNumber, name } of services ?? []) {
-    if (!PHONE_NUMBER_RE.test(phoneNumber)) {
+    if (phoneNumber !== null && !PHONE_NUMBER_RE.test(phoneNumber)) {
       violations.push({ country, name, phoneNumber });
     }
   }
