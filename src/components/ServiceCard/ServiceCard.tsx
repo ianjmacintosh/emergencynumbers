@@ -25,7 +25,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <header>
         <Icon type={type} size={32} weight="fill" aria-hidden={true} />
         <h2 className="updog">{type}</h2>
-        <h3 className="phone-number updog">{phoneNumber}</h3>
+        {phoneNumber && <h3 className="phone-number updog">{phoneNumber}</h3>}
       </header>
       {description && (
         <dl>
@@ -35,17 +35,19 @@ function ServiceCard({ service }: { service: ServiceData }) {
           <dd>{description}</dd>
         </dl>
       )}
-      <ul className="actions">
-        <li>
-          <LinkButton
-            className="icon-button call-button"
-            href={`tel:${phoneNumber}`}
-          >
-            <PhoneOutgoingIcon size={24} weight="fill" />{" "}
-            <span className="updog">Call {phoneNumber}</span>
-          </LinkButton>
-        </li>
-      </ul>
+      {phoneNumber && (
+        <ul className="actions">
+          <li>
+            <LinkButton
+              className="icon-button call-button"
+              href={`tel:${phoneNumber}`}
+            >
+              <PhoneOutgoingIcon size={24} weight="fill" />{" "}
+              <span className="updog">Call {phoneNumber}</span>
+            </LinkButton>
+          </li>
+        </ul>
+      )}
     </article>
   );
 }
