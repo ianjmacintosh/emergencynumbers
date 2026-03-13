@@ -9,10 +9,18 @@ test("/foo/ returns a 404 response", async ({ page }) => {
   expect(response?.status()).toBe(404);
 });
 
-test("has title", async ({ page }) => {
+test("builds with dynamic page titles", async ({ page }) => {
   await page.goto(testPage);
 
-  await expect(page).toHaveTitle("Emergency Service Phone Numbers");
+  await expect(page).toHaveTitle(
+    "Emergency Service Phone Numbers for United States",
+  );
+
+  await page.goto("/kp/");
+
+  await expect(page).toHaveTitle(
+    "Emergency Service Phone Numbers for North Korea",
+  );
 });
 
 // Has the header, the dropdown, the service cards, and the footer
