@@ -3764,13 +3764,13 @@
     {
       "type": "Other",
       "name": "Other",
-      "phoneNumber": "1414, 1415",
+      "phoneNumber": "1414",
       "sources": [
         {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2013-06-07"
+          "name": "Rega",
+          "url": "https://www.rega.ch/en/",
+          "fetchedAt": "2026-03-13",
+          "lastModified": null
         }
       ],
       "description": "Rescue by helicopter"
