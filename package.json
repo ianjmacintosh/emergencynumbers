@@ -16,6 +16,7 @@
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest",
     "test:e2e": "npx playwright test --reporter=list",
+    "test:e2e:preview": "node scripts/test-e2e-preview.js",
     "convert:itu": "npx tsx scripts/convert-itu-xls.ts src/assets/ITU-T_Report_2026-02-13-2200.xls"
   },
   "dependencies": {
