@@ -1,19 +1,7 @@
 import { COUNTRY_NAMES } from "../../constants";
-import {
-  SERVICES,
-  type Service,
-  type ServiceType,
-} from "../../constants/emergency-services";
+import { SERVICES, type Service } from "../../constants/emergency-services";
 import ServiceCard from "../ServiceCard";
 import TextLink from "../TextLink";
-
-export type ServiceData = {
-  phoneNumber: string;
-  name: string;
-  type: ServiceType;
-  description?: string;
-  services: Service[];
-};
 
 import "./CountryCard.css";
 
@@ -79,18 +67,18 @@ function CountryCard({ id }: { id: keyof typeof COUNTRY_NAMES }) {
 }
 
 function getServiceCardData(services: Service[]) {
-  const cards: ServiceData[] = [];
+  const cards: Service[] = [];
 
   // First we build all the cards using service data
   for (const service of services) {
-    const { type, phoneNumber, name, description } = service;
+    const { type, phoneNumber, name, description, sources } = service;
 
     cards.push({
       type,
       phoneNumber,
       name,
       description,
-      services: [service],
+      sources,
     });
   }
 

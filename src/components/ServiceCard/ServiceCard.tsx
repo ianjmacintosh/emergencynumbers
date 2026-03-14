@@ -11,13 +11,12 @@ import {
 } from "@phosphor-icons/react";
 
 import type { IconProps } from "@phosphor-icons/react";
-import type { ServiceType } from "../../constants/emergency-services";
-import type { ServiceData } from "../CountryCard";
+import type { Service, ServiceType } from "../../constants/emergency-services";
 
 import "./ServiceCard.css";
 import LinkButton from "../LinkButton";
 
-function ServiceCard({ service }: { service: ServiceData }) {
+function ServiceCard({ service }: { service: Service }) {
   const { phoneNumber, type, description } = service;
 
   return (
@@ -25,7 +24,7 @@ function ServiceCard({ service }: { service: ServiceData }) {
       <header>
         <Icon type={type} size={32} weight="fill" aria-hidden={true} />
         <h2 className="updog">{type}</h2>
-        <h3 className="phone-number updog">{phoneNumber}</h3>
+        {phoneNumber && <h3 className="phone-number updog">{phoneNumber}</h3>}
       </header>
       {description && (
         <dl>
@@ -35,17 +34,19 @@ function ServiceCard({ service }: { service: ServiceData }) {
           <dd>{description}</dd>
         </dl>
       )}
-      <ul className="actions">
-        <li>
-          <LinkButton
-            className="icon-button call-button"
-            href={`tel:${phoneNumber}`}
-          >
-            <PhoneOutgoingIcon size={24} weight="fill" />{" "}
-            <span className="updog">Call {phoneNumber}</span>
-          </LinkButton>
-        </li>
-      </ul>
+      {phoneNumber && (
+        <ul className="actions">
+          <li>
+            <LinkButton
+              className="icon-button call-button"
+              href={`tel:${phoneNumber}`}
+            >
+              <PhoneOutgoingIcon size={24} weight="fill" />{" "}
+              <span className="updog">Call {phoneNumber}</span>
+            </LinkButton>
+          </li>
+        </ul>
+      )}
     </article>
   );
 }
