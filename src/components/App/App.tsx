@@ -47,11 +47,21 @@ function App({ initialCountry }: { initialCountry?: string }) {
     }
   }, [currentCountryId]);
 
+  // Update title when currentCountryId changes
+  React.useEffect(() => {
+    if (currentCountryId in COUNTRY_NAMES) {
+      document.title = `Emergency Service Phone Numbers for ${COUNTRY_NAMES[currentCountryId]}`;
+    }
+  }, [currentCountryId]);
+
   // Keep state in sync when the user navigates with browser back/forward.
   React.useEffect(() => {
     const handlePopState = () => {
+      console.log("Baz");
       const countryFromPath = getCountryFromPath(window.location.pathname);
-      if (countryFromPath) setCurrentCountryId(countryFromPath);
+      if (countryFromPath) {
+        setCurrentCountryId(countryFromPath);
+      }
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);

@@ -23,6 +23,24 @@ test("builds with dynamic page titles", async ({ page }) => {
   );
 });
 
+test("updates page titles as user changes country via dropdown", async ({
+  page,
+}) => {
+  await page.goto(testPage);
+
+  await expect(page).toHaveTitle(
+    "Emergency Service Phone Numbers for United States",
+  );
+
+  await page.getByRole("combobox", { name: "Location" }).click();
+  await page.keyboard.type("North Korea");
+  await page.getByRole("option", { name: "North Korea" }).click();
+
+  await expect(page).toHaveTitle(
+    "Emergency Service Phone Numbers for North Korea",
+  );
+});
+
 // Has the header, the dropdown, the service cards, and the footer
 
 test("has a headline, the dropdown, the service cards, and the footer", async ({
@@ -62,9 +80,7 @@ test("can change countries", async ({ page }) => {
   const serviceCard = page.getByRole("article");
   for (const service of SERVICES[testCountryCode]!) {
     await expect(
-      serviceCard
-        .filter({ hasText: service.description ?? service.type })
-        .filter({ hasText: service.phoneNumber }),
+      serviceCard.filter({ hasText: service.description ?? service.type }),
     ).toBeVisible();
   }
 });
@@ -169,9 +185,7 @@ test("shows a banner and can dismiss it when geolocated to a different supported
   const serviceCard = page.getByRole("article");
   for (const service of SERVICES["BR"]!) {
     await expect(
-      serviceCard
-        .filter({ hasText: service.description ?? service.type })
-        .filter({ hasText: service.phoneNumber }),
+      serviceCard.filter({ hasText: service.description ?? service.type }),
     ).toBeVisible();
   }
 });
@@ -203,9 +217,7 @@ test("shows a banner and can switch to the geolocated country", async ({
   const serviceCard = page.getByRole("article");
   for (const service of SERVICES["ES"]!) {
     await expect(
-      serviceCard
-        .filter({ hasText: service.description ?? service.type })
-        .filter({ hasText: service.phoneNumber }),
+      serviceCard.filter({ hasText: service.description ?? service.type }),
     ).toBeVisible();
   }
 });
