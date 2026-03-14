@@ -2,8 +2,6 @@ import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import LinkButton from "../LinkButton";
 import React from "react";
 
-import styles from "./CopyButton.module.css";
-
 function CopyButton({
   content,
   confirmation,
@@ -21,7 +19,7 @@ function CopyButton({
   const [showNotification, setShowNotification] = React.useState(false);
   return (
     <LinkButton
-      className={styles.iconButton}
+      hasIcon={true}
       onClick={() => {
         setShowNotification(true);
 

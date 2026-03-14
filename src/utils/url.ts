@@ -1,5 +1,5 @@
 import React from "react";
-import { SERVICES } from "../constants/emergency-services";
+import { COUNTRY_NAMES } from "../constants";
 
 /**
  * Reactively tracks window.location.pathname, updating on popstate (browser
@@ -28,12 +28,12 @@ export function usePathname() {
  */
 export function getCountryFromPath(
   pathname: string,
-): keyof typeof SERVICES | null {
+): keyof typeof COUNTRY_NAMES | null {
   const segments = pathname.split("/").filter(Boolean);
   if (segments.length !== 1) return null;
 
   const code = segments[0].toUpperCase();
-  if (code in SERVICES) return code as keyof typeof SERVICES;
+  if (code in COUNTRY_NAMES) return code as keyof typeof COUNTRY_NAMES;
 
   return null;
 }

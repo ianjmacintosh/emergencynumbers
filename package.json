@@ -5,17 +5,19 @@
   "type": "module",
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npx tsx --tsconfig tsconfig.app.json --import ./scripts/register-css-hook.js scripts/prerender.ts",
     "lint": "eslint .",
-    "preview": "vite preview --host",
+    "preview": "npm run build && vite preview --host",
     "preview:cf": "npm run build && npx wrangler versions upload",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "tsc -b",
+    "validate:phones": "npx tsx --tsconfig tsconfig.app.json scripts/validate-phone-numbers.ts",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest",
     "test:e2e": "npx playwright test --reporter=list",
-    "convert:itu": "tsx scripts/convert-itu-xls.ts src/assets/ITU-T_Report_2026-02-13-2200.xls > src/constants/emergency-services.ts"
+    "test:e2e:preview": "node scripts/test-e2e-preview.js",
+    "convert:itu": "npx tsx scripts/convert-itu-xls.ts src/assets/ITU-T_Report_2026-02-13-2200.xls"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.21",

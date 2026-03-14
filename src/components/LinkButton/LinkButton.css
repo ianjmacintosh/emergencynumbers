@@ -16,10 +16,23 @@
   }
 }
 
+.button {
+  text-transform: uppercase;
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+}
+
 .icon-button {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
   border-radius: 10px;
+  justify-content: center;
+}
+
+.icon-button svg {
+  flex-shrink: 0;
+  vertical-align: baseline;
 }

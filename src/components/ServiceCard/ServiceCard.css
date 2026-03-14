@@ -7,22 +7,31 @@
   display: grid;
   grid-auto-flow: row;
   gap: 1rem;
+  margin: 0 1rem;
 }
 
-h2 {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.service h2 {
   font-size: 1.6rem;
+}
+
+.service h4 {
   font-weight: 600;
 }
 
-h2 img,
-h2 svg {
+.service img,
+.service header svg {
   flex-shrink: 0;
 }
 
-h2 .phone-number {
+.service header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.service .phone-number {
+  font-size: 1.6rem;
   margin-left: auto;
 }
 
@@ -30,6 +39,7 @@ dt {
   font-weight: bold;
   font-size: 1rem;
   color: #666;
+  margin-bottom: 0.5rem;
 }
 
 dd {
@@ -50,22 +60,12 @@ dd:last-child {
   gap: 1rem;
 }
 
-.actions button {
+.actions .button {
   width: 100%;
 }
 
-.icon-button {
-  display: flex;
-}
-
-.actions .call-button {
+.actions .button {
   background-color: hsl(130deg 100% 27%);
   color: white;
   border-color: seagreen;
-  justify-content: center;
-}
-
-h2 .icon-button {
-  font-size: 1rem;
-  font-weight: normal;
 }

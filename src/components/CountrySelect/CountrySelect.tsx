@@ -3,7 +3,8 @@ import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
-import styles from "./CountrySelect.module.css";
+import "./CountrySelect.css";
+import { WarningIcon } from "@phosphor-icons/react";
 
 function CountrySelect({
   value,
@@ -14,32 +15,76 @@ function CountrySelect({
 }) {
   const Flag = hasFlag(value) ? FlagIcon[value as keyof typeof FlagIcon] : null;
   return (
-    <ComboboxSelect
-      value={value}
-      onChange={onChange}
-      comboboxLabel="Search for Country"
-      selectButtonContent={
-        <>
-          <span className={styles.countryBadge}>
-            {Flag && <Flag className={styles.flag} />}
-            <span>{COUNTRY_NAMES[value as keyof typeof SERVICES]}</span>
-          </span>
-        </>
-      }
-    >
-      {getCountryIds()
-        .filter((country) => country in SERVICES)
-        .map((countryId) => {
-          return (
-            <ComboboxSelectOption
-              key={countryId}
-              value={countryId}
-              label={COUNTRY_NAMES[countryId] || "Unknown"}
-              keywords={COUNTRY_ALT_NAMES[countryId]}
-            />
-          );
-        })}
-    </ComboboxSelect>
+    <div className="country-select">
+      <ComboboxSelect
+        value={value}
+        onChange={onChange}
+        label="Location"
+        comboboxLabel="Search for Country"
+        selectButtonContent={
+          <>
+            <span className="country-badge">
+              {Flag && <Flag className="country-flag" height={36} />}
+              <span className="country-name updog">
+                {COUNTRY_NAMES[value as keyof typeof SERVICES]}
+              </span>
+            </span>
+          </>
+        }
+      >
+        {getCountryIds()
+          .sort((firstCountryId, secondCountryId) => {
+            const firstCountryName = COUNTRY_NAMES[firstCountryId];
+            const secondCountryName = COUNTRY_NAMES[secondCountryId];
+            return firstCountryName > secondCountryName ? 1 : -1;
+          })
+          .map((countryId) => {
+            const hasServices = countryId in SERVICES;
+            const countryName = COUNTRY_NAMES[countryId];
+            const countryKeywords = [countryName];
+
+            if (countryId in COUNTRY_ALT_NAMES)
+              countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
+            return (
+              <ComboboxSelectOption
+                key={countryId}
+                value={countryId}
+                keywords={countryKeywords}
+              >
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "1rem",
+                  }}
+                >
+                  <span>
+                    {value === countryId ? (
+                      <span
+                        aria-hidden={true}
+                        style={{ marginRight: "0.5rem" }}
+                      >
+                        ✓
+                      </span>
+                    ) : null}{" "}
+                    {countryName}{" "}
+                    {hasServices ? null : "(no information available)"}
+                  </span>
+                  {hasServices ? null : (
+                    <WarningIcon
+                      size={24}
+                      style={{
+                        marginLeft: "auto",
+                        flexShrink: 0,
+                      }}
+                    ></WarningIcon>
+                  )}
+                </span>
+              </ComboboxSelectOption>
+            );
+          })}
+      </ComboboxSelect>
+    </div>
   );
 }
 

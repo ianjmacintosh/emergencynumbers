@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 
-import styles from "./TextLink.module.css";
+import "./TextLink.css";
 import VisuallyHidden from "../VisuallyHidden";
 import { usePathname } from "../../utils/url";
 
@@ -21,18 +21,16 @@ function TextLink({
     <Tag
       href={href}
       {...delegated}
-      className={`${styles.textLink} ${alreadyOnLinkedPage ? styles.current : undefined}`.trim()}
+      className={`text-link ${alreadyOnLinkedPage ? "current" : null}`.trim()}
       aria-current={alreadyOnLinkedPage}
     >
       {alreadyOnLinkedPage && <VisuallyHidden>Current page: </VisuallyHidden>}
-      <span>{children}</span>
+      <span className="link-text">{children}</span>
       {opensNewWindow && (
-        <>
-          <ArrowSquareOutIcon
-            className={styles.popoutIcon}
-            alt="(opens in a new window)"
-          />
-        </>
+        <span style={{ whiteSpace: "nowrap" }}>
+          &nbsp;
+          <ArrowSquareOutIcon alt="(opens in a new window)" />
+        </span>
       )}
     </Tag>
   );

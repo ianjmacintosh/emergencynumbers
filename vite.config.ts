@@ -3,13 +3,14 @@ import react from "@vitejs/plugin-react";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
 // https://vite.dev/config/
-export default defineConfig({
-  css: {
-    modules: {
-      localsConvention: "camelCase",
-    },
-  },
-  plugins: [react(), cloudflare()],
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    react(),
+    cloudflare({
+      configPath:
+        mode === "development" ? "./wrangler.dev.jsonc" : "./wrangler.jsonc",
+    }),
+  ],
   environments: {
     client: {
       build: {
@@ -17,9 +18,10 @@ export default defineConfig({
           input: {
             main: "index.html",
             about: "about/index.html",
+            notFound: "404.html",
           },
         },
       },
     },
   },
-});
+}));

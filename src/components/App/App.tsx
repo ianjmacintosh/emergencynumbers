@@ -3,7 +3,7 @@ import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 import { getCountryFromPath } from "../../utils/url";
 
-import styles from "./App.module.css";
+import "./App.css";
 import CountrySelect from "../CountrySelect";
 import CountryCard from "../CountryCard";
 import Footer from "../Footer";
@@ -12,10 +12,15 @@ import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
 
-function App() {
+function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
-    keyof typeof SERVICES
-  >(() => getCountryFromPath(window.location.pathname) ?? DEFAULT_COUNTRY);
+    keyof typeof COUNTRY_NAMES
+  >(
+    () =>
+      (initialCountry as keyof typeof COUNTRY_NAMES) ??
+      getCountryFromPath(window.location.pathname) ??
+      DEFAULT_COUNTRY,
+  );
 
   const [suppressBanner, setSuppressBanner] = React.useState(false);
   const [userLocation, setUserLocation] = React.useState<
@@ -62,51 +67,59 @@ function App() {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  const Flag =
+  const UserGeoFlag =
     userLocation && hasFlag(userLocation)
       ? FlagIcon[userLocation as keyof typeof FlagIcon]
       : null;
 
   return (
-    <div className={styles.pageWrapper}>
-      {userLocation &&
-        userLocation in SERVICES &&
-        userLocation !== currentCountryId &&
-        suppressBanner === false && (
-          <Banner>
-            <ul className={styles.locationSwapMenu}>
-              <li className={styles.confirm}>
-                <LinkButton
-                  onClick={() => {
-                    setSuppressBanner(true);
-                    setCurrentCountryId(userLocation);
-                  }}
-                  hasIcon={true}
-                  className={styles.confirmButton}
-                >
-                  {Flag && <Flag height={24} />}
-                  {/* <SwapIcon size={24} /> */}
-                  Switch to {COUNTRY_NAMES[userLocation]}
-                </LinkButton>
-              </li>
-              <li className={styles.dismiss}>
-                <LinkButton
-                  hasIcon={true}
-                  aria-label="Dismiss"
-                  onClick={() => {
-                    setSuppressBanner(true);
-                  }}
-                >
-                  <XIcon size={24} type="fill" />
-                </LinkButton>
-              </li>
-            </ul>
-          </Banner>
-        )}
-      <main className={styles.contentWrapper} role="main">
-        <header>
+    <div className="page-wrapper">
+      <header>
+        {userLocation &&
+          userLocation in SERVICES &&
+          userLocation !== currentCountryId &&
+          suppressBanner === false && (
+            <Banner>
+              <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
+              <p>
+                This page is about {COUNTRY_NAMES[currentCountryId]}, but it
+                looks like your internet connection is from{" "}
+                {COUNTRY_NAMES[userLocation]}.
+              </p>
+              <p>
+                Do you want to see emergency services information for{" "}
+                {COUNTRY_NAMES[userLocation]} instead?
+              </p>
+              <ul className="location-swap-menu">
+                <li className="confirm">
+                  <LinkButton
+                    onClick={() => {
+                      setSuppressBanner(true);
+                      setCurrentCountryId(userLocation);
+                    }}
+                    hasIcon={true}
+                    className="confirm-button"
+                  >
+                    {UserGeoFlag && <UserGeoFlag height={36} />}
+                    <span className="updog">Go now</span>
+                  </LinkButton>
+                </li>
+                <li className="dismiss">
+                  <LinkButton
+                    hasIcon={true}
+                    onClick={() => {
+                      setSuppressBanner(true);
+                    }}
+                  >
+                    <XIcon size={36} />
+                    <span className="updog">Close</span>
+                  </LinkButton>
+                </li>
+              </ul>
+            </Banner>
+          )}
+        <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
-
           <CountrySelect
             value={currentCountryId}
             onChange={(value) => {
@@ -114,7 +127,9 @@ function App() {
               setCurrentCountryId(value as keyof typeof SERVICES);
             }}
           />
-        </header>
+        </div>
+      </header>
+      <main className="content-wrapper">
         <CountryCard id={currentCountryId} />
       </main>
       <Footer />
@@ -124,8 +139,8 @@ function App() {
 
 function Banner({ children }: { children: React.ReactNode }) {
   return (
-    <aside className={styles.banner}>
-      <div className={styles.contentWrapper}>{children}</div>
+    <aside className="banner">
+      <div className="content-wrapper">{children}</div>
     </aside>
   );
 }

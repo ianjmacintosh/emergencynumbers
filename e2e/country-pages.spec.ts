@@ -24,11 +24,11 @@ test.afterAll(async () => {
 });
 
 test("navigating to /us/ shows US emergency numbers", async () => {
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     COUNTRY_NAMES["US"],
   );
 
-  const serviceCard = page.getByLabel("Emergency Service");
+  const serviceCard = page.getByRole("article");
   for (const service of SERVICES["US"] as Service[]) {
     await expect(
       serviceCard
@@ -42,19 +42,19 @@ test("navigating to /us/ shows US emergency numbers", async () => {
 test("selecting a country from combobox navigates to its URL", async () => {
   const testCountry = COUNTRY_NAMES["BR"];
 
-  await page.getByRole("combobox", { name: "Country" }).click();
+  await page.getByRole("combobox", { name: "Location" }).click();
   await page.keyboard.type(testCountry);
   await page.getByRole("option", { name: testCountry }).click();
   await page.waitForURL(/\/br\//);
 
-  await expect(page.getByRole("combobox", { name: "Country" })).toContainText(
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
     testCountry,
   );
 });
 
 test("navigating to /br/ shows Brazil emergency numbers", async () => {
   // Page is already at /br/ after the previous test.
-  const serviceCard = page.getByLabel("Emergency Service");
+  const serviceCard = page.getByRole("article");
   for (const service of SERVICES["BR"] as Service[]) {
     await expect(
       serviceCard
@@ -64,9 +64,13 @@ test("navigating to /br/ shows Brazil emergency numbers", async () => {
   }
 });
 
-test("navigating to an unknown country code falls back to default", async () => {
-  await page.goto("/xx/");
+test("navigating to /aq/ shows Antarctica with no information message", async () => {
+  await page.goto("/aq/");
 
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByRole("combobox", { name: "Country" })).toBeVisible();
+  await expect(page.getByRole("combobox", { name: "Location" })).toContainText(
+    COUNTRY_NAMES["AQ"],
+  );
+  await expect(
+    page.getByRole("heading", { name: /no information available/i }),
+  ).toBeVisible();
 });
