@@ -1531,20 +1531,6 @@
         }
       ],
       "description": "Service of search and rescue in B&H"
-    },
-    {
-      "type": "Other",
-      "name": "Other",
-      "phoneNumber": "17xx",
-      "sources": [
-        {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2017-03-21"
-        }
-      ],
-      "description": "Humanitarian services"
     }
   ],
   "BB": [
@@ -7714,7 +7700,20 @@
     {
       "type": "Police",
       "name": "Police",
-      "phoneNumber": "192: 112",
+      "phoneNumber": "192",
+      "sources": [
+        {
+          "name": "ITU-T E.129",
+          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+          "fetchedAt": "2026-02-13",
+          "lastModified": "2012-04-03"
+        }
+      ]
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "112",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -10856,7 +10855,21 @@
     {
       "type": "Other",
       "name": "Other",
-      "phoneNumber": "15 or 150",
+      "phoneNumber": "150",
+      "sources": [
+        {
+          "name": "ITU-T E.129",
+          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+          "fetchedAt": "2026-02-13",
+          "lastModified": "2024-06-11"
+        }
+      ],
+      "description": "Civil protection services"
+    },
+    {
+      "type": "Other",
+      "name": "Other",
+      "phoneNumber": "15",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -11307,20 +11320,6 @@
         }
       ],
       "description": "GSM emergency service"
-    },
-    {
-      "type": "Other",
-      "name": "Other",
-      "phoneNumber": "11XY",
-      "sources": [
-        {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2016-02-17"
-        }
-      ],
-      "description": "Other national public health services"
     },
     {
       "type": "Other",
@@ -12981,7 +12980,7 @@
     {
       "type": "Traffic",
       "name": "Traffic",
-      "phoneNumber": "*555 (mobile only)",
+      "phoneNumber": "*555",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -12989,7 +12988,8 @@
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
         }
-      ]
+      ],
+      "description": "Mobile only"
     },
     {
       "type": "Medical",
@@ -14334,7 +14334,7 @@
     {
       "type": "Child Helpline",
       "name": "Child Helpline",
-      "phoneNumber": "116111:  116123 (all in process of assignment)",
+      "phoneNumber": "116111",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -14360,34 +14360,7 @@
     {
       "type": "Police",
       "name": "Police",
-      "phoneNumber": "92",
-      "sources": [
-        {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2012-04-03"
-        }
-      ]
-    },
-    {
-      "type": "Police",
-      "name": "Police",
       "phoneNumber": "192",
-      "sources": [
-        {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2012-04-03"
-        }
-      ],
-      "description": "as of May13 2012"
-    },
-    {
-      "type": "Fire",
-      "name": "Fire",
-      "phoneNumber": "93",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -14408,20 +14381,6 @@
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
         }
-      ],
-      "description": "as of May13 2012"
-    },
-    {
-      "type": "Medical",
-      "name": "Medical",
-      "phoneNumber": "94",
-      "sources": [
-        {
-          "name": "ITU-T E.129",
-          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
-          "fetchedAt": "2026-02-13",
-          "lastModified": "2012-04-03"
-        }
       ]
     },
     {
@@ -14435,13 +14394,12 @@
           "fetchedAt": "2026-02-13",
           "lastModified": "2012-04-03"
         }
-      ],
-      "description": "as of May13 2012"
+      ]
     },
     {
       "type": "Traffic",
       "name": "Traffic",
-      "phoneNumber": "987: 1987 (as of May13 2012)",
+      "phoneNumber": "1987",
       "sources": [
         {
           "name": "ITU-T E.129",
@@ -16111,7 +16069,21 @@
     {
       "type": "Police",
       "name": "Police",
-      "phoneNumber": "112, 777",
+      "phoneNumber": "112",
+      "sources": [
+        {
+          "name": "ITU-T E.129",
+          "url": "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+          "fetchedAt": "2026-02-13",
+          "lastModified": "2023-07-25"
+        }
+      ],
+      "description": "Police rescue service"
+    },
+    {
+      "type": "Police",
+      "name": "Police",
+      "phoneNumber": "777",
       "sources": [
         {
           "name": "ITU-T E.129",
