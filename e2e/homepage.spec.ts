@@ -2,6 +2,8 @@ import { test, expect } from "@playwright/test";
 import { SERVICES } from "../src/constants/emergency-services";
 import { COUNTRY_NAMES } from "../src/constants";
 
+const testPage = "/us/";
+
 test("has title", async ({ page }) => {
   await page.goto("/");
 
