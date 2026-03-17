@@ -63,45 +63,6 @@ function AboutPage() {
         </article>
         <hr />
         <article>
-          <h2>Are these phone numbers trustworthy?</h2>
-          <p>
-            Yes. Most of this information is from the{" "}
-            <TextLink
-              href="https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
-              target="_blank"
-            >
-              ITU-T E.129 Important numbers
-            </TextLink>{" "}
-            list, which is maintained by a specialized agency of the United
-            Nations responsible for telecommunications standards. I also used{" "}
-            <TextLink
-              href="https://www.gov.uk/foreign-travel-advice"
-              target="_blank"
-            >
-              GOV.UK's Foreign travel advice
-            </TextLink>{" "}
-            to provide information for countries absent from the ITU-T E.129's
-            list.
-          </p>
-          <p>
-            I intentionally did not use phone number data from Wikipedia's{" "}
-            <TextLink
-              href="https://en.wikipedia.org/wiki/List_of_emergency_telephone_numbers"
-              target="_blank"
-            >
-              List of emergency telephone numbers
-            </TextLink>{" "}
-            article because I don't trust it.
-          </p>
-          <p>
-            Keep in mind that there may be even better options for help that
-            aren't listed here. Calling a local number directly is often better
-            than going through a national system, but calling anyone is better
-            than calling no one, especially when minutes count.
-          </p>
-        </article>
-        <hr />
-        <article>
           <h2>Can I use or modify this tool's source code?</h2>
           <p>
             Yes. The GitHub repo is{" "}
