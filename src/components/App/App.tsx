@@ -11,6 +11,7 @@ import LinkButton from "../LinkButton";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
+import useCookie from "../../hooks/use-cookie";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -27,7 +28,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
     keyof typeof SERVICES | null
   >(null);
 
-  const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useCookie("agreedToTerms", "never");
 
   React.useEffect(() => {
     fetch("/api/geo")
@@ -79,7 +80,8 @@ function App({ initialCountry }: { initialCountry?: string }) {
         {userLocation &&
           userLocation in SERVICES &&
           userLocation !== currentCountryId &&
-          suppressBanner === false && (
+          suppressBanner === false &&
+          agreedToTerms !== "never" && (
             <Banner>
               <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
               <p>
@@ -122,7 +124,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
 
-          {agreedToTerms ? (
+          {agreedToTerms !== "never" ? (
             <CountrySelect
               value={currentCountryId}
               onChange={(value) => {
@@ -131,11 +133,11 @@ function App({ initialCountry }: { initialCountry?: string }) {
               }}
             />
           ) : (
-            <Disclaimer agree={() => setAgreedToTerms(true)} />
+            <Disclaimer agree={() => setAgreedToTerms(Date.now().toString())} />
           )}
         </div>
       </header>
-      {agreedToTerms && (
+      {agreedToTerms !== "never" && (
         <main className="content-wrapper">
           <CountryCard id={currentCountryId} />
         </main>
