@@ -160,22 +160,24 @@ function Disclaimer({ agree }: { agree: () => void }) {
     <aside className="disclaimer">
       <h2>Legal Disclaimer</h2>
       <p>
-        This is a phone number directory of emergency services abroad, compiled
-        from official public sources. It is <strong>NOT</strong> an official
-        resource, does <strong>NOT</strong> represent any government body, and
-        is <strong>NOT</strong> a substitute for local knowledge.
+        This phone directory of emergency services was compiled using official
+        public sources, last updated March 2026.
       </p>
       <p>
-        This information, last updated March 2026, is provided "as is" without
-        warranty. Phone numbers and services can change without notice, so 100%
-        accuracy cannot be guaranteed. Always verify information with local
-        authorities.
+        This tool is <strong>NOT</strong> an official resource, has{" "}
+        <strong>NO</strong> government affiliation, and is <strong>NOT</strong>{" "}
+        a substitute for local knowledge.
       </p>
       <p>
-        By clicking <strong>Agree</strong>, you acknowledge this disclaimer and
-        &mdash; to the fullest extent permitted by law &mdash; agree not to hold
-        the developers of this application liable for any damages, losses, or
-        consequences from using it.
+        Because phone numbers and services can change without notice, this
+        information is provided "as is" without warranty.
+      </p>
+      <p>
+        By clicking <strong>Agree</strong>, you acknowledge this disclaimer,
+        assume all risk of relying on this information in an emergency
+        situation, and to the fullest extent permitted by law, agree not to hold
+        the developers of this application liable for any damages or losses from
+        using it.
       </p>
       <ul className="actions">
         <li>
