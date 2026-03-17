@@ -27,6 +27,8 @@ function App({ initialCountry }: { initialCountry?: string }) {
     keyof typeof SERVICES | null
   >(null);
 
+  const [agreedToTerms, setAgreedToTerms] = React.useState(false);
+
   React.useEffect(() => {
     fetch("/api/geo")
       .then((res) => res.json())
@@ -57,7 +59,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
   // Keep state in sync when the user navigates with browser back/forward.
   React.useEffect(() => {
     const handlePopState = () => {
-      console.log("Baz");
       const countryFromPath = getCountryFromPath(window.location.pathname);
       if (countryFromPath) {
         setCurrentCountryId(countryFromPath);
@@ -120,18 +121,25 @@ function App({ initialCountry }: { initialCountry?: string }) {
           )}
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
-          <CountrySelect
-            value={currentCountryId}
-            onChange={(value) => {
-              setSuppressBanner(true);
-              setCurrentCountryId(value as keyof typeof SERVICES);
-            }}
-          />
+
+          {agreedToTerms ? (
+            <CountrySelect
+              value={currentCountryId}
+              onChange={(value) => {
+                setSuppressBanner(true);
+                setCurrentCountryId(value as keyof typeof SERVICES);
+              }}
+            />
+          ) : (
+            <Disclaimer agree={() => setAgreedToTerms(true)} />
+          )}
         </div>
       </header>
-      <main className="content-wrapper">
-        <CountryCard id={currentCountryId} />
-      </main>
+      {agreedToTerms && (
+        <main className="content-wrapper">
+          <CountryCard id={currentCountryId} />
+        </main>
+      )}
       <Footer />
     </div>
   );
@@ -141,6 +149,43 @@ function Banner({ children }: { children: React.ReactNode }) {
   return (
     <aside className="banner">
       <div className="content-wrapper">{children}</div>
+    </aside>
+  );
+}
+
+function Disclaimer({ agree }: { agree: () => void }) {
+  return (
+    <aside className="disclaimer">
+      <h2>Legal Disclaimer</h2>
+      <p>
+        This is a phone number directory of emergency services abroad, compiled
+        from official public sources. It is <strong>NOT</strong> an official
+        resource, does <strong>NOT</strong> represent any government body, and
+        is <strong>NOT</strong> a substitute for local knowledge.
+      </p>
+      <p>
+        This information, last updated March 2026, is provided "as is" without
+        warranty. Phone numbers and services can change without notice, so 100%
+        accuracy cannot be guaranteed. Always verify information with local
+        authorities.
+      </p>
+      <p>
+        By clicking <strong>Agree</strong>, you acknowledge this disclaimer and
+        &mdash; to the fullest extent permitted by law &mdash; agree not to hold
+        the developers of this application liable for any damages, losses, or
+        consequences from using it.
+      </p>
+      <ul className="actions">
+        <li>
+          <LinkButton
+            onClick={() => {
+              agree();
+            }}
+          >
+            Agree
+          </LinkButton>
+        </li>
+      </ul>
     </aside>
   );
 }
