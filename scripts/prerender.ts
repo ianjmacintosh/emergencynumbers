@@ -15,6 +15,9 @@ type HistoryMock = { pushState: () => void };
 (globalThis as unknown as { history: HistoryMock }).history = {
   pushState: () => {},
 };
+(globalThis as unknown as { document: { cookie: string } }).document = {
+  cookie: "",
+};
 
 const { renderToStaticMarkup } = await import("react-dom/server");
 const { createElement, StrictMode } = await import("react");

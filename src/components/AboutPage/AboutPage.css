@@ -22,6 +22,10 @@ article p {
   line-height: 2.5rem;
 }
 
+th {
+  text-align: left;
+}
+
 hr {
   height: 1px;
   width: 3rem;
