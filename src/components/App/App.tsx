@@ -160,9 +160,9 @@ function Disclaimer({ agree }: { agree: () => void }) {
     <aside className="disclaimer" aria-labelledby="disclaimer-title">
       <h2 id="disclaimer-title">Legal Disclaimer</h2>
       <p>
-        This directory is a good-faith free informational tool to help people
-        find emergency services overseas <strong>faster</strong> than navigating
-        through official government or embassy websites to answer{" "}
+        This directory is a good-faith free informational tool to help travelers
+        find emergency service phone numbers faster than navigating through
+        official government or embassy websites to answer{" "}
         <em>"What's the number for 911 here?"</em>
       </p>
       <p>
