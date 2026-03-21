@@ -157,8 +157,8 @@ function Banner({ children }: { children: React.ReactNode }) {
 
 function Disclaimer({ agree }: { agree: () => void }) {
   return (
-    <aside className="disclaimer">
-      <h2>Legal Disclaimer</h2>
+    <aside className="disclaimer" aria-labelledby="disclaimer-title">
+      <h2 id="disclaimer-title">Legal Disclaimer</h2>
       <p>
         This directory is a good-faith free informational tool to help people
         find emergency services overseas <strong>faster</strong> than navigating
