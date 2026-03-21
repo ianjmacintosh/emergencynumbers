@@ -4,6 +4,16 @@ import { COUNTRY_NAMES } from "../src/constants";
 
 const testPage = "/us/";
 
+test.beforeEach(async ({ context, baseURL }) => {
+  await context.addCookies([
+    {
+      name: "agreedToTerms",
+      value: "1234567890",
+      url: baseURL,
+    },
+  ]);
+});
+
 test("/foo/ returns a 404 response", async ({ page }) => {
   const response = await page.goto("/foo/");
   expect(response?.status()).toBe(404);

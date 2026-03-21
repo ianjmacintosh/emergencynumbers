@@ -14,8 +14,12 @@ type Service = {
 
 let page: Page;
 
-test.beforeAll(async ({ browser }) => {
-  page = await browser.newPage();
+test.beforeAll(async ({ browser, baseURL }) => {
+  const context = await browser.newContext();
+  await context.addCookies([
+    { name: "agreedToTerms", value: "1234567890", url: baseURL },
+  ]);
+  page = await context.newPage();
   await page.goto("/us/");
 });
 
