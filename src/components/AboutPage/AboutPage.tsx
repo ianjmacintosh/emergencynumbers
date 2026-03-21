@@ -63,9 +63,117 @@ function AboutPage() {
         </article>
         <hr />
         <article>
+          <h2>Where did you get this data?</h2>
+          <p>
+            Mostly from the{" "}
+            <TextLink
+              href="https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+              target="_blank"
+            >
+              ITU-T E.129 Important numbers
+            </TextLink>{" "}
+            list, which is maintained by a specialized agency of the United
+            Nations responsible for telecommunications standards, as well as{" "}
+            <TextLink
+              href="https://www.gov.uk/foreign-travel-advice"
+              target="_blank"
+            >
+              GOV.UK's Foreign travel advice
+            </TextLink>
+            to provide information for countries absent from the ITU-T E.129's
+            list. For the remaining missing countries and territories, I
+            consulted their government's online resources.
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Services</th>
+                <th>% of Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ITU-T E.129</td>
+                <td>1,257</td>
+                <td>85.9%</td>
+              </tr>
+              <tr>
+                <td>GOV.UK</td>
+                <td>193</td>
+                <td>13.2%</td>
+              </tr>
+              <tr>
+                <td>
+                  Individual governments<sup>1</sup>
+                </td>
+                <td>13</td>
+                <td>0.9%</td>
+              </tr>
+              <tr>
+                <td>Rega</td>
+                <td>1</td>
+                <td>&lt;0.1%</td>
+              </tr>
+              <tr>
+                <td>Visit Åland</td>
+                <td>1</td>
+                <td>&lt;0.1%</td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td>1,465</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            <small>
+              <sup>1</sup> Individual governments: Government of Jersey,
+              Australian Government, States of Guernsey, Christmas Island
+              Emergency Management, Government of Canada, Government of South
+              Georgia &amp; South Sandwich Islands, Isle of Man Ambulance
+              Service, Isle of Man Constabulary, Isle of Man Fire and Rescue
+              Service
+            </small>
+          </p>
+        </article>
+        <hr />
+        <article>
+          <h2>
+            Why do you claim to provide critical information and then tell me
+            not to trust it?
+          </h2>
+          <p>
+            I really didn't want to have to put up a disclaimer, but considering
+            the context and potential gravity of the situation, I figured it was
+            better to remind folks that this is second-hand information. It's
+            unlikely these emergency phone numbers will change any time soon,
+            but it could happen. I'd rather cover for that edge case and remind
+            people that I'm not an official source instead of having them keep
+            calling a decommissioned phone number in a moment of crisis.
+          </p>
+        </article>
+        <hr />
+        <article>
+          <h2>
+            Why doesn't this site just link people directly to official sources?
+          </h2>
+          <p>
+            While more likely to be accurate, official sites typically have a
+            lot of other unrelated information that a person in a crisis would
+            need to filter through. I wanted to make one place a traveler could
+            visit to quickly get emergency service phone numbers without having
+            to navigate through pages and pages of each country's own bespoke
+            and novel information architecture.
+          </p>
+        </article>
+        <hr />
+        <article>
           <h2>Can I use or modify this tool's source code?</h2>
           <p>
-            Yes. The GitHub repo is{" "}
+            Yes. The source code is available on GitHub at{" "}
             <TextLink
               href="https://github.com/ianjmacintosh/emergencynumbers"
               target="_blank"
