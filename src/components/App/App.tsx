@@ -160,24 +160,26 @@ function Disclaimer({ agree }: { agree: () => void }) {
     <aside className="disclaimer">
       <h2>Legal Disclaimer</h2>
       <p>
-        This phone directory of emergency services was compiled using official
-        public sources, last updated March 2026.
+        This directory is a good-faith free informational tool to help people
+        find emergency services overseas <strong>faster</strong> than navigating
+        through official government or embassy websites to answer{" "}
+        <em>"What's the number for 911 here?"</em>
       </p>
       <p>
-        This tool is <strong>NOT</strong> an official resource, has{" "}
-        <strong>NO</strong> government affiliation, and is <strong>NOT</strong>{" "}
-        a substitute for local knowledge.
+        This website is <strong>NOT</strong> an official resource, it is{" "}
+        <strong>NOT</strong> government-affiliated, and it is{" "}
+        <strong>NOT</strong> guaranteed to be accurate or up-to-date. It was
+        compiled from high-quality official sources and last updated March 2026,
+        but emergency services and phone numbers can change at any time without
+        notice. Information is provided "as is" and without any warranty. Always
+        verify information with local authorities, and remember calls may
+        require special local dialing instructions.
       </p>
       <p>
-        Because phone numbers and services can change without notice, this
-        information is provided "as is" without warranty.
-      </p>
-      <p>
-        By clicking <strong>Agree</strong>, you acknowledge this disclaimer,
-        assume all risk of relying on this information in an emergency
-        situation, and to the fullest extent permitted by law, agree not to hold
-        the developers of this application liable for any damages or losses from
-        using it.
+        By using this tool and clicking <strong>AGREE</strong>, you understand
+        and accept these limitations and (to the fullest extent permitted by
+        law) release the developers from liability for any delays, damages,
+        losses, or other consequences arising from its use.
       </p>
       <ul className="actions">
         <li>
