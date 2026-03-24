@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import LinkButton from "../LinkButton";
 import TextLink from "../TextLink";
 import "./AboutPage.css";
+import { DisclaimerText } from "../Disclaimer";
 
 function AboutPage() {
   return (
@@ -54,11 +55,10 @@ function AboutPage() {
         </article>
         <hr />
         <article>
-          <h2>How many countries are supported?</h2>
+          <h2>How many countries does this tool cover?</h2>
           <p>
-            {Object.keys(SERVICES).length}. This site provides emergency service
-            phone numbers for {Object.keys(SERVICES).length} different countries
-            and territories.
+            {Object.keys(SERVICES).length} countries and territories are
+            supported.
           </p>
         </article>
         <hr />
@@ -141,18 +141,22 @@ function AboutPage() {
         </article>
         <hr />
         <article>
+          <h2>Is all the information listed here official and accurate?</h2>
+          <DisclaimerText />
+        </article>
+        <hr />
+        <article>
           <h2>
             Why do you claim to provide critical information and then tell me
             not to trust it?
           </h2>
           <p>
-            I really didn't want to have to put up a disclaimer, but considering
-            the context and potential gravity of the situation, I figured it was
-            better to remind folks that this is second-hand information. It's
-            unlikely these emergency phone numbers will change any time soon,
-            but it could happen. I'd rather cover for that edge case and remind
-            people that I'm not an official source instead of having them keep
-            calling a decommissioned phone number in a moment of crisis.
+            Due to the serious context, I figured it was better to remind folks
+            that this is second-hand information. It's unlikely these phone
+            numbers will change frequently, but it could happen. I'd rather
+            cover for that edge case and remind people that I'm not an official
+            source instead of having them keep calling a decommissioned phone
+            number in an emergency situation.
           </p>
         </article>
         <hr />
@@ -161,12 +165,12 @@ function AboutPage() {
             Why doesn't this site just link people directly to official sources?
           </h2>
           <p>
-            While more likely to be accurate, official sites typically have a
+            While more likely to be accurate, government sites typically have a
             lot of other unrelated information that a person in a crisis would
-            need to filter through. I wanted to make one place a traveler could
-            visit to quickly get emergency service phone numbers without having
-            to navigate through pages and pages of each country's own bespoke
-            and novel information architecture.
+            need to filter through. I wanted to make a tool where people could
+            quickly get emergency service phone numbers for wherever they are,
+            without having to spend time navigating through pages and pages of
+            bespoke and novel information architecture.
           </p>
         </article>
         <hr />
