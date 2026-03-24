@@ -4,14 +4,10 @@ import { COUNTRY_NAMES } from "../src/constants";
 
 const testPage = "/us/";
 
-test.beforeEach(async ({ context, baseURL }) => {
-  await context.addCookies([
-    {
-      name: "agreedToTerms",
-      value: "1234567890",
-      url: baseURL,
-    },
-  ]);
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("agreedToTerms", "1234567890");
+  });
 });
 
 test("/foo/ returns a 404 response", async ({ page }) => {
