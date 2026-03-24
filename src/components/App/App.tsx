@@ -11,7 +11,8 @@ import LinkButton from "../LinkButton";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
-import useCookie from "../../hooks/use-cookie";
+import useLocalStorage from "../../hooks/use-local-storage";
+import Disclaimer from "../Disclaimer";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -28,7 +29,10 @@ function App({ initialCountry }: { initialCountry?: string }) {
     keyof typeof SERVICES | null
   >(null);
 
-  const [agreedToTerms, setAgreedToTerms] = useCookie("agreedToTerms", "never");
+  const [agreedToTerms, setAgreedToTerms] = useLocalStorage(
+    "agreedToTerms",
+    "never",
+  );
 
   React.useEffect(() => {
     fetch("/api/geo")
@@ -151,47 +155,6 @@ function Banner({ children }: { children: React.ReactNode }) {
   return (
     <aside className="banner">
       <div className="content-wrapper">{children}</div>
-    </aside>
-  );
-}
-
-function Disclaimer({ agree }: { agree: () => void }) {
-  return (
-    <aside className="disclaimer" aria-labelledby="disclaimer-title">
-      <h2 id="disclaimer-title">Legal Disclaimer</h2>
-      <p>
-        This directory is a good-faith free informational tool to help travelers
-        find emergency service phone numbers faster than navigating through
-        official government or embassy websites to answer{" "}
-        <em>"What's the number for 911 here?"</em>
-      </p>
-      <p>
-        This website is <strong>NOT</strong> an official resource, it is{" "}
-        <strong>NOT</strong> government-affiliated, and it is{" "}
-        <strong>NOT</strong> guaranteed to be accurate or up-to-date. It was
-        compiled from high-quality official sources and last updated March 2026,
-        but emergency services and phone numbers can change at any time without
-        notice. Information is provided "as is" and without any warranty. Always
-        verify information with local authorities, and remember calls may
-        require special local dialing instructions.
-      </p>
-      <p>
-        By using this tool and clicking <strong>AGREE</strong>, you understand
-        and accept these limitations and (to the fullest extent permitted by
-        law) release the developers from liability for any delays, damages,
-        losses, or other consequences arising from its use.
-      </p>
-      <ul className="actions">
-        <li>
-          <LinkButton
-            onClick={() => {
-              agree();
-            }}
-          >
-            Agree
-          </LinkButton>
-        </li>
-      </ul>
     </aside>
   );
 }
