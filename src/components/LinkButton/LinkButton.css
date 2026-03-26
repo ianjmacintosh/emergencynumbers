@@ -5,9 +5,13 @@
     border-radius: 10px;
     color: #333;
     text-decoration: none;
-    background: #efefef;
+    background: #fefefe;
     border: solid 1px #ccc;
     padding: 1rem;
+  }
+
+  .button:hover {
+    background-color: #fafaff;
   }
 
   .button:focus {
@@ -21,6 +25,14 @@
   font-family:
     "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
     "Nimbus Sans", Arial, sans-serif;
+  transition:
+    color 110ms ease,
+    background-color 110ms ease,
+    transform 40ms ease;
+}
+
+.button:active {
+  transform: scale(98%);
 }
 
 .icon-button {

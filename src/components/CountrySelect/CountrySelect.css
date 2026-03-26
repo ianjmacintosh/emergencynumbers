@@ -22,3 +22,23 @@
   text-transform: uppercase;
   color: #333;
 }
+
+.country-select .select-button {
+  transition:
+    background-color 110ms ease,
+    transform 40ms ease;
+  background-color: #fefefe;
+}
+
+.country-select .select-button:active {
+  transform: scale(98%);
+}
+
+.country-select .select-button:hover,
+.country-select .select-button[aria-expanded="true"] {
+  background-color: #fafaff;
+}
+
+.country-select .combobox-popover {
+  width: var(--popover-anchor-width);
+}
