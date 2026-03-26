@@ -12,23 +12,26 @@ const DisclaimerText = ({ buttonVisible = false }) => {
       <p>
         This website is <strong>NOT</strong> an official resource, it is{" "}
         <strong>NOT</strong> government-affiliated, and it is{" "}
-        <strong>NOT</strong> guaranteed to be accurate or up-to-date. It was
-        compiled from high-quality official sources and last updated March 2026,
-        but emergency services and phone numbers can change at any time without
-        notice. Information is provided "as is" and without any warranty. Always
-        verify information with local authorities, and be aware that different
-        phone systems may require dialing instructions not listed here.
+        <strong>NOT</strong> guaranteed to be accurate or up-to-date.
+      </p>
+      <p>
+        The data here was compiled from high-quality sources and last updated
+        March 2026, but emergency services and phone numbers can change at any
+        time without notice. All information is provided "as is" and without
+        warranty. Always verify information with local authorities, and be aware
+        that each phone system may require dialing instructions not listed here.
       </p>
       <p>
         By using this tool
         {buttonVisible && (
           <>
+            {" "}
             and clicking <strong>AGREE</strong>
           </>
         )}
         , you understand and accept these limitations and (to the fullest extent
-        permitted by law) release the developers from liability for any delays,
-        damages, losses, or other consequences arising from its use.
+        permitted by law) release this tool's authors from liability for any
+        delays, damages, losses, or other consequences arising from its use.
       </p>
     </>
   );

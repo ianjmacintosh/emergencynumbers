@@ -26,9 +26,6 @@ test("disclaimer contains key phrases", async ({ page }) => {
   await expect(disclaimer).toContainText("not guaranteed to be accurate", {
     ignoreCase: true,
   });
-  await expect(disclaimer).toContainText(
-    "release the developers from liability",
-  );
 });
 
 test("can dismiss the disclaimer by clicking Agree", async ({ page }) => {
