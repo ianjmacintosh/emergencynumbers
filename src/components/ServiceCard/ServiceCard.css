@@ -65,7 +65,19 @@ dd:last-child {
 }
 
 .actions .button {
-  background-color: hsl(130deg 100% 27%);
+  --inactive-background: #008918;
+  --active-background: #00b20f;
+  background-color: var(--inactive-background);
   color: white;
-  border-color: seagreen;
+  border: none;
+  transition:
+    color 110ms ease,
+    background-color 110ms ease;
+}
+
+.actions .button:hover,
+.actions .button:focus {
+  /* outline-color: black; */
+  background-color: var(--active-background);
+  background: var(--active-background);
 }
