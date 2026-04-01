@@ -29,6 +29,7 @@
     color 110ms ease,
     background-color 110ms ease,
     transform 40ms ease;
+  font-size: 1.5rem;
 }
 
 .button:active {
@@ -47,4 +48,28 @@
 .icon-button svg {
   flex-shrink: 0;
   vertical-align: baseline;
+}
+
+.call-button {
+  --inactive-background: var(--green-wcag-4);
+  --active-background: var(--green-wcag-3);
+  background-color: var(--inactive-background);
+  color: white;
+  border: none;
+  transition:
+    color 110ms ease,
+    background-color 110ms ease;
+}
+
+.call-button:hover,
+.call-button:focus {
+  background-color: var(--active-background);
+  background: var(--active-background);
+}
+
+@media (prefers-contrast: more) {
+  .call-button {
+    --active-background: black;
+    --inactive-background: var(--green-wcag-45);
+  }
 }
