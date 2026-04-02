@@ -16,7 +16,7 @@
 
   .button:focus {
     outline-offset: 0;
-    outline: 2px dashed blue;
+    outline: 2px dashed var(--blue-wcag-7);
   }
 }
 

@@ -13,6 +13,7 @@
 .country-flag {
   flex-shrink: 0;
   vertical-align: baseline;
+  border: solid 1px #ccc;
 }
 
 .country-select .select-label {
@@ -39,6 +40,39 @@
   background-color: #fafaff;
 }
 
+.country-select .combobox-list {
+  background: #fff;
+  padding: 0.5rem 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.country-select .combobox-list:focus-visible {
+  outline-color: var(--blue-wcag-7);
+}
+
 .country-select .combobox-popover {
   width: var(--popover-anchor-width);
+}
+
+.country-select .option-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-radius: 10px;
+  margin: 0 0.5rem;
+  padding: 0.5rem;
+}
+
+.country-select .options-info {
+  padding: 0 0.5rem;
+}
+
+.combobox-item[data-active-item] .option-wrapper {
+  background: var(--gray-wcag-115-dark);
+}
+
+.combobox-item[aria-selected="true"] .option-wrapper {
+  background: var(--blue-wcag-7);
+  color: #fff;
 }
