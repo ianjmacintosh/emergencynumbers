@@ -11,7 +11,11 @@
 }
 
 .service h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+}
+
+.service h3 {
+  font-size: 1.8rem;
 }
 
 .service h4 {
@@ -31,7 +35,6 @@
 }
 
 .service .phone-number {
-  font-size: 1.6rem;
   margin-left: auto;
 }
 
@@ -62,10 +65,4 @@ dd:last-child {
 
 .actions .button {
   width: 100%;
-}
-
-.actions .button {
-  background-color: hsl(130deg 100% 27%);
-  color: white;
-  border-color: seagreen;
 }

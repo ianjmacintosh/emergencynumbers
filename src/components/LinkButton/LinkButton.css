@@ -5,14 +5,18 @@
     border-radius: 10px;
     color: #333;
     text-decoration: none;
-    background: #efefef;
+    background: #fefefe;
     border: solid 1px #ccc;
     padding: 1rem;
   }
 
+  .button:hover {
+    background-color: #fafaff;
+  }
+
   .button:focus {
     outline-offset: 0;
-    outline: 2px dashed blue;
+    outline: 2px dashed var(--blue-wcag-7);
   }
 }
 
@@ -21,6 +25,15 @@
   font-family:
     "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
     "Nimbus Sans", Arial, sans-serif;
+  transition:
+    color 110ms ease,
+    background-color 110ms ease,
+    transform 40ms ease;
+  font-size: 1.5rem;
+}
+
+.button:active {
+  transform: scale(98%);
 }
 
 .icon-button {
@@ -35,4 +48,28 @@
 .icon-button svg {
   flex-shrink: 0;
   vertical-align: baseline;
+}
+
+.call-button {
+  --inactive-background: var(--green-wcag-4);
+  --active-background: var(--green-wcag-3);
+  background-color: var(--inactive-background);
+  color: white;
+  border: none;
+  transition:
+    color 110ms ease,
+    background-color 110ms ease;
+}
+
+.call-button:hover,
+.call-button:focus {
+  background-color: var(--active-background);
+  background: var(--active-background);
+}
+
+@media (prefers-contrast: more) {
+  .call-button {
+    --active-background: black;
+    --inactive-background: var(--green-wcag-45);
+  }
 }

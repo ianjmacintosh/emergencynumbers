@@ -16,7 +16,7 @@
 
 .select-button:focus {
   outline-offset: -2px;
-  outline: #00f dashed 2px;
+  outline: var(--blue-wcag-7) dashed 2px;
 }
 
 .combobox-input-wrapper {
@@ -52,7 +52,7 @@
 
 .combobox-input:focus {
   outline-offset: -2px;
-  outline: #00f dashed 2px;
+  outline: var(--blue-wcag-7) dashed 2px;
   border-bottom: none;
 }
 
@@ -71,23 +71,14 @@
   overscroll-behavior: contain;
 }
 
+f:focus-visible {
+  outline-style: dashed;
+}
+
 .combobox-item,
 .options-info {
-  background: white;
   cursor: default;
-  padding: 0.5rem 1rem;
   font-size: 1.4rem;
   line-height: 2rem;
   text-wrap-style: pretty;
-}
-
-.combobox-item[aria-selected="true"] {
-  background: #333;
-  color: #fefefe;
-}
-
-.combobox-item[data-active-item],
-.combobox-item[data-focus-visible] {
-  background: #333;
-  color: #fefefe;
 }

@@ -1,0 +1,17 @@
+* {
+  /* These "WCAG values" signify the contrast ratio vs pure white (#FFFFFF) */
+  /* `--green-wcag-3` for example is a green with a 3:1 contrast ratio */
+  /* `--green-wcag-35` is a green with a 3.5:1 contrast ratio (it does NOT have a 35:1 contrast ratio) */
+
+  --green-wcag-3: oklch(0.6357 0.2625 144);
+  --green-wcag-35: oklch(0.5996 0.2484 144);
+  --green-wcag-4: oklch(0.5664 0.2344 144);
+  --green-wcag-45: oklch(0.541 0.225 144);
+  --green-wcag-7: oklch(0.4414 0.183 144);
+  --blue-wcag-35: oklch(0.6357 0.2109 260);
+  --blue-wcag-7: oklch(0.4785 0.25 260);
+
+  --blue-wcag-7-dark: oklch(0.8117 0.1031 260);
+
+  --gray-wcag-115-dark: oklch(0.95 0 0);
+}
