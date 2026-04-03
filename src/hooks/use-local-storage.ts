@@ -1,14 +1,14 @@
 import React from "react";
 
 function useLocalStorage(key: string, value: string) {
-  const defaultValue =
-    (typeof localStorage !== "undefined" && localStorage.getItem(key)) || value;
+  const [stateValue, setStateValue] = React.useState<string | null>(null);
 
-  const [stateValue, setStateValue] = React.useState(defaultValue);
+  React.useLayoutEffect(() => {
+    setStateValue(localStorage.getItem(key) ?? value);
+  }, [key, value]);
 
   const setLocalStorageValue = (newValue: string) => {
-    if (typeof localStorage !== "undefined")
-      localStorage.setItem(key, newValue);
+    localStorage.setItem(key, newValue);
     setStateValue(newValue);
   };
 
