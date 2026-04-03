@@ -137,7 +137,12 @@ function App({ initialCountry }: { initialCountry?: string }) {
               }}
             />
           ) : (
-            <Disclaimer agree={() => setAgreedToTerms(Date.now().toString())} />
+            <Disclaimer
+              agree={() => {
+                setAgreedToTerms(Date.now().toString());
+                window.scroll({ top: 0, behavior: "instant" });
+              }}
+            />
           )}
         </div>
       </header>
