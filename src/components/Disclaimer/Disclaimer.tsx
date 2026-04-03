@@ -38,7 +38,7 @@ const DisclaimerText = ({ buttonVisible = false }) => {
   return (
     <>
       {COPY.map((copy, index) => (
-        <p key={index} style={{ "--stagger": index }}>
+        <p key={index} style={{ "--stagger": index } as React.CSSProperties}>
           {copy}
         </p>
       ))}
@@ -67,7 +67,7 @@ function Disclaimer({ agree }: { agree: () => void }) {
         <LinkButton
           className="primary-button"
           disabled={disabled}
-          style={{ "--delay": disableDelay }}
+          style={{ "--delay": disableDelay } as React.CSSProperties}
           onClick={() => {
             agree();
           }}
