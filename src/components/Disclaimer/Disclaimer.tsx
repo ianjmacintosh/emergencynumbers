@@ -8,7 +8,7 @@ const DisclaimerText = ({ buttonVisible = false }) => {
       This directory is a free informational tool made in good faith to help
       travelers find emergency service phone numbers faster than navigating
       through official government or embassy websites to answer{" "}
-      <em>"What's the number for 911 here?"</em>
+      <em>“What’s the number for 911 here?”</em>
     </>,
     <>
       This website is <strong>NOT</strong> an official resource, it is{" "}
@@ -18,7 +18,7 @@ const DisclaimerText = ({ buttonVisible = false }) => {
     <>
       The data here was compiled from high-quality sources and last updated
       March 2026, but emergency services and phone numbers can change at any
-      time without notice. All information is provided "as is" and without
+      time without notice. All information is provided “as is” and without
       warranty. Always verify information with local authorities, and be aware
       that each phone system may require dialing instructions not listed here.
     </>,
@@ -31,29 +31,35 @@ const DisclaimerText = ({ buttonVisible = false }) => {
         </>
       )}
       , you understand and accept these limitations and (to the fullest extent
-      permitted by law) release this tool's authors from liability for any
+      permitted by law) release this tool’s authors from liability for any
       delays, damages, losses, or other consequences arising from its use.
     </>,
   ];
   return (
     <>
       {COPY.map((copy, index) => (
-        <p key={index} style={{ "--stagger": index } as React.CSSProperties}>
-          {copy}
-        </p>
+        <div className="wrapper-box" key={index}>
+          <p style={{ "--stagger": index + 1 } as React.CSSProperties}>
+            {copy}
+          </p>
+        </div>
       ))}
     </>
   );
 };
 
 function Disclaimer({ agree }: { agree: () => void }) {
-  const disableDelay = 500;
+  const disableDelay = 120;
+  const buttonStagger = 5;
   const [disabled, setDisabled] = React.useState(true);
 
   React.useEffect(() => {
-    const allowAgreeing = window.setTimeout(() => {
-      setDisabled(false);
-    }, disableDelay);
+    const allowAgreeing = window.setTimeout(
+      () => {
+        setDisabled(false);
+      },
+      disableDelay * buttonStagger - 100,
+    );
 
     return () => {
       clearTimeout(allowAgreeing);
@@ -61,20 +67,22 @@ function Disclaimer({ agree }: { agree: () => void }) {
   }, []);
   return (
     <aside className="disclaimer" aria-labelledby="disclaimer-title">
-      <h2 id="disclaimer-title">Legal Disclaimer</h2>
+      <div className="wrapper-box">
+        <h2 id="disclaimer-title">Legal Disclaimer</h2>
+      </div>
       <DisclaimerText buttonVisible={true} />
-      <p>
+      <div className="wrapper-box">
         <LinkButton
           className="primary-button"
           disabled={disabled}
-          style={{ "--delay": disableDelay } as React.CSSProperties}
+          style={{ "--delay": disableDelay + "ms", "--stagger": buttonStagger }}
           onClick={() => {
             agree();
           }}
         >
           Agree
         </LinkButton>
-      </p>
+      </div>
     </aside>
   );
 }
