@@ -75,7 +75,12 @@ function Disclaimer({ agree }: { agree: () => void }) {
         <LinkButton
           className="primary-button"
           disabled={disabled}
-          style={{ "--delay": disableDelay + "ms", "--stagger": buttonStagger }}
+          style={
+            {
+              "--delay": disableDelay + "ms",
+              "--stagger": buttonStagger,
+            } as React.CSSProperties
+          }
           onClick={() => {
             agree();
           }}
