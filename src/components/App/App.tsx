@@ -85,6 +85,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
           userLocation in SERVICES &&
           userLocation !== currentCountryId &&
           suppressBanner === false &&
+          agreedToTerms &&
           agreedToTerms !== "never" && (
             <Banner>
               <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
@@ -127,8 +128,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
           )}
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
-
-          {agreedToTerms !== "never" ? (
+          {agreedToTerms && agreedToTerms !== "never" && (
             <CountrySelect
               value={currentCountryId}
               onChange={(value) => {
@@ -136,12 +136,19 @@ function App({ initialCountry }: { initialCountry?: string }) {
                 setCurrentCountryId(value as keyof typeof SERVICES);
               }}
             />
-          ) : (
-            <Disclaimer agree={() => setAgreedToTerms(Date.now().toString())} />
+          )}
+
+          {agreedToTerms && agreedToTerms === "never" && (
+            <Disclaimer
+              agree={() => {
+                setAgreedToTerms(Date.now().toString());
+                window.scroll({ top: 0, behavior: "instant" });
+              }}
+            />
           )}
         </div>
       </header>
-      {agreedToTerms !== "never" && (
+      {agreedToTerms && agreedToTerms !== "never" && (
         <main className="content-wrapper">
           <CountryCard id={currentCountryId} />
         </main>

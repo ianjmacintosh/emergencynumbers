@@ -25,15 +25,7 @@
   font-family:
     "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
     "Nimbus Sans", Arial, sans-serif;
-  transition:
-    color 110ms ease,
-    background-color 110ms ease,
-    transform 40ms ease;
   font-size: 1.5rem;
-}
-
-.button:active {
-  transform: scale(98%);
 }
 
 .icon-button {
@@ -50,26 +42,54 @@
   vertical-align: baseline;
 }
 
+.primary-button,
 .call-button {
   --inactive-background: var(--green-wcag-4);
   --active-background: var(--green-wcag-3);
   background-color: var(--inactive-background);
   color: white;
   border: none;
-  transition:
-    color 110ms ease,
-    background-color 110ms ease;
+  width: 100%;
 }
 
+.primary-button:hover,
+.primary-button:focus,
 .call-button:hover,
 .call-button:focus {
   background-color: var(--active-background);
   background: var(--active-background);
 }
 
+.primary-button[disabled],
+.call-button[disabled] {
+  cursor: not-allowed;
+  color: black;
+  background-color: var(--gray-wcag-115-dark);
+}
+
 @media (prefers-contrast: more) {
   .call-button {
     --active-background: black;
     --inactive-background: var(--green-wcag-45);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button {
+    transition:
+      color 110ms ease,
+      background-color 110ms ease,
+      transform 40ms ease;
+  }
+
+  .button:active {
+    transform: scale(98%);
+  }
+
+  .primary-button,
+  .call-button {
+    transition:
+      color 110ms ease,
+      background-color 110ms ease;
   }
 }
