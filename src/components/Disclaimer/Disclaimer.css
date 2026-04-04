@@ -1,4 +1,4 @@
-@keyframes fade-in {
+@keyframes slide-in {
   0% {
     opacity: 0;
     transform: translateY(1rem);
@@ -19,7 +19,7 @@
   .disclaimer p,
   .disclaimer .button {
     --delay: 120ms;
-    animation: fade-in 400ms;
+    animation: slide-in 400ms;
     animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     animation-fill-mode: both;
     animation-delay: calc(var(--delay) * var(--stagger));
