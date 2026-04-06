@@ -1,3 +1,4 @@
+import "./Flag.css";
 import { hasFlag } from "country-flag-icons";
 import * as FlagIcon from "country-flag-icons/react/3x2";
 

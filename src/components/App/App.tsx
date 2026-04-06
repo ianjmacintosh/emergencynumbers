@@ -7,10 +7,6 @@ import "./App.css";
 import CountrySelect from "../CountrySelect";
 import CountryCard from "../CountryCard";
 import Footer from "../Footer";
-import LinkButton from "../LinkButton";
-import * as FlagIcon from "country-flag-icons/react/3x2";
-import { hasFlag } from "country-flag-icons";
-import { XIcon } from "@phosphor-icons/react";
 import useLocalStorage from "../../hooks/use-local-storage";
 import Disclaimer from "../Disclaimer";
 import TextLink from "../TextLink";
@@ -26,7 +22,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
       DEFAULT_COUNTRY,
   );
 
-  const [suppressBanner, setSuppressBanner] = React.useState(false);
   const [userLocation, setUserLocation] = React.useState<
     keyof typeof SERVICES | null
   >(null);
@@ -75,88 +70,45 @@ function App({ initialCountry }: { initialCountry?: string }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  const UserGeoFlag =
-    userLocation && hasFlag(userLocation)
-      ? FlagIcon[userLocation as keyof typeof FlagIcon]
-      : null;
-
   return (
     <div className="page-wrapper">
       <header>
-        {userLocation &&
-          userLocation in SERVICES &&
-          userLocation !== currentCountryId &&
-          suppressBanner === false &&
-          agreedToTerms &&
-          agreedToTerms !== "never" && (
-            <Banner>
-              <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
-              <p>
-                This page is about {COUNTRY_NAMES[currentCountryId]}, but it
-                looks like your internet connection is from{" "}
-                {COUNTRY_NAMES[userLocation]}.
-              </p>
-              <p>
-                Do you want to see emergency services information for{" "}
-                {COUNTRY_NAMES[userLocation]} instead?
-              </p>
-              <ul className="location-swap-menu">
-                <li className="confirm">
-                  <LinkButton
-                    onClick={() => {
-                      setSuppressBanner(true);
-                      setCurrentCountryId(userLocation);
-                    }}
-                    hasIcon={true}
-                    className="confirm-button"
-                  >
-                    {UserGeoFlag && <UserGeoFlag height={36} />}
-                    <span className="updog">Go now</span>
-                  </LinkButton>
-                </li>
-                <li className="dismiss">
-                  <LinkButton
-                    hasIcon={true}
-                    onClick={() => {
-                      setSuppressBanner(true);
-                    }}
-                  >
-                    <XIcon size={36} />
-                    <span className="updog">Close</span>
-                  </LinkButton>
-                </li>
-              </ul>
-            </Banner>
-          )}
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
           {agreedToTerms && agreedToTerms !== "never" && (
             <>
-              <CountrySelect
-                value={currentCountryId}
-                onChange={(value) => {
-                  setSuppressBanner(true);
-                  setCurrentCountryId(value as keyof typeof SERVICES);
-                }}
-              />
-              {userLocation !== null &&
-                userLocation in SERVICES &&
-                currentCountryId !== userLocation && (
-                  <h4>
+              <div className="country-select">
+                <CountrySelect
+                  value={currentCountryId}
+                  onChange={(value) => {
+                    setCurrentCountryId(value as keyof typeof SERVICES);
+                  }}
+                />
+                <div className="country-jump-link">
+                  {userLocation &&
+                  userLocation in SERVICES &&
+                  currentCountryId !== userLocation ? (
                     <TextLink
                       href="#"
-                      icon={<Flag country="CH" height={14} />}
-                      className="country-jump-link"
+                      icon={<Flag country={userLocation} height={14} />}
                       onClick={(e) => {
                         e.preventDefault();
 
                         setCurrentCountryId(userLocation);
                       }}
+                      hidden={
+                        userLocation === null ||
+                        !(userLocation in SERVICES) ||
+                        currentCountryId === userLocation
+                      }
                     >
-                      Looking for info for Switzerland?
+                      Looking for info for {COUNTRY_NAMES[userLocation]}?
                     </TextLink>
-                  </h4>
-                )}
+                  ) : (
+                    "&nbsp;"
+                  )}
+                </div>
+              </div>
             </>
           )}
 
@@ -177,14 +129,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
       )}
       <Footer />
     </div>
-  );
-}
-
-function Banner({ children }: { children: React.ReactNode }) {
-  return (
-    <aside className="banner">
-      <div className="content-wrapper">{children}</div>
-    </aside>
   );
 }
 

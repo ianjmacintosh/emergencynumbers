@@ -1,3 +1,9 @@
+@keyframes flash {
+  50% {
+    opacity: 0;
+  }
+}
+
 .banner {
   border: none;
   border-bottom: solid 1px #ccc;
@@ -42,6 +48,21 @@ header h1 {
 }
 
 .country-jump-link {
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  animation: flash 300ms ease;
+  animation-delay: 500ms;
+  animation-iteration-count: 2;
+  min-height: 1rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.country-jump-link a {
   color: #333;
 }
 
