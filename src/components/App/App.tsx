@@ -89,7 +89,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
                   userLocation in SERVICES &&
                   currentCountryId !== userLocation ? (
                     <TextLink
-                      href="#"
+                      href={`/${userLocation.toLowerCase()}/`}
                       icon={<Flag country={userLocation} height={14} />}
                       onClick={(e) => {
                         e.preventDefault();
@@ -101,11 +101,13 @@ function App({ initialCountry }: { initialCountry?: string }) {
                         !(userLocation in SERVICES) ||
                         currentCountryId === userLocation
                       }
+                      aria-label={`Looking for info for ${COUNTRY_NAMES[userLocation]}?`}
                     >
                       {`Looking for info for ${COUNTRY_NAMES[userLocation]}?`
                         .split("")
                         .map((letter, index) => (
                           <span
+                            aria-hidden="true"
                             style={
                               { "--stagger": index } as React.CSSProperties
                             }
