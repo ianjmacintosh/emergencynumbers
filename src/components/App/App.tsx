@@ -106,7 +106,9 @@ function App({ initialCountry }: { initialCountry?: string }) {
                         .split("")
                         .map((letter, index) => (
                           <span
-                            style={{ "--stagger": index }}
+                            style={
+                              { "--stagger": index } as React.CSSProperties
+                            }
                             className="letter"
                           >
                             {letter === " " ? "\u00A0" : letter}
