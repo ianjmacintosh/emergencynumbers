@@ -1,8 +1,4 @@
-@keyframes flash {
-  50% {
-    opacity: 0;
-  }
-}
+@import "../../utils/animations.css";
 
 .banner {
   border: none;
@@ -54,10 +50,6 @@ header h1 {
   font-weight: normal;
   text-transform: uppercase;
 
-  animation: flash 300ms ease;
-  animation-delay: 500ms;
-  animation-iteration-count: 2;
-  min-height: 1rem;
   display: block;
   margin-top: 0.5rem;
 }
@@ -69,4 +61,16 @@ header h1 {
 .country-jump-link .link-text {
   padding: 0.4rem 0;
   text-box: trim-both cap alphabetic;
+  display: inline-block;
+  overflow: hidden;
+  border-bottom: solid 1px #333;
+}
+
+.country-jump-link .link-text .letter {
+  --delay: 10ms;
+  display: inline-block;
+  animation: slide-in 380ms;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  animation-fill-mode: both;
+  animation-delay: calc(var(--delay) * var(--stagger));
 }
