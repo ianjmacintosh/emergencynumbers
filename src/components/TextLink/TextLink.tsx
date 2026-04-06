@@ -8,9 +8,11 @@ import { usePathname } from "../../utils/url";
 function TextLink({
   children,
   href,
+  icon,
   ...delegated
 }: {
   children: React.ReactNode;
+  icon?: React.ReactNode;
   href: string;
 } & React.ComponentProps<"a">) {
   const pathname = usePathname();
@@ -21,7 +23,7 @@ function TextLink({
     <Tag
       href={href}
       {...delegated}
-      className={`text-link ${alreadyOnLinkedPage ? "current" : null}`.trim()}
+      className={`text-link ${icon ? "has-icon" : ""} ${delegated.className} ${alreadyOnLinkedPage ? "current" : ""}`.trim()}
       aria-current={alreadyOnLinkedPage}
     >
       {alreadyOnLinkedPage && <VisuallyHidden>Current page: </VisuallyHidden>}
@@ -29,9 +31,13 @@ function TextLink({
       {opensNewWindow && (
         <span style={{ whiteSpace: "nowrap" }}>
           &nbsp;
-          <ArrowSquareOutIcon alt="(opens in a new window)" />
+          <ArrowSquareOutIcon
+            className="external-link-icon"
+            alt="(opens in a new window)"
+          />
         </span>
       )}
+      {icon}
     </Tag>
   );
 }

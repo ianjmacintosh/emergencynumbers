@@ -13,6 +13,8 @@ import { hasFlag } from "country-flag-icons";
 import { XIcon } from "@phosphor-icons/react";
 import useLocalStorage from "../../hooks/use-local-storage";
 import Disclaimer from "../Disclaimer";
+import TextLink from "../TextLink";
+import Flag from "../Flag";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -129,13 +131,33 @@ function App({ initialCountry }: { initialCountry?: string }) {
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
           {agreedToTerms && agreedToTerms !== "never" && (
-            <CountrySelect
-              value={currentCountryId}
-              onChange={(value) => {
-                setSuppressBanner(true);
-                setCurrentCountryId(value as keyof typeof SERVICES);
-              }}
-            />
+            <>
+              <CountrySelect
+                value={currentCountryId}
+                onChange={(value) => {
+                  setSuppressBanner(true);
+                  setCurrentCountryId(value as keyof typeof SERVICES);
+                }}
+              />
+              {userLocation !== null &&
+                userLocation in SERVICES &&
+                currentCountryId !== userLocation && (
+                  <h4>
+                    <TextLink
+                      href="#"
+                      icon={<Flag country="CH" height={14} />}
+                      className="country-jump-link"
+                      onClick={(e) => {
+                        e.preventDefault();
+
+                        setCurrentCountryId(userLocation);
+                      }}
+                    >
+                      Looking for info for Switzerland?
+                    </TextLink>
+                  </h4>
+                )}
+            </>
           )}
 
           {agreedToTerms && agreedToTerms === "never" && (
