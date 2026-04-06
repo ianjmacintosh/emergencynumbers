@@ -10,7 +10,7 @@
   text-transform: uppercase;
 }
 
-.country-flag {
+.flag-icon {
   flex-shrink: 0;
   vertical-align: baseline;
   border: solid 1px #ccc;

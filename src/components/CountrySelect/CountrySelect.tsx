@@ -13,63 +13,59 @@ function CountrySelect({
   onChange: (value: string) => void;
 }) {
   return (
-    <div className="country-select">
-      <ComboboxSelect
-        value={value}
-        onChange={onChange}
-        label="Location"
-        comboboxLabel="Search for Country"
-        selectButtonContent={
-          <>
-            <span className="country-badge">
-              <Flag country={value} className="country-flag" height={36} />
-              <span className="country-name updog">
-                {COUNTRY_NAMES[value as keyof typeof SERVICES]}
-              </span>
+    <ComboboxSelect
+      value={value}
+      onChange={onChange}
+      label="Location"
+      comboboxLabel="Search for Country"
+      selectButtonContent={
+        <>
+          <span className="country-badge">
+            <Flag country={value} height={36} />
+            <span className="country-name updog">
+              {COUNTRY_NAMES[value as keyof typeof SERVICES]}
             </span>
-          </>
-        }
-      >
-        {getCountryIds()
-          .sort((firstCountryId, secondCountryId) => {
-            const firstCountryName = COUNTRY_NAMES[firstCountryId];
-            const secondCountryName = COUNTRY_NAMES[secondCountryId];
-            return firstCountryName > secondCountryName ? 1 : -1;
-          })
-          .map((countryId) => {
-            const hasServices = countryId in SERVICES;
-            const countryName = COUNTRY_NAMES[countryId];
-            const countryKeywords = [countryName];
+          </span>
+        </>
+      }
+    >
+      {getCountryIds()
+        .sort((firstCountryId, secondCountryId) => {
+          const firstCountryName = COUNTRY_NAMES[firstCountryId];
+          const secondCountryName = COUNTRY_NAMES[secondCountryId];
+          return firstCountryName > secondCountryName ? 1 : -1;
+        })
+        .map((countryId) => {
+          const hasServices = countryId in SERVICES;
+          const countryName = COUNTRY_NAMES[countryId];
+          const countryKeywords = [countryName];
 
-            if (countryId in COUNTRY_ALT_NAMES)
-              countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
-            return (
-              <ComboboxSelectOption
-                key={countryId}
-                value={countryId}
-                keywords={countryKeywords}
-              >
-                <span className="option-wrapper">
-                  {value === countryId ? (
-                    <span aria-hidden={true}>✓</span>
-                  ) : null}{" "}
-                  {countryName}{" "}
-                  {hasServices ? null : "(no information available)"}
-                  {hasServices ? null : (
-                    <WarningIcon
-                      size={24}
-                      style={{
-                        marginLeft: "auto",
-                        flexShrink: 0,
-                      }}
-                    ></WarningIcon>
-                  )}
-                </span>
-              </ComboboxSelectOption>
-            );
-          })}
-      </ComboboxSelect>
-    </div>
+          if (countryId in COUNTRY_ALT_NAMES)
+            countryKeywords.push(...COUNTRY_ALT_NAMES[countryId]!);
+          return (
+            <ComboboxSelectOption
+              key={countryId}
+              value={countryId}
+              keywords={countryKeywords}
+            >
+              <span className="option-wrapper">
+                {value === countryId ? <span aria-hidden={true}>✓</span> : null}{" "}
+                {countryName}{" "}
+                {hasServices ? null : "(no information available)"}
+                {hasServices ? null : (
+                  <WarningIcon
+                    size={24}
+                    style={{
+                      marginLeft: "auto",
+                      flexShrink: 0,
+                    }}
+                  ></WarningIcon>
+                )}
+              </span>
+            </ComboboxSelectOption>
+          );
+        })}
+    </ComboboxSelect>
   );
 }
 
