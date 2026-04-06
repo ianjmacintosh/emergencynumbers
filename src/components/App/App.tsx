@@ -102,10 +102,19 @@ function App({ initialCountry }: { initialCountry?: string }) {
                         currentCountryId === userLocation
                       }
                     >
-                      Looking for info for {COUNTRY_NAMES[userLocation]}?
+                      {`Looking for info for ${COUNTRY_NAMES[userLocation]}?`
+                        .split("")
+                        .map((letter, index) => (
+                          <span
+                            style={{ "--stagger": index }}
+                            className="letter"
+                          >
+                            {letter === " " ? "\u00A0" : letter}
+                          </span>
+                        ))}
                     </TextLink>
                   ) : (
-                    "&nbsp;"
+                    <>&nbsp;</>
                   )}
                 </div>
               </div>
