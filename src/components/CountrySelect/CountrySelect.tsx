@@ -1,10 +1,9 @@
 import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
-import { hasFlag } from "country-flag-icons";
-import * as FlagIcon from "country-flag-icons/react/3x2";
 import "./CountrySelect.css";
 import { WarningIcon } from "@phosphor-icons/react";
+import Flag from "../Flag";
 
 function CountrySelect({
   value,
@@ -13,7 +12,6 @@ function CountrySelect({
   value: string;
   onChange: (value: string) => void;
 }) {
-  const Flag = hasFlag(value) ? FlagIcon[value as keyof typeof FlagIcon] : null;
   return (
     <div className="country-select">
       <ComboboxSelect
@@ -24,7 +22,7 @@ function CountrySelect({
         selectButtonContent={
           <>
             <span className="country-badge">
-              {Flag && <Flag className="country-flag" height={36} />}
+              <Flag country={value} className="country-flag" height={36} />
               <span className="country-name updog">
                 {COUNTRY_NAMES[value as keyof typeof SERVICES]}
               </span>

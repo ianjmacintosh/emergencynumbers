@@ -11,7 +11,17 @@ a:hover .link-text {
   transition: all 110ms;
 }
 
-.text-link svg {
+.text-link.has-icon {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.text-link .flag-icon {
+  align-self: center;
+  justify-self: center;
+}
+
+.text-link .external-link-icon {
   display: inline-block;
   height: 0.8rem;
   transform: translateY(0.1em);

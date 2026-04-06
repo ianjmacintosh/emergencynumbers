@@ -40,3 +40,12 @@ header h1 {
   flex-direction: column;
   gap: 1rem;
 }
+
+.country-jump-link {
+  color: #333;
+}
+
+.country-jump-link .link-text {
+  padding: 0.4rem 0;
+  text-box: trim-both cap alphabetic;
+}
