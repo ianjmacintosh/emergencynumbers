@@ -246,7 +246,8 @@ function BackButton() {
 
   return (
     <LinkButton className="icon-button" onClick={goToPreviousPage}>
-      <ArrowLeftIcon size={24} /> Back to directory
+      <ArrowLeftIcon size={24} />{" "}
+      <span className="updog">Back to directory</span>
     </LinkButton>
   );
 }

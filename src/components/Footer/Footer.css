@@ -1,26 +1,46 @@
+@import "../../utils/colors.css";
 .footer {
-  background: #333;
-  color: #fafafa;
-  padding: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  background: var(--gray-wcag-115-dark);
+  color: #000;
   grid-area: footer;
+
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.footer h4 {
+  font-weight: 600;
+}
+
+.footer ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer li,
+.footer p,
+.footer a {
+  font-size: 1rem;
 }
 
 .footer a {
-  color: #fafafa;
+  color: #333;
 }
 
 .footer a:focus {
   outline: #fff dashed 2px;
 }
 
-@media (min-width: 768px) {
-  footer p {
-    font-size: 1rem;
-    line-height: 125%;
-  }
+.footer p,
+.footer p a {
+  color: #999;
+  text-align: right;
 }

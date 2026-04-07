@@ -49,7 +49,12 @@ for (const [code] of Object.entries(COUNTRY_NAMES)) {
 }
 console.log(`Prerendered ${Object.keys(COUNTRY_NAMES).length} pages.`);
 
-const staticUrls = [`${BASE_URL}/`, `${BASE_URL}/about/`];
+const staticUrls = [
+  `${BASE_URL}/`,
+  `${BASE_URL}/about/`,
+  `${BASE_URL}/terms/`,
+  `${BASE_URL}/credits/`,
+];
 const countryUrls = Object.keys(COUNTRY_NAMES).map(
   (code) => `${BASE_URL}/${code.toLowerCase()}/`,
 );
