@@ -70,8 +70,16 @@ header h1 {
 .country-jump-link .flag-icon {
   --delay: 10ms;
   display: inline-block;
-  animation: slide-in 380ms;
-  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  animation-fill-mode: both;
-  animation-delay: calc(var(--delay) * var(--stagger));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .country-jump-link .link-text .letter,
+  .country-jump-link .flag-icon {
+    --delay: 10ms;
+
+    animation: slide-in 380ms;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-fill-mode: both;
+    animation-delay: calc(var(--delay) * var(--stagger));
+  }
 }
