@@ -4,14 +4,13 @@ import Footer from "../../components/Footer";
 import LinkButton from "../../components/LinkButton";
 import TextLink from "../../components/TextLink";
 import "../TextPages.css";
-import { DisclaimerText } from "../../components/Disclaimer";
 
 function AboutPage() {
   return (
     <div className="page-wrapper">
       <main className="content-wrapper">
         <BackButton />
-        <h1>About</h1>
+        <h1>About this directory</h1>
         <article>
           <p>
             At about 11:30pm on a random Sunday night, my wife got an unexpected
@@ -138,11 +137,6 @@ function AboutPage() {
               Service
             </small>
           </p>
-        </article>
-        <hr />
-        <article>
-          <h2>Is all the information listed here official and accurate?</h2>
-          <DisclaimerText />
         </article>
         <hr />
         <article>
