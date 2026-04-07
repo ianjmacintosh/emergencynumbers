@@ -2,7 +2,7 @@ import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
 import "./CountrySelect.css";
-import { WarningIcon } from "@phosphor-icons/react";
+import { CheckIcon, WarningIcon } from "@phosphor-icons/react";
 import Flag from "../Flag";
 
 function CountrySelect({
@@ -49,7 +49,9 @@ function CountrySelect({
               keywords={countryKeywords}
             >
               <span className="option-wrapper">
-                {value === countryId ? <span aria-hidden={true}>✓</span> : null}{" "}
+                {value === countryId ? (
+                  <CheckIcon size={16} aria-hidden={true} />
+                ) : null}{" "}
                 {countryName}{" "}
                 {hasServices ? null : "(no information available)"}
                 {hasServices ? null : (
