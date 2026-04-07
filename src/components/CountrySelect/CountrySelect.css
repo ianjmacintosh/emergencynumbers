@@ -13,7 +13,6 @@
 .flag-icon {
   flex-shrink: 0;
   vertical-align: baseline;
-  border: solid 1px #ccc;
 }
 
 .country-select .select-label {
