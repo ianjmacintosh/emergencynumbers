@@ -19,7 +19,6 @@ export default defineConfig(({ mode }) => ({
             main: "index.html",
             about: "about/index.html",
             terms: "terms/index.html",
-            credits: "credits/index.html",
             notFound: "404.html",
           },
         },

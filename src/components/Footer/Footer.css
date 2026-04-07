@@ -1,4 +1,5 @@
 @import "../../utils/colors.css";
+
 .footer {
   background: var(--gray-wcag-115-dark);
   color: #000;
@@ -36,7 +37,7 @@
 }
 
 .footer a:focus {
-  outline: #fff dashed 2px;
+  outline: var(--blue-wcag-7) dashed 2px;
 }
 
 .footer p,

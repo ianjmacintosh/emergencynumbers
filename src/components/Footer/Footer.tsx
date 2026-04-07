@@ -13,9 +13,6 @@ function Footer() {
             <li>
               <TextLink href="/terms/">Terms and Conditions</TextLink>
             </li>
-            <li>
-              <TextLink href="/credits/">Site Credits</TextLink>
-            </li>
           </ul>
         </nav>
         <p>
