@@ -42,6 +42,10 @@ function App({ initialCountry }: { initialCountry?: string }) {
       .catch(() => {});
   }, []);
 
+  const isUserLocated = userLocation !== null;
+  const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
+  const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
+
   // Sync URL whenever currentCountryId changes
   React.useEffect(() => {
     const countryPage = `/${currentCountryId.toLowerCase()}/`;
@@ -84,10 +88,13 @@ function App({ initialCountry }: { initialCountry?: string }) {
                     setCurrentCountryId(value as keyof typeof SERVICES);
                   }}
                 />
-                <div className="country-jump-link">
-                  {userLocation &&
-                  userLocation in SERVICES &&
-                  currentCountryId !== userLocation ? (
+                {!isUserLocated && (
+                  <div className="country-jump-link">
+                    <span>&nbsp;</span>
+                  </div>
+                )}
+                {isUserLocationInDirectory && !isPageUserLocation && (
+                  <div className="country-jump-link">
                     <TextLink
                       href={`/${userLocation.toLowerCase()}/`}
                       icon={<Flag country={userLocation} height={14} />}
@@ -112,15 +119,14 @@ function App({ initialCountry }: { initialCountry?: string }) {
                               { "--stagger": index } as React.CSSProperties
                             }
                             className="letter"
+                            key={index}
                           >
                             {letter === " " ? "\u00A0" : letter}
                           </span>
                         ))}
                     </TextLink>
-                  ) : (
-                    <>&nbsp;</>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </>
           )}
