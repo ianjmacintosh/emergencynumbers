@@ -10,10 +10,9 @@
   text-transform: uppercase;
 }
 
-.country-flag {
+.flag-icon {
   flex-shrink: 0;
   vertical-align: baseline;
-  border: solid 1px #ccc;
 }
 
 .country-select .select-label {
@@ -25,14 +24,7 @@
 }
 
 .country-select .select-button {
-  transition:
-    background-color 110ms ease,
-    transform 40ms ease;
   background-color: #fefefe;
-}
-
-.country-select .select-button:active {
-  transform: scale(98%);
 }
 
 .country-select .select-button:hover,
@@ -75,4 +67,16 @@
 .combobox-item[aria-selected="true"] .option-wrapper {
   background: var(--blue-wcag-7);
   color: #fff;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .country-select .select-button {
+    transition:
+      background-color 110ms ease,
+      transform 40ms ease;
+  }
+
+  .country-select .select-button:active {
+    transform: scale(98%);
+  }
 }

@@ -1,3 +1,5 @@
+@import "../../utils/animations.css";
+
 .banner {
   border: none;
   border-bottom: solid 1px #ccc;
@@ -39,4 +41,45 @@ header h1 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.country-jump-link {
+  font-family:
+    "Routed Gothic", Inter, Roboto, "Helvetica Neue", "Arial Nova",
+    "Nimbus Sans", Arial, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.country-jump-link a {
+  color: #333;
+}
+
+.country-jump-link .link-text {
+  padding: 0.4rem 0;
+  text-box: trim-both cap alphabetic;
+  display: inline-block;
+  overflow: hidden;
+  border-bottom: solid 1px #333;
+}
+
+.country-jump-link .link-text .letter,
+.country-jump-link .flag-icon {
+  --delay: 10ms;
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .country-jump-link .link-text .letter,
+  .country-jump-link .flag-icon {
+    --delay: 10ms;
+
+    animation: slide-in 380ms;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    animation-fill-mode: both;
+    animation-delay: calc(var(--delay) * var(--stagger));
+  }
 }

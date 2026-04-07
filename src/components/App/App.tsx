@@ -7,12 +7,10 @@ import "./App.css";
 import CountrySelect from "../CountrySelect";
 import CountryCard from "../CountryCard";
 import Footer from "../Footer";
-import LinkButton from "../LinkButton";
-import * as FlagIcon from "country-flag-icons/react/3x2";
-import { hasFlag } from "country-flag-icons";
-import { XIcon } from "@phosphor-icons/react";
 import useLocalStorage from "../../hooks/use-local-storage";
 import Disclaimer from "../Disclaimer";
+import TextLink from "../TextLink";
+import Flag from "../Flag";
 
 function App({ initialCountry }: { initialCountry?: string }) {
   const [currentCountryId, setCurrentCountryId] = React.useState<
@@ -24,7 +22,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
       DEFAULT_COUNTRY,
   );
 
-  const [suppressBanner, setSuppressBanner] = React.useState(false);
   const [userLocation, setUserLocation] = React.useState<
     keyof typeof SERVICES | null
   >(null);
@@ -44,6 +41,15 @@ function App({ initialCountry }: { initialCountry?: string }) {
       })
       .catch(() => {});
   }, []);
+
+  const isUserLocated = userLocation !== null;
+  const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
+  const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
+
+  const countryJumpLinkText =
+    isUserLocated && isUserLocationInDirectory
+      ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
+      : "";
 
   // Sync URL whenever currentCountryId changes
   React.useEffect(() => {
@@ -73,69 +79,67 @@ function App({ initialCountry }: { initialCountry?: string }) {
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
-  const UserGeoFlag =
-    userLocation && hasFlag(userLocation)
-      ? FlagIcon[userLocation as keyof typeof FlagIcon]
-      : null;
-
   return (
     <div className="page-wrapper">
       <header>
-        {userLocation &&
-          userLocation in SERVICES &&
-          userLocation !== currentCountryId &&
-          suppressBanner === false &&
-          agreedToTerms &&
-          agreedToTerms !== "never" && (
-            <Banner>
-              <h2>Need info for {COUNTRY_NAMES[userLocation]}?</h2>
-              <p>
-                This page is about {COUNTRY_NAMES[currentCountryId]}, but it
-                looks like your internet connection is from{" "}
-                {COUNTRY_NAMES[userLocation]}.
-              </p>
-              <p>
-                Do you want to see emergency services information for{" "}
-                {COUNTRY_NAMES[userLocation]} instead?
-              </p>
-              <ul className="location-swap-menu">
-                <li className="confirm">
-                  <LinkButton
-                    onClick={() => {
-                      setSuppressBanner(true);
-                      setCurrentCountryId(userLocation);
-                    }}
-                    hasIcon={true}
-                    className="confirm-button"
-                  >
-                    {UserGeoFlag && <UserGeoFlag height={36} />}
-                    <span className="updog">Go now</span>
-                  </LinkButton>
-                </li>
-                <li className="dismiss">
-                  <LinkButton
-                    hasIcon={true}
-                    onClick={() => {
-                      setSuppressBanner(true);
-                    }}
-                  >
-                    <XIcon size={36} />
-                    <span className="updog">Close</span>
-                  </LinkButton>
-                </li>
-              </ul>
-            </Banner>
-          )}
         <div className="content-wrapper">
           <h1>Emergency Service Phone Numbers</h1>
           {agreedToTerms && agreedToTerms !== "never" && (
-            <CountrySelect
-              value={currentCountryId}
-              onChange={(value) => {
-                setSuppressBanner(true);
-                setCurrentCountryId(value as keyof typeof SERVICES);
-              }}
-            />
+            <>
+              <div className="country-select">
+                <CountrySelect
+                  value={currentCountryId}
+                  onChange={(value) => {
+                    setCurrentCountryId(value as keyof typeof SERVICES);
+                  }}
+                />
+                {!isUserLocated && (
+                  <div className="country-jump-link">
+                    <span>&nbsp;</span>
+                  </div>
+                )}
+                {isUserLocationInDirectory && !isPageUserLocation && (
+                  <div className="country-jump-link">
+                    <TextLink
+                      href={`/${userLocation.toLowerCase()}/`}
+                      icon={
+                        <Flag
+                          country={userLocation}
+                          height={14}
+                          style={
+                            {
+                              "--stagger": countryJumpLinkText.length + 1,
+                            } as React.CSSProperties
+                          }
+                        />
+                      }
+                      onClick={(e) => {
+                        e.preventDefault();
+
+                        setCurrentCountryId(userLocation);
+                      }}
+                      hidden={
+                        userLocation === null ||
+                        !(userLocation in SERVICES) ||
+                        currentCountryId === userLocation
+                      }
+                      aria-label={countryJumpLinkText}
+                    >
+                      {countryJumpLinkText.split("").map((letter, index) => (
+                        <span
+                          aria-hidden="true"
+                          style={{ "--stagger": index } as React.CSSProperties}
+                          className="letter"
+                          key={index}
+                        >
+                          {letter === " " ? "\u00A0" : letter}
+                        </span>
+                      ))}
+                    </TextLink>
+                  </div>
+                )}
+              </div>
+            </>
           )}
 
           {agreedToTerms && agreedToTerms === "never" && (
@@ -155,14 +159,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
       )}
       <Footer />
     </div>
-  );
-}
-
-function Banner({ children }: { children: React.ReactNode }) {
-  return (
-    <aside className="banner">
-      <div className="content-wrapper">{children}</div>
-    </aside>
   );
 }
 
