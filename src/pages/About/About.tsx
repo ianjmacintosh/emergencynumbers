@@ -1,17 +1,16 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react";
 import { SERVICES } from "../../constants/emergency-services";
-import Footer from "../Footer";
-import LinkButton from "../LinkButton";
-import TextLink from "../TextLink";
-import "./AboutPage.css";
-import { DisclaimerText } from "../Disclaimer";
+import Footer from "../../components/Footer";
+import LinkButton from "../../components/LinkButton";
+import TextLink from "../../components/TextLink";
+import "../TextPages.css";
 
 function AboutPage() {
   return (
     <div className="page-wrapper">
       <main className="content-wrapper">
         <BackButton />
-        <h1>About</h1>
+        <h1>About this directory</h1>
         <article>
           <p>
             At about 11:30pm on a random Sunday night, my wife got an unexpected
@@ -73,17 +72,24 @@ function AboutPage() {
               ITU-T E.129 Important numbers
             </TextLink>{" "}
             list, which is maintained by a specialized agency of the United
-            Nations responsible for telecommunications standards, as well as{" "}
+            Nations responsible for telecommunications standards. I also used
+            information from{" "}
             <TextLink
               href="https://www.gov.uk/foreign-travel-advice"
               target="_blank"
             >
               GOV.UK's Foreign travel advice
             </TextLink>
-            to provide information for countries absent from the ITU-T E.129's
-            list. For the remaining missing countries and territories, I
-            consulted their government's online resources.
+            pages to provide information for territories absent from the ITU-T's
+            list.
           </p>
+          <p>
+            For most of the other territories, I found emergency service
+            information in their government's online resources. Except for North
+            Korea, the remaining “missing” territories are all uninhabited,
+            barely inhabited, or extremely remote research areas.
+          </p>
+          <p>Full source breakdown below:</p>
           <table>
             <thead>
               <tr>
@@ -127,7 +133,6 @@ function AboutPage() {
               </tr>
             </tbody>
           </table>
-
           <p>
             <small>
               <sup>1</sup> Individual governments: Government of Jersey,
@@ -138,11 +143,12 @@ function AboutPage() {
               Service
             </small>
           </p>
-        </article>
-        <hr />
-        <article>
-          <h2>Is all the information listed here official and accurate?</h2>
-          <DisclaimerText />
+          <p>
+            If an emergency service phone number changes, there will be{" "}
+            <em>some</em> delay between when official published information
+            changes and when I update this directory. This directory is not an
+            official or authoritative source of information.
+          </p>
         </article>
         <hr />
         <article>
@@ -151,12 +157,12 @@ function AboutPage() {
             not to trust it?
           </h2>
           <p>
-            Due to the serious context, I figured it was better to remind folks
-            that this is second-hand information. It's unlikely these phone
-            numbers will change frequently, but it could happen. I'd rather
-            cover for that edge case and remind people that I'm not an official
-            source instead of having them keep calling a decommissioned phone
-            number in an emergency situation.
+            Due to the context, it's better to remind folks that this is
+            second-hand information. It's unlikely these phone numbers will
+            change often, but it could happen. I'd rather cover for that edge
+            case and remind people that I'm not an official source instead of
+            having someone keep calling an out-of-service phone number in an
+            emergency situation.
           </p>
         </article>
         <hr />
@@ -211,8 +217,8 @@ function AboutPage() {
           <p>
             My wife called a friend in that area who works as an emergency room
             doctor and volunteers for EMT shifts monthly. She arrived at our
-            relative's home in 15 minutes and provided life-saving treatment for
-            what turned out to be sepsis -- typically fatal if left to run its
+            relative's home in 15 minutes and provided emergency treatment for
+            what turned out to be sepsis — typically fatal if left to run its
             course. Calling for help saved a life.
           </p>
         </article>
@@ -234,7 +240,8 @@ function BackButton() {
       // A) From this site
       lastPage.includes(window.location.hostname) &&
       // And B) Not also the page.
-      lastPage.includes("about") === false
+      lastPage.includes("about") === false &&
+      lastPage.includes("terms") === false
     ) {
       // Then in that case, we'll go back to that page
       nextPage = lastPage;
@@ -246,7 +253,8 @@ function BackButton() {
 
   return (
     <LinkButton className="icon-button" onClick={goToPreviousPage}>
-      <ArrowLeftIcon size={24} /> Back to directory
+      <ArrowLeftIcon size={24} />{" "}
+      <span className="updog">Back to directory</span>
     </LinkButton>
   );
 }
