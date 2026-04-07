@@ -42,7 +42,9 @@ function ServiceCard({ service }: { service: Service }) {
               href={`tel:${phoneNumber}`}
             >
               <PhoneOutgoingIcon size={24} weight="fill" />{" "}
-              <span className="updog">Call {phoneNumber}</span>
+              <span className="updog">
+                Call <span className="phone-number">{phoneNumber}</span>
+              </span>
             </LinkButton>
           </li>
         </ul>
