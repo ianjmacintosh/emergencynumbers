@@ -46,6 +46,11 @@ function App({ initialCountry }: { initialCountry?: string }) {
   const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
   const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
 
+  const countryJumpLinkText =
+    isUserLocated && isUserLocationInDirectory
+      ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
+      : "";
+
   // Sync URL whenever currentCountryId changes
   React.useEffect(() => {
     const countryPage = `/${currentCountryId.toLowerCase()}/`;
@@ -97,7 +102,17 @@ function App({ initialCountry }: { initialCountry?: string }) {
                   <div className="country-jump-link">
                     <TextLink
                       href={`/${userLocation.toLowerCase()}/`}
-                      icon={<Flag country={userLocation} height={14} />}
+                      icon={
+                        <Flag
+                          country={userLocation}
+                          height={14}
+                          style={
+                            {
+                              "--stagger": countryJumpLinkText.length + 1,
+                            } as React.CSSProperties
+                          }
+                        />
+                      }
                       onClick={(e) => {
                         e.preventDefault();
 
@@ -108,22 +123,18 @@ function App({ initialCountry }: { initialCountry?: string }) {
                         !(userLocation in SERVICES) ||
                         currentCountryId === userLocation
                       }
-                      aria-label={`Looking for info for ${COUNTRY_NAMES[userLocation]}?`}
+                      aria-label={countryJumpLinkText}
                     >
-                      {`Looking for info for ${COUNTRY_NAMES[userLocation]}?`
-                        .split("")
-                        .map((letter, index) => (
-                          <span
-                            aria-hidden="true"
-                            style={
-                              { "--stagger": index } as React.CSSProperties
-                            }
-                            className="letter"
-                            key={index}
-                          >
-                            {letter === " " ? "\u00A0" : letter}
-                          </span>
-                        ))}
+                      {countryJumpLinkText.split("").map((letter, index) => (
+                        <span
+                          aria-hidden="true"
+                          style={{ "--stagger": index } as React.CSSProperties}
+                          className="letter"
+                          key={index}
+                        >
+                          {letter === " " ? "\u00A0" : letter}
+                        </span>
+                      ))}
                     </TextLink>
                   </div>
                 )}
