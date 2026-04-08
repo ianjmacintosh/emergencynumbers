@@ -30,13 +30,16 @@ function CountryCard({
   direction: number;
 }) {
   const isPresent = useIsPresent();
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
   const countryName = COUNTRY_NAMES[id];
   const hasServices = id in SERVICES;
 
   return (
     <motion.div
       custom={direction}
-      variants={swipeVariants}
+      variants={prefersReducedMotion ? undefined : swipeVariants}
       initial="initial"
       animate="enter"
       exit="exit"
