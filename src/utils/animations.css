@@ -15,27 +15,3 @@
     opacity: 0;
   }
 }
-
-@keyframes country-slide-out-left {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes country-slide-in-from-right {
-  from {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes country-slide-out-right {
-  to {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes country-slide-in-from-left {
-  from {
-    transform: translateX(-100%);
-  }
-}

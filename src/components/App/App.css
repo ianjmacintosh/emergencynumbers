@@ -1,9 +1,5 @@
 @import "../../utils/animations.css";
 
-html {
-  --country-swipe-duration: 800ms;
-}
-
 .banner {
   border: none;
   border-bottom: solid 1px #ccc;
@@ -76,8 +72,8 @@ header h1 {
   display: inline-block;
 }
 
-.country-card-transition {
-  view-transition-name: country-card;
+.country-card-main {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -89,32 +85,5 @@ header h1 {
     animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     animation-fill-mode: both;
     animation-delay: calc(var(--delay) * var(--stagger));
-  }
-
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation: none;
-  }
-
-  /* Forward: old slides out left, new slides in from right */
-  html[data-nav-direction="forward"]::view-transition-old(country-card),
-  html:not([data-nav-direction])::view-transition-old(country-card) {
-    animation: country-slide-out-left var(--country-swipe-duration)
-      cubic-bezier(0.19, 1, 0.22, 1) both;
-  }
-  html[data-nav-direction="forward"]::view-transition-new(country-card),
-  html:not([data-nav-direction])::view-transition-new(country-card) {
-    animation: country-slide-in-from-right var(--country-swipe-duration)
-      cubic-bezier(0.19, 1, 0.22, 1) both;
-  }
-
-  /* Backward: old slides out right, new slides in from left */
-  html[data-nav-direction="backward"]::view-transition-old(country-card) {
-    animation: country-slide-out-right var(--country-swipe-duration)
-      cubic-bezier(0.19, 1, 0.22, 1) both;
-  }
-  html[data-nav-direction="backward"]::view-transition-new(country-card) {
-    animation: country-slide-in-from-left var(--country-swipe-duration)
-      cubic-bezier(0.19, 1, 0.22, 1) both;
   }
 }
