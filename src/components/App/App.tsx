@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  AnimatePresence,
-  MotionConfig,
-  motion,
-  type Variants,
-} from "framer-motion";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
+import type { VALID_COUNTRY_CODE } from "../../constants";
 import { getCountryFromPath } from "../../utils/url";
 
 import "./App.css";
@@ -18,24 +14,14 @@ import Disclaimer from "../Disclaimer";
 import TextLink from "../TextLink";
 import Flag from "../Flag";
 
-const swipeVariants: Variants = {
-  initial: (direction: number) => ({ x: direction > 0 ? "100vw" : "-100vw" }),
-  enter: { x: 0, transition: { ease: [0.19, 1, 0.22, 1], duration: 0.3 } },
-  exit: (direction: number) => ({
-    x: direction > 0 ? "-100vw" : "100vw",
-    transition: { ease: [0.19, 1, 0.22, 1], duration: 0.3 },
-  }),
-};
-
-function App({ initialCountry }: { initialCountry?: string }) {
-  const [currentCountryId, setCurrentCountryId] = React.useState<
-    keyof typeof COUNTRY_NAMES
-  >(
-    () =>
-      (initialCountry as keyof typeof COUNTRY_NAMES) ??
-      getCountryFromPath(window.location.pathname) ??
-      DEFAULT_COUNTRY,
-  );
+function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
+  const [currentCountryId, setCurrentCountryId] =
+    React.useState<VALID_COUNTRY_CODE>(
+      () =>
+        initialCountry ??
+        getCountryFromPath(window.location.pathname) ??
+        DEFAULT_COUNTRY,
+    );
 
   const [direction, setDirection] = React.useState(1);
 
@@ -51,7 +37,10 @@ function App({ initialCountry }: { initialCountry?: string }) {
   }, []);
 
   const navigateTo = React.useCallback(
-    (newCountry: keyof typeof COUNTRY_NAMES, dir: number) => {
+    (newCountry: VALID_COUNTRY_CODE | null, dir: number) => {
+      if (newCountry === null) {
+        return;
+      }
       setDirection(dir);
       setCurrentCountryId(newCountry);
     },
@@ -77,15 +66,6 @@ function App({ initialCountry }: { initialCountry?: string }) {
       })
       .catch(() => {});
   }, []);
-
-  const isUserLocated = userLocation !== null;
-  const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
-  const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
-
-  const countryJumpLinkText =
-    isUserLocated && isUserLocationInDirectory
-      ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
-      : "";
 
   // Sync URL whenever currentCountryId changes
   React.useEffect(() => {
@@ -136,52 +116,14 @@ function App({ initialCountry }: { initialCountry?: string }) {
                       navigateTo(value as keyof typeof SERVICES, 1);
                     }}
                   />
-                  {!isUserLocated && (
-                    <div className="country-jump-link">
-                      <span>&nbsp;</span>
-                    </div>
-                  )}
-                  {isUserLocationInDirectory && !isPageUserLocation && (
-                    <div className="country-jump-link">
-                      <TextLink
-                        href={`/${userLocation.toLowerCase()}/`}
-                        icon={
-                          <Flag
-                            country={userLocation}
-                            height={14}
-                            style={
-                              {
-                                "--stagger": countryJumpLinkText.length + 1,
-                              } as React.CSSProperties
-                            }
-                          />
-                        }
-                        onClick={(e) => {
-                          e.preventDefault();
-                          navigateTo(userLocation, 1);
-                        }}
-                        hidden={
-                          userLocation === null ||
-                          !(userLocation in SERVICES) ||
-                          currentCountryId === userLocation
-                        }
-                        aria-label={countryJumpLinkText}
-                      >
-                        {countryJumpLinkText.split("").map((letter, index) => (
-                          <span
-                            aria-hidden="true"
-                            style={
-                              { "--stagger": index } as React.CSSProperties
-                            }
-                            className="letter"
-                            key={index}
-                          >
-                            {letter === " " ? "\u00A0" : letter}
-                          </span>
-                        ))}
-                      </TextLink>
-                    </div>
-                  )}
+                  <CountryJumpLink
+                    currentCountryId={currentCountryId}
+                    userLocation={userLocation}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigateTo(userLocation, 1);
+                    }}
+                  />
                 </div>
               </>
             )}
@@ -198,22 +140,12 @@ function App({ initialCountry }: { initialCountry?: string }) {
         </header>
         {agreedToTerms && agreedToTerms !== "never" && (
           <main className="country-card-main">
-            <AnimatePresence
-              custom={direction}
-              mode="popLayout"
-              initial={false}
-            >
-              <motion.div
+            <AnimatePresence custom={direction} mode="sync" initial={false}>
+              <CountryCard
                 key={currentCountryId}
-                custom={direction}
-                variants={swipeVariants}
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                className="content-wrapper"
-              >
-                <CountryCard id={currentCountryId} />
-              </motion.div>
+                id={currentCountryId}
+                direction={direction}
+              />
             </AnimatePresence>
           </main>
         )}
@@ -222,5 +154,69 @@ function App({ initialCountry }: { initialCountry?: string }) {
     </MotionConfig>
   );
 }
+
+const CountryJumpLink = ({
+  userLocation,
+  currentCountryId,
+  onClick,
+}: {
+  currentCountryId: VALID_COUNTRY_CODE;
+  userLocation: VALID_COUNTRY_CODE | null;
+  onClick: React.MouseEventHandler<HTMLAnchorElement>;
+}) => {
+  const isUserLocated = userLocation !== null;
+  const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
+  const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
+  const countryJumpLinkText =
+    isUserLocated && isUserLocationInDirectory
+      ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
+      : "";
+
+  return (
+    <>
+      {!isUserLocated && (
+        <div className="country-jump-link">
+          <span>&nbsp;</span>
+        </div>
+      )}
+      {isUserLocationInDirectory && !isPageUserLocation && (
+        <div className="country-jump-link">
+          <TextLink
+            href={`/${userLocation.toLowerCase()}/`}
+            icon={
+              <Flag
+                country={userLocation}
+                height={14}
+                style={
+                  {
+                    "--stagger": countryJumpLinkText.length + 1,
+                  } as React.CSSProperties
+                }
+              />
+            }
+            onClick={onClick}
+            hidden={
+              userLocation === null ||
+              !(userLocation in SERVICES) ||
+              currentCountryId === userLocation
+            }
+            aria-label={countryJumpLinkText}
+          >
+            {countryJumpLinkText.split("").map((letter, index) => (
+              <span
+                aria-hidden="true"
+                style={{ "--stagger": index } as React.CSSProperties}
+                className="letter"
+                key={index}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </TextLink>
+        </div>
+      )}
+    </>
+  );
+};
 
 export default App;

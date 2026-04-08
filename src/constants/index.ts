@@ -1,3 +1,5 @@
+export type VALID_COUNTRY_CODE = keyof typeof COUNTRY_NAMES;
+
 export const DEFAULT_COUNTRY = "US";
 
 export const COUNTRY_NAMES = {
