@@ -1,4 +1,5 @@
 import React from "react";
+import { flushSync } from "react-dom";
 import { SERVICES } from "../../constants/emergency-services";
 import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
 import { getCountryFromPath } from "../../utils/url";
@@ -20,6 +21,38 @@ function App({ initialCountry }: { initialCountry?: string }) {
       (initialCountry as keyof typeof COUNTRY_NAMES) ??
       getCountryFromPath(window.location.pathname) ??
       DEFAULT_COUNTRY,
+  );
+
+  const navIndexRef = React.useRef<number>(
+    (history.state as { index?: number } | null)?.index ?? 0,
+  );
+
+  // Ensure the initial history entry has a nav index for back/forward detection
+  React.useEffect(() => {
+    if ((history.state as { index?: number } | null)?.index === undefined) {
+      history.replaceState({ index: 0 }, "");
+    }
+  }, []);
+
+  const transitionToCountry = React.useCallback(
+    (
+      newCountry: keyof typeof COUNTRY_NAMES,
+      direction: "forward" | "backward" = "forward",
+    ) => {
+      document.documentElement.dataset.navDirection = direction;
+      if ("startViewTransition" in document) {
+        (
+          document as Document & {
+            startViewTransition: (cb: () => void) => void;
+          }
+        ).startViewTransition(() => {
+          flushSync(() => setCurrentCountryId(newCountry));
+        });
+      } else {
+        setCurrentCountryId(newCountry);
+      }
+    },
+    [],
   );
 
   const [userLocation, setUserLocation] = React.useState<
@@ -55,7 +88,9 @@ function App({ initialCountry }: { initialCountry?: string }) {
   React.useEffect(() => {
     const countryPage = `/${currentCountryId.toLowerCase()}/`;
     if (window.location.pathname !== countryPage) {
-      history.pushState({}, "", countryPage);
+      const newIndex = navIndexRef.current + 1;
+      navIndexRef.current = newIndex;
+      history.pushState({ index: newIndex }, "", countryPage);
       window.dispatchEvent(new Event("locationchange"));
     }
   }, [currentCountryId]);
@@ -72,12 +107,17 @@ function App({ initialCountry }: { initialCountry?: string }) {
     const handlePopState = () => {
       const countryFromPath = getCountryFromPath(window.location.pathname);
       if (countryFromPath) {
-        setCurrentCountryId(countryFromPath);
+        const newIndex =
+          (history.state as { index?: number } | null)?.index ?? 0;
+        const direction =
+          newIndex < navIndexRef.current ? "backward" : "forward";
+        navIndexRef.current = newIndex;
+        transitionToCountry(countryFromPath, direction);
       }
     };
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
-  }, []);
+  }, [transitionToCountry]);
 
   return (
     <div className="page-wrapper">
@@ -90,7 +130,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
                 <CountrySelect
                   value={currentCountryId}
                   onChange={(value) => {
-                    setCurrentCountryId(value as keyof typeof SERVICES);
+                    transitionToCountry(value as keyof typeof SERVICES);
                   }}
                 />
                 {!isUserLocated && (
@@ -115,8 +155,7 @@ function App({ initialCountry }: { initialCountry?: string }) {
                       }
                       onClick={(e) => {
                         e.preventDefault();
-
-                        setCurrentCountryId(userLocation);
+                        transitionToCountry(userLocation);
                       }}
                       hidden={
                         userLocation === null ||
@@ -153,8 +192,10 @@ function App({ initialCountry }: { initialCountry?: string }) {
         </div>
       </header>
       {agreedToTerms && agreedToTerms !== "never" && (
-        <main className="content-wrapper">
-          <CountryCard id={currentCountryId} />
+        <main className="country-card-transition">
+          <div className="content-wrapper">
+            <CountryCard id={currentCountryId} />
+          </div>
         </main>
       )}
       <Footer />
