@@ -42,7 +42,7 @@ function CountryCard({
       exit="exit"
       transition={transition}
       className="content-wrapper"
-      aria-hidden={isPresent}
+      aria-hidden={!isPresent}
     >
       {hasServices ? (
         getServiceCardData(SERVICES[id as keyof typeof SERVICES]!).map(
