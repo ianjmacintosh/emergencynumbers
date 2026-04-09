@@ -1,5 +1,5 @@
 import React from "react";
-import { COUNTRY_NAMES } from "../constants";
+import { COUNTRY_NAMES, type ValidCountryCode } from "../constants";
 
 /**
  * Reactively tracks window.location.pathname, updating on popstate (browser
@@ -26,14 +26,12 @@ export function usePathname() {
  * Parses a URL pathname and returns a valid country code, or null.
  * Accepts formats like "/us/", "/US/", "/br", "/BR".
  */
-export function getCountryFromPath(
-  pathname: string,
-): keyof typeof COUNTRY_NAMES | null {
+export function getCountryFromPath(pathname: string): ValidCountryCode | null {
   const segments = pathname.split("/").filter(Boolean);
   if (segments.length !== 1) return null;
 
   const code = segments[0].toUpperCase();
-  if (code in COUNTRY_NAMES) return code as keyof typeof COUNTRY_NAMES;
+  if (code in COUNTRY_NAMES) return code as ValidCountryCode;
 
   return null;
 }

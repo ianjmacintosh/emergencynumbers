@@ -72,6 +72,11 @@ header h1 {
   display: inline-block;
 }
 
+.country-card-main {
+  overflow: hidden;
+  position: relative;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .country-jump-link .link-text .letter,
   .country-jump-link .flag-icon {

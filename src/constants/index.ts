@@ -1,3 +1,5 @@
+export type ValidCountryCode = keyof typeof COUNTRY_NAMES;
+
 export const DEFAULT_COUNTRY = "US";
 
 export const COUNTRY_NAMES = {
@@ -253,9 +255,7 @@ export const COUNTRY_NAMES = {
   ZW: "Zimbabwe",
 };
 
-export const COUNTRY_ALT_NAMES: Partial<
-  Record<keyof typeof COUNTRY_NAMES, string[]>
-> = {
+export const COUNTRY_ALT_NAMES: Partial<Record<ValidCountryCode, string[]>> = {
   AE: ["UAE", "Dubai", "Emirates"],
   AX: ["Åland Islands"],
   BA: ["Bosnia"],
