@@ -1,8 +1,11 @@
 import React from "react";
 import { AnimatePresence, MotionConfig } from "framer-motion";
-import { SERVICES } from "../../constants/emergency-services";
-import { COUNTRY_NAMES, DEFAULT_COUNTRY } from "../../constants";
-import type { VALID_COUNTRY_CODE } from "../../constants";
+import { isSupportedCountryCode } from "../../constants/emergency-services";
+import {
+  COUNTRY_NAMES,
+  DEFAULT_COUNTRY,
+  type ValidCountryCode,
+} from "../../constants";
 import { getCountryFromPath } from "../../utils/url";
 
 import "./App.css";
@@ -14,9 +17,9 @@ import Disclaimer from "../Disclaimer";
 import TextLink from "../TextLink";
 import Flag from "../Flag";
 
-function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
+function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
   const [currentCountryId, setCurrentCountryId] =
-    React.useState<VALID_COUNTRY_CODE>(
+    React.useState<ValidCountryCode>(
       () =>
         initialCountry ??
         getCountryFromPath(window.location.pathname) ??
@@ -37,7 +40,7 @@ function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
   }, []);
 
   const navigateTo = React.useCallback(
-    (newCountry: VALID_COUNTRY_CODE | null, dir: number) => {
+    (newCountry: ValidCountryCode | null, dir: number) => {
       if (newCountry === null) {
         return;
       }
@@ -47,9 +50,8 @@ function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
     [],
   );
 
-  const [userLocation, setUserLocation] = React.useState<
-    keyof typeof SERVICES | null
-  >(null);
+  const [userLocation, setUserLocation] =
+    React.useState<ValidCountryCode | null>(null);
 
   const [agreedToTerms, setAgreedToTerms] = useLocalStorage(
     "agreedToTerms",
@@ -60,8 +62,8 @@ function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
     fetch("/api/geo")
       .then((res) => res.json())
       .then((data: { country: string | null }) => {
-        if (data.country && data.country in SERVICES) {
-          setUserLocation(data.country as keyof typeof SERVICES);
+        if (data.country && data.country in COUNTRY_NAMES) {
+          setUserLocation(data.country as ValidCountryCode);
         }
       })
       .catch(() => {});
@@ -113,7 +115,7 @@ function App({ initialCountry }: { initialCountry?: VALID_COUNTRY_CODE }) {
                   <CountrySelect
                     value={currentCountryId}
                     onChange={(value) => {
-                      navigateTo(value as keyof typeof SERVICES, 1);
+                      navigateTo(value as ValidCountryCode, 1);
                     }}
                   />
                   <CountryJumpLink
@@ -160,17 +162,17 @@ const CountryJumpLink = ({
   currentCountryId,
   onClick,
 }: {
-  currentCountryId: VALID_COUNTRY_CODE;
-  userLocation: VALID_COUNTRY_CODE | null;
+  currentCountryId: ValidCountryCode;
+  userLocation: ValidCountryCode | null;
   onClick: React.MouseEventHandler<HTMLAnchorElement>;
 }) => {
   const isUserLocated = userLocation !== null;
-  const isUserLocationInDirectory = isUserLocated && userLocation in SERVICES;
+  const isUserLocationInDirectory =
+    isUserLocated && isSupportedCountryCode(userLocation);
   const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
-  const countryJumpLinkText =
-    isUserLocated && isUserLocationInDirectory
-      ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
-      : "";
+  const countryJumpLinkText = isUserLocationInDirectory
+    ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
+    : "";
 
   return (
     <>
@@ -196,9 +198,7 @@ const CountryJumpLink = ({
             }
             onClick={onClick}
             hidden={
-              userLocation === null ||
-              !(userLocation in SERVICES) ||
-              currentCountryId === userLocation
+              !isUserLocationInDirectory || currentCountryId === userLocation
             }
             aria-label={countryJumpLinkText}
           >

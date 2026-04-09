@@ -1,4 +1,4 @@
-import type { COUNTRY_NAMES } from "./index";
+import type { ValidCountryCode } from "./index";
 import rawData from "../data/emergency-services.json" with { type: "json" };
 
 export type Source = {
@@ -26,6 +26,8 @@ export type Service = {
   sources: Source[];
 };
 
-export const SERVICES = rawData as Partial<
-  Record<keyof typeof COUNTRY_NAMES, Service[]>
->;
+export const SERVICES = rawData as Partial<Record<ValidCountryCode, Service[]>>;
+
+export function isSupportedCountryCode(code: ValidCountryCode): boolean {
+  return code in SERVICES;
+}

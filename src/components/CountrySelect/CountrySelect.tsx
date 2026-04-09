@@ -1,6 +1,10 @@
 import ComboboxSelect, { ComboboxSelectOption } from "../ComboboxSelect";
 import { SERVICES } from "../../constants/emergency-services";
-import { COUNTRY_ALT_NAMES, COUNTRY_NAMES } from "../../constants";
+import {
+  COUNTRY_ALT_NAMES,
+  COUNTRY_NAMES,
+  type ValidCountryCode,
+} from "../../constants";
 import "./CountrySelect.css";
 import { CheckIcon, WarningIcon } from "@phosphor-icons/react";
 import Flag from "../Flag";
@@ -23,7 +27,7 @@ function CountrySelect({
           <span className="country-badge">
             <Flag country={value} height={36} />
             <span className="country-name updog">
-              {COUNTRY_NAMES[value as keyof typeof SERVICES]}
+              {COUNTRY_NAMES[value as ValidCountryCode]}
             </span>
           </span>
         </>
@@ -72,6 +76,6 @@ function CountrySelect({
 }
 
 const getCountryIds = () =>
-  Object.keys(COUNTRY_NAMES) as Array<keyof typeof COUNTRY_NAMES>;
+  Object.keys(COUNTRY_NAMES) as Array<ValidCountryCode>;
 
 export default CountrySelect;

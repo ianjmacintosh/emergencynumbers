@@ -4,7 +4,7 @@ import {
   type Variants,
   type Transition,
 } from "framer-motion";
-import { COUNTRY_NAMES } from "../../constants";
+import { COUNTRY_NAMES, type ValidCountryCode } from "../../constants";
 import { SERVICES, type Service } from "../../constants/emergency-services";
 import ServiceCard from "../ServiceCard";
 import TextLink from "../TextLink";
@@ -26,7 +26,7 @@ function CountryCard({
   id,
   direction,
 }: {
-  id: keyof typeof COUNTRY_NAMES;
+  id: ValidCountryCode;
   direction: number;
 }) {
   const isPresent = useIsPresent();
@@ -48,14 +48,12 @@ function CountryCard({
       aria-hidden={!isPresent}
     >
       {hasServices ? (
-        getServiceCardData(SERVICES[id as keyof typeof SERVICES]!).map(
-          (serviceCard) => (
-            <ServiceCard
-              service={serviceCard}
-              key={`${serviceCard.type}-${serviceCard.phoneNumber}`}
-            />
-          ),
-        )
+        getServiceCardData(SERVICES[id]!).map((serviceCard) => (
+          <ServiceCard
+            service={serviceCard}
+            key={`${serviceCard.type}-${serviceCard.phoneNumber}`}
+          />
+        ))
       ) : (
         <article className="unknown-services">
           <h2>No Information Available</h2>
