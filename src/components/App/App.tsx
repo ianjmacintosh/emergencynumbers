@@ -50,8 +50,7 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
     [],
   );
 
-  const [userLocation, setUserLocation] =
-    React.useState<ValidCountryCode | null>(null);
+  const [userLocation, setUserLocation] = React.useState<string | null>(null);
 
   const [agreedToTerms, setAgreedToTerms] = useLocalStorage(
     "agreedToTerms",
@@ -62,9 +61,7 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
     fetch("/api/geo")
       .then((res) => res.json())
       .then((data: { country: string | null }) => {
-        if (data.country && data.country in COUNTRY_NAMES) {
-          setUserLocation(data.country as ValidCountryCode);
-        }
+        if (data.country) setUserLocation(data.country);
       })
       .catch(() => {});
   }, []);
@@ -123,7 +120,9 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
                     userLocation={userLocation}
                     onClick={(event) => {
                       event.preventDefault();
-                      navigateTo(userLocation, 1);
+                      if (isSupportedCountryCode(userLocation)) {
+                        navigateTo(userLocation, 1);
+                      }
                     }}
                   />
                 </div>
@@ -163,14 +162,13 @@ const CountryJumpLink = ({
   onClick,
 }: {
   currentCountryId: ValidCountryCode;
-  userLocation: ValidCountryCode | null;
+  userLocation: string | null;
   onClick: React.MouseEventHandler<HTMLAnchorElement>;
 }) => {
   const isUserLocated = userLocation !== null;
-  const isUserLocationInDirectory =
-    isUserLocated && isSupportedCountryCode(userLocation);
+  const isUserLocationInDirectory = isSupportedCountryCode(userLocation);
   const isPageUserLocation = isUserLocated && currentCountryId === userLocation;
-  const countryJumpLinkText = isUserLocationInDirectory
+  const countryJumpLinkText = isSupportedCountryCode(userLocation)
     ? `Looking for info for ${COUNTRY_NAMES[userLocation]}?`
     : "";
 

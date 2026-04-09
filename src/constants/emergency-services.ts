@@ -28,6 +28,8 @@ export type Service = {
 
 export const SERVICES = rawData as Partial<Record<ValidCountryCode, Service[]>>;
 
-export function isSupportedCountryCode(code: ValidCountryCode): boolean {
-  return code in SERVICES;
+export function isSupportedCountryCode(
+  code: string | null,
+): code is ValidCountryCode {
+  return code !== null && code in SERVICES;
 }
