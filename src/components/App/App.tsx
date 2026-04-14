@@ -1,5 +1,5 @@
 import React from "react";
-import { AnimatePresence, MotionConfig } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import { isSupportedCountryCode } from "../../constants/emergency-services";
 import {
   COUNTRY_NAMES,
@@ -27,6 +27,28 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
     );
 
   const [direction, setDirection] = React.useState(1);
+
+  type ExitingCountry = {
+    id: ValidCountryCode;
+    instanceKey: number;
+    direction: number;
+  };
+  const [exitingCountry, setExitingCountry] =
+    React.useState<ExitingCountry | null>(null);
+  const exitingInstanceKeyRef = React.useRef(0);
+  const prevCountryIdRef = React.useRef(currentCountryId);
+
+  React.useEffect(() => {
+    if (prevCountryIdRef.current !== currentCountryId) {
+      exitingInstanceKeyRef.current += 1;
+      setExitingCountry({
+        id: prevCountryIdRef.current,
+        instanceKey: exitingInstanceKeyRef.current,
+        direction,
+      });
+      prevCountryIdRef.current = currentCountryId;
+    }
+  }, [currentCountryId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const navIndexRef = React.useRef<number>(
     (history.state as { index?: number } | null)?.index ?? 0,
@@ -141,13 +163,20 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
         </header>
         {agreedToTerms && agreedToTerms !== "never" && (
           <main className="country-card-main">
-            <AnimatePresence custom={direction} mode="sync" initial={false}>
+            {exitingCountry && (
               <CountryCard
-                key={currentCountryId}
-                id={currentCountryId}
-                direction={direction}
+                key={exitingCountry.instanceKey}
+                id={exitingCountry.id}
+                direction={exitingCountry.direction}
+                isExiting
+                onExitComplete={() => setExitingCountry(null)}
               />
-            </AnimatePresence>
+            )}
+            <CountryCard
+              key={currentCountryId}
+              id={currentCountryId}
+              direction={direction}
+            />
           </main>
         )}
         <Footer />

@@ -91,6 +91,22 @@ test("can change countries", async ({ page }) => {
   }
 });
 
+// Can change dropdown with arrow keys
+test.only("can change countries with the tap of the up or down arrow", async ({
+  page,
+}) => {
+  await page.goto(testPage);
+
+  const combobox = page.getByRole("combobox", { name: "Location" });
+
+  await combobox.focus();
+  await expect(combobox).toContainText("United States");
+  await page.keyboard.press("ArrowDown");
+  await expect(combobox).not.toContainText("United States");
+  await page.keyboard.press("ArrowUp");
+  await expect(combobox).toContainText("United States");
+});
+
 test("can find United Kingdom by searching for an alternate name", async ({
   page,
 }) => {

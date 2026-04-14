@@ -1,9 +1,5 @@
-import {
-  motion,
-  useIsPresent,
-  type Variants,
-  type Transition,
-} from "framer-motion";
+import React from "react";
+import { motion, type Transition } from "framer-motion";
 import { COUNTRY_NAMES, type ValidCountryCode } from "../../constants";
 import { SERVICES, type Service } from "../../constants/emergency-services";
 import ServiceCard from "../ServiceCard";
@@ -13,39 +9,48 @@ import "./CountryCard.css";
 
 const transition: Transition = { type: "spring", duration: 0.4, bounce: 0.2 };
 
-const swipeVariants: Variants = {
-  initial: (direction: number) => ({ x: `${direction * 100}vw` }),
-  enter: { x: 0 },
-  exit: (direction: number) => ({
-    x: `${-direction * 100}vw`,
-    position: "absolute",
-  }),
-};
-
 function CountryCard({
   id,
   direction,
+  isExiting = false,
+  onExitComplete,
 }: {
   id: ValidCountryCode;
   direction: number;
+  isExiting?: boolean;
+  onExitComplete?: () => void;
 }) {
-  const isPresent = useIsPresent();
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
   const countryName = COUNTRY_NAMES[id];
   const hasServices = id in SERVICES;
 
+  // When reduced motion is preferred, there's no animation to wait for,
+  // so signal exit completion immediately on mount.
+  React.useEffect(() => {
+    if (isExiting && prefersReducedMotion) onExitComplete?.();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <motion.div
-      custom={direction}
-      variants={prefersReducedMotion ? undefined : swipeVariants}
-      initial="initial"
-      animate="enter"
-      exit="exit"
+      initial={
+        prefersReducedMotion
+          ? undefined
+          : { x: isExiting ? 0 : `${direction * 100}vw` }
+      }
+      animate={
+        prefersReducedMotion
+          ? undefined
+          : { x: isExiting ? `${-direction * 100}vw` : 0 }
+      }
       transition={transition}
+      onAnimationComplete={
+        isExiting && !prefersReducedMotion ? onExitComplete : undefined
+      }
       className="content-wrapper"
-      aria-hidden={!isPresent}
+      aria-hidden={isExiting}
+      style={isExiting ? { position: "absolute" } : undefined}
     >
       {hasServices ? (
         getServiceCardData(SERVICES[id]!).map((serviceCard) => (

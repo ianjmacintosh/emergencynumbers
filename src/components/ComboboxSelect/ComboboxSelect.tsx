@@ -46,7 +46,12 @@ function ComboboxSelect({
           {label}
         </Ariakit.SelectLabel>
       )}
-      <Ariakit.Select value={currentValue} className="select-button">
+      <Ariakit.Select
+        value={currentValue}
+        className="select-button"
+        moveOnKeyDown={true}
+        showOnKeyDown={false}
+      >
         {selectButtonContent || currentLabel}
         <Ariakit.SelectArrow />
       </Ariakit.Select>
