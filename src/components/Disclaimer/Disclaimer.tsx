@@ -66,7 +66,7 @@ function Disclaimer({ agree }: { agree: () => void }) {
     };
   }, []);
   return (
-    <aside className="disclaimer" aria-labelledby="disclaimer-title">
+    <main className="disclaimer" aria-labelledby="disclaimer-title">
       <div className="wrapper-box">
         <h2 id="disclaimer-title">Legal Disclaimer</h2>
       </div>
@@ -88,7 +88,7 @@ function Disclaimer({ agree }: { agree: () => void }) {
           Agree
         </LinkButton>
       </div>
-    </aside>
+    </main>
   );
 }
 
