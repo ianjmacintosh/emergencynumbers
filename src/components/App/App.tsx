@@ -128,17 +128,19 @@ function App({ initialCountry }: { initialCountry?: ValidCountryCode }) {
                 </div>
               </>
             )}
-
-            {agreedToTerms && agreedToTerms === "never" && (
-              <Disclaimer
-                agree={() => {
-                  setAgreedToTerms(Date.now().toString());
-                  window.scroll({ top: 0, behavior: "instant" });
-                }}
-              />
-            )}
           </div>
         </header>
+
+        {agreedToTerms && agreedToTerms === "never" && (
+          <div className="content-wrapper">
+            <Disclaimer
+              agree={() => {
+                setAgreedToTerms(Date.now().toString());
+                window.scroll({ top: 0, behavior: "instant" });
+              }}
+            />
+          </div>
+        )}
         {agreedToTerms && agreedToTerms !== "never" && (
           <main className="country-card-main">
             <AnimatePresence custom={direction} mode="sync" initial={false}>

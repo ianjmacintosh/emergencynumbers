@@ -5,7 +5,7 @@ const testPage = "/us/";
 test("shows the disclaimer wall before agreeing", async ({ page }) => {
   await page.goto(testPage);
 
-  const disclaimer = page.getByRole("complementary", {
+  const disclaimer = page.getByRole("main", {
     name: /legal disclaimer/i,
   });
   await expect(disclaimer).toBeVisible();
@@ -14,7 +14,7 @@ test("shows the disclaimer wall before agreeing", async ({ page }) => {
 test("disclaimer contains key phrases", async ({ page }) => {
   await page.goto(testPage);
 
-  const disclaimer = page.getByRole("complementary", {
+  const disclaimer = page.getByRole("main", {
     name: /legal disclaimer/i,
   });
   await expect(disclaimer).toContainText("not an official resource", {
@@ -31,7 +31,7 @@ test("disclaimer contains key phrases", async ({ page }) => {
 test("can dismiss the disclaimer by clicking Agree", async ({ page }) => {
   await page.goto(testPage);
 
-  const disclaimer = page.getByRole("complementary", {
+  const disclaimer = page.getByRole("main", {
     name: /legal disclaimer/i,
   });
   await expect(disclaimer).toBeVisible();
@@ -47,14 +47,14 @@ test("disclaimer stays dismissed after agreeing and reloading", async ({
 }) => {
   await page.goto(testPage);
   await page
-    .getByRole("complementary", { name: /legal disclaimer/i })
+    .getByRole("main", { name: /legal disclaimer/i })
     .getByRole("button", { name: /agree/i })
     .click();
 
   await page.reload();
 
   await expect(
-    page.getByRole("complementary", { name: /legal disclaimer/i }),
+    page.getByRole("main", { name: /legal disclaimer/i }),
   ).not.toBeVisible();
   await expect(page.getByRole("combobox", { name: "Location" })).toBeVisible();
 });
