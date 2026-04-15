@@ -15,6 +15,37 @@ test("/foo/ returns a 404 response", async ({ page }) => {
   expect(response?.status()).toBe(404);
 });
 
+test("has correct meta tags", async ({ page }) => {
+  await page.goto(testPage);
+
+  const canonical = page.locator('link[rel="canonical"]');
+  await expect(canonical).toHaveAttribute(
+    "href",
+    "https://emergencynumbers.info/us/",
+  );
+
+  const ogTitle = page.locator('meta[property="og:title"]');
+  await expect(ogTitle).toHaveAttribute(
+    "content",
+    "Emergency Service Phone Numbers for United States",
+  );
+
+  const ogDescription = page.locator('meta[property="og:description"]');
+  await expect(ogDescription).toHaveAttribute(
+    "content",
+    "Police, fire, and ambulance phone numbers for United States",
+  );
+
+  const ogUrl = page.locator('meta[property="og:url"]');
+  await expect(ogUrl).toHaveAttribute(
+    "content",
+    "https://emergencynumbers.info/us/",
+  );
+
+  const ogLocale = page.locator('meta[property="og:locale"]');
+  await expect(ogLocale).toHaveAttribute("content", "en_US");
+});
+
 test("builds with dynamic page titles", async ({ page }) => {
   await page.goto(testPage);
 

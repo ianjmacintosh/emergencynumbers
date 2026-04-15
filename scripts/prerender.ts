@@ -34,18 +34,22 @@ const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 const BASE_URL = "https://emergencynumbers.info";
 
 for (const [code] of Object.entries(COUNTRY_NAMES)) {
-  const lc = code.toLowerCase();
+  const countryCodeLowercase = code.toLowerCase();
   (globalThis as unknown as { window: WindowMock }).window.location.pathname =
-    `/${lc}/`;
+    `/${countryCodeLowercase}/`;
   const html = renderToStaticMarkup(
     createElement(StrictMode, null, createElement(App)),
   );
   const countryName = COUNTRY_NAMES[code as keyof typeof COUNTRY_NAMES];
   const page = template
     .replaceAll("%COUNTRY_NAME%", countryName)
+    .replaceAll("%COUNTRY_CODE_LOWERCASE%", countryCodeLowercase)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
-  fs.mkdirSync(path.join(distDir, lc), { recursive: true });
-  fs.writeFileSync(path.join(distDir, lc, "index.html"), page);
+  fs.mkdirSync(path.join(distDir, countryCodeLowercase), { recursive: true });
+  fs.writeFileSync(
+    path.join(distDir, countryCodeLowercase, "index.html"),
+    page,
+  );
 }
 console.log(`Prerendered ${Object.keys(COUNTRY_NAMES).length} pages.`);
 
