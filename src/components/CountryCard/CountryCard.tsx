@@ -11,7 +11,7 @@ import TextLink from "../TextLink";
 
 import "./CountryCard.css";
 
-const transition: Transition = { type: "spring", duration: 0.4, bounce: 0.2 };
+const transition: Transition = { type: "spring", duration: 0.4, bounce: 0.3 };
 
 const swipeVariants: Variants = {
   initial: (direction: number) => ({ x: `${direction * 100}vw` }),
