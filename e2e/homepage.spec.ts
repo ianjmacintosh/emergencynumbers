@@ -30,10 +30,11 @@ test("has correct meta tags", async ({ page }) => {
     "Emergency Service Phone Numbers for United States",
   );
 
+  const supportedCountryCount = Object.keys(SERVICES).length;
   const ogDescription = page.locator('meta[property="og:description"]');
   await expect(ogDescription).toHaveAttribute(
     "content",
-    "Police, fire, and ambulance phone numbers for United States",
+    `Police, fire, and ambulance phone numbers for United States. No ads, no signup, just public information for ${supportedCountryCount} countries and territories.`,
   );
 
   const ogUrl = page.locator('meta[property="og:url"]');

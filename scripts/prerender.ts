@@ -23,6 +23,7 @@ const { renderToStaticMarkup } = await import("react-dom/server");
 const { createElement, StrictMode } = await import("react");
 const { default: App } = await import("../src/components/App/App.tsx");
 const { COUNTRY_NAMES } = await import("../src/constants/index.ts");
+const { SERVICES } = await import("../src/constants/emergency-services.ts");
 import fs from "fs";
 import path from "path";
 
@@ -32,6 +33,7 @@ const distDir = path.resolve("dist/client");
 const template = fs.readFileSync(path.join(distDir, "index.html"), "utf-8");
 
 const BASE_URL = "https://emergencynumbers.info";
+const numberOfSupportedCountries = Object.keys(SERVICES).length.toString();
 
 for (const [code] of Object.entries(COUNTRY_NAMES)) {
   const countryCodeLowercase = code.toLowerCase();
@@ -44,6 +46,7 @@ for (const [code] of Object.entries(COUNTRY_NAMES)) {
   const page = template
     .replaceAll("%COUNTRY_NAME%", countryName)
     .replaceAll("%COUNTRY_CODE_LOWERCASE%", countryCodeLowercase)
+    .replaceAll("%NUMBER_OF_SUPPORTED_COUNTRIES%", numberOfSupportedCountries)
     .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
   fs.mkdirSync(path.join(distDir, countryCodeLowercase), { recursive: true });
   fs.writeFileSync(
